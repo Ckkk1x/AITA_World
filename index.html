@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AITA Lending</title>
+  <meta name="description" content="Лендинг AITA Lending">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="header">
+    <div class="container">
+      
+      <!-- Logo -->
+      <div class="logo">
+        <img src="img/aitalogowhite.png" alt="AITA Logo" class="logo-img">
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="menu-desktop">
+        <div class="menu-projects">
+          <a href="#" class="link">AITA.Platform</a>
+          <a href="#" class="link">AITA.Invest</a>
+          <a href="#" class="link">AITA.Assets</a>
+        </div>
+        <div class="menu-pages">
+          <a href="#about" class="link">About Us</a>
+          <a href="#contact" class="link">Contact</a>
+          <button class="btn">Partners with us</button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+
+      <!-- Mobile Menu -->
+      <nav class="menu-mobile" id="menuMobile">
+        <div class="menu-mobile-content">
+          <div class="menu-mobile-group">
+            <a href="#" class="link-mobile">AITA.Platform</a>
+            <a href="#" class="link-mobile">AITA.Invest</a>
+            <a href="#" class="link-mobile">AITA.Assets</a>
+          </div>
+          <div class="menu-mobile-divider"></div>
+          <div class="menu-mobile-group">
+            <a href="#about" class="link-mobile">About Us</a>
+            <a href="#contact" class="link-mobile">Contact</a>
+          </div>
+          <button class="btn btn-mobile">Partners with us</button>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-logo">
+          <img src="img/aitalogotextwhite.png" alt="AITA Lending" class="hero-logo-img">
+        </div>
+        <p class="text text-hero">
+          Speed. Transparency. Achievable.
+        </p>
+        <button class="btn btn-hero">Explore Ecosystem</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container container-small">
+        <div class="card climate-context-card">
+          <h1 class="title climate-h1">The Climate Crisis is real.</h1>
+          <h2 class="title climate-h2">The transition is too slow — and the system is broken.</h2>
+          
+          <div class="climate-cards">
+            <div class="climate-card">
+              <div class="climate-card-number">+1.2°C</div>
+              <p class="text climate-card-text">Already above pre-industrial levels</p>
+            </div>
+            
+            <div class="climate-card">
+              <div class="climate-card-number climate-card-number-large">75%</div>
+              <p class="text climate-card-text">Energy sector drives most global emissions</p>
+            </div>
+            
+            <div class="climate-card">
+              <div class="climate-card-number">Extreme weather</div>
+              <p class="text climate-card-text">Heatwaves, floods, droughts = systemic risk</p>
+            </div>
+          </div>
+          
+          <div class="climate-blocker">
+            <h3 class="title climate-blocker-title">What's blocking progress</h3>
+            <p class="text climate-blocker-text">Fragmented markets • Outdated processes • No unified operating system</p>
+          </div>
+          
+          <p class="text climate-punchline">We need to accelerate. Now.</p>
+        </div>
+
+        <div class="card mission-card">
+          <div class="mission-content">
+            <div class="mission-bird-wrapper">
+              <img src="img/bird.png" alt="Bird" class="mission-bird">
+            </div>
+            <div class="mission-text">
+              <h2 class="title title-mission">Our mission</h2>
+              <p class="text text-mission">
+                Accelerate the green transition.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="title title-small">What is AITA World?</h2>
+          
+          <div class="world-subblock">
+            <div class="world-subblock-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="text">
+              AITA World is a global digital ecosystem that unites developers, investors, EPC companies, installers, equipment suppliers, and energy assets into one intelligent platform.
+            </p>
+          </div>
+          
+          <div class="world-subblock">
+            <div class="world-subblock-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 2V6M12 18V22M2 12H6M18 12H22" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="text">
+              It automates the entire lifecycle of clean energy projects — from early assessment and financing to construction, dispatching, asset management, and monetization.
+            </p>
+          </div>
+          
+          <div class="world-subblock">
+            <div class="world-subblock-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 16V8C21 7.46957 20.7893 6.96086 20.4142 6.58579C20.0391 6.21071 19.5304 6 19 6H5C4.46957 6 3.96086 6.21071 3.58579 6.58579C3.21071 6.96086 3 7.46957 3 8V16C3 16.5304 3.21071 17.0391 3.58579 17.4142C3.96086 17.7893 4.46957 18 5 18H19C19.5304 18 20.0391 17.7893 20.4142 17.4142C20.7893 17.0391 21 16.5304 21 16Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 10H21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="text">
+              AITA World creates a fully connected energy environment where every project, asset, and transaction becomes fast, transparent, and globally accessible.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="title title-small">Why It Matters</h2>
+          
+          <div class="why-matters-stats">
+            <div class="why-matters-stat">
+              <div class="why-matters-number">$X</div>
+              <div class="why-matters-label">Trillion market</div>
+            </div>
+            
+            <div class="why-matters-stat">
+              <div class="why-matters-number">Millions</div>
+              <div class="why-matters-label">of assets unmanaged</div>
+            </div>
+            
+            <div class="why-matters-stat">
+              <div class="why-matters-number">0</div>
+              <div class="why-matters-label">unified operating systems</div>
+            </div>
+          </div>
+          
+          <p class="text why-matters-conclusion">Until now.</p>
+        </div>
+
+      </div>
+    </section>
+      
+    <!-- AITA World: The Unified Infrastructure -->
+    <section class="section">
+      <div class="container container-small">
+        <div class="card">
+          <h1 class="title title-section">AITA World: The Unified Infrastructure for Clean Energy</h1>
+          <p class="text text-hero">
+            AITA World is not a single product. It's a unified digital infrastructure for the entire clean energy value chain.
+          </p>
+          
+          <div class="platforms-grid">
+            <div class="platform-card">
+              <h3 class="title title-card" style="color: var(--color-platform);">AITA.Platform</h3>
+              <p class="text text-card">The operational core</p>
+              <p class="text text-card">CRM, Project Management, Supply Chain, AI-driven compliance. Everything developers and EPCs need to launch projects faster.</p>
+            </div>
+            
+            <div class="platform-card">
+              <h3 class="title title-card" style="color: var(--color-assets);">AITA.Assets</h3>
+              <p class="text text-card">Real-time intelligence</p>
+              <p class="text text-card">Monitor and manage solar, BESS, and hybrid systems. Real-time data from generation to revenue.</p>
+            </div>
+            
+            <div class="platform-card">
+              <h3 class="title title-card" style="color: var(--color-invest);">AITA.Invest</h3>
+              <p class="text text-card">Capital meets opportunity</p>
+              <p class="text text-card">Connect investors with verified projects. Transparent, tokenized, and liquid.</p>
+            </div>
+            
+            <div class="platform-card">
+              <h3 class="title title-card" style="color: var(--color-exchange);">AITA.Exchange</h3>
+              <p class="text text-card">The future of energy trading</p>
+              <p class="text text-card">Peer-to-peer energy commerce. Coming soon.</p>
+            </div>
+          </div>
+          
+          <p class="text text-hero" style="margin-top: var(--spacing-xl);">
+            One ecosystem. One mission. Accelerate the green transition.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How AITA Works Section -->
+    <section id="how-works" class="section section-no-top-padding">
+      <div class="container container-small">
+        <div class="card">
+          <h2 class="title title-small">How AITA Works</h2>
+          
+          <p class="text text-intro">
+            AITA World turns the entire clean-energy lifecycle into a seamless digital flow.
+            Here's how the process works from start to finish:
+          </p>
+          
+          <div class="how-works-steps">
+            <div class="how-works-step">
+              <div class="how-works-number">1</div>
+              <div class="how-works-content">
+                <h3 class="title title-card">Submit or discover a project</h3>
+                <p class="text">
+                  Developers upload new energy projects while investors explore verified opportunities.
+                </p>
+              </div>
+            </div>
+            
+            <div class="how-works-step">
+              <div class="how-works-number">2</div>
+              <div class="how-works-content">
+                <h3 class="title title-card">Automated assessment & due diligence</h3>
+                <p class="text">
+                  AI analyzes technical data, risks, financial models, and project feasibility.
+                </p>
+              </div>
+            </div>
+            
+            <div class="how-works-step">
+              <div class="how-works-number">3</div>
+              <div class="how-works-content">
+                <h3 class="title title-card">Financing & capital allocation</h3>
+                <p class="text">
+                  Investors fund projects through a transparent, automated financial workflow.
+                </p>
+              </div>
+            </div>
+            
+            <div class="how-works-step">
+              <div class="how-works-number">4</div>
+              <div class="how-works-content">
+                <h3 class="title title-card">Construction & EPC coordination</h3>
+                <p class="text">
+                  AITA.Platform manages procurement, logistics, contracting, and onsite operations.
+                </p>
+              </div>
+            </div>
+            
+            <div class="how-works-step">
+              <div class="how-works-number">5</div>
+              <div class="how-works-content">
+                <h3 class="title title-card">Real-time asset management</h3>
+                <p class="text">
+                  AITA.Assets monitors energy production, performance KPIs, and BESS optimization.
+                </p>
+              </div>
+            </div>
+            
+            <div class="how-works-step">
+              <div class="how-works-number">6</div>
+              <div class="how-works-content">
+                <h3 class="title title-card">Monetization & liquidity</h3>
+                <p class="text">
+                  Tokenized assets become tradeable on AITA.Exchange, enabling global liquidity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Traction. Scale. Trust. -->
+    <section class="section">
+      <div class="container container-small">
+        <div class="card">
+          <h2 class="title title-section">Traction. Scale. Trust.</h2>
+          
+          <div class="traction-stats">
+            <div class="traction-stat">
+              <div class="traction-number">12GW</div>
+              <div class="traction-label">Total portfolio of projects</div>
+          </div>
+          
+            <div class="traction-stat">
+              <div class="traction-number">90%</div>
+              <div class="traction-label">Time reduction (3+ years → months)</div>
+            </div>
+            
+            <div class="traction-stat">
+              <div class="traction-number">4+</div>
+              <div class="traction-label">Global strategic partners</div>
+            </div>
+          </div>
+        </div>
+              </div>
+    </section>
+
+    <!-- Your Role in the Digitized Energy Economy -->
+    <section class="section">
+      <div class="container container-small">
+        <div class="card">
+          <h2 class="title title-section">Your Role in the Digitized Energy Economy</h2>
+          
+          <div class="roles-grid">
+            <div class="role-card">
+              <h3 class="title title-card">For Developers & EPCs</h3>
+              <p class="text text-card" style="margin-bottom: var(--spacing-sm); font-weight: 600;">Launch Faster. Build Smarter.</p>
+              <p class="text text-card">Automation, access to financing, supply chain optimization.</p>
+            </div>
+            
+            <div class="role-card">
+              <h3 class="title title-card">For Investors</h3>
+              <p class="text text-card" style="margin-bottom: var(--spacing-sm); font-weight: 600;">Invest with Transparency. Manage with Data.</p>
+              <p class="text text-card">Real-time data, AI risk analysis, access to RWA.</p>
+            </div>
+            
+            <div class="role-card">
+              <h3 class="title title-card">For Partners & Suppliers</h3>
+              <p class="text text-card" style="margin-bottom: var(--spacing-sm); font-weight: 600;">Integrate Seamlessly. Scale Predictably.</p>
+              <p class="text text-card">Supply chain integration, predictable demand, global market access.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-Driven. Data-Centric. Transparent. -->
+    <section class="section">
+      <div class="container container-small">
+        <div class="card">
+          <h2 class="title title-section">AI-Driven. Data-Centric. Transparent.</h2>
+          
+          <div class="values-grid">
+            <div class="value-card">
+              <h3 class="title title-card">The Intelligence Layer</h3>
+              <p class="text text-card">AI is not a feature, but the core logic. It performs automatic due diligence, risk analysis, and optimizes business processes.</p>
+            </div>
+            
+            <div class="value-card">
+              <h3 class="title title-card">Unbreakable Transparency</h3>
+              <p class="text text-card">Investors see how the asset really works before they buy it. Real-time integration with EMS/SCADA systems.</p>
+      </div>
+      
+            <div class="value-card">
+              <h3 class="title title-card">Future of Energy Finance</h3>
+              <p class="text text-card">Preparing for tokenization of energy projects (RWA) to provide regulated, liquid access for retail investors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Form Section -->
+    <section id="contact" class="section">
+      <div class="container container-small">
+        <div class="card">
+          <h2 class="title title-section">Ready to Build the Future of Energy?</h2>
+          <p class="text text-hero">
+            Whether you are launching a new solar farm, seeking transparent investment, or looking to integrate your services, AITA World provides the infrastructure you need to succeed.
+          </p>
+          <form class="partner-form" id="partnerForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name *</label>
+              <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Phone or Email *</label>
+              <input type="text" id="email" name="email" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-textarea" rows="5"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-form">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="text text-footer">
+        © 2024 AITA. Всі права захищені.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
