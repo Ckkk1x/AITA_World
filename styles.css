@@ -208,7 +208,7 @@ body {
     pointer-events: none;
     will-change: transform;
     object-fit: cover;
-    transform: translateY(400px); /* стартова позиція як у blop2 */
+    transform: translateY(200px); /* піднята стартова позиція */
 }
 
 /* # Контентні секції - стандартні секції з текстом */
@@ -360,8 +360,8 @@ body {
     margin-top: 12px;
 }
 
-/* # Секція "WHAT'S BLOCKING PROGRESS" - блок з трьома колонками */
-.blocking-section {
+/* # Секція "Why It Matters" - блок з інфографікою (структура як blocking-section) */
+.why-it-matters-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 100px 20px;
@@ -372,91 +372,41 @@ body {
     font-family: 'Golos Text', sans-serif;
 }
 
-/* # Горизонтальна лінія зверху (після заголовка) */
-.blocking-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    height: 2px;
-    background-color: #ffffff;
-    pointer-events: none;
-}
 
-/* # Горизонтальна лінія знизу */
-.blocking-content::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #ffffff;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* # Вертикальні лінії сітки між колонками */
-.blocking-column:nth-child(1)::after,
-.blocking-column:nth-child(2)::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    right: 0;
-    width: 2px;
-    bottom: -2px;
-    background-color: #ffffff;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* # Заголовок секції - "WHAT'S BLOCKING PROGRESS" */
-.blocking-title {
+/* # Заголовок секції - "Why It Matters" */
+.why-it-matters-title {
     font-size: 48pt;
-    font-weight: 700;
-    text-align: left;
+    font-weight: 600;
+    text-align: center;
     margin-bottom: 0;
     letter-spacing: -0.02em;
     line-height: 1.2;
-    padding-left: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
     position: relative;
+    opacity: 0.5;
 }
 
 /* # Частини заголовка - білий колір */
-.blocking-title-part1,
-.blocking-title-part2 {
+.why-it-matters-title-part1 {
     color: #ffffff;
+    position: relative;
+    display: inline-block;
 }
 
-/* # Верхня горизонтальна лінія-розділювач */
-.blocking-divider-top {
-    width: 100%;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin: 20px 0;
-}
-
-/* # Нижня горизонтальна лінія-розділювач */
-.blocking-divider-bottom {
-    width: 100%;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin: 20px 0;
-}
 
 /* # Контейнер з трьома колонками */
-.blocking-content {
+.why-it-matters-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
     position: relative;
     padding: 40px 0;
-    align-items: stretch;
+    align-items: flex-end;
 }
 
 /* # Окрема колонка */
-.blocking-column {
+.why-it-matters-column {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -466,51 +416,155 @@ body {
     padding: 20px;
 }
 
-/* # Короткі напівпрозорі лінії між колонками */
-.blocking-column:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 60%;
-    background-color: rgba(255, 255, 255, 0.3);
+
+/* # Статистичний блок в колонці */
+.why-it-matters-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
 }
 
-/* # Вертикальна лінія-розділювач між колонками */
-.blocking-column-divider {
-    width: 2px;
-    background-color: rgba(255, 255, 255, 0.3);
-    align-self: stretch;
+/* # Числа/текст у статистиці - великі білі цифри */
+.why-it-matters-number {
+    font-size: 126.5px;
+    font-weight: 800;
+    font-family: 'Golos Text', sans-serif;
+    line-height: 1;
+    margin-bottom: 0;
+    color: #ffffff;
+    font-variant-ligatures: common-ligatures;
+}
+
+/* # Millions - менший розмір шрифту */
+.why-it-matters-millions {
+    font-size: 88px;
+}
+
+/* # Текст під статистикою - пояснювальний текст під кожним блоком */
+.why-it-matters-text {
+    font-size: 13.8px;
+    color: #cccccc;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 5px;
+}
+
+/* # Секція "WHAT'S BLOCKING PROGRESS" - блок з трьома колонками */
+.blocking-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Заголовок секції - "WHAT'S BLOCKING PROGRESS" */
+.blocking-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+}
+
+/* # Частини заголовка - білий колір */
+.blocking-title-part1,
+.blocking-title-part2 {
+    color: #ffffff;
+}
+
+/* # Контейнер з трьома колонками */
+.blocking-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    position: relative;
+    padding: 0;
+    align-items: stretch;
+}
+
+/* # Окрема колонка */
+.blocking-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    position: relative;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* # Hover ефект для колонок */
+.blocking-column:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
 }
 
 /* # Текст в колонках */
 .blocking-text {
-    font-size: 24pt;
-    font-weight: 700;
+    font-size: 22pt;
+    font-weight: 500;
     color: #ffffff;
-    line-height: 1.4;
+    line-height: 1.5;
     font-family: 'Golos Text', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* # Окремий рядок тексту в блоці */
+.blocking-line {
+    display: block;
 }
 
 /* # Секція "OUR MISSION" - простий текстовий блок */
 .mission-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 400px 20px 100px 20px;
+    padding: 200px 20px 120px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
 }
 
+/* # Контейнер для контенту місії */
+.mission-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 /* # Заголовок "OUR MISSION" - великі капсом, semi-bold */
 .mission-title {
-    font-size: 48pt;
+    font-size: 42pt;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 24px;
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: #ffffff;
@@ -519,12 +573,13 @@ body {
 
 /* # Підзаголовок "Accelerate the green transition" */
 .mission-subtitle {
-    font-size: 24pt;
+    font-size: 20pt;
     font-weight: 400;
     text-align: center;
-    color: #ffffff;
-    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
     font-family: 'Golos Text', sans-serif;
+    margin: 0;
 }
 
 /* # Секція з прокручуваним текстом */
@@ -580,117 +635,336 @@ body {
     font-weight: 600;
 }
 
-/* # Секція з анімацією заглиблення */
-.depth-animation-section {
+
+/* # Секція "OUR PRODUCTS" - блок з кнопками продуктів */
+.products-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200px 20px 100px 20px;
+    color: #ffffff;
     position: relative;
-    min-height: 150vh;
-    width: 100%;
-    overflow: hidden;
-    background: #000000;
     z-index: 1;
-    scroll-snap-align: start;
+    background-color: #000000;
+    font-family: 'Golos Text', sans-serif;
 }
 
-/* # Градієнтний оверлей, який змінюється при скролі */
-.depth-gradient-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 2;
-    background: linear-gradient(to bottom, 
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.2) 20%,
-        rgba(0, 0, 0, 0.5) 40%,
-        rgba(0, 0, 0, 0.8) 70%,
-        rgba(0, 0, 0, 0.95) 100%
-    );
-    opacity: 0;
-    will-change: opacity;
-}
-
-/* # Контейнер для всіх блопів */
-.blops-container {
+/* # Заголовок "OUR PRODUCTS" - такий же стиль як "WHY IT MATTERS" */
+.products-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
     position: relative;
+    opacity: 0.5;
+}
+
+/* # Контейнер для кнопок продуктів */
+.products-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 80px 0 40px 0;
+}
+
+/* # Рядок з кнопками */
+.products-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* # Центрований рядок для другої кнопки */
+.products-row-center {
+    justify-content: center;
+}
+
+/* # Кнопка продукту - базові стилі */
+.product-button {
+    padding: 20px 40px;
+    border-radius: 50px;
+    border: none;
+    font-size: 18pt;
+    font-weight: 400;
+    font-family: 'Golos Text', sans-serif;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    width: 200px;
+    text-align: center;
+    isolation: isolate;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0px);
+    transform: scale(1);
+    will-change: transform, opacity, filter;
+}
+
+/* # Псевдоелемент для градієнтного border */
+.product-button::before {
+    content: '';
+    position: absolute;
+    top: -0.5px;
+    left: -0.5px;
+    right: -0.5px;
+    bottom: -0.5px;
+    border-radius: 50px;
+    background: linear-gradient(to right, var(--border-start-color), #ffffff);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* # Внутрішній фон кнопки поверх border */
+.product-button::after {
+    content: '';
+    position: absolute;
+    top: 0.5px;
+    left: 0.5px;
+    right: 0.5px;
+    bottom: 0.5px;
+    border-radius: 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* # Кнопка platform - зелений градієнт (чорний -> #39b54a) */
+.product-platform {
+    --border-start-color: #39b54a;
+    color: #4fc85d;
+}
+
+.product-platform::after {
+    background: linear-gradient(to right, #000000, #39b54a);
+}
+
+.product-platform:hover:not(.expanded) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(57, 181, 74, 0.3);
+}
+
+/* # Кнопка invest - червоний градієнт (чорний -> #d62828) */
+.product-invest {
+    --border-start-color: #d62828;
+    color: #e63939;
+}
+
+.product-invest::after {
+    background: linear-gradient(to right, #000000, #d62828);
+}
+
+.product-invest:hover:not(.expanded) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(214, 40, 40, 0.3);
+}
+
+/* # Кнопка assets - синій градієнт (чорний -> #0086cc) */
+.product-assets {
+    --border-start-color: #0086cc;
+    color: #1a9de6;
+}
+
+.product-assets::after {
+    background: linear-gradient(to right, #000000, #0086cc);
+}
+
+.product-assets:hover:not(.expanded) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 134, 204, 0.3);
+}
+
+/* # Кнопка exchange - фіолетовий градієнт (чорний -> #8524d8) */
+.product-exchange {
+    --border-start-color: #8524d8;
+    color: #9a3ee8;
+}
+
+.product-exchange::after {
+    background: linear-gradient(to right, #000000, #8524d8);
+}
+
+.product-exchange:hover:not(.expanded) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(133, 36, 216, 0.3);
+}
+
+/* # Розширена кнопка */
+.product-button.expanded {
+    width: 800px;
+    min-width: 800px;
+    height: auto;
+    min-height: 300px;
+    padding: 40px 50px;
+    border-radius: 50px;
+    text-align: left;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+    filter: blur(0px);
+    transform: scale(1);
+    animation: expandButton 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes expandButton {
+    0% {
+        filter: blur(2px);
+        transform: scale(0.98);
+    }
+    50% {
+        filter: blur(1px);
+    }
+    100% {
+        filter: blur(0px);
+        transform: scale(1);
+    }
+}
+
+/* # Анімація згортання кнопки */
+.product-button:not(.expanded) {
+    animation: collapseButton 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes collapseButton {
+    0% {
+        filter: blur(0px);
+        transform: scale(1);
+    }
+    100% {
+        filter: blur(0px);
+        transform: scale(1);
+    }
+}
+
+.product-button.expanded::before {
+    border-radius: 50px;
+}
+
+.product-button.expanded::after {
+    border-radius: 50px;
+}
+
+/* # Лейбл кнопки (показується тільки в згорнутому стані) */
+.product-button-label {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-button.expanded .product-button-label {
+    display: none;
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(4px);
+}
+
+/* # Розширений контент (прихований за замовчуванням) */
+.product-expanded-content {
+    display: none;
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
-    min-height: 150vh;
-}
-
-/* # Базові стилі для блопів */
-.depth-blop {
-    position: absolute;
-    width: 900px;
-    height: 900px;
-    filter: blur(70px);
-    opacity: 0.7;
-    will-change: transform, opacity;
-    object-fit: cover;
-    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
-}
-
-/* # Розміщення кожного блопа */
-.depth-blop-1 {
-    top: 10%;
-    left: -200px;
-    transform: scale(1.2);
-}
-
-.depth-blop-2 {
-    top: 20%;
-    right: -150px;
-    transform: scale(1.1);
-}
-
-.depth-blop-3 {
-    top: 40%;
-    left: 10%;
-    transform: scale(0.9);
-}
-
-.depth-blop-4 {
-    top: 50%;
-    right: 5%;
-    transform: scale(1.0);
-}
-
-.depth-blop-5 {
-    top: 70%;
-    left: -100px;
-    transform: scale(1.3);
-}
-
-.depth-blop-6 {
-    top: 80%;
-    right: -200px;
-    transform: scale(1.1);
-}
-
-/* # Контейнер для тексту */
-.depth-text-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
     opacity: 0;
-    pointer-events: none;
-    will-change: opacity;
+    transform: translateY(20px);
+    filter: blur(4px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+                filter 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
-/* # Текст "hello test" */
-.depth-text {
-    font-size: 72pt;
-    font-weight: 700;
+.product-button.expanded .product-expanded-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+/* # Заголовок розширеного контенту */
+.product-expanded-title {
+    font-size: 24pt;
+    font-weight: 600;
     color: #ffffff;
-    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
     font-family: 'Golos Text', sans-serif;
     letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+/* # Текст розширеного контенту */
+.product-expanded-text {
+    font-size: 14pt;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Ключове слово внизу справа */
+.product-expanded-keyword {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 14pt;
+    font-weight: 400;
+    color: #ffffff;
     text-transform: lowercase;
-    white-space: nowrap;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Градієнти для розширеного стану (темніші зліва) */
+.product-platform.expanded::after {
+    background: linear-gradient(to right, #0d2e0d, #39b54a);
+}
+
+.product-invest.expanded::after {
+    background: linear-gradient(to right, #2e0d0d, #d62828);
+}
+
+.product-assets.expanded::after {
+    background: linear-gradient(to right, #0d1e2e, #0086cc);
+}
+
+.product-exchange.expanded::after {
+    background: linear-gradient(to right, #1e0d2e, #8524d8);
+}
+
+/* # Обводка для розширеного стану */
+.product-platform.expanded::before {
+    background: linear-gradient(to right, #39b54a, #ffffff);
+}
+
+.product-invest.expanded::before {
+    background: linear-gradient(to right, #d62828, #ffffff);
+}
+
+.product-assets.expanded::before {
+    background: linear-gradient(to right, #0086cc, #ffffff);
+}
+
+.product-exchange.expanded::before {
+    background: linear-gradient(to right, #8524d8, #ffffff);
 }
 
 /* # Адаптивні стилі для мобільних пристроїв - екран менше 768px */
@@ -715,6 +989,36 @@ body {
     
     .stat-weather {
         font-size: 42px;
+    }
+    
+    .why-it-matters-title {
+        font-size: 32pt;
+    }
+    
+    .why-it-matters-content {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .why-it-matters-column {
+        border-bottom: 2px solid #ffffff;
+        text-align: center;
+    }
+    
+    .why-it-matters-column:last-child {
+        border-bottom: none;
+    }
+    
+    .why-it-matters-number {
+        font-size: 56px;
+    }
+    
+    .why-it-matters-millions {
+        font-size: 62px;
+    }
+    
+    .why-it-matters-text {
+        font-size: 12px;
     }
     
     .blocking-title {
@@ -764,18 +1068,53 @@ body {
         font-size: 18pt;
     }
     
-    .depth-animation-section {
-        min-height: 120vh;
+    .products-title {
+        font-size: 24pt;
     }
     
-    .depth-blop {
-        width: 500px;
-        height: 500px;
-        filter: blur(40px);
+    .products-content {
+        align-items: center;
     }
     
-    .depth-text {
-        font-size: 36pt;
+    .products-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .products-row-center {
+        justify-content: center;
+    }
+    
+    .product-button {
+        width: 100%;
+        max-width: 300px;
+        padding: 18px 30px;
+        font-size: 16pt;
+    }
+    
+    .product-button.expanded {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        padding: 30px 25px;
+        min-height: 250px;
+    }
+    
+    .product-expanded-title {
+        font-size: 20pt;
+        margin-bottom: 15px;
+    }
+    
+    .product-expanded-text {
+        font-size: 12pt;
+    }
+    
+    .product-expanded-keyword {
+        position: relative;
+        margin-top: 20px;
+        text-align: right;
     }
 }
 

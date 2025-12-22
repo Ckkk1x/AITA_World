@@ -8,13 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Елементи для анімації прокручуваного тексту
     const scrollingSection = document.querySelector('.scrolling-text-section');
     const scrollingLines = document.querySelectorAll('.scrolling-line');
-    const nextSection = document.querySelector('.depth-animation-section');
-    
-    // Елементи для анімації заглиблення
-    const depthSection = document.querySelector('.depth-animation-section');
-    const depthGradient = document.querySelector('.depth-gradient-overlay');
-    const depthText = document.querySelector('.depth-text-container');
-    const depthBlops = document.querySelectorAll('.depth-blop');
     
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
@@ -43,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxMove = 600; // максимально на скільки він підніметься
             const move = Math.min(window.scrollY * speed, maxMove);
         
-            // Рух вгору від стартової позиції (така ж анімація як у blop2)
-            blobBlocking.style.transform = `translateY(${600 - move}px)`;
+            // Рух вгору від стартової позиції (піднята стартова позиція)
+            blobBlocking.style.transform = `translateY(${500 - move}px)`;
         }
         
         // Додаємо чорний фон навігації після скролу першого блоку
@@ -98,94 +91,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Ефект примагнічування до наступного блоку
-            if (nextSection && scrollProgress > 0.85) {
-                const lastLine = scrollingLines[scrollingLines.length - 1];
-                const lastLineProgress = (scrollProgress * totalLines) - (totalLines - 1);
-                
-                // Перевіряємо чи останній рядок видимий
-                if (lastLineProgress > 0.6 && lastLine.classList.contains('visible')) {
-                    const nextSectionTop = nextSection.offsetTop;
-                    const currentScrollBottom = scrolled + windowHeight;
-                    const distanceToNext = nextSectionTop - currentScrollBottom;
-                    
-                    // Магнітний ефект: якщо наближаємось до наступного блоку
-                    if (distanceToNext < 200 && distanceToNext > -50) {
-                        // Додаємо плавне прискорення скролу до наступного блоку
-                        const magnetZone = 200;
-                        const magnetStrength = Math.max(0, (magnetZone - distanceToNext) / magnetZone);
-                        
-                        // Тільки якщо користувач активно скролить вниз
-                        if (magnetStrength > 0.5 && distanceToNext < 50 && !window.isSnapping) {
-                            const scrollDelta = window.lastScrollY ? scrolled - window.lastScrollY : 0;
-                            
-                            // Якщо скролимо вниз і наближаємось до наступного блоку
-                            if (scrollDelta > 0) {
-                                window.isSnapping = true;
-                                const targetScroll = nextSectionTop - windowHeight * 0.2;
-                                
-                                // Плавний скрол до наступного блоку
-                                requestAnimationFrame(() => {
-                                    window.scrollTo({
-                                        top: targetScroll,
-                                        behavior: 'smooth'
-                                    });
-                                });
-                                
-                                // Скидаємо прапорець після завершення скролу
-                                setTimeout(() => {
-                                    window.isSnapping = false;
-                                }, 1500);
-                            }
-                        }
-                    }
-                }
-            }
-            
             // Зберігаємо попередню позицію скролу для визначення напрямку
             window.lastScrollY = scrolled;
         }
-        
-        // Анімація заглиблення
-        if (depthSection && depthGradient && depthText) {
-            const sectionTop = depthSection.offsetTop;
-            const sectionHeight = depthSection.offsetHeight;
-            const windowHeight = window.innerHeight;
-            
-            // Початок анімації коли секція входить у viewport
-            const scrollStart = sectionTop - windowHeight * 0.3;
-            const scrollEnd = sectionTop + sectionHeight * 0.5;
-            const scrollRange = scrollEnd - scrollStart;
-            const scrollProgress = Math.max(0, Math.min(1, (scrolled - scrollStart) / scrollRange));
-            
-            // Швидка зміна градієнта (темнішає як заглиблення) - експоненційна крива
-            const gradientOpacity = Math.pow(scrollProgress, 0.7) * 1.2; // швидко досягає максимуму
-            depthGradient.style.opacity = Math.min(1, gradientOpacity);
-            
-            // Анімація блопів - рух вглиб та зміна масштабу
-            depthBlops.forEach((blop, index) => {
-                const speed = 0.4 + (index * 0.15); // різна швидкість для кожного
-                const moveY = scrollProgress * 300 * speed;
-                const scale = 1 + scrollProgress * 0.8; // збільшується при заглибленні
-                const opacity = 0.7 - scrollProgress * 0.5; // зменшується при заглибленні
-                
-                // Додаємо легке обертання для ефекту глибини
-                const rotation = scrollProgress * 10 * (index % 2 === 0 ? 1 : -1);
-                
-                blop.style.transform = `translateY(${moveY}px) scale(${scale}) rotate(${rotation}deg)`;
-                blop.style.opacity = Math.max(0.15, opacity);
-            });
-            
-            // Показуємо текст після того, як градієнт досягне певного рівня (70%)
-            if (scrollProgress > 0.7) {
-                const textOpacity = (scrollProgress - 0.7) / 0.3; // плавно з'являється
-                depthText.style.opacity = Math.min(1, textOpacity);
-                depthText.classList.add('visible');
-            } else {
-                depthText.style.opacity = 0;
-                depthText.classList.remove('visible');
-            }
-        }
     }, { passive: true });
+    
+    // Обробка кліків на кнопки продуктів
+    const productButtons = document.querySelectorAll('.product-button');
+    
+    productButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            const isExpanded = button.classList.contains('expanded');
+            
+            // Якщо кнопка вже розширена, закриваємо її і показуємо всі інші
+            if (isExpanded) {
+                button.classList.remove('expanded');
+                // Плавно показуємо всі інші кнопки з ефектом розмиття
+                productButtons.forEach((otherButton, index) => {
+                    setTimeout(() => {
+                        otherButton.style.opacity = '1';
+                        otherButton.style.filter = 'blur(0px)';
+                        otherButton.style.transform = 'scale(1)';
+                        otherButton.style.pointerEvents = 'auto';
+                        otherButton.style.visibility = 'visible';
+                    }, index * 50); // Послідовне з'явлення з невеликою затримкою
+                });
+            } else {
+                // Плавно ховаємо всі інші кнопки з ефектом розмиття
+                productButtons.forEach((otherButton, index) => {
+                    if (otherButton !== button) {
+                        setTimeout(() => {
+                            otherButton.style.opacity = '0';
+                            otherButton.style.filter = 'blur(8px)';
+                            otherButton.style.transform = 'scale(0.95)';
+                            otherButton.style.pointerEvents = 'none';
+                            otherButton.style.visibility = 'hidden';
+                        }, index * 30); // Послідовне зникнення
+                    }
+                });
+                
+                // Розширюємо поточну кнопку з плавною анімацією
+                setTimeout(() => {
+                    button.classList.add('expanded');
+                }, 100);
+            }
+        });
+    });
+    
+    // Закриваємо розширені кнопки при кліку поза ними
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.product-button')) {
+            productButtons.forEach((button, index) => {
+                setTimeout(() => {
+                    button.classList.remove('expanded');
+                    button.style.opacity = '1';
+                    button.style.filter = 'blur(0px)';
+                    button.style.transform = 'scale(1)';
+                    button.style.pointerEvents = 'auto';
+                    button.style.visibility = 'visible';
+                }, index * 50);
+            });
+        }
+    });
 });
 
