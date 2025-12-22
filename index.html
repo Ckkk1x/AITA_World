@@ -6,13 +6,15 @@
     <title>Landing Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap" rel="stylesheet" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" as="style">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" role="navigation">
         <div class="navbar-logo">
             <img src="images/aitalogowhite.png" alt="AITA Logo" class="logo-a">
             <span class="logo-text">AITA WORLD</span>
@@ -27,9 +29,10 @@
             <a href="#contact" class="nav-link">Contact</a>
         </div>
     </nav>
-    <img src="images/blop1.png" alt="" class="parallax-blob parallax-blob-left">
-    <img src="images/blop2.png" alt="" class="parallax-blob parallax-blob-right">
+    <img src="images/blop1.png" alt="" class="parallax-blob parallax-blob-left" loading="lazy" aria-hidden="true">
+    <img src="images/blop2.png" alt="" class="parallax-blob parallax-blob-right" loading="lazy" aria-hidden="true">
     <div class="container">
+        <h1 class="visually-hidden">AITA World - Speed, Transparency, Achievable</h1>
         <div class="logo">
             <svg id="logo-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1541.5 320.29"><path d="M0,320.29L231.02,0h66l231.02,320.29h-57.75l-49.5-73.4H107.26l-49.5,73.4H0ZM132.01,213.52h264.02L264.02,26.69l-132.01,186.83Z" fill="#fff"/><path d="M574.4,320.29V0h49.5v320.29h-49.5Z" fill="#fff"/><path d="M863.82,320.29V33.36h-198.01V0h445.53v33.36h-198.01v286.92h-49.5Z" fill="#fff"/><path d="M1013.46,320.29L1244.48,0h66l231.02,320.29h-57.75l-49.5-73.4h-313.52l-49.5,73.4h-57.75ZM1145.47,213.52h264.02l-132.01-186.83-132.01,186.83Z" fill="#fff"/></svg>
         </div>
@@ -38,8 +41,8 @@
         </div>
     </div>
     
-    <section class="climate-crisis-section">
-        <h1 class="climate-title">THE CLIMATE CRISIS IS REAL</h1>
+    <section class="climate-crisis-section" id="invest">
+        <h2 class="climate-title">THE CLIMATE CRISIS IS REAL</h2>
         <p class="climate-subtitle">The Transition Is Too Slow — And The System Is Broken.</p>
         <div class="climate-stats">
             <div class="stat-item">
@@ -60,39 +63,36 @@
         </div>
     </section>
     
-    <section class="blocking-section">
-        <h1 class="blocking-title">
+    <section class="blocking-section" id="platform">
+        <h2 class="blocking-title">
             <span class="blocking-title-part1">WHAT'S BLOCKING</span>
             <span class="blocking-title-part2"> PROGRESS</span>
-        </h1>
-        <div class="blocking-content">
-            <div class="blocking-column">
-                <div class="blocking-text">
-                    <div class="blocking-line">Fragmented</div>
-                    <div class="blocking-line">market</div>
-                </div>
-            </div>
-            <div class="blocking-column">
-                <div class="blocking-text">
-                    <div class="blocking-line">No unified</div>
-                    <div class="blocking-line">operating system</div>
-                </div>
-            </div>
-            <div class="blocking-column blocking-column-3">
-                <div class="blocking-text">
-                    <div class="blocking-line">Outdated</div>
-                    <div class="blocking-line">processes</div>
+        </h2>
+        <div class="blocking-bar-container">
+            <div class="blocking-bar">
+                <div class="blocking-scrolling-text">
+                    <span class="blocking-item">Fragmented market</span>
+                    <span class="blocking-separator">•</span>
+                    <span class="blocking-item">No unified operating system</span>
+                    <span class="blocking-separator">•</span>
+                    <span class="blocking-item">Outdated processes</span>
+                    <span class="blocking-separator">•</span>
+                    <span class="blocking-item">Fragmented market</span>
+                    <span class="blocking-separator">•</span>
+                    <span class="blocking-item">No unified operating system</span>
+                    <span class="blocking-separator">•</span>
+                    <span class="blocking-item">Outdated processes</span>
                 </div>
             </div>
         </div>
     </section>
     
     <section class="mission-section">
-        <h1 class="mission-title">OUR MISSION</h1>
+        <h2 class="mission-title">OUR MISSION</h2>
         <p class="mission-subtitle">Accelerate the green transition</p>
     </section>
     
-    <section class="scrolling-text-section">
+    <section class="scrolling-text-section" aria-live="polite">
         <div class="scrolling-text-container">
             <div class="scrolling-text-block">
                 <div class="scrolling-line"><strong>AITA World</strong> is a global <strong>digital ecosystem</strong></div>
@@ -116,9 +116,9 @@
     </section>
     
     <section class="why-it-matters-section">
-        <h1 class="why-it-matters-title">
+        <h2 class="why-it-matters-title">
             <span class="why-it-matters-title-part1">Why It Matters</span>
-        </h1>
+        </h2>
         <div class="why-it-matters-content">
             <div class="why-it-matters-column">
                 <div class="why-it-matters-stat">
@@ -141,40 +141,40 @@
         </div>
     </section>
     
-    <section class="products-section">
-        <h1 class="products-title">OUR PRODUCTS</h1>
+    <section class="products-section" id="assets">
+        <h2 class="products-title">OUR PRODUCTS</h2>
         <div class="products-content">
             <div class="products-row">
-                <button class="product-button product-platform">
+                <button class="product-button product-platform" aria-expanded="false" aria-controls="product-platform-content">
                     <span class="product-button-label">platform</span>
-                    <div class="product-expanded-content">
-                        <h2 class="product-expanded-title">THE OPERATIONAL CORE</h2>
+                    <div class="product-expanded-content" id="product-platform-content">
+                        <h3 class="product-expanded-title">THE OPERATIONAL CORE</h3>
                         <p class="product-expanded-text">CRM, Project Management, Supply Chain, AI-driven compliance. Everything developers and EPCs need to launch projects faster.</p>
                         <span class="product-expanded-keyword">platform</span>
                     </div>
                 </button>
-                <button class="product-button product-invest">
+                <button class="product-button product-invest" aria-expanded="false" aria-controls="product-invest-content">
                     <span class="product-button-label">invest</span>
-                    <div class="product-expanded-content">
-                        <h2 class="product-expanded-title">CAPITAL MEETS OPPORTUNITY</h2>
+                    <div class="product-expanded-content" id="product-invest-content">
+                        <h3 class="product-expanded-title">CAPITAL MEETS OPPORTUNITY</h3>
                         <p class="product-expanded-text">Connect investors with verified projects. Transparent, tokenized, and liquid.</p>
                         <span class="product-expanded-keyword">invest</span>
                     </div>
                 </button>
-                <button class="product-button product-assets">
+                <button class="product-button product-assets" aria-expanded="false" aria-controls="product-assets-content">
                     <span class="product-button-label">assets</span>
-                    <div class="product-expanded-content">
-                        <h2 class="product-expanded-title">REAL-TIME INTELLIGENCE</h2>
+                    <div class="product-expanded-content" id="product-assets-content">
+                        <h3 class="product-expanded-title">REAL-TIME INTELLIGENCE</h3>
                         <p class="product-expanded-text">Monitor and manage solar, BESS, and hybrid systems. Real-time data from generation to revenue.</p>
                         <span class="product-expanded-keyword">assets</span>
                     </div>
                 </button>
             </div>
             <div class="products-row products-row-center">
-                <button class="product-button product-exchange">
+                <button class="product-button product-exchange" aria-expanded="false" aria-controls="product-exchange-content">
                     <span class="product-button-label">exchange</span>
-                    <div class="product-expanded-content">
-                        <h2 class="product-expanded-title">THE FUTURE OF ENERGY TRADING</h2>
+                    <div class="product-expanded-content" id="product-exchange-content">
+                        <h3 class="product-expanded-title">THE FUTURE OF ENERGY TRADING</h3>
                         <p class="product-expanded-text">Peer-to-peer energy commerce. Coming soon.</p>
                         <span class="product-expanded-keyword">exchange</span>
                     </div>
