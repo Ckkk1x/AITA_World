@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const blobLeft = document.querySelector('.parallax-blob-left');
     const blobRight = document.querySelector('.parallax-blob-right');
-    const blobBlocking = document.querySelector('.parallax-blob-blocking');
     const navbar = document.querySelector('.navbar');
     const container = document.querySelector('.container');
     
@@ -29,15 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
             // Рух вгору від стартової позиції
             blobRight.style.transform = `translateY(${400 - move}px)`;
-        }
-        // Blocking blob: moves upward with scroll (same as right blob)
-        if (blobBlocking) {
-            const speed = 0.3; // регулюєш швидкість
-            const maxMove = 600; // максимально на скільки він підніметься
-            const move = Math.min(window.scrollY * speed, maxMove);
-        
-            // Рух вгору від стартової позиції (піднята стартова позиція)
-            blobBlocking.style.transform = `translateY(${500 - move}px)`;
         }
         
         // Додаємо чорний фон навігації після скролу першого блоку

@@ -190,25 +190,38 @@ body {
     transform: translateY(400px); /* стартова позиція */
 }
 
-/* # Третя колонка - позиціонування для blop3 */
-.blocking-column-3 {
-    position: relative;
-    overflow: visible;
+/* # Паралакс блоб після products - статичний декоративний елемент (без анімації) */
+.parallax-blob-products {
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: -400px;
+    width: 1095.51px;
+    height: 937.49px;
+    filter: blur(40px);
+    z-index: 0;
+    position: fixed;
+    transform: translateY(-250px); /* статична позиція */
 }
 
-/* # Третій паралакс блоб - розмитий декоративний елемент знизу зліва від блоку 3 */
-.parallax-blob-blocking {
-    position: absolute;
-    left: -1000px;
-    bottom: -600px;
+/* # Паралакс блоб blop4 після products - стиль як у blop2 */
+.parallax-blob-products-4 {
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: -300px;
     width: 1067.06px;
     height: 913.14px;
     filter: blur(40px);
-    z-index: 1;
-    pointer-events: none;
-    will-change: transform;
-    object-fit: cover;
-    transform: translateY(200px); /* піднята стартова позиція */
+    z-index: 0;
+    position: absolute;
+    transform: translateY(400px); /* стартова позиція */
+}
+
+/* # Третя колонка - позиціонування */
+.blocking-column-3 {
+    position: relative;
+    overflow: visible;
 }
 
 /* # Контентні секції - стандартні секції з текстом */
@@ -251,23 +264,25 @@ body {
 
 /* # Заголовок секції - "THE CLIMATE CRISIS IS REAL" */
 .climate-title {
-    font-size: 30pt;
-    font-weight: 500;
-    color: #ffffff;
-    text-align: left;
-    margin-bottom: 1px;
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
     letter-spacing: -0.02em;
-    padding-left: 18px;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
 }
 
 /* # Підзаголовок секції - "The Transition Is Too Slow..." */
 .climate-subtitle {
     font-size: 14pt;
-    color: #cccccc;
-    text-align: left;
+    color: #ffffff;
+    text-align: center;
     margin-bottom: 30px;
     font-weight: 400;
-    padding-left: 18px;
 }
 
 /* # Контейнер зі статистикою - три блоки з цифрами */
@@ -644,7 +659,6 @@ body {
     color: #ffffff;
     position: relative;
     z-index: 1;
-    background-color: #000000;
     font-family: 'Golos Text', sans-serif;
 }
 
@@ -905,7 +919,8 @@ body {
     font-weight: 600;
     color: #ffffff;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 0;
     font-family: 'Golos Text', sans-serif;
     letter-spacing: -0.02em;
     line-height: 1.2;
@@ -918,13 +933,15 @@ body {
     color: #ffffff;
     line-height: 1.6;
     margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 40px;
     font-family: 'Golos Text', sans-serif;
 }
 
 /* # Ключове слово внизу справа */
 .product-expanded-keyword {
     position: absolute;
-    bottom: 0;
+    bottom: -20px;
     right: 0;
     font-size: 14pt;
     font-weight: 400;
@@ -970,7 +987,7 @@ body {
 /* # Адаптивні стилі для мобільних пристроїв - екран менше 768px */
 @media (max-width: 768px) {
     .climate-title {
-        font-size: 40px;
+        font-size: 32pt;
     }
     
     .climate-subtitle {
