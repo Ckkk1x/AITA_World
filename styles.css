@@ -67,6 +67,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.3s ease;
+    color: inherit;
 }
 
 .navbar-logo:hover {
@@ -305,7 +306,7 @@ body {
 .content-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
@@ -331,12 +332,13 @@ body {
 .climate-crisis-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 20px;
-    padding-top: 300px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок секції - "THE CLIMATE CRISIS IS REAL" */
@@ -456,12 +458,14 @@ body {
 .why-it-matters-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     background-color: #000000;
     font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 
@@ -547,11 +551,13 @@ body {
 .mission-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 200px 20px 120px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Контейнер для контенту місії */
@@ -596,13 +602,15 @@ body {
 .scrolling-text-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 200px 20px 300px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     min-height: 200vh;
     scroll-snap-align: start;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Контейнер для текстовых блоків */
@@ -655,6 +663,8 @@ body {
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок "AITA'S INFRASTRUCTURE" - такий же стиль як "WHY IT MATTERS" */
@@ -1044,6 +1054,8 @@ body {
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок секції - "HOW AITA WORKS" */
@@ -1217,12 +1229,14 @@ body {
 .traction-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     background-color: #000000;
     font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок секції - "TRACTION. SCALE. TRUST." */
@@ -1326,13 +1340,15 @@ body {
 .about-aita-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 200px 20px 300px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     min-height: 200vh;
     scroll-snap-align: start;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок секції - "OUR ROLE IN THE DIGITIZED ENERGY ECONOMY" */
@@ -1362,12 +1378,14 @@ body {
 .ai-driven-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 180px 20px 90px 20px;
+    padding: 200px 20px 100px 20px;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     background-color: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок секції - "AI-DRIVEN. DATA-CENTRIC. TRANSPARENT." */
@@ -1517,6 +1535,8 @@ body {
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     background-color: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
 }
 
 /* # Заголовок секції контактної форми */
@@ -1913,6 +1933,71 @@ body {
         font-size: 14pt;
         width: 100%;
         align-self: stretch;
+    }
+}
+
+/* # Кнопка повернення на початок */
+.scroll-to-top {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 56px;
+    height: 56px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-4px) scale(1.05);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-2px) scale(0.95);
+}
+
+.scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover svg {
+    transform: translateY(-2px);
+}
+
+/* # Адаптивність для кнопки повернення на початок */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        right: 20px;
+        bottom: 20px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .scroll-to-top svg {
+        width: 20px;
+        height: 20px;
     }
 }
 

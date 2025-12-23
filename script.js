@@ -58,8 +58,36 @@ document.addEventListener('DOMContentLoaded', function() {
         assets: document.querySelector('#assets')
     };
     
+    // Кнопка повернення на початок
+    const scrollToTopButton = document.getElementById('scroll-to-top');
+    
+    // Показуємо/приховуємо кнопку при скролі
+    function toggleScrollToTopButton() {
+        if (scrollToTopButton) {
+            if (window.scrollY > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        }
+    }
+    
+    // Обробник кліку на кнопку повернення на початок
+    if (scrollToTopButton) {
+        scrollToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTop();
+        });
+        
+        // Перевіряємо поточну позицію скролу при завантаженні
+        toggleScrollToTopButton();
+    }
+    
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
+        
+        // Показуємо/приховуємо кнопку повернення на початок
+        toggleScrollToTopButton();
         
         // Left blob: moves upward with scroll (1:1)
         if (blobLeft && !prefersReducedMotion) {
