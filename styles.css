@@ -62,18 +62,30 @@ body {
 .navbar-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-logo:hover {
+    opacity: 0.8;
 }
 
 .logo-a {
-    height: 32px;
+    height: 24px;
     width: auto;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover .logo-a {
+    transform: scale(1.05);
 }
 
 .logo-text {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     font-family: 'Golos Text', sans-serif;
     color: #ffffff;
@@ -531,175 +543,6 @@ body {
     margin-top: 5px;
 }
 
-/* # Секція "WHAT'S BLOCKING PROGRESS" - блок з трьома колонками */
-.blocking-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 120px 20px;
-    color: #ffffff;
-    position: relative;
-    z-index: 1;
-    background-color: #000000;
-    font-family: 'Golos Text', sans-serif;
-}
-
-/* # Заголовок секції - "WHAT'S BLOCKING PROGRESS" */
-.blocking-title {
-    font-size: 48pt;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 40px;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    color: #ffffff;
-    text-transform: uppercase;
-    position: relative;
-    opacity: 0.5;
-}
-
-/* # Частини заголовка - білий колір */
-.blocking-title-part1,
-.blocking-title-part2 {
-    color: #ffffff;
-}
-
-/* # Контейнер для смуги */
-.blocking-bar-container {
-    position: relative;
-    width: 100%;
-    padding: 40px 0;
-    overflow: visible;
-}
-
-/* # Градієнтне світіння на фоні */
-.blocking-bar-container::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2);
-    width: 100%;
-    height: 100%;
-    border-radius: 50px;
-    background: conic-gradient(
-        from 0deg at 50% 50%,
-        rgba(57, 181, 74, 0.5) 0deg,
-        rgba(57, 181, 74, 0.5) 30deg,
-        rgba(0, 134, 204, 0.5) 60deg,
-        rgba(0, 168, 202, 0.5) 90deg,
-        rgba(0, 168, 202, 0.5) 120deg,
-        rgba(214, 40, 40, 0.5) 150deg,
-        rgba(214, 40, 40, 0.5) 180deg,
-        rgba(237, 192, 6, 0.5) 210deg,
-        rgba(237, 192, 6, 0.5) 240deg,
-        rgba(133, 36, 216, 0.5) 270deg,
-        rgba(133, 36, 216, 0.5) 300deg,
-        rgba(57, 181, 74, 0.5) 330deg,
-        rgba(57, 181, 74, 0.5) 360deg
-    );
-    filter: blur(40px);
-    z-index: 0;
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-/* # Смуга з градієнтною неоновою обводкою */
-.blocking-bar {
-    position: relative;
-    width: 100%;
-    height: 80px;
-    background: rgba(20, 20, 20, 0.95);
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0 30px;
-    overflow: hidden;
-    z-index: 1;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* # Градієнтна обводка через conic-gradient */
-.blocking-bar::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    border-radius: 50px;
-    background: conic-gradient(
-        from 0deg at 50% 50%,
-        #39b54a 0deg,
-        #39b54a 30deg,
-        #0086cc 60deg,
-        #00a8ca 90deg,
-        #00a8ca 120deg,
-        #d62828 150deg,
-        #d62828 180deg,
-        #edc006 210deg,
-        #edc006 240deg,
-        #8524d8 270deg,
-        #8524d8 300deg,
-        #39b54a 330deg,
-        #39b54a 360deg
-    );
-    z-index: -1;
-    opacity: 0.6;
-}
-
-/* # Внутрішній фон для створення обводки */
-.blocking-bar::after {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
-    border-radius: 49px;
-    background: rgba(20, 20, 20, 0.95);
-    z-index: -1;
-}
-
-/* # Контейнер для прокручуваного тексту */
-.blocking-scrolling-text {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    white-space: nowrap;
-    animation: scrollText 25s linear infinite;
-    will-change: transform;
-}
-
-/* # Анімація прокручування тексту */
-@keyframes scrollText {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-
-/* # Окремий елемент тексту */
-.blocking-item {
-    font-size: 22pt;
-    font-weight: 500;
-    color: #ffffff;
-    font-family: 'Golos Text', sans-serif;
-    display: inline-block;
-    flex-shrink: 0;
-}
-
-/* # Роздільник між елементами */
-.blocking-separator {
-    font-size: 22pt;
-    color: rgba(255, 255, 255, 0.4);
-    font-family: 'Golos Text', sans-serif;
-    display: inline-block;
-    flex-shrink: 0;
-}
-
 /* # Секція "OUR MISSION" - простий текстовий блок */
 .mission-section {
     max-width: 1200px;
@@ -814,7 +657,7 @@ body {
     font-family: 'Golos Text', sans-serif;
 }
 
-/* # Заголовок "OUR PRODUCTS" - такий же стиль як "WHY IT MATTERS" */
+/* # Заголовок "AITA'S INFRASTRUCTURE" - такий же стиль як "WHY IT MATTERS" */
 .products-title {
     font-size: 48pt;
     font-weight: 600;
@@ -826,6 +669,19 @@ body {
     text-transform: uppercase;
     position: relative;
     opacity: 0.5;
+}
+
+/* # Підказка про відкриття блоків */
+.products-hint {
+    font-size: 14pt;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: #ffffff;
+    opacity: 0.6;
+    font-family: 'Golos Text', sans-serif;
+    letter-spacing: 0.02em;
 }
 
 /* # Контейнер для кнопок продуктів */
@@ -1052,6 +908,40 @@ body {
     filter: blur(4px);
 }
 
+/* # Іконка стрілки на кнопках продуктів - абсолютно позиціонована в правому нижньому куті */
+.product-button-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    transform: rotate(45deg);
+    font-size: 14pt;
+    color: inherit;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: arrowPulse 2s ease-in-out infinite;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.product-button:hover:not(.expanded) .product-button-arrow {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.1);
+}
+
+.product-button.expanded .product-button-arrow {
+    display: none;
+}
+
+@keyframes arrowPulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 /* # Розширений контент (прихований за замовчуванням) */
 .product-expanded-content {
     display: none;
@@ -1143,6 +1033,599 @@ body {
 
 .product-exchange.expanded::before {
     background: linear-gradient(to right, #8524d8, #ffffff);
+}
+
+/* # Секція "HOW AITA WORKS" - блок з 6 кроками */
+.how-it-works-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200px 20px 100px 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Заголовок секції - "HOW AITA WORKS" */
+.how-it-works-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Контейнер з кроками */
+.how-it-works-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    padding-top: 80px;
+}
+
+/* # Окремий крок */
+.how-it-works-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.how-it-works-step.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* # Іконка кроку - кольоровий круг з номером */
+.step-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30pt;
+    font-weight: 500;
+    font-family: 'Golos Text', sans-serif;
+    color: rgba(255, 255, 255, 1);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    line-height: 1;
+    padding-top: 2px;
+}
+
+/* # Градієнтна обводка через псевдоелемент */
+.step-icon::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    border-radius: 50%;
+    background: linear-gradient(45deg, #000000, #ffffff);
+    z-index: -1;
+}
+
+/* # Внутрішній фон поверх градієнта */
+.step-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* # Крок 1 - зелений */
+.step-icon-1::after {
+    background: linear-gradient(to right, #000000, #39b54a);
+}
+
+.step-icon-1 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* # Крок 2 - червоний */
+.step-icon-2::after {
+    background: linear-gradient(to right, #000000, #d62828);
+}
+
+.step-icon-2 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* # Крок 3 - фіолетовий */
+.step-icon-3::after {
+    background: linear-gradient(to right, #000000, #8524d8);
+}
+
+.step-icon-3 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* # Крок 4 - синій */
+.step-icon-4::after {
+    background: linear-gradient(to right, #000000, #0086cc);
+}
+
+.step-icon-4 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* # Крок 5 - жовтий */
+.step-icon-5::after {
+    background: linear-gradient(to right, #000000, #edc006);
+}
+
+.step-icon-5 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* # Крок 6 - рожевий */
+.step-icon-6::after {
+    background: linear-gradient(to right, #000000, #CA0097);
+}
+
+.step-icon-6 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* # Заголовок кроку */
+.step-title {
+    font-size: 20pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 5px;
+    margin-top: 0;
+    font-family: 'Golos Text', sans-serif;
+    line-height: 1.3;
+}
+
+/* # Опис кроку */
+.step-description {
+    font-size: 14pt;
+    font-weight: 400;
+    color: #ffffff;
+    opacity: 0.5;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Контейнер тексту кроку */
+.step-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* # Секція "TRACTION. SCALE. TRUST." - блок з метриками */
+.traction-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    background-color: #000000;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Заголовок секції - "TRACTION. SCALE. TRUST." */
+.traction-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+}
+
+/* # Контейнер зі статистикою - три блоки з цифрами */
+.traction-stats {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 110pt;
+    flex-wrap: wrap;
+    padding-left: 18px;
+    padding-top: 40px;
+    position: relative;
+}
+
+/* # Окремий статистичний блок - кожен з трьох елементів */
+.traction-stat-item {
+    flex: 0 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* # Числа/текст у статистиці - великі градієнтні цифри */
+.traction-stat-number {
+    font-size: 126.5px;
+    font-weight: 800;
+    font-family: 'Golos Text', sans-serif;
+    line-height: 1;
+    margin-bottom: 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 100%;
+    font-variant-ligatures: common-ligatures;
+    /* Один градієнт розтягнутий на всі цифри */
+    background-image: linear-gradient(to right, #ff6b6b, #ff8c42, #ffa94d, #ff8c42, #ff6b9d, #ff4d9e, #9d4edd, #c77dff, #ff4d9e);
+}
+
+/* # Одиниця виміру (GW, %, +) - частина градієнта */
+.traction-stat-unit {
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 100%;
+    background-image: linear-gradient(to right, #ff6b6b, #ff8c42, #ffa94d, #ff8c42, #ff6b9d, #ff4d9e, #9d4edd, #c77dff, #ff4d9e);
+}
+
+/* # 12GW - позиція градієнта для першої цифри (початок) */
+.traction-stat-gw {
+    background-position: 0% 0%;
+}
+
+.traction-stat-gw .traction-stat-unit {
+    background-position: 15% 0%;
+}
+
+/* # 90% - позиція градієнта для другої цифри (середина) */
+.traction-stat-percent {
+    background-position: 33% 0%;
+}
+
+.traction-stat-percent .traction-stat-unit {
+    background-position: 50% 0%;
+}
+
+/* # 4+ - позиція градієнта для третьої цифри (кінець) */
+.traction-stat-partners {
+    background-position: 66% 0%;
+}
+
+.traction-stat-partners .traction-stat-unit {
+    background-position: 85% 0%;
+}
+
+/* # Опис під статистикою - пояснювальний текст під кожним блоком */
+.traction-stat-description {
+    font-size: 13.8px;
+    color: #cccccc;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 5px;
+}
+
+/* # Секція "OUR ROLE IN THE DIGITIZED ENERGY ECONOMY" - блок з текстом про AITA */
+.about-aita-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200px 20px 300px 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    font-family: 'Golos Text', sans-serif;
+    min-height: 200vh;
+    scroll-snap-align: start;
+}
+
+/* # Заголовок секції - "OUR ROLE IN THE DIGITIZED ENERGY ECONOMY" */
+.about-aita-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+}
+
+/* # Контейнер з блоками тексту */
+.about-aita-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    position: relative;
+    padding-top: 80px;
+}
+
+/* # Секція "AI-DRIVEN. DATA-CENTRIC. TRANSPARENT." - блок з трьома картками */
+.ai-driven-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 180px 20px 90px 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    font-family: 'Golos Text', sans-serif;
+    background-color: #000000;
+}
+
+/* # Заголовок секції - "AI-DRIVEN. DATA-CENTRIC. TRANSPARENT." */
+.ai-driven-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Контейнер з картками */
+.ai-driven-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    position: relative;
+    padding-top: 80px;
+}
+
+/* # Окрема картка */
+.ai-driven-card {
+    position: relative;
+    border-radius: 40px;
+    border: 1px solid #ffffff;
+    padding: 40px;
+    overflow: hidden;
+    min-height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #000000;
+}
+
+/* # Фонове зображення картки */
+.ai-driven-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* # Градієнт поверх зображення для першої картки (THE INTELLIGENCE LAYER) */
+.ai-driven-card-intelligence .ai-driven-card-bg {
+    background-image: url('images/BACK1.png');
+}
+
+.ai-driven-card-intelligence::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(255, 107, 53, 0.6), rgba(255, 140, 66, 0.5), rgba(255, 217, 61, 0.4), rgba(107, 207, 127, 0.3));
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* # Градієнт поверх зображення для другої картки (UNBREAKABLE TRANSPARENCY) */
+.ai-driven-card-transparency .ai-driven-card-bg {
+    background-image: url('images/BACK2.png');
+}
+
+.ai-driven-card-transparency::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(59, 59, 152, 0.6), rgba(102, 102, 204, 0.5), rgba(107, 207, 127, 0.4), rgba(255, 217, 61, 0.3));
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* # Нижня картка (ширша) - THE INTELLIGENCE LAYER */
+.ai-driven-card-intelligence-bottom {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+.ai-driven-card-intelligence-bottom .ai-driven-card-bg {
+    background-image: url('images/BACK3.png');
+}
+
+.ai-driven-card-intelligence-bottom::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(255, 107, 53, 0.6), rgba(255, 140, 66, 0.5), rgba(255, 217, 61, 0.4), rgba(107, 207, 127, 0.3));
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* # Заголовок картки */
+.ai-driven-card-title {
+    font-size: 20pt;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-family: 'Golos Text', sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    position: relative;
+    z-index: 2;
+}
+
+/* # Текст картки */
+.ai-driven-card-text {
+    font-size: 14pt;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Golos Text', sans-serif;
+    position: relative;
+    z-index: 2;
+}
+
+/* # Секція контактної форми */
+.contact-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200px 20px 100px 20px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    font-family: 'Golos Text', sans-serif;
+    background-color: #000000;
+}
+
+/* # Заголовок секції контактної форми */
+.contact-title {
+    font-size: 48pt;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: none;
+    position: relative;
+    opacity: 1;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Контактна форма */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* # Група полів форми */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* # Лейбл поля форми */
+.form-label {
+    font-size: 14pt;
+    font-weight: 400;
+    color: #ffffff;
+    font-family: 'Golos Text', sans-serif;
+    line-height: 1.4;
+}
+
+/* # Зірочка обов'язкового поля */
+.required {
+    color: #ffffff;
+}
+
+/* # Поле вводу форми */
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14pt;
+    font-weight: 400;
+    font-family: 'Golos Text', sans-serif;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* # Текстове поле */
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/* # Кнопка відправки форми */
+.form-submit {
+    padding: 18px 40px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16pt;
+    font-weight: 500;
+    font-family: 'Golos Text', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.form-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.form-submit:active {
+    transform: translateY(0);
+}
+
+.form-submit:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
 /* # Адаптивні стилі для мобільних пристроїв - екран менше 768px */
@@ -1262,6 +1745,12 @@ body {
         font-size: 24pt;
     }
     
+    .product-button-arrow {
+        font-size: 12pt;
+        right: 15px;
+        bottom: 12px;
+    }
+    
     .products-content {
         align-items: center;
     }
@@ -1305,6 +1794,125 @@ body {
         position: relative;
         margin-top: 20px;
         text-align: right;
+    }
+    
+    .how-it-works-title {
+        font-size: 32pt;
+        margin-bottom: 60px;
+    }
+    
+    .how-it-works-steps {
+        gap: 40px;
+    }
+    
+    .how-it-works-step {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .step-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 30pt;
+    }
+    
+    .step-title {
+        font-size: 18pt;
+    }
+    
+    .step-description {
+        font-size: 12pt;
+    }
+    
+    .traction-title {
+        font-size: 32pt;
+    }
+    
+    .traction-stats {
+        flex-direction: column;
+        gap: 40px;
+        padding-left: 0;
+    }
+    
+    .traction-stat-number {
+        font-size: 56px;
+    }
+    
+    .traction-stat-description {
+        font-size: 12px;
+    }
+    
+    .about-aita-title {
+        font-size: 32pt;
+    }
+    
+    .about-aita-section {
+        padding: 150px 20px 200px 20px;
+        min-height: 180vh;
+    }
+    
+    .about-aita-content {
+        gap: 40px;
+        padding-top: 60px;
+    }
+    
+    .scrolling-line {
+        font-size: 18pt;
+    }
+    
+    .ai-driven-title {
+        font-size: 32pt;
+    }
+    
+    .ai-driven-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .ai-driven-card {
+        padding: 30px;
+        min-height: 225px;
+    }
+    
+    .ai-driven-card-title {
+        font-size: 18pt;
+        margin-bottom: 15px;
+    }
+    
+    .ai-driven-card-text {
+        font-size: 12pt;
+    }
+    
+    .ai-driven-card-intelligence-bottom {
+        grid-column: 1;
+    }
+    
+    .contact-title {
+        font-size: 32pt;
+        margin-bottom: 60px;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+        gap: 25px;
+    }
+    
+    .form-label {
+        font-size: 12pt;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 14px 18px;
+        font-size: 12pt;
+    }
+    
+    .form-submit {
+        padding: 16px 35px;
+        font-size: 14pt;
+        width: 100%;
+        align-self: stretch;
     }
 }
 

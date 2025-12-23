@@ -1,12 +1,48 @@
+// Прокрутка на початок сторінки при завантаженні
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
+// Також прокручуємо на початок при завантаженні сторінки
+window.addEventListener('load', function() {
+    // Якщо в URL є hash, видаляємо його
+    if (window.location.hash) {
+        window.history.replaceState(null, null, ' ');
+    }
+    // Прокручуємо на початок
+    window.scrollTo(0, 0);
+});
+
+// Додаткова перевірка при DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Прокручуємо на початок сторінки
+    window.scrollTo(0, 0);
+    
     const blobLeft = document.querySelector('.parallax-blob-left');
     const blobRight = document.querySelector('.parallax-blob-right');
     const navbar = document.querySelector('.navbar');
     const container = document.querySelector('.container');
     const navLinks = document.querySelectorAll('.nav-link');
+    const logoLink = document.querySelector('#logo-link');
     
     // Перевірка reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Функція для плавної прокрутки на початок
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        });
+    }
+    
+    // Обробка кліку на логотип
+    if (logoLink) {
+        logoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTop();
+        });
+    }
     
     // Елементи для анімації прокручуваного тексту
     const scrollingSection = document.querySelector('.scrolling-text-section');
@@ -19,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Секції для активного стану навігації
     const sections = {
         invest: document.querySelector('#invest'),
-        platform: document.querySelector('#platform'),
         assets: document.querySelector('#assets')
     };
     
@@ -133,6 +168,95 @@ document.addEventListener('DOMContentLoaded', function() {
             // Зберігаємо попередню позицію скролу для визначення напрямку
             window.lastScrollY = scrolled;
         }
+        
+        // Анімація появи етапів "HOW AITA WORKS"
+        const howItWorksSection = document.querySelector('.how-it-works-section');
+        const howItWorksSteps = document.querySelectorAll('.how-it-works-step');
+        
+        if (howItWorksSection && howItWorksSteps.length > 0) {
+            const sectionTop = howItWorksSection.offsetTop;
+            const sectionHeight = howItWorksSection.offsetHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Початок анімації коли секція входить у viewport
+            const scrollStart = sectionTop - windowHeight * 0.7;
+            const scrollEnd = sectionTop + sectionHeight * 0.5;
+            const scrollRange = scrollEnd - scrollStart;
+            const scrollProgress = Math.max(0, Math.min(1, (scrolled - scrollStart) / scrollRange));
+            
+            // Показуємо етапи поступово при скролі
+            howItWorksSteps.forEach((step, index) => {
+                // Кожен етап з'являється з невеликою затримкою
+                const stepProgress = Math.max(0, Math.min(1, (scrollProgress * howItWorksSteps.length * 1.2) - index));
+                
+                if (stepProgress > 0) {
+                    const opacity = Math.min(1, stepProgress * 1.5);
+                    const translateY = prefersReducedMotion ? 0 : (1 - opacity) * 30;
+                    
+                    step.style.opacity = opacity;
+                    if (!prefersReducedMotion) {
+                        step.style.transform = `translateY(${translateY}px)`;
+                    }
+                    
+                    if (opacity > 0.1) {
+                        step.classList.add('visible');
+                    }
+                } else {
+                    step.style.opacity = 0;
+                    if (!prefersReducedMotion) {
+                        step.style.transform = 'translateY(30px)';
+                    }
+                    step.classList.remove('visible');
+                }
+            });
+        }
+        
+        // Анімація прокручуваного тексту для about-aita-section
+        const aboutAitaSection = document.querySelector('.about-aita-section');
+        const aboutAitaLines = aboutAitaSection ? aboutAitaSection.querySelectorAll('.scrolling-line') : [];
+        
+        if (aboutAitaSection && aboutAitaLines.length > 0) {
+            const sectionTop = aboutAitaSection.offsetTop;
+            const sectionHeight = aboutAitaSection.offsetHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Початок анімації коли секція входить у viewport
+            const scrollStart = sectionTop - windowHeight * 0.5;
+            const scrollEnd = sectionTop + sectionHeight * 0.8;
+            const scrollRange = scrollEnd - scrollStart;
+            const scrollProgress = Math.max(0, Math.min(1, (scrolled - scrollStart) / scrollRange));
+            
+            // Кількість рядків
+            const totalLines = aboutAitaLines.length;
+            
+            // Показуємо рядки поступово при скролі з прискоренням під кінець
+            aboutAitaLines.forEach((line, index) => {
+                // Використовуємо експоненційну криву для прискорення під кінець
+                const acceleratedProgress = Math.pow(scrollProgress, 0.7); // прискорення під кінець
+                const lineProgress = (acceleratedProgress * totalLines * 1.2) - index;
+                
+                if (lineProgress > 0) {
+                    // Швидше з'являються під кінець
+                    const opacity = Math.min(1, lineProgress * 1.5);
+                    const translateY = prefersReducedMotion ? 0 : (1 - opacity) * 30;
+                    
+                    line.style.opacity = opacity;
+                    if (!prefersReducedMotion) {
+                        line.style.transform = `translateY(${translateY}px)`;
+                    }
+                    
+                    if (opacity > 0.1) {
+                        line.classList.add('visible');
+                    }
+                } else {
+                    line.style.opacity = 0;
+                    if (!prefersReducedMotion) {
+                        line.style.transform = 'translateY(30px)';
+                    }
+                    line.classList.remove('visible');
+                }
+            });
+        }
     }, { passive: true });
     
     // Функція закриття всіх product-кнопок
@@ -192,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const productButtons = document.querySelectorAll('.product-button');
     let lastClickTime = 0;
     const debounceDelay = 350;
-    
+
     productButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -256,5 +380,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 2000);
     }, { passive: true });
+    
+    // Обробка контактної форми
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const contact = formData.get('contact');
+            const message = formData.get('message');
+            
+            // Тут можна додати відправку даних на сервер
+            console.log('Form submitted:', { name, contact, message });
+            
+            // Показуємо повідомлення про успішну відправку (заглушка)
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Очищаємо форму
+            contactForm.reset();
+        });
+    }
 });
 
