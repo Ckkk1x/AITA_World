@@ -10,6 +10,18 @@ html {
     overflow-x: hidden;
 }
 
+:root {
+    --section-max-width: 1200px;
+    --space-page-x: clamp(20px, 6vw, 48px);
+    --space-section-top: clamp(140px, 18vh, 220px);
+    --space-section-bottom: clamp(90px, 12vh, 160px);
+    --space-section-gap: clamp(80px, 10vh, 140px);
+    --space-block-gap-lg: clamp(40px, 6vw, 80px);
+    --space-block-gap-md: clamp(24px, 4vw, 48px);
+    --space-block-gap-sm: clamp(12px, 3vw, 24px);
+    --card-radius: 40px;
+}
+
 /* # Блокування скролу при expanded product */
 body.scroll-locked {
     overflow: hidden;
@@ -48,7 +60,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 40px;
+    padding: 12px var(--space-page-x);
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
@@ -306,7 +318,7 @@ body {
 .content-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
@@ -330,15 +342,15 @@ body {
 
 /* # Секція про кліматичну кризу - головний блок з інфографікою */
 .climate-crisis-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок секції - "THE CLIMATE CRISIS IS REAL" */
@@ -369,9 +381,9 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 75pt;
+    gap: var(--space-block-gap-lg);
     flex-wrap: wrap;
-    padding-left: 18px;
+    padding-left: 0;
 }
 
 /* # Окремий статистичний блок - кожен з трьох елементів */
@@ -456,16 +468,16 @@ body {
 
 /* # Секція "Why It Matters" - блок з інфографікою (структура як blocking-section) */
 .why-it-matters-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     background-color: #000000;
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 
@@ -495,9 +507,9 @@ body {
 .why-it-matters-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
+    gap: var(--space-block-gap-lg);
     position: relative;
-    padding: 40px 0;
+    padding: var(--space-block-gap-lg) 0;
     align-items: flex-end;
 }
 
@@ -509,7 +521,7 @@ body {
     justify-content: center;
     text-align: center;
     position: relative;
-    padding: 20px;
+    padding: var(--space-block-gap-md);
 }
 
 
@@ -549,15 +561,15 @@ body {
 
 /* # Секція "OUR MISSION" - простий текстовий блок */
 .mission-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Контейнер для контенту місії */
@@ -567,7 +579,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px 40px;
+    padding: var(--space-block-gap-lg) clamp(24px, 4vw, 48px);
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -580,7 +592,7 @@ body {
     font-size: 42pt;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: var(--space-block-gap-sm);
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: #ffffff;
@@ -600,9 +612,9 @@ body {
 
 /* # Секція з прокручуваним текстом */
 .scrolling-text-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
@@ -610,14 +622,14 @@ body {
     min-height: 200vh;
     scroll-snap-align: start;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Контейнер для текстовых блоків */
 .scrolling-text-container {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: var(--space-block-gap-lg);
     position: relative;
 }
 
@@ -625,7 +637,7 @@ body {
 .scrolling-text-block {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--space-block-gap-sm);
 }
 
 /* # Окремий рядок тексту */
@@ -656,15 +668,15 @@ body {
 
 /* # Секція "OUR PRODUCTS" - блок з кнопками продуктів */
 .products-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок "AITA'S INFRASTRUCTURE" - такий же стиль як "WHY IT MATTERS" */
@@ -698,15 +710,15 @@ body {
 .products-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--space-block-gap-md);
     align-items: center;
-    padding: 80px 0 40px 0;
+    padding: var(--space-block-gap-lg) 0 var(--space-block-gap-md) 0;
 }
 
 /* # Рядок з кнопками */
 .products-row {
     display: flex;
-    gap: 20px;
+    gap: var(--space-block-gap-md);
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
@@ -720,7 +732,7 @@ body {
 
 /* # Кнопка продукту - базові стилі */
 .product-button {
-    padding: 20px 40px;
+    padding: calc(var(--space-block-gap-sm) + 6px) calc(var(--space-block-gap-md) + 12px);
     border-radius: 50px;
     border: none;
     font-size: 18pt;
@@ -849,7 +861,7 @@ body {
     min-width: 800px;
     height: auto;
     min-height: 300px;
-    padding: 40px 50px;
+    padding: calc(var(--space-block-gap-lg) + 8px) calc(var(--space-block-gap-lg) + 16px);
     border-radius: 50px;
     text-align: left;
     overflow: visible;
@@ -980,7 +992,7 @@ body {
     font-weight: 600;
     color: #ffffff;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: var(--space-block-gap-sm);
     margin-top: 0;
     font-family: 'Golos Text', sans-serif;
     letter-spacing: -0.02em;
@@ -995,14 +1007,14 @@ body {
     line-height: 1.6;
     margin-bottom: 0;
     margin-top: 0;
-    padding-bottom: 40px;
+    padding-bottom: var(--space-block-gap-md);
     font-family: 'Golos Text', sans-serif;
 }
 
 /* # Ключове слово внизу справа */
 .product-expanded-keyword {
     position: absolute;
-    bottom: -20px;
+    bottom: -12px;
     right: 0;
     font-size: 14pt;
     font-weight: 400;
@@ -1047,15 +1059,15 @@ body {
 
 /* # Секція "HOW AITA WORKS" - блок з 6 кроками */
 .how-it-works-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок секції - "HOW AITA WORKS" */
@@ -1077,16 +1089,16 @@ body {
 .how-it-works-steps {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: var(--space-block-gap-lg);
     position: relative;
-    padding-top: 80px;
+    padding-top: calc(var(--space-block-gap-lg) + 16px);
 }
 
 /* # Окремий крок */
 .how-it-works-step {
     display: flex;
     align-items: flex-start;
-    gap: 30px;
+    gap: var(--space-block-gap-md);
     position: relative;
     opacity: 0;
     transform: translateY(30px);
@@ -1227,16 +1239,16 @@ body {
 
 /* # Секція "TRACTION. SCALE. TRUST." - блок з метриками */
 .traction-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     background-color: #000000;
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок секції - "TRACTION. SCALE. TRUST." */
@@ -1258,10 +1270,10 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 110pt;
+    gap: var(--space-block-gap-lg);
     flex-wrap: wrap;
-    padding-left: 18px;
-    padding-top: 40px;
+    padding-left: 0;
+    padding-top: var(--space-block-gap-md);
     position: relative;
 }
 
@@ -1338,9 +1350,9 @@ body {
 
 /* # Секція "OUR ROLE IN THE DIGITIZED ENERGY ECONOMY" - блок з текстом про AITA */
 .about-aita-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
@@ -1348,7 +1360,7 @@ body {
     min-height: 200vh;
     scroll-snap-align: start;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок секції - "OUR ROLE IN THE DIGITIZED ENERGY ECONOMY" */
@@ -1369,23 +1381,23 @@ body {
 .about-aita-content {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: var(--space-block-gap-lg);
     position: relative;
-    padding-top: 80px;
+    padding-top: calc(var(--space-block-gap-lg) + 16px);
 }
 
 /* # Секція "AI-DRIVEN. DATA-CENTRIC. TRANSPARENT." - блок з трьома картками */
 .ai-driven-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     background-color: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок секції - "AI-DRIVEN. DATA-CENTRIC. TRANSPARENT." */
@@ -1407,17 +1419,17 @@ body {
 .ai-driven-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: var(--space-block-gap-md);
     position: relative;
-    padding-top: 80px;
+    padding-top: calc(var(--space-block-gap-lg) + 16px);
 }
 
 /* # Окрема картка */
 .ai-driven-card {
     position: relative;
-    border-radius: 40px;
-    border: 1px solid #ffffff;
-    padding: 40px;
+    border-radius: var(--card-radius);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: var(--space-block-gap-md);
     overflow: hidden;
     min-height: 270px;
     display: flex;
@@ -1527,16 +1539,16 @@ body {
 
 /* # Секція контактної форми */
 .contact-section {
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-    padding: 200px 20px 100px 20px;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
     background-color: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 100px;
+    margin-top: var(--space-section-gap);
 }
 
 /* # Заголовок секції контактної форми */
@@ -1544,7 +1556,7 @@ body {
     font-size: 48pt;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: var(--space-block-gap-lg);
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: #ffffff;
@@ -1560,14 +1572,14 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: var(--space-block-gap-md);
 }
 
 /* # Група полів форми */
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--space-block-gap-sm);
 }
 
 /* # Лейбл поля форми */
@@ -1620,7 +1632,7 @@ body {
 
 /* # Кнопка відправки форми */
 .form-submit {
-    padding: 18px 40px;
+    padding: calc(var(--space-block-gap-sm) + 6px) calc(var(--space-block-gap-md) + 12px);
     background-color: #ffffff;
     color: #000000;
     border: none;
@@ -1630,7 +1642,7 @@ body {
     font-family: 'Golos Text', sans-serif;
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
+    margin-top: var(--space-block-gap-sm);
     align-self: flex-start;
 }
 
@@ -1678,7 +1690,7 @@ body {
     
     .why-it-matters-content {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: var(--space-block-gap-sm);
     }
     
     .why-it-matters-column {
@@ -1777,7 +1789,7 @@ body {
     
     .products-row {
         flex-direction: column;
-        gap: 15px;
+        gap: var(--space-block-gap-sm);
         align-items: center;
         width: 100%;
     }
@@ -1789,7 +1801,7 @@ body {
     .product-button {
         width: 100%;
         max-width: 300px;
-        padding: 18px 30px;
+        padding: calc(var(--space-block-gap-sm) + 2px) var(--space-block-gap-md);
         font-size: 16pt;
     }
     
@@ -1797,13 +1809,13 @@ body {
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        padding: 30px 25px;
+        padding: calc(var(--space-block-gap-md) + 6px) var(--space-block-gap-md);
         min-height: 250px;
     }
     
     .product-expanded-title {
         font-size: 20pt;
-        margin-bottom: 15px;
+        margin-bottom: var(--space-block-gap-sm);
     }
     
     .product-expanded-text {
@@ -1812,7 +1824,7 @@ body {
     
     .product-expanded-keyword {
         position: relative;
-        margin-top: 20px;
+        margin-top: var(--space-block-gap-sm);
         text-align: right;
     }
     
@@ -1822,7 +1834,7 @@ body {
     }
     
     .how-it-works-steps {
-        gap: 40px;
+        gap: var(--space-block-gap-md);
     }
     
     .how-it-works-step {
@@ -1873,7 +1885,7 @@ body {
     }
     
     .about-aita-content {
-        gap: 40px;
+        gap: var(--space-block-gap-md);
         padding-top: 60px;
     }
     
@@ -1887,11 +1899,11 @@ body {
     
     .ai-driven-cards {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: var(--space-block-gap-md);
     }
     
     .ai-driven-card {
-        padding: 30px;
+        padding: var(--space-block-gap-md);
         min-height: 225px;
     }
     
@@ -1915,7 +1927,7 @@ body {
     
     .contact-form {
         max-width: 100%;
-        gap: 25px;
+        gap: var(--space-block-gap-md);
     }
     
     .form-label {
@@ -1929,7 +1941,7 @@ body {
     }
     
     .form-submit {
-        padding: 16px 35px;
+        padding: calc(var(--space-block-gap-sm) + 4px) calc(var(--space-block-gap-md) + 6px);
         font-size: 14pt;
         width: 100%;
         align-self: stretch;
