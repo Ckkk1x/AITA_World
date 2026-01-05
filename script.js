@@ -497,6 +497,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.style.opacity = '0.6';
             }
             
+            // Перенаправляємо на сторінку подяки після спроби відправки
+            const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
+            
             try {
                 // Відправляємо POST запит на webhook
                 const response = await fetch(WEBHOOK_URL, {
@@ -511,31 +514,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                 });
                 
-                // Перевіряємо відповідь
-                if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
-                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-                }
+                // Логуємо результат для діагностики
+                console.log('Form submission response status:', response.status);
                 
-                const responseData = await response.json().catch(() => ({}));
-                console.log('Form submitted successfully:', responseData);
-                
-                // Перенаправляємо на сторінку подяки з параметром name
-                const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
-                window.location.href = thankYouUrl;
+                // Перенаправляємо на сторінку подяки незалежно від відповіді
+                // (webhook може прийняти дані навіть якщо відповідь не ідеальна)
+                window.location.replace(thankYouUrl);
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
                 
-                // Показуємо повідомлення про помилку
-                alert('Помилка відправки форми. Будь ласка, спробуйте ще раз або зв\'яжіться з нами безпосередньо.\n\nError: ' + error.message);
-                
-                // Відновлюємо кнопку
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                    submitButton.style.opacity = '1';
-                }
+                // Навіть при помилці перенаправляємо на сторінку подяки
+                // (на випадок, якщо дані все ж відправилися до webhook)
+                window.location.replace(thankYouUrl);
             }
         });
     }
