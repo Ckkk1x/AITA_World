@@ -2382,4 +2382,369 @@ body {
     }
 }
 
+/* # Адаптивність для секції "Why It Matters" */
+@media (max-width: 768px) {
+    .why-it-matters-title {
+        font-size: clamp(24pt, 8vw, 48pt);
+    }
+    
+    .why-it-matters-content {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        gap: var(--space-block-gap-md);
+        padding-top: var(--space-block-gap-md);
+        align-items: stretch;
+    }
+    
+    .why-it-matters-column {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 auto !important;
+        padding: var(--space-block-gap-sm);
+    }
+    
+    .why-it-matters-stat {
+        width: 100%;
+    }
+    
+    .why-it-matters-number {
+        font-size: clamp(60px, 20vw, 126.5px);
+    }
+    
+    .why-it-matters-millions {
+        font-size: clamp(42px, 15vw, 88px);
+    }
+    
+    .why-it-matters-text {
+        font-size: 12px;
+    }
+}
+
+/* # Адаптивність для секції "AITA'S INFRASTRUCTURE" (Products) */
+@media (max-width: 768px) {
+    .products-title {
+        font-size: clamp(24pt, 8vw, 48pt);
+    }
+    
+    .products-content {
+        padding: var(--space-block-gap-md) 0;
+        gap: var(--space-block-gap-sm);
+    }
+    
+    .products-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-block-gap-sm);
+        width: 100%;
+    }
+    
+    .product-button {
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+        padding: calc(var(--space-block-gap-sm) + 4px) calc(var(--space-block-gap-md) + 8px);
+        font-size: clamp(14pt, 4vw, 18pt);
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .product-button.expanded {
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+        min-height: 250px;
+        padding: var(--space-block-gap-md);
+        border-radius: 30px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .product-expanded-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .product-expanded-title {
+        font-size: clamp(16pt, 5vw, 24pt);
+        margin-bottom: var(--space-block-gap-sm);
+        word-wrap: break-word;
+    }
+    
+    .product-expanded-text {
+        font-size: clamp(12pt, 3.5vw, 14pt);
+        padding-bottom: var(--space-block-gap-sm);
+        word-wrap: break-word;
+    }
+    
+    .product-expanded-keyword {
+        font-size: clamp(12pt, 3.5vw, 14pt);
+        bottom: -8px;
+        right: 0;
+    }
+    
+    .products-mission-text {
+        font-size: clamp(10pt, 3vw, 12pt);
+        padding-top: var(--space-block-gap-sm);
+    }
+    
+    /* Переконаємося, що інші кнопки не ховаються через display: none */
+    .products-row:has(.product-button.expanded) .product-button:not(.expanded),
+    .products-row.has-expanded .product-button:not(.expanded) {
+        display: none !important;
+    }
+    
+    /* Переконаємося, що розширена кнопка видима */
+    .product-button.expanded {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Переконаємося, що контент всередині кнопки не виходить за межі */
+    .product-button.expanded .product-expanded-content {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* На мобільних не блокуємо скрол при розширеній кнопці */
+@media (max-width: 768px) {
+    body.scroll-locked {
+        overflow: auto !important;
+    }
+}
+
+/* # Адаптивність для секції "HOW AITA WORKS" */
+@media (max-width: 768px) {
+    .how-it-works-title {
+        font-size: clamp(24pt, 8vw, 48pt);
+    }
+    
+    .how-it-works-steps {
+        gap: var(--space-block-gap-md);
+        padding-top: var(--space-block-gap-md);
+    }
+    
+    .how-it-works-step {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-block-gap-sm);
+    }
+    
+    .step-icon {
+        width: clamp(50px, 12vw, 70px);
+        height: clamp(50px, 12vw, 70px);
+        font-size: clamp(20pt, 6vw, 30pt);
+    }
+    
+    .step-title {
+        font-size: clamp(16pt, 4.5vw, 20pt);
+        margin-bottom: 8px;
+    }
+    
+    .step-description {
+        font-size: clamp(12pt, 3.5vw, 14pt);
+    }
+}
+
+/* # Адаптивність для секції "TRACTION. SCALE. TRUST." */
+@media (max-width: 768px) {
+    .traction-title {
+        font-size: clamp(24pt, 8vw, 48pt);
+    }
+    
+    .traction-stats {
+        flex-direction: column !important;
+        gap: var(--space-block-gap-md);
+        padding-top: var(--space-block-gap-md);
+        align-items: flex-start;
+        flex-wrap: nowrap !important;
+    }
+    
+    .traction-stat-item {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+    }
+    
+    .traction-stat-number {
+        font-size: clamp(60px, 20vw, 126.5px);
+    }
+    
+    .traction-stat-description {
+        font-size: 12px;
+    }
+}
+
+/* # Адаптивність для секції "OUR ROLE IN THE DIGITIZED ENERGY ECONOMY" */
+@media (max-width: 768px) {
+    .about-aita-section {
+        min-height: auto;
+    }
+    
+    .about-aita-title {
+        font-size: clamp(20pt, 7vw, 48pt);
+        text-align: center;
+    }
+    
+    .about-aita-content {
+        gap: var(--space-block-gap-md);
+        padding-top: var(--space-block-gap-md);
+    }
+    
+    .scrolling-line {
+        font-size: clamp(14pt, 4.5vw, 24pt);
+    }
+}
+
+/* # Адаптивність для секції "AI-DRIVEN. DATA-CENTRIC. TRANSPARENT." */
+@media (max-width: 768px) {
+    .ai-driven-title {
+        font-size: clamp(20pt, 7vw, 48pt);
+    }
+    
+    .ai-driven-cards {
+        grid-template-columns: 1fr;
+        gap: var(--space-block-gap-sm);
+        padding-top: var(--space-block-gap-md);
+    }
+    
+    .ai-driven-card {
+        min-height: 220px;
+        padding: var(--space-block-gap-sm);
+        border-radius: 30px;
+    }
+    
+    .ai-driven-card-intelligence-bottom {
+        grid-column: 1;
+    }
+    
+    .ai-driven-card-title {
+        font-size: clamp(16pt, 4.5vw, 20pt);
+        margin-bottom: 16px;
+    }
+    
+    .ai-driven-card-text {
+        font-size: clamp(12pt, 3.5vw, 14pt);
+    }
+}
+
+/* # Адаптивність для секції контактної форми */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: clamp(24pt, 8vw, 48pt);
+        margin-bottom: var(--space-block-gap-md);
+    }
+    
+    .contact-form {
+        max-width: 100%;
+        gap: var(--space-block-gap-sm);
+    }
+    
+    .form-label {
+        font-size: clamp(12pt, 3.5vw, 14pt);
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 14px 16px;
+        font-size: clamp(12pt, 3.5vw, 14pt);
+    }
+    
+    .form-textarea {
+        min-height: 100px;
+    }
+    
+    .form-submit {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 15px;
+        margin-top: var(--space-block-gap-sm);
+    }
+}
+
+/* # Адаптивність для кнопки повернення на початок */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        right: 20px;
+        bottom: 20px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .scroll-to-top svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* # Адаптивність для секції кліматичної кризи */
+@media (max-width: 768px) {
+    .climate-title {
+        font-size: clamp(24pt, 8vw, 48pt);
+    }
+    
+    .climate-subtitle {
+        font-size: clamp(12pt, 3.5vw, 14pt);
+    }
+    
+    .climate-stats {
+        flex-direction: column !important;
+        gap: var(--space-block-gap-md);
+        align-items: flex-start;
+        flex-wrap: nowrap !important;
+    }
+    
+    .stat-item {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+    }
+    
+    .stat-number {
+        font-size: clamp(60px, 20vw, 126.5px);
+    }
+    
+    .stat-weather {
+        font-size: clamp(30px, 12vw, 59.8px);
+    }
+    
+    .stat-description {
+        font-size: 12px;
+    }
+}
+
+/* # Адаптивність для секції місії */
+@media (max-width: 768px) {
+    .mission-title {
+        font-size: clamp(24pt, 8vw, 42pt);
+    }
+    
+    .mission-subtitle {
+        font-size: clamp(16pt, 4.5vw, 20pt);
+    }
+}
+
+/* # Адаптивність для секції з прокручуваним текстом */
+@media (max-width: 768px) {
+    .scrolling-text-section {
+        min-height: auto;
+        padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
+    }
+    
+    .scrolling-text-container {
+        gap: var(--space-block-gap-md);
+    }
+    
+    .scrolling-text-block {
+        gap: var(--space-block-gap-sm);
+    }
+    
+    .scrolling-line {
+        font-size: clamp(14pt, 4.5vw, 24pt);
+    }
+}
+
 

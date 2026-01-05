@@ -389,18 +389,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.classList.add('has-expanded');
             }
             
-            // Блокуємо скрол сторінки
-            document.body.classList.add('scroll-locked');
+            // Блокуємо скрол сторінки (тільки на десктопі)
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) {
+                document.body.classList.add('scroll-locked');
+            }
             
             // Scroll anchoring: центруємо кнопку у viewport
             setTimeout(() => {
                 const rect = button.getBoundingClientRect();
-                const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
-                window.scrollTo({
-                    top: scrollY,
-                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
-                });
-            }, 100);
+                const isMobile = window.innerWidth <= 768;
+                // На мобільних просто скролимо до кнопки, не центруємо
+                if (isMobile) {
+                    button.scrollIntoView({
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    const scrollY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
+                    window.scrollTo({
+                        top: scrollY,
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+                    });
+                }
+            }, isMobile ? 200 : 100);
         }, 100);
     }
     
@@ -441,9 +453,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Закриваємо розширені кнопки при кліку поза ними
+    // Закриваємо розширені кнопки при кліку поза ними (тільки на десктопі)
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.product-button')) {
+        // На мобільних не закриваємо при кліку поза кнопкою, щоб уникнути випадкового закриття
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile && !e.target.closest('.product-button')) {
             const expandedButton = document.querySelector('.product-button.expanded');
             if (expandedButton) {
                 closeAllProducts();
