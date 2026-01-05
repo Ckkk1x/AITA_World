@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const logoLink = document.querySelector('#logo-link');
     
+    // Ініціалізуємо навігацію як прозору на початку
+    if (navbar) {
+        navbar.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+        navbar.classList.remove('scrolled');
+    }
+    
     // Перевірка reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
@@ -35,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
     }
+    
+    // Робимо функцію глобальною для використання в HTML
+    window.scrollToTop = scrollToTop;
     
     // Обробка кліку на логотип
     if (logoLink) {
@@ -108,15 +117,58 @@ document.addEventListener('DOMContentLoaded', function() {
             blobRight.style.transform = `translateY(${400 - move}px)`;
         }
         
-        // Додаємо чорний фон навігації після скролу першого блоку
-        if (navbar && container) {
-            const containerHeight = container.offsetHeight;
-            const scrollThreshold = containerHeight * 0.8; // 80% висоти контейнера
+        // Додаємо плавний чорний фон навігації коли вона наїзжає на хедер (контейнер з логотипом)
+        if (navbar) {
+            const currentScroll = window.scrollY || window.pageYOffset || 0;
             
-            if (window.scrollY > scrollThreshold) {
-                navbar.classList.add('scrolled');
+            if (container) {
+                const navbarHeight = navbar.offsetHeight;
+                const containerTop = container.offsetTop;
+                const containerHeight = container.offsetHeight;
+                
+                // Визначаємо, коли навігація починає перекривати контейнер
+                const overlapStart = containerTop;
+                const overlapEnd = containerTop + containerHeight;
+                
+                // Якщо ми на початку сторінки або вище контейнера - повністю прозорий фон
+                if (currentScroll === 0 || currentScroll + navbarHeight < overlapStart) {
+                    navbar.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+                    navbar.classList.remove('scrolled');
+                }
+                // Якщо навігація перекриває контейнер
+                else if (currentScroll + navbarHeight >= overlapStart && currentScroll < overlapEnd) {
+                    // Обчислюємо прогрес перекриття (0 до 1)
+                    const overlapProgress = Math.min(1, Math.max(0, 
+                        (currentScroll + navbarHeight - overlapStart) / (containerHeight * 0.3)
+                    ));
+                    
+                    // Встановлюємо прозорість фону на основі прогресy
+                    const bgOpacity = overlapProgress;
+                    navbar.style.backgroundColor = `rgba(0, 0, 0, ${bgOpacity})`;
+                    if (bgOpacity > 0.01) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                } else {
+                    // Повністю чорний фон після контейнера
+                    navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    navbar.classList.add('scrolled');
+                }
             } else {
-                navbar.classList.remove('scrolled');
+                // Якщо контейнер не знайдено, використовуємо просту логіку
+                if (currentScroll > 100) {
+                    navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    navbar.classList.add('scrolled');
+                } else if (currentScroll > 0) {
+                    // Плавний перехід
+                    const opacity = Math.min(0.8, currentScroll / 100);
+                    navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+                    navbar.classList.remove('scrolled');
+                }
             }
         }
         
@@ -298,6 +350,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.style.transform = 'scale(1)';
                 button.style.pointerEvents = 'auto';
                 button.style.visibility = 'visible';
+                
+                // Видаляємо клас з рядка
+                const row = button.closest('.products-row');
+                if (row) {
+                    row.classList.remove('has-expanded');
+                }
             }, index * 50);
         });
         document.body.classList.remove('scroll-locked');
@@ -324,6 +382,12 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             button.classList.add('expanded');
             button.setAttribute('aria-expanded', 'true');
+            
+            // Додаємо клас до рядка для центрування
+            const row = button.closest('.products-row');
+            if (row) {
+                row.classList.add('has-expanded');
+            }
             
             // Блокуємо скрол сторінки
             document.body.classList.add('scroll-locked');
@@ -412,7 +476,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обробка контактної форми
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        const WEBHOOK_URL = 'https://dmekhed.app.n8n.cloud/webhook/3830db74-e1bc-4c2d-bf18-57396c3df377';
+        
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const formData = new FormData(contactForm);
@@ -420,15 +486,137 @@ document.addEventListener('DOMContentLoaded', function() {
             const contact = formData.get('contact');
             const message = formData.get('message');
             
-            // Тут можна додати відправку даних на сервер
-            console.log('Form submitted:', { name, contact, message });
+            // Отримуємо кнопку відправки для показу стану завантаження
+            const submitButton = contactForm.querySelector('.form-submit');
+            const originalButtonText = submitButton ? submitButton.textContent : 'Submit';
             
-            // Показуємо повідомлення про успішну відправку (заглушка)
-            alert('Thank you for your message! We will get back to you soon.');
+            // Показуємо стан завантаження
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                submitButton.style.opacity = '0.6';
+            }
             
-            // Очищаємо форму
-            contactForm.reset();
+            try {
+                // Відправляємо POST запит на webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        contact: contact,
+                        message: message || ''
+                    })
+                });
+                
+                // Перевіряємо відповідь
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                }
+                
+                const responseData = await response.json().catch(() => ({}));
+                console.log('Form submitted successfully:', responseData);
+                
+                // Перенаправляємо на сторінку подяки з параметром name
+                const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
+                window.location.href = thankYouUrl;
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                
+                // Показуємо повідомлення про помилку
+                alert('Помилка відправки форми. Будь ласка, спробуйте ще раз або зв\'яжіться з нами безпосередньо.\n\nError: ' + error.message);
+                
+                // Відновлюємо кнопку
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    submitButton.style.opacity = '1';
+                }
+            }
+        });
+    }
+    
+    // Бургер-меню функціонал
+    const burgerMenu = document.getElementById('burger-menu');
+    const navbarMenu = document.getElementById('navbar-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    
+    if (burgerMenu && navbarMenu && menuOverlay) {
+        const navLinks = navbarMenu.querySelectorAll('.nav-link, .nav-button');
+        
+        function toggleMenu() {
+            const isActive = burgerMenu.classList.contains('active');
+            
+            if (isActive) {
+                // Закриваємо меню
+                burgerMenu.classList.remove('active');
+                burgerMenu.setAttribute('aria-expanded', 'false');
+                navbarMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            } else {
+                // Відкриваємо меню
+                burgerMenu.classList.add('active');
+                burgerMenu.setAttribute('aria-expanded', 'true');
+                navbarMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.classList.add('menu-open');
+            }
+        }
+        
+        function closeMenu() {
+            burgerMenu.classList.remove('active');
+            burgerMenu.setAttribute('aria-expanded', 'false');
+            navbarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        
+        // Обробка кліку на бургер-меню
+        burgerMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+        
+        // Закриваємо меню при кліку на overlay
+        menuOverlay.addEventListener('click', function() {
+            closeMenu();
+        });
+        
+        // Закриваємо меню при кліку на посилання
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMenu();
+            });
+        });
+        
+        // Закриваємо меню при кліку поза меню
+        document.addEventListener('click', function(e) {
+            if (navbarMenu.classList.contains('active')) {
+                if (!navbarMenu.contains(e.target) && !burgerMenu.contains(e.target) && !menuOverlay.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+        
+        // Закриваємо меню при натисканні ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navbarMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+        
+        // Закриваємо меню при зміні розміру вікна (якщо переходимо на десктоп)
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && navbarMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
     }
 });
+
 

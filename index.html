@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>AITA World</title>
+    <link rel="icon" type="image/png" href="images/aitalogowhite.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap" rel="stylesheet" as="style">
@@ -19,13 +20,16 @@
             <img src="images/aitalogowhite.png" alt="AITA Logo" class="logo-a">
             <span class="logo-text">AITA WORLD</span>
         </a>
-        <div class="navbar-center">
-            <a href="#invest" class="nav-link">Invest</a>
-            <a href="#assets" class="nav-link">Assets</a>
-        </div>
-        <div class="navbar-right">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#contact" class="nav-link">Contact</a>
+        <button class="burger-menu" id="burger-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        <div class="menu-overlay" id="menu-overlay"></div>
+        <div class="navbar-right" id="navbar-menu">
+            <a href="#about" class="nav-link">About Us</a>
+            <a href="#assets" class="nav-link">Products</a>
+            <a href="#contact" class="nav-button">Join us</a>
         </div>
     </nav>
     <img src="images/blop1.png" alt="" class="parallax-blob parallax-blob-left" loading="lazy" aria-hidden="true">
@@ -114,6 +118,7 @@
                 </div>
             </div>
         </div>
+        <p class="why-it-matters-mission-text">Until now.</p>
     </section>
     
     <section class="products-section" id="assets">
@@ -160,6 +165,7 @@
                 </button>
             </div>
         </div>
+        <p class="products-mission-text">One ecosystem. One mission. Accelerate the green transition.</p>
     </section>
     
     <section class="how-it-works-section">
@@ -232,17 +238,17 @@
         <h2 class="about-aita-title">OUR ROLE IN THE DIGITIZED ENERGY ECONOMY</h2>
         <div class="about-aita-content">
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong>FOR DEVELOPERS & EPCS</strong></div>
+                <div class="scrolling-line"><strong class="role-heading role-heading-developers">FOR DEVELOPERS & EPCS</strong></div>
                 <div class="scrolling-line">Launch Faster. Build Smarter.</div>
                 <div class="scrolling-line">Automation, access to financing, supply chain optimization</div>
             </div>
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong>FOR INVESTORS</strong></div>
+                <div class="scrolling-line"><strong class="role-heading role-heading-investors">FOR INVESTORS</strong></div>
                 <div class="scrolling-line">Invest with Transparency, manage with Data</div>
                 <div class="scrolling-line">Real-time data, AI risk analysis, access to RWA</div>
             </div>
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong>FOR PARTNERS & SUPPLIERS</strong></div>
+                <div class="scrolling-line"><strong class="role-heading role-heading-partners">FOR PARTNERS & SUPPLIERS</strong></div>
                 <div class="scrolling-line">Integrate Seamlessly. Scale Predictably.</div>
                 <div class="scrolling-line">Supply chain integration, predictable demand, global market access.</div>
             </div>
@@ -289,7 +295,58 @@
         </form>
     </section>
     
-    <button class="scroll-to-top" id="scroll-to-top" aria-label="Повернутися на початок" title="Повернутися на початок">
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column footer-main">
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-label">Email:</span>
+                        <a href="mailto:info@aita.world" class="footer-link">info@aita.world</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-label">Phone:</span>
+                        <a href="tel:+34695526230" class="footer-link">+34 695 526 230</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-label">Address:</span>
+                        <span class="footer-text">Bilbao, Basque Country, Spain</span>
+                    </div>
+                    
+                    <div class="footer-social-wrapper">
+                        <h3 class="footer-title footer-social-title">Social Media</h3>
+                        <div class="footer-social-links">
+                            <a href="https://www.linkedin.com/company/aitaworld/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 0H5C2.239 0 0 2.239 0 5V19C0 21.761 2.239 24 5 24H19C21.761 24 24 21.761 24 19V5C24 2.239 21.761 0 19 0ZM8 19H5V9H8V19ZM6.5 7.5C5.672 7.5 5 6.828 5 6C5 5.172 5.672 4.5 6.5 4.5C7.328 4.5 8 5.172 8 6C8 6.828 7.328 7.5 6.5 7.5ZM20 19H17V13.5C17 12.12 15.88 11 14.5 11C13.12 11 12 12.12 12 13.5V19H9V9H12V10.5C12.66 9.66 13.88 9 15 9C17.76 9 20 11.24 20 14V19Z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/aita.world/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163C8.525 2.163 8.163 2.175 6.938 2.238C5.713 2.3 4.888 2.55 4.2 2.85C3.475 3.163 2.888 3.525 2.3 4.113C1.712 4.7 1.35 5.288 1.038 6.013C0.738 6.7 0.488 7.525 0.425 8.75C0.363 9.975 0.35 10.338 0.35 13.813C0.35 17.288 0.363 17.65 0.425 18.875C0.488 20.1 0.738 20.925 1.038 21.613C1.35 22.338 1.712 22.925 2.3 23.513C2.888 24.1 3.475 24.463 4.2 24.775C4.888 25.075 5.713 25.325 6.938 25.388C8.163 25.45 8.525 25.463 12 25.463C15.475 25.463 15.838 25.45 17.063 25.388C18.288 25.325 19.113 25.075 19.8 24.775C20.525 24.463 21.113 24.1 21.7 23.513C22.288 22.925 22.65 22.338 22.963 21.613C23.263 20.925 23.513 20.1 23.575 18.875C23.638 17.65 23.65 17.288 23.65 13.813C23.65 10.338 23.638 9.975 23.575 8.75C23.513 7.525 23.263 6.7 22.963 6.013C22.65 5.288 22.288 4.7 21.7 4.113C21.113 3.525 20.525 3.163 19.8 2.85C19.113 2.55 18.288 2.3 17.063 2.238C15.838 2.175 15.475 2.163 12 2.163ZM12 4.188C15.388 4.188 15.7 4.2 16.913 4.263C18.038 4.325 18.638 4.563 19.013 4.738C19.5 4.975 19.813 5.25 20.138 5.575C20.463 5.9 20.738 6.213 20.975 6.7C21.15 7.075 21.388 7.675 21.45 8.8C21.513 10.013 21.525 10.325 21.525 13.713C21.525 17.1 21.513 17.413 21.45 18.625C21.388 19.75 21.15 20.35 20.975 20.725C20.738 21.213 20.463 21.525 20.138 21.85C19.813 22.175 19.5 22.45 19.013 22.688C18.638 22.863 18.038 23.1 16.913 23.163C15.7 23.225 15.388 23.238 12 23.238C8.613 23.238 8.3 23.225 7.088 23.163C5.963 23.1 5.363 22.863 4.988 22.688C4.5 22.45 4.188 22.175 3.863 21.85C3.538 21.525 3.263 21.213 3.025 20.725C2.85 20.35 2.613 19.75 2.55 18.625C2.488 17.413 2.475 17.1 2.475 13.713C2.475 10.325 2.488 10.013 2.55 8.8C2.613 7.675 2.85 7.075 3.025 6.7C3.263 6.213 3.538 5.9 3.863 5.575C4.188 5.25 4.5 4.975 4.988 4.738C5.363 4.563 5.963 4.325 7.088 4.263C8.3 4.2 8.613 4.188 12 4.188ZM12 7.038C9.188 7.038 7 9.225 7 12.038C7 14.85 9.188 17.038 12 17.038C14.813 17.038 17 14.85 17 12.038C17 9.225 14.813 7.038 12 7.038ZM12 15.038C10.35 15.038 9 13.688 9 12.038C9 10.388 10.35 9.038 12 9.038C13.65 9.038 15 10.388 15 12.038C15 13.688 13.65 15.038 12 15.038ZM16.538 6.888C16.538 7.5 16.038 8 15.425 8C14.813 8 14.313 7.5 14.313 6.888C14.313 6.275 14.813 5.775 15.425 5.775C16.038 5.775 16.538 6.275 16.538 6.888Z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.facebook.com/aitaworld.origin/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24V15.563H7.078V12.073H10.125V9.413C10.125 6.388 11.917 4.716 14.658 4.716C15.97 4.716 17.344 4.952 17.344 4.952V7.923H15.83C14.34 7.923 13.875 8.853 13.875 9.808V12.073H17.203L16.671 15.563H13.875V24C19.612 23.094 24 18.1 24 12.073Z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                            <a href="https://x.com/aita_world?s=11" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="X">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
