@@ -3,354 +3,1453 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerConnect 2026 | AITA World</title>
-    <link rel="icon" type="image/png" href="../images/aitalogowhite.png">
+    <title>AITA World | Power Connect 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Golos+Text:wght@500;600;700&display=swap" rel="stylesheet">
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "v4y0cwaq68");
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* =====================================================
+           AITA VISUAL LANGUAGE SYSTEM
+           Based on AITA Visual Language Guide v.2.1
+           ===================================================== */
+        
         :root {
-            --bg: #000000;
-            --panel: rgba(255, 255, 255, 0.06);
-            --panel-border: rgba(255, 255, 255, 0.16);
-            --text: #ffffff;
-            --muted: rgba(255, 255, 255, 0.72);
-            --field: rgba(255, 255, 255, 0.08);
-            --field-border: rgba(255, 255, 255, 0.2);
-            --ok: #2be08a;
-            --error: #ff7f7f;
+            /* Base Colors */
+            --bg-primary: #000000;
+            --divider: #222222;
+            --divider-light: #333333;
+            
+            /* Text Colors */
+            --text-primary: #FFFFFF;
+            --text-secondary: #BBBBBB;
+            --text-muted: #666666;
+            
+            /* Semantic Accent Colors */
+            --blue: #0086CC;
+            --green: #39B54A;
+            --yellow: #FFD600;
+            --red: #D62828;
+            
+            /* Glass Effect */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            
+            /* Typography */
+            --font-main: 'Golos Text', sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
+            font-family: var(--font-main);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             min-height: 100vh;
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            background:
-                radial-gradient(46rem 28rem at 12% 8%, rgba(84, 126, 255, 0.22), transparent 62%),
-                radial-gradient(52rem 30rem at 88% 2%, rgba(152, 90, 255, 0.12), transparent 60%),
-                var(--bg);
+            /* NO patterns, NO grids, NO textures - pure black */
         }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--divider);
+            /* sticky overrides applied in block below */
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px clamp(20px, 6vw, 48px);
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
         }
 
-        .navbar-logo {
-            display: inline-flex;
+        .logo {
+            display: flex;
             align-items: center;
-            gap: 10px;
-            color: #ffffff;
+            gap: 12px;
             text-decoration: none;
+            color: var(--text-primary);
         }
 
-        .logo-a {
-            height: 22px;
-            width: auto;
-            display: block;
+        .logo img {
+            height: 32px;
         }
 
         .logo-text {
-            font-family: 'Golos Text', sans-serif;
-            font-size: clamp(9px, 1.8vw, 14px);
             font-weight: 600;
-            letter-spacing: -0.02em;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
         }
 
-        .nav-button {
-            background: #ffffff;
-            color: #000000;
-            text-decoration: none;
-            font-size: 15px;
-            font-family: 'Golos Text', sans-serif;
-            font-weight: 500;
+        .expo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 8px 14px;
-            border-radius: 16px;
-            border: none;
+            background: var(--divider);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
-        .wrap {
-            min-height: 100vh;
+        .expo-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.9); }
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Role Selector */
+        .role-selector {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 40px 0 0;
+            flex-wrap: wrap;
+        }
+
+        .role-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .role-btn:hover {
+            border-color: var(--divider-light);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .role-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 1.5;
+        }
+
+        .role-btn--dev:hover { border-color: var(--blue); }
+        .role-btn--dev:hover svg { stroke: var(--blue); }
+        
+        .role-btn--inv:hover { border-color: var(--green); }
+        .role-btn--inv:hover svg { stroke: var(--green); }
+        
+        .role-btn--sup:hover { border-color: var(--yellow); }
+        .role-btn--sup:hover svg { stroke: var(--yellow); }
+        
+        .role-btn--company:hover { border-color: var(--green); }
+        .role-btn--company:hover svg { stroke: var(--green); }
+
+        /* =====================================================
+           HERO SECTION
+           ===================================================== */
+        
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            background-image: url('hero_bg.png');
+            background-size: cover;
+            background-position: center 60%;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark overlay so text stays readable */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.70) 0%,
+                rgba(0,0,0,0.40) 50%,
+                rgba(0,0,0,0.80) 100%
+            );
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Bottom divider line */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--divider), transparent);
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            /* NO gradient on text - это табу */
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* =====================================================
+           VALUE PROPS - 3 CARDS
+           ===================================================== */
+        
+        .value-section {
+            padding: 60px 0;
+        }
+
+        .value-grid {
             display: grid;
-            place-items: center;
-            padding: 90px 16px 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 48px;
         }
 
-        .shell {
-            width: min(900px, 100%);
-            border: 1px solid var(--panel-border);
-            border-radius: 28px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
-            backdrop-filter: blur(12px);
-            padding: 24px;
-            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+        @media (max-width: 768px) {
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .layout {
-            display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 16px;
+        .value-card {
+            /* Glassmorphism */
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            padding: 28px 24px;
+            transition: border-color 0.3s ease;
         }
 
-        .eyebrow {
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.24);
-            border-radius: 999px;
-            padding: 5px 10px;
-            font-size: 12px;
-            color: var(--muted);
+        .value-card:hover {
+            border-color: var(--divider-light);
+        }
+
+        .value-card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+
+        .value-card:nth-child(1) .value-card-icon svg { stroke: var(--blue); }
+        .value-card:nth-child(2) .value-card-icon svg { stroke: var(--green); }
+        .value-card:nth-child(3) .value-card-icon svg { stroke: var(--yellow); }
+
+        .value-card-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
             margin-bottom: 10px;
         }
 
-        .intro h1 {
-            font-family: 'Golos Text', sans-serif;
-            font-size: clamp(1.8rem, 4.8vw, 3rem);
-            line-height: 1.02;
-            letter-spacing: -0.03em;
-        }
-
-        .intro p {
-            margin-top: 12px;
-            max-width: 36ch;
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.45;
-        }
-
-        .card {
-            border: 1px solid var(--panel-border);
-            border-radius: 20px;
-            padding: 16px;
-            background: var(--panel);
-        }
-
-        .card h2 {
-            margin-bottom: 12px;
-            font-family: 'Golos Text', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        form {
-            display: grid;
-            gap: 12px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 13px;
-            color: var(--muted);
+        .value-card h3 {
+            font-size: 1.1rem;
             font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-primary);
         }
 
-        input, select {
-            width: 100%;
-            border: 1px solid var(--field-border);
-            background: var(--field);
-            color: var(--text);
-            border-radius: 12px;
-            padding: 12px 13px;
-            font: inherit;
-            outline: none;
-            transition: border-color 0.15s ease, background 0.15s ease;
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        option {
-            color: #0d0d0d;
+        /* =====================================================
+           ONE-PAGER DOWNLOAD
+           ===================================================== */
+        
+        .download-section {
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid var(--divider);
+            border-bottom: 1px solid var(--divider);
         }
 
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.48);
+        .download-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1rem;
         }
 
-        input:focus, select:focus {
-            border-color: #ffffff;
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        button {
-            margin-top: 2px;
-            border: 0;
-            border-radius: 14px;
-            padding: 13px 16px;
-            background: #ffffff;
-            color: #000000;
-            font-family: 'Golos Text', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
             cursor: pointer;
+            border: none;
+            font-family: var(--font-main);
         }
 
-        button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--divider-light);
         }
 
-        .status {
-            min-height: 18px;
-            margin-top: 6px;
-            font-size: 13px;
+        .btn-outline:hover {
+            border-color: var(--blue);
+            box-shadow: 0 0 20px rgba(0, 134, 204, 0.15);
+        }
+
+        .btn-outline svg {
+            stroke: var(--text-secondary);
+            stroke-width: 1.5;
+            transition: stroke 0.2s ease;
+        }
+
+        .btn-outline:hover svg {
+            stroke: var(--blue);
+        }
+
+        .btn-download {
+            /* Blueshift: all 4 spectrum colors, blue dominant (guide 3.4) */
+            background: linear-gradient(135deg, #D62828 0%, #FFD600 30%, #39B54A 60%, #0086CC 100%);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 0 24px rgba(0, 134, 204, 0.35);
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+        .btn-download:hover {
+            box-shadow: 0 0 36px rgba(0, 134, 204, 0.50);
+            transform: translateY(-1px);
+        }
+        .btn-download svg {
+            stroke: #fff;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: #009AE6;
+            box-shadow: 0 0 24px rgba(0, 134, 204, 0.25);
+        }
+
+        /* =====================================================
+           FORM SECTION
+           ===================================================== */
+        
+        .form-section {
+            padding: 80px 0;
+        }
+
+        .form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .form-wrapper {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .form-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .form-info > p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .form-benefits {
+            list-style: none;
+        }
+
+        .form-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-benefits li span {
+            color: var(--green);
             font-weight: 500;
         }
 
-        .status.ok { color: var(--ok); }
-        .status.error { color: var(--error); }
+        .form-card {
+            /* Glassmorphism */
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--divider);
+            border-radius: 16px;
+            padding: 36px;
+        }
 
-        .note {
-            margin-top: 14px;
-            color: rgba(255, 255, 255, 0.62);
-            font-size: 12px;
+        .form-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(0, 134, 204, 0.1);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 44px;
+        }
+
+        .form-select option {
+            background: #111111;
+            color: var(--text-primary);
+        }
+
+        .form-consent {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        .form-status {
+            font-size: 0.85rem;
+            min-height: 20px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+        .form-status--ok    { color: var(--green); }
+        .form-status--error { color: var(--red); }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        /* =====================================================
+           INVESTOR SECTION
+           ===================================================== */
+        
+        .investor-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--divider);
+        }
+
+        .investor-card {
+            /* Special green glow effect */
+            background: linear-gradient(135deg, rgba(57, 181, 74, 0.06) 0%, rgba(0, 134, 204, 0.04) 100%);
+            border: 1px solid rgba(57, 181, 74, 0.2);
+            border-radius: 16px;
+            padding: 56px 48px;
+            text-align: center;
+        }
+
+        .investor-label {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(57, 181, 74, 0.12);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+
+        .investor-card h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+
+        .investor-card > p {
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 36px;
+            font-size: 1.05rem;
+        }
+
+        /* Calendly embed placeholder */
+        .calendly-embed {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--divider);
+            border-radius: 8px;
+            padding: 48px 24px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .calendly-embed p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+        
+        footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--divider);
+        }
+
+        .team-photo {
+            background: var(--glass-bg);
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            padding: 48px;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .team-photo p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            max-width: 280px;
+        }
+
+        .footer-section h4 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--divider);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* =====================================================
+           TEAM GRID
+           ===================================================== */
+
+        .team-section {
+            margin-bottom: 48px;
+        }
+
+        .team-section-label {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .team-row {
+            display: grid;
+            gap: 16px;
+        }
+
+        .team-row--3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .team-row--4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 900px) {
+            .team-row--3,
+            .team-row--4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-row--3,
+            .team-row--4 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .team-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            transition: border-color 0.2s ease;
+        }
+
+        .team-card:hover {
+            border-color: var(--divider-light);
+        }
+
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 10px;
+            background: var(--divider);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .team-card-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .team-card-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
             line-height: 1.4;
         }
 
-        @media (max-width: 880px) {
-            .layout { grid-template-columns: 1fr; }
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* =====================================================
+           STICKY HEADER
+           ===================================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* =====================================================
+           BOOTH BANNER
+           ===================================================== */
+        .booth-banner {
+            width: 100%;
+            display: block;
+            line-height: 0;
+        }
+        .booth-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .booth-banner--small {
+            max-height: 260px;
+            overflow: hidden;
+        }
+        .booth-banner--small img {
+            object-fit: cover;
+            object-position: center;
+            height: 260px;
+        }
+        /* Expo badge location line */
+        .expo-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            line-height: 1.2;
+        }
+        .expo-badge-location {
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        /* =====================================================
+           HOW AITA WORKS
+           ===================================================== */
+        .how-it-works {
+            margin-bottom: 56px;
+            padding-top: 8px;
+            border-top: 1px solid var(--divider);
+        }
+        .how-it-works .team-section-label {
+            margin-bottom: 28px;
+            margin-top: 40px;
+        }
+        .hiw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 900px) {
+            .hiw-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .hiw-grid { grid-template-columns: 1fr; }
+        }
+        .hiw-step {
+            background: var(--glass-bg);
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .hiw-number {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--blue);
+            letter-spacing: 0.05em;
+            min-width: 24px;
+            padding-top: 2px;
+        }
+        .hiw-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .hiw-content p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Standalone download section */
+        .download-standalone {
+            padding: 0;
+        }
+        .download-standalone .download-section {
+            /* Subtle Blueshift tint: all 4 colors, blue dominant */
+            background: linear-gradient(135deg,
+                rgba(214,40,40,0.04) 0%,
+                rgba(255,214,0,0.05) 33%,
+                rgba(57,181,74,0.06) 66%,
+                rgba(0,134,204,0.10) 100%
+            );
+            border: 1px solid rgba(0,134,204,0.30);
+            border-radius: 16px;
+            margin: 48px auto;
+            max-width: 680px;
+            padding: 40px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .download-standalone .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            /* Blueshift accent line: all 4 spectrum colors */
+            background: linear-gradient(90deg, transparent, #D62828, #FFD600, #39B54A, #0086CC, transparent);
+        }
+        .download-standalone .download-section p:first-child {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        /* =====================================================
+           GATED DOWNLOAD
+           ===================================================== */
+        .download-microcopy {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px !important;
+        }
+        .download-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto 10px;
+        }
+        .download-form .form-input {
+            flex: 1;
+            min-width: 200px;
+            margin: 0;
+        }
+        .download-small {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 8px !important;
+        }
+        .download-success {
+            display: none;
+            color: var(--green);
+            font-size: 0.95rem;
+            margin-top: 12px;
+        }
+
+        /* =====================================================
+           URGENCY LINE
+           ===================================================== */
+        .urgency-line {
+            text-align: center;
+            padding: 12px 20px;
+            background: rgba(255, 214, 0, 0.06);
+            border: 1px solid rgba(255, 214, 0, 0.15);
+            border-radius: 8px;
+            color: var(--yellow);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        /* =====================================================
+           TEAM CLICKABLE CARDS
+           ===================================================== */
+        .team-hint {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        a.team-card {
+            text-decoration: none;
+            position: relative;
+        }
+        a.team-card:hover {
+            border-color: #0077B5;
+        }
+        .team-card .linkedin-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 22px;
+            height: 22px;
+            background: #0077B5;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        a.team-card:hover .linkedin-badge {
+            opacity: 1;
+        }
+        .linkedin-badge svg {
+            width: 14px;
+            height: 14px;
+            fill: white;
+        }
+        @media (max-width: 768px) {
+            .team-card .linkedin-badge {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar" role="navigation">
-        <a href="../index.html" class="navbar-logo">
-            <img src="../images/aitalogowhite.png" alt="AITA Logo" class="logo-a">
-            <span class="logo-text">AITA WORLD</span>
-        </a>
-        <a href="../index.html" class="nav-button">Back to Home</a>
-    </nav>
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://www.aita.world" class="logo">
+                    <img src="aitalogo.svg" alt="AITA">
+                    <span class="logo-text">AITA World</span>
+                </a>
+                <div class="header-nav">
+                    <nav class="nav-links">
+                        <a href="#ecosystem">Who it's for</a>
+                        <a href="#demo">Get Demo</a>
+                        <a href="#onepager">Onepager</a>
+                        <a href="#team">Meet us</a>
+                    </nav>
+                    <div class="expo-badge">
+                        Power Connect 2026
+                        <span class="expo-badge-location">📍 Hall S · Stand .02</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <main class="wrap">
-        <section class="shell">
-            <div class="layout">
-                <article class="intro">
-                    <span class="eyebrow">PowerConnect 2026</span>
-                    <h1>Request platform demo access</h1>
-                    <p>Leave your contact details. AITA team will get back to you and align the next steps for collaboration.</p>
-                </article>
-
-                <section class="card">
-                    <h2>Contact details</h2>
-                    <form id="lead-form" novalidate>
-                        <div>
-                            <label for="email">Email *</label>
-                            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required />
-                        </div>
-
-                        <div>
-                            <label for="name">Full name</label>
-                            <input id="name" name="name" type="text" autocomplete="name" placeholder="John Smith" />
-                        </div>
-
-                        <div>
-                            <label for="role">Role *</label>
-                            <select id="role" name="role" required>
-                                <option value="Developer">Developer</option>
-                                <option value="Investor">Investor</option>
-                                <option value="Supplier">Supplier</option>
-                                <option value="Hybrid">Hybrid</option>
-                            </select>
-                        </div>
-
-                        <button id="submit-btn" type="submit">Submit</button>
-                        <div id="status" class="status" aria-live="polite"></div>
-                    </form>
-                    <p class="note">By submitting, you agree to be contacted by AITA World team.</p>
-                </section>
+    <main>
+        <!-- =====================================================
+             HERO
+             ===================================================== -->
+        <section class="hero">
+            <div class="container">
+                <h1>Stop planning Green Transition. Operate it.</h1>
+                <p class="hero-subtitle">AI-powered ecosystem that covers the full cycle — from project financing and procurement to construction coordination and asset monitoring.</p>
+                
+                <!-- Role Selector -->
+                <div class="role-selector">
+                    <a href="#developers" class="role-btn role-btn--dev">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                        I'm a Developer / EPC
+                    </a>
+                    <a href="#investors" class="role-btn role-btn--inv">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="6" width="18" height="14" rx="2"/>
+                            <path d="M3 10h18"/>
+                        </svg>
+                        I invest in energy projects
+                    </a>
+                    <a href="#suppliers" class="role-btn role-btn--sup">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                        </svg>
+                        I'm a Supplier
+                    </a>
+                </div>
             </div>
         </section>
-    </main>
 
-    <script>
-        const WEBHOOK_URL = 'https://dmekhed.app.n8n.cloud/webhook/aita-form-to-lead-mailerlite';
+        <!-- =====================================================
+             FORM SECTION
+             ===================================================== -->
+        <section class="form-section" id="demo">
+            <div class="container">
+                <!-- Urgency line -->
+                <div class="urgency-line">
+                    ⏱ Leave your details by March 20 — we'll reach out while the conversation is fresh.
+                </div>
+                <div class="form-wrapper">
+                    <div class="form-info">
+                        <h2>Let's talk after the expo</h2>
+                        <p>Leave your details — we'll reach out with a personalized demo based on your role and needs.</p>
+                        <ul class="form-benefits">
+                            <li><span>→</span> Platform walkthrough tailored to your use case</li>
+                            <li><span>→</span> Meet the team behind the ecosystem</li>
+                            <li><span>→</span> Power Connect attendees get priority scheduling</li>
+                        </ul>
+                    </div>
 
-        const ROLE_TO_GROUP = {
-            Developer: '180386600201488235',
-            Investor: '180386618368066920',
-            Supplier: '180386631442761377',
-            Hybrid: '180386647456614182',
-        };
+                    <div class="form-card">
+                        <h3>Contact details</h3>
+                        <form id="lead-form">
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Full name</label>
+                                <input type="text" name="name" class="form-input" placeholder="John Smith">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Role *</label>
+                                <select name="role" class="form-select" required>
+                                    <option value="" disabled selected>Select your role</option>
+                                    <option value="Developer">Developer / EPC</option>
+                                    <option value="Investor">Energy project investor</option>
+                                    <option value="Supplier">Supplier</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            <p id="lead-form-status" class="form-status"></p>
+                            <button type="submit" id="lead-form-btn" class="btn btn-primary form-submit">Submit</button>
+                            <p class="form-consent">By submitting, you agree to be contacted by AITA World team.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        const form = document.getElementById('lead-form');
-        const statusEl = document.getElementById('status');
-        const submitBtn = document.getElementById('submit-btn');
+        <!-- =====================================================
+             VALUE PROPS
+             ===================================================== -->
+        <section class="value-section" id="ecosystem">
+            <div class="container">
+                <div class="value-grid">
+                    <!-- Card 1: Developers -->
+                    <div class="value-card" id="developers">
+                        <div class="value-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="value-card-label">For Developers & EPCs</div>
+                        <h3>From Concept to Grid in Months</h3>
+                        <p>Automated engineering, procurement orchestration, and AI-driven project management. One workspace instead of ten tools.</p>
+                    </div>
 
-        function setStatus(message, type) {
-            statusEl.textContent = message || '';
-            statusEl.classList.remove('ok', 'error');
-            if (type) statusEl.classList.add(type);
-        }
+                    <!-- Card 2: Investors -->
+                    <div class="value-card" id="investors">
+                        <div class="value-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="6" width="18" height="14" rx="2"/>
+                                <path d="M3 10h18"/>
+                                <path d="M7 15h4"/>
+                            </svg>
+                        </div>
+                        <div class="value-card-label">For Investors</div>
+                        <h3>See the Asset Before You Buy</h3>
+                        <p>Real-time monitoring data, transparent due diligence, verified project pipeline. No black boxes.</p>
+                    </div>
 
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
+                    <!-- Card 3: Suppliers -->
+                    <div class="value-card" id="suppliers">
+                        <div class="value-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                                <path d="M12 12v4"/>
+                                <path d="M2 12h20"/>
+                            </svg>
+                        </div>
+                        <div class="value-card-label">For Suppliers</div>
+                        <h3>Predictable Demand, Global Reach</h3>
+                        <p>Integrated supply chain, direct access to verified projects, volume forecasting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            const formData = new FormData(form);
-            const role = String(formData.get('role') || '').trim();
-            const payload = {
-                email: String(formData.get('email') || '').trim(),
-                name: String(formData.get('name') || '').trim(),
-                role,
-                source: 'Landing',
-                mailerLiteGroupId: ROLE_TO_GROUP[role] || '',
+        <!-- =====================================================
+             ONE-PAGER DOWNLOAD
+             ===================================================== -->
+        <div class="download-standalone" id="onepager">
+            <div class="container">
+                <div class="download-section">
+                    <p>Want the full picture? Download our one-pager.</p>
+                    <p class="download-microcopy">Enter your email to download</p>
+                    <form class="download-form" id="download-form" onsubmit="handleDownload(event)">
+                        <input type="email" class="form-input" id="download-email" placeholder="name@company.com" required>
+                        <button type="submit" class="btn btn-download">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Get the One-Pager
+                        </button>
+                    </form>
+                    <p class="download-small">We'll follow up with a personalized demo offer</p>
+                    <p class="download-success" id="download-success">✓ Check your downloads — and watch your inbox!</p>
+                </div>
+            </div>
+        </div>
+        <script>
+        // Lead form — webhook to n8n → MailerLite
+        (function () {
+            var ROLE_TO_GROUP = {
+                'Developer': '180386600201488235',
+                'Investor':  '180386618368066920',
+                'Supplier':  '180386631442761377',
+                'Hybrid':    '180386647456614182'
             };
+            var form = document.getElementById('lead-form');
+            var statusEl = document.getElementById('lead-form-status');
+            var submitBtn = document.getElementById('lead-form-btn');
 
-            if (!payload.email) {
-                setStatus('Email is required.', 'error');
-                return;
+            function setStatus(msg, type) {
+                statusEl.textContent = msg;
+                statusEl.className = 'form-status' + (type ? ' form-status--' + type : '');
             }
 
-            if (!payload.mailerLiteGroupId) {
-                setStatus('Role mapping is not configured.', 'error');
-                return;
-            }
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                var fd = new FormData(form);
+                var role = String(fd.get('role') || '').trim();
+                var payload = {
+                    email: String(fd.get('email') || '').trim(),
+                    name:  String(fd.get('name')  || '').trim(),
+                    role:  role,
+                    source: 'PowerConnect2026',
+                    mailerLiteGroupId: ROLE_TO_GROUP[role] || ''
+                };
 
-            submitBtn.disabled = true;
-            setStatus('Sending...', '');
+                if (!payload.email) { setStatus('Email is required.', 'error'); return; }
+                if (!payload.mailerLiteGroupId) { setStatus('Please select a role.', 'error'); return; }
+
+                submitBtn.disabled = true;
+                setStatus('Sending…', '');
+
+                try {
+                    var res = await fetch(
+                        'https://dmekhed.app.n8n.cloud/webhook/aita-form-to-lead-mailerlite',
+                        { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }
+                    );
+                    var data = {};
+                    try { data = await res.json(); } catch (e) {}
+                    if (!res.ok) { setStatus(data.error || data.message || 'Submit failed. Try again.', 'error'); return; }
+                    setStatus('✓ Submitted. We will contact you soon.', 'ok');
+                    form.reset();
+                } catch (err) {
+                    setStatus('Network error. Please try again.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                }
+            });
+        })();
+        </script>
+
+        <script>
+        async function handleDownload(e) {
+            e.preventDefault();
+            var email = document.getElementById('download-email').value.trim();
+            if (!email) return;
 
             try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(payload),
-                });
-
-                let data = {};
-                try {
-                    data = await response.json();
-                } catch {
-                    data = {};
-                }
-
-                if (!response.ok) {
-                    setStatus(data.error || data.message || 'Submit failed. Try again.', 'error');
-                    return;
-                }
-
-                setStatus('Submitted. We will contact you soon.', 'ok');
-                form.reset();
-            } catch {
-                setStatus('Network error. Please try again.', 'error');
-            } finally {
-                submitBtn.disabled = false;
+                await fetch(
+                    'https://dmekhed.app.n8n.cloud/webhook-test/powerconnect2026-datasheet-lead',
+                    { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: email, source: 'PowerConnect2026-Datasheet' }) }
+                );
+            } catch (err) {
+                console.error('Datasheet lead webhook error:', err);
             }
-        });
-    </script>
+
+            window.open('https://aita-dataroom-9wh8.vercel.app/one-pager.html', '_blank');
+            document.getElementById('download-form').style.display = 'none';
+            document.querySelector('.download-microcopy').style.display = 'none';
+            document.querySelector('.download-small').style.display = 'none';
+            document.getElementById('download-success').style.display = 'block';
+        }
+        </script>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer>
+        <div class="container">
+            <!-- Team members -->
+            <div class="team-section" id="team">
+                <p class="team-section-label">The team behind AITA</p>
+                <p class="team-hint">Met someone at our booth? Tap their photo to connect on LinkedIn 👋</p>
+                <div class="team-grid">
+                    <div class="team-row team-row--4">
+                        <a class="team-card" href="https://www.linkedin.com/in/dmytro-mekhed-369a49113/" target="_blank" rel="noopener">
+                            <span class="linkedin-badge"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+                            <div class="team-avatar"><img src="https://www.aita.world/images/team/dima%201.png" alt="Dmytro Mekhed"></div>
+                            <div>
+                                <div class="team-card-name">Dmytro Mekhed</div>
+                                <div class="team-card-role">Co-CEO & Chief Architect</div>
+                            </div>
+                        </a>
+                        <a class="team-card" href="https://www.linkedin.com/in/ivan-shumlianskyi-5bb90133a/" target="_blank" rel="noopener">
+                            <span class="linkedin-badge"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+                            <div class="team-avatar"><img src="https://www.aita.world/images/team/ivan%201.png" alt="Ivan Shumlianskyi"></div>
+                            <div>
+                                <div class="team-card-name">Ivan Shumlianskyi</div>
+                                <div class="team-card-role">Co-CEO & Co-Founder</div>
+                            </div>
+                        </a>
+                        <a class="team-card" href="https://www.linkedin.com/in/marinaboiko-es/" target="_blank" rel="noopener">
+                            <span class="linkedin-badge"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+                            <div class="team-avatar"><img src="https://www.aita.world/images/team/marina.png" alt="Marina Boiko"></div>
+                            <div>
+                                <div class="team-card-name">Marina B.</div>
+                                <div class="team-card-role">Business Development Manager</div>
+                            </div>
+                        </a>
+                        <a class="team-card" href="https://www.linkedin.com/in/daniel-molokoiedov/" target="_blank" rel="noopener">
+                            <span class="linkedin-badge"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+                            <div class="team-avatar"><img src="https://www.aita.world/images/team/daniel.png" alt="Daniel Molokoiedov"></div>
+                            <div>
+                                <div class="team-card-name">Daniel M.</div>
+                                <div class="team-card-role">Head of Sales</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================================================
+                 HOW AITA WORKS
+                 ===================================================== -->
+            <div class="how-it-works">
+                <p class="team-section-label">How AITA works</p>
+                <div class="hiw-grid">
+                    <div class="hiw-step">
+                        <div class="hiw-number">01</div>
+                        <div class="hiw-content">
+                            <div class="hiw-title">Submit or discover a project</div>
+                            <p>Developers upload new energy projects while investors explore verified opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="hiw-step">
+                        <div class="hiw-number">02</div>
+                        <div class="hiw-content">
+                            <div class="hiw-title">Automated assessment & due diligence</div>
+                            <p>AI analyzes technical data, risks, financial models, and project feasibility.</p>
+                        </div>
+                    </div>
+                    <div class="hiw-step">
+                        <div class="hiw-number">03</div>
+                        <div class="hiw-content">
+                            <div class="hiw-title">Financing & capital allocation</div>
+                            <p>Investors fund projects through a transparent, automated financial workflow.</p>
+                        </div>
+                    </div>
+                    <div class="hiw-step">
+                        <div class="hiw-number">04</div>
+                        <div class="hiw-content">
+                            <div class="hiw-title">Construction & EPC coordination</div>
+                            <p>AITA.Platform manages procurement, logistics, contracting, and onsite operations.</p>
+                        </div>
+                    </div>
+                    <div class="hiw-step">
+                        <div class="hiw-number">05</div>
+                        <div class="hiw-content">
+                            <div class="hiw-title">Real-time asset management</div>
+                            <p>AITA.Assets monitors energy production, performance KPIs, and BESS optimization.</p>
+                        </div>
+                    </div>
+                    <div class="hiw-step">
+                        <div class="hiw-number">06</div>
+                        <div class="hiw-content">
+                            <div class="hiw-title">Monetization & liquidity</div>
+                            <p>Tokenized assets become tradeable on AITA.Exchange, enabling global liquidity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border:none;border-top:1px solid var(--divider);margin:48px 0;">
+
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="https://www.aita.world" class="logo">
+                        <img src="aitalogo.svg" alt="AITA">
+                        <span class="logo-text">AITA World</span>
+                    </a>
+                    <p>Building the operational layer for green energy.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@aita.world">info@aita.world</a>
+                    <a href="tel:+34695526230">+34 695 526 230</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/company/aita-world" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://www.aita.world" target="_blank" rel="noopener">Main Website</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 AITA World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
