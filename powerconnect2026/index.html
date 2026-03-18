@@ -154,6 +154,30 @@
             color: var(--text-primary);
         }
 
+        .nav-main-site {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--blue);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-main-site:hover {
+            opacity: 0.85;
+        }
+
+        @media (max-width: 768px) {
+            .nav-main-site {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -1081,6 +1105,7 @@
                         <a href="#onepager">Onepager</a>
                         <a href="#team">Meet us</a>
                     </nav>
+                    <a href="https://www.aita.world" class="nav-main-site" target="_blank">Visit Main Website ↗</a>
                     <div class="expo-badge">
                         Power Connect 2026
                         <span class="expo-badge-location">📍 Hall A· Stand S.02</span>
