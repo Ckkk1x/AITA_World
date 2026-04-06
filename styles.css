@@ -2849,7 +2849,7 @@ a.team-member {
 
 .team-leader:nth-child(2) {
     z-index: 3;
-    flex: 1.1;
+    flex: 1;
     margin: 0 -50px;
 }
 
