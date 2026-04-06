@@ -2849,7 +2849,7 @@ a.team-member {
 
 .team-leader:nth-child(2) {
     z-index: 3;
-    flex: 1;
+    flex: 1.1;
     margin: 0 -50px;
 }
 
@@ -2859,9 +2859,9 @@ a.team-member {
 
 .team-leader-photo {
     width: 100%;
-    height: auto;
+    aspect-ratio: 1 / 1;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     object-position: bottom center;
 }
 
