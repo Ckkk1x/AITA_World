@@ -2866,7 +2866,7 @@ a.team-member {
 }
 
 .team-leader:nth-child(2) .team-leader-photo {
-    object-position: center 60%;
+    object-position: center 70%;
 }
 
 .team-leader::after {
