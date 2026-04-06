@@ -2828,6 +2828,13 @@ body {
     margin: 0 auto;
 }
 
+a.team-leader,
+a.team-member {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
 .team-leader {
     position: relative;
     flex: 1;
