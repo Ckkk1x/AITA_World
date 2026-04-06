@@ -64,12 +64,13 @@
     }
     </script>
 
-    <link rel="icon" type="image/png" href="images/aitalogowhite.png">
+    <link rel="icon" type="image/svg+xml" href="img/aitalogo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:ital@1&display=swap" rel="stylesheet">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:ital@1&display=swap" as="style">
     <link rel="stylesheet" href="styles.css">
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -92,258 +93,269 @@
         </button>
         <div class="menu-overlay" id="menu-overlay"></div>
         <div class="navbar-right" id="navbar-menu">
-            <a href="#about" class="nav-link">About Us</a>
-            <a href="#assets" class="nav-link">Products</a>
-            <a href="#team" class="nav-link">Team</a>
-            <a href="#contact" class="nav-button">Join us</a>
+            <a href="#about" class="nav-link" data-i18n="nav.about">About Us</a>
+            <a href="#assets" class="nav-link" data-i18n="nav.products">Products</a>
+            <a href="#team" class="nav-link" data-i18n="nav.team">Team</a>
+            <a href="#contact" class="nav-button" data-i18n="nav.join">Join us</a>
+            <div class="lang-switcher">
+                <button class="lang-toggle" aria-label="Change language">
+                    <span class="lang-current">EN</span>
+                    <svg class="lang-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="lang-dropdown">
+                    <button class="lang-option active" data-lang="en">EN</button>
+                    <button class="lang-option" data-lang="uk">UA</button>
+                    <button class="lang-option" data-lang="es">ES</button>
+                </div>
+            </div>
         </div>
     </nav>
     <img src="images/blop1.png" alt="" class="parallax-blob parallax-blob-left" loading="lazy" aria-hidden="true">
     <img src="images/blop2.png" alt="" class="parallax-blob parallax-blob-right" loading="lazy" aria-hidden="true">
     <div class="container">
-        <h1 class="visually-hidden">AITA World - Speed, Transparency, Achievable</h1>
+        <h1 class="visually-hidden" data-i18n="hero.h1">AITA World - Speed, Transparency, Achievable</h1>
         <div class="logo">
             <svg id="logo-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1541.5 320.29"><path d="M0,320.29L231.02,0h66l231.02,320.29h-57.75l-49.5-73.4H107.26l-49.5,73.4H0ZM132.01,213.52h264.02L264.02,26.69l-132.01,186.83Z" fill="#fff"/><path d="M574.4,320.29V0h49.5v320.29h-49.5Z" fill="#fff"/><path d="M863.82,320.29V33.36h-198.01V0h445.53v33.36h-198.01v286.92h-49.5Z" fill="#fff"/><path d="M1013.46,320.29L1244.48,0h66l231.02,320.29h-57.75l-49.5-73.4h-313.52l-49.5,73.4h-57.75ZM1145.47,213.52h264.02l-132.01-186.83-132.01,186.83Z" fill="#fff"/></svg>
         </div>
         <div class="text">
-            <span class="word speed">Speed</span><span class="punctuation">,</span> <span class="word transparency">Transparency</span><span class="punctuation">,</span> <span class="word achievable">Achievable</span><span class="punctuation">.</span>
+            <span class="word speed" data-i18n="hero.speed">Speed</span><span class="punctuation">,</span> <span class="word transparency" data-i18n="hero.transparency">Transparency</span><span class="punctuation">,</span> <span class="word achievable" data-i18n="hero.achievable">Achievable</span><span class="punctuation">.</span>
         </div>
     </div>
-    
+
     <section class="climate-crisis-section" id="invest">
-        <h2 class="climate-title">THE CLIMATE CRISIS IS REAL</h2>
-        <p class="climate-subtitle">The Transition Is Too Slow — And The System Is Broken.</p>
+        <h2 class="climate-title" data-i18n="climate.title">THE CLIMATE CRISIS IS REAL</h2>
+        <p class="climate-subtitle" data-i18n="climate.subtitle">The Transition Is Too Slow — And The System Is Broken.</p>
         <div class="climate-stats">
             <div class="stat-item">
                 <div class="stat-number stat-temp">+1.2<span class="degree-symbol">°C</span></div>
-                <div class="stat-description">Already Above Pre-Industrial Levels</div>
+                <div class="stat-description" data-i18n="climate.stat1.desc">Already Above Pre-Industrial Levels</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number stat-percent">75%</div>
-                <div class="stat-description">Energy Sector Drives Most Global Emissions</div>
+                <div class="stat-description" data-i18n="climate.stat2.desc">Energy Sector Drives Most Global Emissions</div>
             </div>
             <div class="stat-item stat-item-weather">
                 <div class="stat-number stat-weather">
-                    <span class="weather-line">EXTREME</span>
-                    <span class="weather-line">WEATHER</span>
+                    <span class="weather-line" data-i18n="climate.stat3.line1">EXTREME</span>
+                    <span class="weather-line" data-i18n="climate.stat3.line2">WEATHER</span>
                 </div>
-                <div class="stat-description">Heatwaves, Floods, Droughts = Systemic Risk</div>
+                <div class="stat-description" data-i18n="climate.stat3.desc">Heatwaves, Floods, Droughts = Systemic Risk</div>
             </div>
         </div>
     </section>
-    
+
     <section class="mission-section">
-        <h2 class="mission-title">OUR MISSION</h2>
-        <p class="mission-subtitle">Accelerate the green transition</p>
+        <h2 class="mission-title" data-i18n="mission.title">OUR MISSION</h2>
+        <p class="mission-subtitle" data-i18n="mission.subtitle">Accelerate the green transition</p>
     </section>
-    
+
     <section class="scrolling-text-section" id="about" aria-live="polite">
         <div class="scrolling-text-container">
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong>AITA World</strong> is a global <strong>digital ecosystem</strong></div>
-                <div class="scrolling-line">that unites developers, investors, EPC companies,</div>
-                <div class="scrolling-line">installers, equipment suppliers, and <strong>energy assets</strong></div>
-                <div class="scrolling-line">into one <strong>intelligent platform</strong>.</div>
+                <div class="scrolling-line" data-i18n="scroll.line1"><strong>AITA World</strong> is a global <strong>digital ecosystem</strong></div>
+                <div class="scrolling-line" data-i18n="scroll.line2">that unites developers, investors, EPC companies,</div>
+                <div class="scrolling-line" data-i18n="scroll.line3">installers, equipment suppliers, and <strong>energy assets</strong></div>
+                <div class="scrolling-line" data-i18n="scroll.line4">into one <strong>intelligent platform</strong>.</div>
             </div>
             <div class="scrolling-text-block">
-                <div class="scrolling-line">It <strong>automates</strong> the entire <strong>lifecycle</strong> of <strong>clean</strong></div>
-                <div class="scrolling-line"><strong>energy projects</strong> — from early assessment and</div>
-                <div class="scrolling-line">financing to construction, dispatching, asset</div>
-                <div class="scrolling-line">management, and monetization.</div>
+                <div class="scrolling-line" data-i18n="scroll.line5">It <strong>automates</strong> the entire <strong>lifecycle</strong> of <strong>clean</strong></div>
+                <div class="scrolling-line" data-i18n="scroll.line6"><strong>energy projects</strong> — from early assessment and</div>
+                <div class="scrolling-line" data-i18n="scroll.line7">financing to construction, dispatching, asset</div>
+                <div class="scrolling-line" data-i18n="scroll.line8">management, and monetization.</div>
             </div>
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong>AITA World</strong> creates a <strong>fully connected energy</strong></div>
-                <div class="scrolling-line">environment where every project, asset, and</div>
-                <div class="scrolling-line">transaction becomes <strong>fast, transparent, and</strong></div>
-                <div class="scrolling-line"><strong>globally accessible</strong>.</div>
+                <div class="scrolling-line" data-i18n="scroll.line9"><strong>AITA World</strong> creates a <strong>fully connected energy</strong></div>
+                <div class="scrolling-line" data-i18n="scroll.line10">environment where every project, asset, and</div>
+                <div class="scrolling-line" data-i18n="scroll.line11">transaction becomes <strong>fast, transparent, and</strong></div>
+                <div class="scrolling-line" data-i18n="scroll.line12"><strong>globally accessible</strong>.</div>
             </div>
         </div>
     </section>
-    
+
     <section class="why-it-matters-section">
         <h2 class="why-it-matters-title">
-            <span class="why-it-matters-title-part1">Why It Matters</span>
+            <span class="why-it-matters-title-part1" data-i18n="why.title">Why It Matters</span>
         </h2>
         <div class="why-it-matters-content">
             <div class="why-it-matters-column">
                 <div class="why-it-matters-stat">
-                    <div class="why-it-matters-number">$X</div>
-                    <div class="why-it-matters-text">Trillion market</div>
+                    <div class="why-it-matters-number" data-i18n="why.stat1.value">$X</div>
+                    <div class="why-it-matters-text" data-i18n="why.stat1.text">Trillion market</div>
                 </div>
             </div>
             <div class="why-it-matters-column">
                 <div class="why-it-matters-stat">
-                    <div class="why-it-matters-number why-it-matters-millions">Millions</div>
-                    <div class="why-it-matters-text">of assets unmanaged</div>
+                    <div class="why-it-matters-number why-it-matters-millions" data-i18n="why.stat2.value">Millions</div>
+                    <div class="why-it-matters-text" data-i18n="why.stat2.text">of assets unmanaged</div>
                 </div>
             </div>
             <div class="why-it-matters-column">
                 <div class="why-it-matters-stat">
-                    <div class="why-it-matters-number">0</div>
-                    <div class="why-it-matters-text">unified operating systems</div>
+                    <div class="why-it-matters-number" data-i18n="why.stat3.value">0</div>
+                    <div class="why-it-matters-text" data-i18n="why.stat3.text">unified operating systems</div>
                 </div>
             </div>
         </div>
-        <p class="why-it-matters-mission-text">Until now.</p>
+        <p class="why-it-matters-mission-text" data-i18n="why.until">Until now.</p>
     </section>
-    
+
     <section class="products-section" id="assets">
-        <h2 class="products-title">AITA'S INFRASTRUCTURE</h2>
+        <h2 class="products-title" data-i18n="products.title">AITA'S INFRASTRUCTURE</h2>
         <div class="products-content">
             <div class="products-row">
                 <button class="product-button product-platform" aria-expanded="false" aria-controls="product-platform-content">
-                    <span class="product-button-label">platform</span>
+                    <span class="product-button-label" data-i18n="products.platform.label">platform</span>
                     <span class="product-button-arrow">→</span>
                     <div class="product-expanded-content" id="product-platform-content">
-                        <h3 class="product-expanded-title">THE OPERATIONAL CORE</h3>
-                        <p class="product-expanded-text">CRM, Project Management, Supply Chain, AI-driven compliance. Everything developers and EPCs need to launch projects faster.</p>
-                        <span class="product-expanded-keyword">platform</span>
+                        <h3 class="product-expanded-title" data-i18n="products.platform.title">THE OPERATIONAL CORE</h3>
+                        <p class="product-expanded-text" data-i18n="products.platform.text">CRM, Project Management, Supply Chain, AI-driven compliance. Everything developers and EPCs need to launch projects faster.</p>
+                        <span class="product-expanded-keyword" data-i18n="products.platform.keyword">platform</span>
                     </div>
                 </button>
                 <button class="product-button product-invest" aria-expanded="false" aria-controls="product-invest-content">
-                    <span class="product-button-label">invest</span>
+                    <span class="product-button-label" data-i18n="products.invest.label">invest</span>
                     <span class="product-button-arrow">→</span>
                     <div class="product-expanded-content" id="product-invest-content">
-                        <h3 class="product-expanded-title">CAPITAL MEETS OPPORTUNITY</h3>
-                        <p class="product-expanded-text">Connect investors with verified projects. Transparent, tokenized, and liquid.</p>
-                        <span class="product-expanded-keyword">invest</span>
+                        <h3 class="product-expanded-title" data-i18n="products.invest.title">CAPITAL MEETS OPPORTUNITY</h3>
+                        <p class="product-expanded-text" data-i18n="products.invest.text">Connect investors with verified projects. Transparent, tokenized, and liquid.</p>
+                        <span class="product-expanded-keyword" data-i18n="products.invest.keyword">invest</span>
                     </div>
                 </button>
                 <button class="product-button product-assets" aria-expanded="false" aria-controls="product-assets-content">
-                    <span class="product-button-label">assets</span>
+                    <span class="product-button-label" data-i18n="products.assets.label">assets</span>
                     <span class="product-button-arrow">→</span>
                     <div class="product-expanded-content" id="product-assets-content">
-                        <h3 class="product-expanded-title">REAL-TIME INTELLIGENCE</h3>
-                        <p class="product-expanded-text">Monitor and manage solar, BESS, and hybrid systems. Real-time data from generation to revenue.</p>
-                        <span class="product-expanded-keyword">assets</span>
+                        <h3 class="product-expanded-title" data-i18n="products.assets.title">REAL-TIME INTELLIGENCE</h3>
+                        <p class="product-expanded-text" data-i18n="products.assets.text">Monitor and manage solar, BESS, and hybrid systems. Real-time data from generation to revenue.</p>
+                        <span class="product-expanded-keyword" data-i18n="products.assets.keyword">assets</span>
                     </div>
                 </button>
             </div>
             <div class="products-row products-row-center">
                 <button class="product-button product-exchange" aria-expanded="false" aria-controls="product-exchange-content">
-                    <span class="product-button-label">exchange</span>
+                    <span class="product-button-label" data-i18n="products.exchange.label">exchange</span>
                     <span class="product-button-arrow">→</span>
                     <div class="product-expanded-content" id="product-exchange-content">
-                        <h3 class="product-expanded-title">THE FUTURE OF ENERGY TRADING</h3>
-                        <p class="product-expanded-text">Peer-to-peer energy commerce. Coming soon.</p>
-                        <span class="product-expanded-keyword">exchange</span>
+                        <h3 class="product-expanded-title" data-i18n="products.exchange.title">THE FUTURE OF ENERGY TRADING</h3>
+                        <p class="product-expanded-text" data-i18n="products.exchange.text">Peer-to-peer energy commerce. Coming soon.</p>
+                        <span class="product-expanded-keyword" data-i18n="products.exchange.keyword">exchange</span>
                     </div>
                 </button>
             </div>
         </div>
-        <p class="products-mission-text">One ecosystem. One mission. Accelerate the green transition.</p>
+        <p class="products-mission-text" data-i18n="products.mission">One ecosystem. One mission. Accelerate the green transition.</p>
     </section>
-    
+
     <section class="how-it-works-section">
-        <h2 class="how-it-works-title">HOW AITA WORKS</h2>
+        <h2 class="how-it-works-title" data-i18n="how.title">HOW AITA WORKS</h2>
         <div class="how-it-works-steps">
             <div class="how-it-works-step">
                 <div class="step-icon step-icon-1">1</div>
                 <div class="step-content">
-                    <h3 class="step-title">Submit or discover a project</h3>
-                    <p class="step-description">Developers upload new energy projects while investors explore verified opportunities.</p>
+                    <h3 class="step-title" data-i18n="how.step1.title">Submit or discover a project</h3>
+                    <p class="step-description" data-i18n="how.step1.desc">Developers upload new energy projects while investors explore verified opportunities.</p>
                 </div>
             </div>
             <div class="how-it-works-step">
                 <div class="step-icon step-icon-2">2</div>
                 <div class="step-content">
-                    <h3 class="step-title">Automated assessment & due diligence</h3>
-                    <p class="step-description">AI analyzes technical data, risks, financial models, and project feasibility.</p>
+                    <h3 class="step-title" data-i18n="how.step2.title">Automated assessment & due diligence</h3>
+                    <p class="step-description" data-i18n="how.step2.desc">AI analyzes technical data, risks, financial models, and project feasibility.</p>
                 </div>
             </div>
             <div class="how-it-works-step">
                 <div class="step-icon step-icon-3">3</div>
                 <div class="step-content">
-                    <h3 class="step-title">Financing & capital allocation</h3>
-                    <p class="step-description">Investors fund projects through a transparent, automated financial workflow.</p>
+                    <h3 class="step-title" data-i18n="how.step3.title">Financing & capital allocation</h3>
+                    <p class="step-description" data-i18n="how.step3.desc">Investors fund projects through a transparent, automated financial workflow.</p>
                 </div>
             </div>
             <div class="how-it-works-step">
                 <div class="step-icon step-icon-4">4</div>
                 <div class="step-content">
-                    <h3 class="step-title">Construction & EPC coordination</h3>
-                    <p class="step-description">AITA.Platform manages procurement, logistics, contracting, and onsite operations.</p>
+                    <h3 class="step-title" data-i18n="how.step4.title">Construction & EPC coordination</h3>
+                    <p class="step-description" data-i18n="how.step4.desc">AITA.Platform manages procurement, logistics, contracting, and onsite operations.</p>
                 </div>
             </div>
             <div class="how-it-works-step">
                 <div class="step-icon step-icon-5">5</div>
                 <div class="step-content">
-                    <h3 class="step-title">Real-time asset management</h3>
-                    <p class="step-description">AITA.Assets monitors energy production, performance KPIs, and BESS optimization.</p>
+                    <h3 class="step-title" data-i18n="how.step5.title">Real-time asset management</h3>
+                    <p class="step-description" data-i18n="how.step5.desc">AITA.Assets monitors energy production, performance KPIs, and BESS optimization.</p>
                 </div>
             </div>
             <div class="how-it-works-step">
                 <div class="step-icon step-icon-6">6</div>
                 <div class="step-content">
-                    <h3 class="step-title">Monetization & liquidity</h3>
-                    <p class="step-description">Tokenized assets become tradeable on AITA.Exchange, enabling global liquidity.</p>
+                    <h3 class="step-title" data-i18n="how.step6.title">Monetization & liquidity</h3>
+                    <p class="step-description" data-i18n="how.step6.desc">Tokenized assets become tradeable on AITA.Exchange, enabling global liquidity.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <section class="traction-section">
-        <h2 class="traction-title">TRACTION. SCALE. TRUST.</h2>
+        <h2 class="traction-title" data-i18n="traction.title">TRACTION. SCALE. TRUST.</h2>
         <div class="traction-stats">
             <div class="traction-stat-item">
                 <div class="traction-stat-number traction-stat-gw">12<span class="traction-stat-unit">GW</span></div>
-                <div class="traction-stat-description">Total Portfolio Of Projects</div>
+                <div class="traction-stat-description" data-i18n="traction.stat1.desc">Total Portfolio Of Projects</div>
             </div>
             <div class="traction-stat-item">
                 <div class="traction-stat-number traction-stat-percent">90<span class="traction-stat-unit">%</span></div>
-                <div class="traction-stat-description">Time Reduction (3+ Years → Months)</div>
+                <div class="traction-stat-description" data-i18n="traction.stat2.desc">Time Reduction (3+ Years → Months)</div>
             </div>
             <div class="traction-stat-item">
                 <div class="traction-stat-number traction-stat-partners">4<span class="traction-stat-unit">+</span></div>
-                <div class="traction-stat-description">Global Strategic Partners</div>
+                <div class="traction-stat-description" data-i18n="traction.stat3.desc">Global Strategic Partners</div>
             </div>
         </div>
     </section>
-    
+
     <section class="about-aita-section" aria-live="polite">
-        <h2 class="about-aita-title">OUR ROLE IN THE DIGITIZED ENERGY ECONOMY</h2>
+        <h2 class="about-aita-title" data-i18n="role.title">OUR ROLE IN THE DIGITIZED ENERGY ECONOMY</h2>
         <div class="about-aita-content">
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong class="role-heading role-heading-developers">FOR DEVELOPERS & EPCS</strong></div>
-                <div class="scrolling-line">Launch Faster. Build Smarter.</div>
-                <div class="scrolling-line">Automation, access to financing, supply chain optimization</div>
+                <div class="scrolling-line"><strong class="role-heading role-heading-developers" data-i18n="role.dev.heading">FOR DEVELOPERS & EPCS</strong></div>
+                <div class="scrolling-line" data-i18n="role.dev.line1">Launch Faster. Build Smarter.</div>
+                <div class="scrolling-line" data-i18n="role.dev.line2">Automation, access to financing, supply chain optimization</div>
             </div>
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong class="role-heading role-heading-investors">FOR INVESTORS</strong></div>
-                <div class="scrolling-line">Invest with Transparency, manage with Data</div>
-                <div class="scrolling-line">Real-time data, AI risk analysis, access to RWA</div>
+                <div class="scrolling-line"><strong class="role-heading role-heading-investors" data-i18n="role.inv.heading">FOR INVESTORS</strong></div>
+                <div class="scrolling-line" data-i18n="role.inv.line1">Invest with Transparency, manage with Data</div>
+                <div class="scrolling-line" data-i18n="role.inv.line2">Real-time data, AI risk analysis, access to RWA</div>
             </div>
             <div class="scrolling-text-block">
-                <div class="scrolling-line"><strong class="role-heading role-heading-partners">FOR PARTNERS & SUPPLIERS</strong></div>
-                <div class="scrolling-line">Integrate Seamlessly. Scale Predictably.</div>
-                <div class="scrolling-line">Supply chain integration, predictable demand, global market access.</div>
+                <div class="scrolling-line"><strong class="role-heading role-heading-partners" data-i18n="role.partner.heading">FOR PARTNERS & SUPPLIERS</strong></div>
+                <div class="scrolling-line" data-i18n="role.partner.line1">Integrate Seamlessly. Scale Predictably.</div>
+                <div class="scrolling-line" data-i18n="role.partner.line2">Supply chain integration, predictable demand, global market access.</div>
             </div>
         </div>
     </section>
-    
+
     <section class="ai-driven-section">
-        <h2 class="ai-driven-title">AI-DRIVEN. DATA-CENTRIC. TRANSPARENT.</h2>
+        <h2 class="ai-driven-title" data-i18n="ai.title">AI-DRIVEN. DATA-CENTRIC. TRANSPARENT.</h2>
         <div class="ai-driven-cards">
             <div class="ai-driven-card ai-driven-card-intelligence">
                 <div class="ai-driven-card-bg"></div>
-                <h3 class="ai-driven-card-title">THE INTELLIGENCE LAYER</h3>
-                <p class="ai-driven-card-text">AI is not a feature, but the core logic. It performs automatic due diligence, risk analysis, and optimizes business processes.</p>
+                <h3 class="ai-driven-card-title" data-i18n="ai.card1.title">THE INTELLIGENCE LAYER</h3>
+                <p class="ai-driven-card-text" data-i18n="ai.card1.text">AI is not a feature, but the core logic. It performs automatic due diligence, risk analysis, and optimizes business processes.</p>
             </div>
             <div class="ai-driven-card ai-driven-card-transparency">
                 <div class="ai-driven-card-bg"></div>
-                <h3 class="ai-driven-card-title">UNBREAKABLE TRANSPARENCY</h3>
-                <p class="ai-driven-card-text">Investors see how the asset really works before they buy it. Real-time integration with EMS/SCADA systems.</p>
+                <h3 class="ai-driven-card-title" data-i18n="ai.card2.title">UNBREAKABLE TRANSPARENCY</h3>
+                <p class="ai-driven-card-text" data-i18n="ai.card2.text">Investors see how the asset really works before they buy it. Real-time integration with EMS/SCADA systems.</p>
             </div>
             <div class="ai-driven-card ai-driven-card-intelligence-bottom">
                 <div class="ai-driven-card-bg"></div>
-                <h3 class="ai-driven-card-title">Future of Energy Finance</h3>
-                <p class="ai-driven-card-text">Preparing for tokenization of energy projects (RWA) to provide regulated,<br>liquid access for retail investors.</p>
+                <h3 class="ai-driven-card-title" data-i18n="ai.card3.title">Future of Energy Finance</h3>
+                <p class="ai-driven-card-text" data-i18n="ai.card3.text">Preparing for tokenization of energy projects (RWA) to provide regulated,<br>liquid access for retail investors.</p>
             </div>
         </div>
     </section>
 
     <section class="team-section" id="team">
-        <h2 class="team-title">OUR TEAM</h2>
+        <h2 class="team-title" data-i18n="team.title">OUR TEAM</h2>
 
         <div class="team-leaders">
             <div class="team-leaders-photos">
@@ -351,14 +363,14 @@
                     <img src="images/team/dima 1.png" alt="Dmytro Mekhed" class="team-leader-photo">
                     <div class="team-leader-info">
                         <h3 class="team-leader-name">DMYTRO<br>MEKHED</h3>
-                        <p class="team-leader-role">Co-CEO & Chief Architect</p>
+                        <p class="team-leader-role" data-i18n="team.role1">Co-CEO & Chief Architect</p>
                     </div>
                 </div>
                 <div class="team-leader">
                     <img src="images/team/ivan 1.png" alt="Ivan Shumlianskyi" class="team-leader-photo">
                     <div class="team-leader-info">
                         <h3 class="team-leader-name">IVAN<br>SHUMLIANSKYI</h3>
-                        <p class="team-leader-role">Co-CEO & Co-Founder</p>
+                        <p class="team-leader-role" data-i18n="team.role2">Co-CEO & Co-Founder</p>
                     </div>
                 </div>
             </div>
@@ -372,7 +384,7 @@
                     </div>
                 </div>
                 <span class="team-member-name">Yulia B.</span>
-                <span class="team-member-role">PR &<br>Communications<br>Manager</span>
+                <span class="team-member-role" data-i18n="team.yulia.role">PR &<br>Communications<br>Manager</span>
             </div>
             <div class="team-member">
                 <div class="team-avatar-ring">
@@ -381,7 +393,7 @@
                     </div>
                 </div>
                 <span class="team-member-name">Marina B.</span>
-                <span class="team-member-role">Business<br>Development<br>Manager</span>
+                <span class="team-member-role" data-i18n="team.marina.role">Business<br>Development<br>Manager</span>
             </div>
             <div class="team-member">
                 <div class="team-avatar-ring">
@@ -390,7 +402,7 @@
                     </div>
                 </div>
                 <span class="team-member-name">Daniel M.</span>
-                <span class="team-member-role">Head of<br>sales</span>
+                <span class="team-member-role" data-i18n="team.daniel.role">Head of<br>sales</span>
             </div>
             <div class="team-member">
                 <div class="team-avatar-ring">
@@ -399,50 +411,50 @@
                     </div>
                 </div>
                 <span class="team-member-name">Sergiy D.</span>
-                <span class="team-member-role">Senior<br>Developer</span>
+                <span class="team-member-role" data-i18n="team.sergiy.role">Senior<br>Developer</span>
             </div>
         </div>
     </section>
 
     <section class="contact-section" id="contact">
-        <h2 class="contact-title">Ready to Build the Future of Energy?</h2>
+        <h2 class="contact-title" data-i18n="contact.title">Ready to Build the Future of Energy?</h2>
         <form class="contact-form" id="contact-form">
             <div class="form-group">
-                <label for="name" class="form-label">Name <span class="required">*</span></label>
+                <label for="name" class="form-label" data-i18n="contact.name.label">Name <span class="required">*</span></label>
                 <input type="text" id="name" name="name" class="form-input" required>
             </div>
             <div class="form-group">
-                <label for="contact" class="form-label">Phone or Email <span class="required">*</span></label>
+                <label for="contact" class="form-label" data-i18n="contact.contact.label">Phone or Email <span class="required">*</span></label>
                 <input type="text" id="contact" name="contact" class="form-input" required>
             </div>
             <div class="form-group">
-                <label for="message" class="form-label">Message</label>
+                <label for="message" class="form-label" data-i18n="contact.message.label">Message</label>
                 <textarea id="message" name="message" class="form-textarea" rows="5"></textarea>
             </div>
-            <button type="submit" class="form-submit">Submit</button>
+            <button type="submit" class="form-submit" data-i18n="contact.submit">Submit</button>
         </form>
     </section>
-    
+
     <footer class="footer-section">
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-column footer-main">
-                    <h3 class="footer-title">Contact</h3>
+                    <h3 class="footer-title" data-i18n="footer.contact">Contact</h3>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-label">Email:</span>
+                        <span class="footer-contact-label" data-i18n="footer.email">Email:</span>
                         <a href="mailto:info@aita.world" class="footer-link">info@aita.world</a>
                     </div>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-label">Phone:</span>
+                        <span class="footer-contact-label" data-i18n="footer.phone">Phone:</span>
                         <a href="tel:+34695526230" class="footer-link">+34 695 526 230</a>
                     </div>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-label">Address:</span>
-                        <span class="footer-text">Bilbao, Basque Country, Spain</span>
+                        <span class="footer-contact-label" data-i18n="footer.address">Address:</span>
+                        <span class="footer-text" data-i18n="footer.address.value">Bilbao, Basque Country, Spain</span>
                     </div>
-                    
+
                     <div class="footer-social-wrapper">
-                        <h3 class="footer-title footer-social-title">Social Media</h3>
+                        <h3 class="footer-title footer-social-title" data-i18n="footer.social">Social Media</h3>
                         <div class="footer-social-links">
                             <a href="https://www.linkedin.com/company/aitaworld/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -469,11 +481,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copyright">&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a></p>
+                <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
-    
+
     <button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -481,4 +493,3 @@
     </button>
 </body>
 </html>
-

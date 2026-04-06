@@ -400,11 +400,12 @@ body {
     font-family: 'Golos Text', sans-serif;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: var(--space-section-gap);
+    overflow: hidden;
 }
 
 /* # Заголовок секції - "THE CLIMATE CRISIS IS REAL" */
 .climate-title {
-    font-size: 48pt;
+    font-size: clamp(28pt, 5vw, 48pt);
     font-weight: 600;
     text-align: center;
     margin-bottom: 20px;
@@ -428,25 +429,26 @@ body {
 /* # Контейнер зі статистикою - три блоки з цифрами */
 .climate-stats {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: var(--space-block-gap-lg);
-    flex-wrap: wrap;
+    gap: var(--space-block-gap-md);
+    flex-wrap: nowrap;
     padding-left: 0;
 }
 
 /* # Окремий статистичний блок - кожен з трьох елементів */
 .stat-item {
-    flex: 0 0 auto;
+    flex: 1 1 0;
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-width: 0;
 }
 
 /* # Числа/текст у статистиці - великі градієнтні цифри */
 .stat-number {
-    font-size: 126.5px;
+    font-size: clamp(60px, 8.5vw, 126.5px);
     font-weight: 800;
     font-family: 'Golos Text', sans-serif;
     line-height: 1;
@@ -477,7 +479,7 @@ body {
 
 /* # Погода - градієнт для "EXTREME WEATHER" (зелено-жовтий), на двох рядках */
 .stat-weather {
-    font-size: 59.8px;
+    font-size: clamp(28px, 3.8vw, 59.8px);
     background-image: linear-gradient(to right, #6bcf7f, #ffd93d);
     letter-spacing: -0.01em;
     font-weight: 800;
@@ -3018,5 +3020,109 @@ body {
 
     .team-member-role {
         font-size: 12px;
+    }
+}
+
+/* # Language Switcher */
+.lang-switcher {
+    position: relative;
+    z-index: 1001;
+}
+
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-family: 'Golos Text', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.lang-toggle:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-arrow {
+    transition: transform 0.3s ease;
+}
+
+.lang-switcher.open .lang-arrow {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    min-width: 60px;
+}
+
+.lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Golos Text', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.lang-option.active {
+    color: #00e676;
+}
+
+/* Mobile language switcher */
+@media (max-width: 768px) {
+    .lang-switcher {
+        margin-top: 16px;
+        align-self: center;
+    }
+
+    .lang-toggle {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .lang-dropdown {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+    }
+
+    .lang-switcher.open .lang-dropdown {
+        transform: translateX(-50%) translateY(0);
     }
 }

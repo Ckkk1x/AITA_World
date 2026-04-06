@@ -507,7 +507,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Показуємо стан завантаження
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'Sending...';
+                const currentLang = localStorage.getItem('aita-lang') || 'en';
+                submitButton.textContent = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang]['contact.sending'] : 'Sending...';
                 submitButton.style.opacity = '0.6';
             }
             
