@@ -2865,6 +2865,10 @@ a.team-member {
     object-position: bottom center;
 }
 
+.team-leader:nth-child(2) .team-leader-photo {
+    object-position: center 58%;
+}
+
 .team-leader-info {
     position: absolute;
     bottom: 8px;
