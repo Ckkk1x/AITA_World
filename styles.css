@@ -2865,8 +2865,16 @@ a.team-member {
     object-position: bottom center;
 }
 
-.team-leader:nth-child(2) .team-leader-photo {
-    object-position: center 58%;
+.team-leader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, #000);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .team-leader-info {
