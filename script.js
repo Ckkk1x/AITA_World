@@ -490,20 +490,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обробка контактної форми
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        const WEBHOOK_URL = 'https://dmekhed.app.n8n.cloud/webhook/3830db74-e1bc-4c2d-bf18-57396c3df377';
-        
+        const WEBHOOK_URL = 'https://n8n-prod.aita.today/webhook/universal-form';
+
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const formData = new FormData(contactForm);
             const name = formData.get('name');
             const contact = formData.get('contact');
             const message = formData.get('message');
-            
+
             // Отримуємо кнопку відправки для показу стану завантаження
             const submitButton = contactForm.querySelector('.form-submit');
             const originalButtonText = submitButton ? submitButton.textContent : 'Submit';
-            
+
             // Показуємо стан завантаження
             if (submitButton) {
                 submitButton.disabled = true;
@@ -511,10 +511,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.textContent = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang]['contact.sending'] : 'Sending...';
                 submitButton.style.opacity = '0.6';
             }
-            
+
             // Перенаправляємо на сторінку подяки після спроби відправки
             const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
-            
+
             try {
                 // Відправляємо POST запит на webhook
                 const response = await fetch(WEBHOOK_URL, {
@@ -523,9 +523,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        source: 'aita-world-landing',
                         name: name,
                         contact: contact,
-                        message: message || ''
+                        extra: {
+                            message: message || ''
+                        }
                     })
                 });
                 

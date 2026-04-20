@@ -1279,12 +1279,6 @@
         <script>
         // Lead form — webhook to n8n → MailerLite
         (function () {
-            var ROLE_TO_GROUP = {
-                'Developer': '180386600201488235',
-                'Investor':  '180386618368066920',
-                'Supplier':  '180386631442761377',
-                'Hybrid':    '180386647456614182'
-            };
             var form = document.getElementById('lead-form');
             var statusEl = document.getElementById('lead-form-status');
             var submitBtn = document.getElementById('lead-form-btn');
@@ -1298,23 +1292,27 @@
                 e.preventDefault();
                 var fd = new FormData(form);
                 var role = String(fd.get('role') || '').trim();
+                var email = String(fd.get('email') || '').trim();
+                var name  = String(fd.get('name')  || '').trim();
                 var payload = {
-                    email: String(fd.get('email') || '').trim(),
-                    name:  String(fd.get('name')  || '').trim(),
-                    role:  role,
-                    source: 'PowerConnect2026',
-                    mailerLiteGroupId: ROLE_TO_GROUP[role] || ''
+                    source: 'powerconnect2026-form',
+                    email: email,
+                    name:  name,
+                    extra: {
+                        role: role,
+                        origin: 'PowerConnect2026'
+                    }
                 };
 
                 if (!payload.email) { setStatus('Email is required.', 'error'); return; }
-                if (!payload.mailerLiteGroupId) { setStatus('Please select a role.', 'error'); return; }
+                if (!role) { setStatus('Please select a role.', 'error'); return; }
 
                 submitBtn.disabled = true;
                 setStatus('Sending…', '');
 
                 try {
                     var res = await fetch(
-                        'https://dmekhed.app.n8n.cloud/webhook/aita-form-to-lead-mailerlite',
+                        'https://n8n-prod.aita.today/webhook/universal-form',
                         { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }
                     );
                     var data = {};
@@ -1339,8 +1337,16 @@
 
             try {
                 await fetch(
-                    'https://dmekhed.app.n8n.cloud/webhook-test/powerconnect2026-datasheet-lead',
-                    { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: email, source: 'PowerConnect2026-Datasheet' }) }
+                    'https://n8n-prod.aita.today/webhook/universal-form',
+                    {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify({
+                            source: 'powerconnect2026-datasheet',
+                            email: email,
+                            extra: { origin: 'PowerConnect2026-Datasheet' }
+                        })
+                    }
                 );
             } catch (err) {
                 console.error('Datasheet lead webhook error:', err);
