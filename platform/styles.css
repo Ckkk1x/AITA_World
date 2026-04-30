@@ -1,0 +1,1062 @@
+/* =====================================================
+   AITA PLATFORM LANDING — Styles
+   Based on AITA Visual Language
+   ===================================================== */
+
+/* # Platform-specific section styles */
+.pl-section {
+    max-width: var(--section-max-width);
+    margin: 0 auto;
+    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    font-family: 'Golos Text', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--space-section-gap);
+}
+
+.pl-section:first-of-type {
+    border-top: none;
+}
+
+/* # Section titles */
+.pl-title {
+    font-size: clamp(28pt, 5vw, 48pt);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+}
+
+.pl-title-full {
+    opacity: 1;
+}
+
+.pl-subtitle {
+    font-size: 14pt;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 20px;
+    font-weight: 400;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+.pl-hero {
+    border-top: none;
+    margin-top: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 120px;
+}
+
+.pl-hero-headline {
+    font-size: clamp(28pt, 5vw, 48pt);
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px 0;
+    max-width: 900px;
+}
+
+.pl-hero-sub {
+    font-size: clamp(12pt, 2vw, 16pt);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+    max-width: 700px;
+}
+
+.pl-hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pl-trust-bar {
+    display: flex;
+    gap: var(--space-block-gap-lg);
+    justify-content: center;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.pl-trust-item {
+    text-align: center;
+}
+
+.pl-trust-number {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    line-height: 1;
+}
+
+.pl-trust-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* =====================================================
+   CTA BUTTONS
+   ===================================================== */
+.pl-btn {
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Golos Text', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+
+.pl-btn-primary {
+    background: #ffffff;
+    color: #000000;
+}
+
+.pl-btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.pl-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pl-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   PROBLEM SECTION
+   ===================================================== */
+.pl-problems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-block-gap-md);
+    margin-top: var(--space-block-gap-lg);
+}
+
+.pl-problem-card {
+    padding: var(--space-block-gap-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pl-problem-icon {
+    margin-bottom: 16px;
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.pl-problem-title {
+    font-size: 16pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+}
+
+.pl-problem-text {
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =====================================================
+   MONETIZATION / 3 STEPS
+   ===================================================== */
+.pl-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-block-gap-md);
+    margin-top: var(--space-block-gap-lg);
+}
+
+.pl-step-card {
+    padding: var(--space-block-gap-md);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.pl-step-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.pl-step-card-1::after {
+    background: linear-gradient(135deg, rgba(57, 181, 74, 0.1), transparent);
+}
+
+.pl-step-card-2::after {
+    background: linear-gradient(135deg, rgba(0, 134, 204, 0.1), transparent);
+}
+
+.pl-step-card-3::after {
+    background: linear-gradient(135deg, rgba(133, 36, 216, 0.1), transparent);
+}
+
+.pl-step-number {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 16px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pl-step-card-1 .pl-step-number {
+    background-image: linear-gradient(to right, #39b54a, #4fc85d);
+}
+
+.pl-step-card-2 .pl-step-number {
+    background-image: linear-gradient(to right, #0086cc, #1a9de6);
+}
+
+.pl-step-card-3 .pl-step-number {
+    background-image: linear-gradient(to right, #8524d8, #9a3ee8);
+}
+
+.pl-step-title {
+    font-size: 16pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+.pl-step-text {
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0 0 12px 0;
+}
+
+.pl-step-quote {
+    font-size: 12pt;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =====================================================
+   MODULE CARDS (What You Get Now & Full Platform)
+   ===================================================== */
+.pl-modules {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-block-gap-lg);
+    margin-top: var(--space-block-gap-lg);
+}
+
+.pl-module {
+    padding: var(--space-block-gap-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--card-radius);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pl-module-header {
+    margin-bottom: var(--space-block-gap-md);
+}
+
+.pl-module-title {
+    font-size: clamp(18pt, 3vw, 24pt);
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.pl-module-desc {
+    font-size: 14pt;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.pl-module-capabilities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.pl-module-capabilities li {
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    padding-left: 20px;
+    position: relative;
+}
+
+.pl-module-capabilities li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #39b54a;
+}
+
+/* =====================================================
+   FULL PLATFORM MODULE GRID
+   ===================================================== */
+.pl-module-group {
+    margin-top: var(--space-block-gap-lg);
+}
+
+.pl-module-group-title {
+    font-size: 14pt;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 var(--space-block-gap-md) 0;
+}
+
+.pl-mini-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.pl-mini-card {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pl-mini-card-name {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+}
+
+.pl-mini-card-desc {
+    font-size: 12pt;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.pl-coming-soon {
+    opacity: 0.5;
+    border-style: dashed;
+}
+
+/* =====================================================
+   LIFECYCLE TIMELINE
+   ===================================================== */
+.pl-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: var(--space-block-gap-lg);
+    position: relative;
+}
+
+.pl-timeline::before {
+    content: '';
+    position: absolute;
+    left: 35px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #39b54a, #0086cc, #8524d8, #d62828);
+}
+
+.pl-timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-block-gap-md);
+    padding: 20px 0;
+    position: relative;
+}
+
+.pl-timeline-number {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    background: #000000;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pl-timeline-content {
+    flex: 1;
+    padding-top: 14px;
+}
+
+.pl-timeline-phase {
+    font-size: 11pt;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 4px 0;
+}
+
+.pl-timeline-stage {
+    font-size: 16pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+}
+
+.pl-timeline-desc {
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.pl-timeline-message {
+    text-align: center;
+    margin-top: var(--space-block-gap-lg);
+    font-size: 16pt;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* =====================================================
+   PRICING TABLE
+   ===================================================== */
+.pl-pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-block-gap-lg);
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-pricing-table th,
+.pl-pricing-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pl-pricing-table th {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14pt;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pl-pricing-table th:first-child,
+.pl-pricing-table td:first-child {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+.pl-pricing-highlight {
+    background: rgba(57, 181, 74, 0.05);
+}
+
+.pl-pricing-note {
+    text-align: center;
+    margin-top: var(--space-block-gap-md);
+    font-size: 14pt;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.pl-pricing-note strong {
+    color: #ffffff;
+}
+
+/* =====================================================
+   WHO IT'S FOR (Persona cards)
+   ===================================================== */
+.pl-personas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-block-gap-md);
+    margin-top: var(--space-block-gap-lg);
+}
+
+.pl-persona {
+    padding: var(--space-block-gap-md);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pl-persona-role {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+}
+
+.pl-persona-quote {
+    font-size: 14pt;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+}
+
+.pl-persona-uses {
+    font-size: 12pt;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 8px 0;
+}
+
+.pl-persona-result {
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* =====================================================
+   COMPARISON TABLE
+   ===================================================== */
+.pl-comparison {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-block-gap-lg);
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-comparison th,
+.pl-comparison td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pl-comparison th {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14pt;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pl-comparison td:first-child {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+.pl-comparison td:last-child {
+    color: #ffffff;
+}
+
+/* =====================================================
+   FAQ
+   ===================================================== */
+.pl-faq {
+    max-width: 800px;
+    margin: var(--space-block-gap-lg) auto 0;
+}
+
+.pl-faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pl-faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 14pt;
+    font-weight: 600;
+    font-family: 'Golos Text', sans-serif;
+    text-align: left;
+    padding: 24px 40px 24px 0;
+    cursor: pointer;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+.pl-faq-question:hover {
+    opacity: 0.8;
+}
+
+.pl-faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.pl-faq-item.open .pl-faq-question::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.pl-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.pl-faq-item.open .pl-faq-answer {
+    max-height: 300px;
+}
+
+.pl-faq-answer p {
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin: 0;
+    padding-bottom: 24px;
+}
+
+/* =====================================================
+   CONTACT FORM
+   ===================================================== */
+.pl-form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: var(--space-block-gap-lg);
+}
+
+.pl-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.pl-form-subtitle {
+    text-align: center;
+    margin-top: var(--space-block-gap-md);
+    font-size: 13pt;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pl-form-subtitle a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.pl-select {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14pt;
+    font-weight: 400;
+    font-family: 'Golos Text', sans-serif;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+.pl-select:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.pl-select option {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* =====================================================
+   SECTION CTA (inline)
+   ===================================================== */
+.pl-section-cta {
+    text-align: center;
+    margin-top: var(--space-block-gap-lg);
+}
+
+/* =====================================================
+   CALCULATOR
+   ===================================================== */
+.pl-calc-card {
+    margin-top: var(--space-block-gap-lg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--card-radius);
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+.pl-calc-header {
+    padding: 32px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pl-calc-header h3 {
+    font-size: 20pt;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    font-family: 'Golos Text', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.pl-calc-header p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.pl-calc-body {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 0;
+}
+
+.pl-calc-controls {
+    padding: 32px 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pl-calc-control {
+    margin-bottom: 18px;
+}
+
+.pl-calc-control label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-calc-control label .v {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.pl-calc-control input[type="range"] {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.pl-calc-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+.pl-calc-control input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.15);
+}
+
+.pl-calc-control input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.pl-calc-separator {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pl-calc-eng-label {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.pl-calc-tier-toggle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.pl-calc-tier-toggle button {
+    padding: 10px 4px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    font-family: 'Golos Text', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pl-calc-tier-toggle button:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+.pl-calc-tier-toggle button.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.pl-calc-results {
+    padding: 32px 32px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.pl-calc-result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-calc-result-row:last-of-type {
+    border-bottom: none;
+}
+
+.pl-calc-result-row .v {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.pl-calc-result-total {
+    margin-top: 16px;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+}
+
+.pl-calc-result-total .label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 6px;
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-calc-result-total .val {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-calc-result-total .val .per {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.pl-calc-success {
+    border-color: rgba(214, 40, 40, 0.3);
+    margin-top: 12px;
+}
+
+.pl-calc-success .val {
+    color: #ffffff;
+}
+
+.pl-calc-am {
+    border-color: rgba(0, 134, 204, 0.3);
+    margin-top: 12px;
+}
+
+.pl-calc-am .val {
+    color: #ffffff;
+}
+
+.pl-calc-eng {
+    border-color: rgba(133, 36, 216, 0.3);
+    margin-top: 12px;
+}
+
+.pl-calc-eng .val {
+    color: #ffffff;
+}
+
+.pl-calc-note {
+    margin-top: 20px;
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.25);
+    line-height: 1.6;
+    font-family: 'Golos Text', sans-serif;
+}
+
+.pl-calc-note strong {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+    .pl-hero {
+        padding-top: 100px;
+        min-height: auto;
+        padding-bottom: 60px;
+    }
+
+    .pl-problems {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-module-capabilities {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-mini-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-personas {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-pricing-table,
+    .pl-comparison {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pl-hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pl-btn {
+        text-align: center;
+    }
+
+    .pl-trust-bar {
+        gap: var(--space-block-gap-md);
+    }
+
+    .pl-timeline::before {
+        left: 25px;
+    }
+
+    .pl-timeline-number {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .pl-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-calc-body {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-calc-controls {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px;
+    }
+
+    .pl-calc-results {
+        padding: 20px;
+    }
+
+    .pl-calc-header {
+        padding: 20px;
+    }
+}
