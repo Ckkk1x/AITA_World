@@ -146,7 +146,7 @@ const translations = {
         "pl.nav.try": "Try the platform",
 
         // Platform Landing - Hero
-        "pl.hero.label": "AITA Platform",
+        "pl.hero.label": "For developers, EPCs, IPPs",
         "pl.hero.headline": "One platform for the entire lifecycle of your energy project",
         "pl.hero.sub": "From first client to operating asset — 10 stages, 28+ modules, one system",
         "pl.hero.cta.primary": "Try the platform",
@@ -505,8 +505,7 @@ const translations = {
         "pl.feat.tasks": "Kanban, dependencies, entity linking. Built for energy workflows.",
         "pl.feat.chat": "Real-time messaging linked to every project and deal.",
         "pl.feat.dataroom": "Secure documents with granular access. Per project, SPV, deal.",
-        "pl.feat.ai.title": "AI Copilot",
-        "pl.feat.ai.desc": "50+ tools, RAG search, persistent memory. @AITA in any room.",
+        "pl.feat.company": "Team, roles, and access control. One company, many workspaces.",
         "pl.full.label": "Full platform",
         "pl.full.title2": "28+ modules. One lifecycle.",
         "pl.full.solar.desc2": "AI-powered 3D CAD with regulator-ready output",
@@ -694,6 +693,7 @@ const translations = {
         "pl.nav.try": "Спробувати платформу",
 
         // Platform Landing - Hero
+        "pl.hero.label": "Для девелоперів, EPC, IPP",
         "pl.hero.headline": "Одна платформа для всього життєвого циклу вашого енергетичного проєкту",
         "pl.hero.sub": "Від першого клієнта до працюючого активу — 10 етапів, 28+ модулів, одна система",
         "pl.hero.cta.primary": "Спробувати платформу",
@@ -1052,8 +1052,7 @@ const translations = {
         "pl.feat.tasks": "Kanban, залежності, прив'язка до сутностей. Створено для енергетики.",
         "pl.feat.chat": "Повідомлення в реальному часі, прив'язані до кожного проєкту та угоди.",
         "pl.feat.dataroom": "Безпечні документи з гранулярним доступом. По проєкту, SPV, угоді.",
-        "pl.feat.ai.title": "AI Copilot",
-        "pl.feat.ai.desc": "50+ інструментів, RAG-пошук, постійна пам'ять. @AITA в будь-якій кімнаті.",
+        "pl.feat.company": "Команда, ролі, контроль доступу. Одна компанія — багато воркспейсів.",
         "pl.full.label": "Повна платформа",
         "pl.full.title2": "28+ модулів. Один цикл.",
         "pl.full.solar.desc2": "AI-3D CAD з виходом для регулятора",
@@ -1241,6 +1240,7 @@ const translations = {
         "pl.nav.try": "Probar la plataforma",
 
         // Platform Landing - Hero
+        "pl.hero.label": "Para developers, EPCs, IPPs",
         "pl.hero.headline": "Una plataforma para todo el ciclo de vida de tu proyecto energético",
         "pl.hero.sub": "Del primer cliente al activo en operación — 10 etapas, 28+ módulos, un sistema",
         "pl.hero.cta.primary": "Probar la plataforma",
@@ -1599,8 +1599,7 @@ const translations = {
         "pl.feat.tasks": "Kanban, dependencias, vinculación a entidades. Para flujos energéticos.",
         "pl.feat.chat": "Mensajería en tiempo real vinculada a cada proyecto y acuerdo.",
         "pl.feat.dataroom": "Documentos seguros con acceso granular. Por proyecto, SPV, acuerdo.",
-        "pl.feat.ai.title": "AI Copilot",
-        "pl.feat.ai.desc": "50+ herramientas, búsqueda RAG, memoria persistente. @AITA en cualquier sala.",
+        "pl.feat.company": "Equipo, roles y control de acceso. Una empresa, muchos workspaces.",
         "pl.full.label": "Plataforma completa",
         "pl.full.title2": "28+ módulos. Un ciclo de vida.",
         "pl.full.solar.desc2": "CAD 3D con IA y salida para regulador",

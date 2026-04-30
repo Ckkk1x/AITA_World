@@ -13,6 +13,10 @@
     font-family: 'Golos Text', sans-serif;
 }
 
+.pl-section-tight {
+    padding-top: 48px;
+}
+
 /* # Section label (small uppercase above title) */
 .pl-label {
     font-size: 13px;
@@ -69,7 +73,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.55);
     margin: 0 0 24px 0;
 }
 
@@ -207,7 +211,7 @@
 
 .pl-chips {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -353,19 +357,18 @@
 /* =====================================================
    WHY AITA (compare grid)
    ===================================================== */
-.pl-compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
+.pl-compare-list {
     margin-top: 64px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.pl-compare-item {
-    padding: 32px;
-    background: #000000;
+.pl-compare-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 24px 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pl-compare-label {
@@ -373,20 +376,27 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.3);
-    margin: 0 0 16px 0;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
 }
 
 .pl-compare-old {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.3);
-    margin: 0 0 6px 0;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0;
     text-decoration: line-through;
-    text-decoration-color: rgba(255, 255, 255, 0.15);
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+}
+
+.pl-compare-arrow {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    user-select: none;
 }
 
 .pl-compare-new {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #ffffff;
     margin: 0;
@@ -740,10 +750,32 @@
         padding-top: 80px;
     }
 
+    .pl-section-tight {
+        padding-top: 32px;
+    }
+
     .pl-hero {
         padding-top: 100px;
-        min-height: auto;
-        padding-bottom: 60px;
+        min-height: 100vh;
+        padding-bottom: 80px;
+        position: relative;
+    }
+
+    .pl-hero::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 160px;
+        background: linear-gradient(to bottom, transparent, #000);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .pl-hero > * {
+        position: relative;
+        z-index: 1;
     }
 
     .pl-grid-6 {
@@ -763,8 +795,22 @@
         min-width: auto;
     }
 
-    .pl-compare-grid {
+    .pl-compare-row {
         grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 16px 0;
+    }
+
+    .pl-compare-arrow {
+        display: none;
+    }
+
+    .pl-compare-old {
+        font-size: 13px;
+    }
+
+    .pl-compare-new {
+        font-size: 16px;
     }
 
     .pl-pricing-table {

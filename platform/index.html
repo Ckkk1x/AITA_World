@@ -51,7 +51,7 @@
 
     <!-- HERO -->
     <section class="pl-section pl-hero">
-        <p class="pl-hero-label" data-i18n="pl.hero.label">AITA Platform</p>
+        <p class="pl-hero-label" data-i18n="pl.hero.label">For developers, EPCs, IPPs</p>
         <h1 class="pl-hero-headline" data-i18n="pl.hero.headline">One platform for the entire lifecycle of your energy project</h1>
         <p class="pl-hero-sub" data-i18n="pl.hero.sub">From first client to operating asset — 10 stages, 28+ modules, one system</p>
         <div class="pl-hero-ctas">
@@ -102,10 +102,10 @@
             </div>
             <div class="pl-feature-card">
                 <div class="pl-feature-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m17.36-5.64l-4.24 4.24M9.88 14.12l-4.24 4.24m0-12.72l4.24 4.24m4.24 4.24l4.24 4.24"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
                 </div>
-                <h3 class="pl-feature-name" data-i18n="pl.feat.ai.title">AI Copilot</h3>
-                <p class="pl-feature-desc" data-i18n="pl.feat.ai.desc">50+ tools, RAG search, persistent memory. @AITA in any room.</p>
+                <h3 class="pl-feature-name" data-i18n="pl.modules.company.title">Company</h3>
+                <p class="pl-feature-desc" data-i18n="pl.feat.company">Team, roles, and access control. One company, many workspaces.</p>
             </div>
         </div>
     </section>
@@ -196,8 +196,7 @@
     </section>
 
     <!-- PRICING -->
-    <section class="pl-section" id="pricing">
-        <p class="pl-label" data-i18n="pl.pricing.label">Plans</p>
+    <section class="pl-section pl-section-tight" id="pricing">
         <h2 class="pl-title" data-i18n="pl.pricing.title2">Start free. Scale as you grow.</h2>
 
         <table class="pl-pricing-table">
@@ -380,25 +379,29 @@
         <p class="pl-label" data-i18n="pl.why.label">Why switch</p>
         <h2 class="pl-title" data-i18n="pl.why.title2">Replace 5-8 tools with one.</h2>
 
-        <div class="pl-compare-grid">
-            <div class="pl-compare-item">
+        <div class="pl-compare-list">
+            <div class="pl-compare-row">
                 <p class="pl-compare-label" data-i18n="pl.why.row.eng">Engineering cost</p>
                 <p class="pl-compare-old" data-i18n="pl.why.traditional.eng">EUR 7-11K per MW</p>
+                <span class="pl-compare-arrow" aria-hidden="true">→</span>
                 <p class="pl-compare-new" data-i18n="pl.why.new.eng">Near-zero with AI</p>
             </div>
-            <div class="pl-compare-item">
+            <div class="pl-compare-row">
                 <p class="pl-compare-label" data-i18n="pl.why.row.broker">Broker fees</p>
                 <p class="pl-compare-old" data-i18n="pl.why.traditional.broker">5-7%</p>
+                <span class="pl-compare-arrow" aria-hidden="true">→</span>
                 <p class="pl-compare-new" data-i18n="pl.why.new.broker">2.5-3.5%</p>
             </div>
-            <div class="pl-compare-item">
+            <div class="pl-compare-row">
                 <p class="pl-compare-label" data-i18n="pl.why.row.transparency">Cost transparency</p>
                 <p class="pl-compare-old" data-i18n="pl.why.traditional.transparency">Invoices after the fact</p>
+                <span class="pl-compare-arrow" aria-hidden="true">→</span>
                 <p class="pl-compare-new" data-i18n="pl.why.new.transparency">Real-time per action</p>
             </div>
-            <div class="pl-compare-item">
+            <div class="pl-compare-row">
                 <p class="pl-compare-label" data-i18n="pl.why.row.continuity">Project continuity</p>
                 <p class="pl-compare-old" data-i18n="pl.why.traditional.continuity">Each stage starts from scratch</p>
+                <span class="pl-compare-arrow" aria-hidden="true">→</span>
                 <p class="pl-compare-new" data-i18n="pl.why.new.continuity">One system, idea to exit</p>
             </div>
         </div>
@@ -409,14 +412,14 @@
         <p class="pl-label">FAQ</p>
         <h2 class="pl-title" data-i18n="pl.faq.title2">Questions & answers</h2>
         <div class="pl-faq">
-            <div class="pl-faq-item">
-                <button class="pl-faq-question" data-i18n="pl.faq.1.q">What do I get when I start?</button>
+            <div class="pl-faq-item open">
+                <button class="pl-faq-question" data-i18n="pl.faq.1.q" aria-expanded="true">What do I get when I start?</button>
                 <div class="pl-faq-answer">
                     <p data-i18n="pl.faq.1.a">Access to CRM, Tasks, Chat, Data Room, and Projects. Your team can start working immediately. Full module access (Solar Design, Deal Room, SPV, and 20+ more) available in test mode on request.</p>
                 </div>
             </div>
-            <div class="pl-faq-item">
-                <button class="pl-faq-question" data-i18n="pl.faq.2.q">How do credits work?</button>
+            <div class="pl-faq-item open">
+                <button class="pl-faq-question" data-i18n="pl.faq.2.q" aria-expanded="true">How do credits work?</button>
                 <div class="pl-faq-answer">
                     <p data-i18n="pl.faq.2.a">1 credit = EUR 1. Every action that uses resources (AI queries, compute, storage, external APIs) costs credits. You see the cost before the action. Your plan includes a monthly credit pool — go over it, pay the difference at your plan's markup rate.</p>
                 </div>
