@@ -2,11 +2,11 @@
    AITA PLATFORM LANDING — Linear-inspired minimal style
    ===================================================== */
 
-/* # Blobs — behind content */
+/* # Blobs — behind all content */
 .parallax-blob.parallax-blob-left,
 .parallax-blob.parallax-blob-right {
-    position: absolute;
-    z-index: 0;
+    position: fixed;
+    z-index: -1;
     pointer-events: none;
 }
 
