@@ -753,21 +753,6 @@
    RESPONSIVE
    ===================================================== */
 @media (max-width: 768px) {
-    .parallax-blob.parallax-blob-left,
-    .parallax-blob.parallax-blob-right {
-        width: 600px;
-        height: 500px;
-        filter: blur(60px);
-    }
-
-    .parallax-blob.parallax-blob-left {
-        left: -300px;
-    }
-
-    .parallax-blob.parallax-blob-right {
-        right: -250px;
-    }
-
     .pl-section {
         padding-top: 80px;
     }
