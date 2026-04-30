@@ -1,60 +1,59 @@
 /* =====================================================
-   AITA PLATFORM LANDING — Styles
-   Based on AITA Visual Language
+   AITA PLATFORM LANDING — Linear-inspired minimal style
    ===================================================== */
 
-/* # Platform-specific section styles */
+/* # Sections */
 .pl-section {
-    max-width: var(--section-max-width);
+    max-width: 1100px;
     margin: 0 auto;
-    padding: var(--space-section-top) var(--space-page-x) var(--space-section-bottom);
+    padding: 120px var(--space-page-x) 0;
     color: #ffffff;
     position: relative;
     z-index: 1;
     font-family: 'Golos Text', sans-serif;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: var(--space-section-gap);
 }
 
-.pl-section:first-of-type {
-    border-top: none;
+/* # Section label (small uppercase above title) */
+.pl-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    margin: 0 0 16px 0;
 }
 
 /* # Section titles */
 .pl-title {
-    font-size: clamp(28pt, 5vw, 48pt);
+    font-size: clamp(24px, 4vw, 44px);
     font-weight: 600;
     text-align: center;
-    margin-bottom: 0;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    margin: 0 auto;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
     color: #ffffff;
-    text-transform: uppercase;
-    position: relative;
-    opacity: 0.5;
+    max-width: 700px;
 }
 
 .pl-title-full {
-    opacity: 1;
+    max-width: 600px;
 }
 
 .pl-subtitle {
-    font-size: 14pt;
-    color: #ffffff;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
     text-align: center;
-    margin-bottom: 0;
-    margin-top: 20px;
+    margin: 16px auto 0;
     font-weight: 400;
-    opacity: 0.7;
     line-height: 1.6;
+    max-width: 500px;
 }
 
 /* =====================================================
-   HERO SECTION
+   HERO
    ===================================================== */
 .pl-hero {
-    border-top: none;
-    margin-top: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -62,76 +61,55 @@
     justify-content: center;
     text-align: center;
     padding-top: 120px;
+    padding-bottom: 80px;
+}
+
+.pl-hero-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0 24px 0;
 }
 
 .pl-hero-headline {
-    font-size: clamp(28pt, 5vw, 48pt);
+    font-size: clamp(32px, 5.5vw, 64px);
     font-weight: 600;
     color: #ffffff;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin: 0 0 20px 0;
-    max-width: 900px;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin: 0 0 24px 0;
+    max-width: 800px;
 }
 
 .pl-hero-sub {
-    font-size: clamp(12pt, 2vw, 16pt);
-    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(15px, 2vw, 18px);
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 400;
     line-height: 1.6;
-    margin: 0 0 40px 0;
-    max-width: 700px;
+    margin: 0 0 48px 0;
+    max-width: 550px;
 }
 
 .pl-hero-ctas {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.pl-trust-bar {
-    display: flex;
-    gap: var(--space-block-gap-lg);
-    justify-content: center;
-    margin-top: 60px;
-    flex-wrap: wrap;
-}
-
-.pl-trust-item {
-    text-align: center;
-}
-
-.pl-trust-number {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 800;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
-    line-height: 1;
-}
-
-.pl-trust-label {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 /* =====================================================
-   CTA BUTTONS
+   BUTTONS
    ===================================================== */
 .pl-btn {
-    padding: 16px 32px;
-    border-radius: 16px;
-    font-size: 16px;
-    font-weight: 400;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
     font-family: 'Golos Text', sans-serif;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     text-decoration: none;
     display: inline-block;
     border: none;
@@ -143,75 +121,139 @@
 }
 
 .pl-btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+    opacity: 0.85;
 }
 
 .pl-btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .pl-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
 }
 
 /* =====================================================
-   PROBLEM SECTION
+   FEATURE CARDS (6-grid)
    ===================================================== */
-.pl-problems {
+.pl-grid-6 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-block-gap-md);
-    margin-top: var(--space-block-gap-lg);
-}
-
-.pl-problem-card {
-    padding: var(--space-block-gap-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 64px;
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
 }
 
-.pl-problem-icon {
-    margin-bottom: 16px;
-    display: block;
-    color: rgba(255, 255, 255, 0.5);
+.pl-feature-card {
+    padding: 36px 32px;
+    background: #000000;
+    transition: background 0.2s ease;
 }
 
-.pl-problem-title {
-    font-size: 16pt;
+.pl-feature-card:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.pl-feature-icon {
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+}
+
+.pl-feature-name {
+    font-size: 17px;
     font-weight: 600;
     color: #ffffff;
     margin: 0 0 8px 0;
 }
 
-.pl-problem-text {
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.6);
+.pl-feature-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
     line-height: 1.6;
     margin: 0;
 }
 
 /* =====================================================
-   MONETIZATION / 3 STEPS
+   FULL PLATFORM — CHIPS LAYOUT
+   ===================================================== */
+.pl-chips-section {
+    margin-top: 64px;
+}
+
+.pl-chips-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.pl-chips-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    flex-shrink: 0;
+    min-width: 140px;
+}
+
+.pl-coming-label {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.pl-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.pl-chip {
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Golos Text', sans-serif;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.pl-chip:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.pl-chip-coming {
+    opacity: 0.35;
+    border-style: dashed;
+}
+
+.pl-section-cta {
+    text-align: center;
+    margin-top: 56px;
+}
+
+/* =====================================================
+   3 STEPS
    ===================================================== */
 .pl-steps-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-block-gap-md);
-    margin-top: var(--space-block-gap-lg);
+    gap: 1px;
+    margin-top: 64px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .pl-step-card {
-    padding: var(--space-block-gap-md);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 40px 32px;
+    background: #000000;
     position: relative;
-    overflow: hidden;
 }
 
 .pl-step-card::after {
@@ -221,27 +263,26 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 20px;
     z-index: -1;
 }
 
 .pl-step-card-1::after {
-    background: linear-gradient(135deg, rgba(57, 181, 74, 0.1), transparent);
+    background: linear-gradient(160deg, rgba(57, 181, 74, 0.06), transparent 60%);
 }
 
 .pl-step-card-2::after {
-    background: linear-gradient(135deg, rgba(0, 134, 204, 0.1), transparent);
+    background: linear-gradient(160deg, rgba(0, 134, 204, 0.06), transparent 60%);
 }
 
 .pl-step-card-3::after {
-    background: linear-gradient(135deg, rgba(133, 36, 216, 0.1), transparent);
+    background: linear-gradient(160deg, rgba(133, 36, 216, 0.06), transparent 60%);
 }
 
 .pl-step-number {
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 800;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -260,222 +301,17 @@
 }
 
 .pl-step-title {
-    font-size: 16pt;
+    font-size: 17px;
     font-weight: 600;
     color: #ffffff;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
 }
 
 .pl-step-text {
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
-    margin: 0 0 12px 0;
-}
-
-.pl-step-quote {
-    font-size: 12pt;
-    color: rgba(255, 255, 255, 0.5);
-    font-style: italic;
-    margin: 0;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* =====================================================
-   MODULE CARDS (What You Get Now & Full Platform)
-   ===================================================== */
-.pl-modules {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-block-gap-lg);
-    margin-top: var(--space-block-gap-lg);
-}
-
-.pl-module {
-    padding: var(--space-block-gap-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--card-radius);
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.pl-module-header {
-    margin-bottom: var(--space-block-gap-md);
-}
-
-.pl-module-title {
-    font-size: clamp(18pt, 3vw, 24pt);
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 12px 0;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-}
-
-.pl-module-desc {
-    font-size: 14pt;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
     line-height: 1.6;
     margin: 0;
-}
-
-.pl-module-capabilities {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.pl-module-capabilities li {
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.5;
-    padding-left: 20px;
-    position: relative;
-}
-
-.pl-module-capabilities li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #39b54a;
-}
-
-/* =====================================================
-   FULL PLATFORM MODULE GRID
-   ===================================================== */
-.pl-module-group {
-    margin-top: var(--space-block-gap-lg);
-}
-
-.pl-module-group-title {
-    font-size: 14pt;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 var(--space-block-gap-md) 0;
-}
-
-.pl-mini-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-.pl-mini-card {
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.pl-mini-card-name {
-    font-size: 14pt;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 6px 0;
-}
-
-.pl-mini-card-desc {
-    font-size: 12pt;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.5;
-    margin: 0;
-}
-
-.pl-coming-soon {
-    opacity: 0.5;
-    border-style: dashed;
-}
-
-/* =====================================================
-   LIFECYCLE TIMELINE
-   ===================================================== */
-.pl-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: var(--space-block-gap-lg);
-    position: relative;
-}
-
-.pl-timeline::before {
-    content: '';
-    position: absolute;
-    left: 35px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, #39b54a, #0086cc, #8524d8, #d62828);
-}
-
-.pl-timeline-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-block-gap-md);
-    padding: 20px 0;
-    position: relative;
-}
-
-.pl-timeline-number {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: #ffffff;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
-    background: #000000;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.pl-timeline-content {
-    flex: 1;
-    padding-top: 14px;
-}
-
-.pl-timeline-phase {
-    font-size: 11pt;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 4px 0;
-}
-
-.pl-timeline-stage {
-    font-size: 16pt;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 6px 0;
-}
-
-.pl-timeline-desc {
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.5);
-    margin: 0;
-    line-height: 1.5;
-}
-
-.pl-timeline-message {
-    text-align: center;
-    margin-top: var(--space-block-gap-lg);
-    font-size: 16pt;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.6);
-    font-style: italic;
 }
 
 /* =====================================================
@@ -484,138 +320,88 @@
 .pl-pricing-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: var(--space-block-gap-lg);
+    margin-top: 64px;
     font-family: 'Golos Text', sans-serif;
 }
 
 .pl-pricing-table th,
 .pl-pricing-table td {
-    padding: 16px 20px;
+    padding: 14px 20px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .pl-pricing-table th {
     color: #ffffff;
     font-weight: 600;
-    font-size: 14pt;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .pl-pricing-table th:first-child,
 .pl-pricing-table td:first-child {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.3);
     font-weight: 500;
 }
 
 .pl-pricing-highlight {
-    background: rgba(57, 181, 74, 0.05);
-}
-
-.pl-pricing-note {
-    text-align: center;
-    margin-top: var(--space-block-gap-md);
-    font-size: 14pt;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.pl-pricing-note strong {
-    color: #ffffff;
-}
-
-/* =====================================================
-   WHO IT'S FOR (Persona cards)
-   ===================================================== */
-.pl-personas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-block-gap-md);
-    margin-top: var(--space-block-gap-lg);
-}
-
-.pl-persona {
-    padding: var(--space-block-gap-md);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
     background: rgba(255, 255, 255, 0.02);
 }
 
-.pl-persona-role {
-    font-size: 14pt;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 8px 0;
-    text-transform: uppercase;
-}
-
-.pl-persona-quote {
-    font-size: 14pt;
-    color: rgba(255, 255, 255, 0.7);
-    font-style: italic;
-    margin: 0 0 12px 0;
-    line-height: 1.5;
-}
-
-.pl-persona-uses {
-    font-size: 12pt;
-    color: rgba(255, 255, 255, 0.4);
-    margin: 0 0 8px 0;
-}
-
-.pl-persona-result {
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0;
-    line-height: 1.5;
-}
-
 /* =====================================================
-   COMPARISON TABLE
+   WHY AITA (compare grid)
    ===================================================== */
-.pl-comparison {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: var(--space-block-gap-lg);
-    font-family: 'Golos Text', sans-serif;
+.pl-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: 64px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    overflow: hidden;
 }
 
-.pl-comparison th,
-.pl-comparison td {
-    padding: 16px 20px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.7);
+.pl-compare-item {
+    padding: 32px;
+    background: #000000;
 }
 
-.pl-comparison th {
-    color: #ffffff;
+.pl-compare-label {
+    font-size: 12px;
     font-weight: 600;
-    font-size: 14pt;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0 16px 0;
 }
 
-.pl-comparison td:first-child {
-    color: rgba(255, 255, 255, 0.4);
-    font-weight: 500;
+.pl-compare-old {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0 6px 0;
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 255, 255, 0.15);
 }
 
-.pl-comparison td:last-child {
+.pl-compare-new {
+    font-size: 18px;
+    font-weight: 600;
     color: #ffffff;
+    margin: 0;
 }
 
 /* =====================================================
    FAQ
    ===================================================== */
 .pl-faq {
-    max-width: 800px;
-    margin: var(--space-block-gap-lg) auto 0;
+    max-width: 700px;
+    margin: 64px auto 0;
 }
 
 .pl-faq-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pl-faq-question {
@@ -623,18 +409,18 @@
     background: none;
     border: none;
     color: #ffffff;
-    font-size: 14pt;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     font-family: 'Golos Text', sans-serif;
     text-align: left;
-    padding: 24px 40px 24px 0;
+    padding: 20px 40px 20px 0;
     cursor: pointer;
     position: relative;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
 }
 
 .pl-faq-question:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .pl-faq-question::after {
@@ -643,8 +429,9 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
+    color: rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -655,7 +442,7 @@
 .pl-faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s ease;
+    transition: max-height 0.4s ease;
 }
 
 .pl-faq-item.open .pl-faq-answer {
@@ -663,20 +450,19 @@
 }
 
 .pl-faq-answer p {
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.6;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.7;
     margin: 0;
-    padding-bottom: 24px;
+    padding-bottom: 20px;
 }
 
 /* =====================================================
    CONTACT FORM
    ===================================================== */
 .pl-form-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: var(--space-block-gap-lg);
+    max-width: 560px;
+    margin: 48px auto 0;
 }
 
 .pl-form-row {
@@ -685,30 +471,36 @@
     gap: 16px;
 }
 
+.pl-form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
 .pl-form-subtitle {
     text-align: center;
-    margin-top: var(--space-block-gap-md);
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 0.4);
+    margin-top: 24px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .pl-form-subtitle a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-decoration-color: rgba(255, 255, 255, 0.2);
 }
 
 .pl-select {
     width: 100%;
     padding: 16px 20px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
     color: #ffffff;
-    font-size: 14pt;
+    font-size: 15px;
     font-weight: 400;
     font-family: 'Golos Text', sans-serif;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition: border-color 0.2s ease;
     outline: none;
     appearance: none;
     -webkit-appearance: none;
@@ -718,8 +510,7 @@
 }
 
 .pl-select:focus {
-    border-color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .pl-select option {
@@ -728,58 +519,48 @@
 }
 
 /* =====================================================
-   SECTION CTA (inline)
-   ===================================================== */
-.pl-section-cta {
-    text-align: center;
-    margin-top: var(--space-block-gap-lg);
-}
-
-/* =====================================================
    CALCULATOR
    ===================================================== */
 .pl-calc-card {
-    margin-top: var(--space-block-gap-lg);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--card-radius);
-    background: rgba(255, 255, 255, 0.02);
+    margin-top: 64px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.015);
     overflow: hidden;
 }
 
 .pl-calc-header {
-    padding: 32px 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 28px 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pl-calc-header h3 {
-    font-size: 20pt;
+    font-size: 18px;
     font-weight: 600;
     color: #ffffff;
-    margin: 0 0 6px 0;
+    margin: 0 0 4px 0;
     font-family: 'Golos Text', sans-serif;
     letter-spacing: -0.02em;
 }
 
 .pl-calc-header p {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.35);
     margin: 0;
-    line-height: 1.6;
 }
 
 .pl-calc-body {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 0;
+    grid-template-columns: 1fr 320px;
 }
 
 .pl-calc-controls {
-    padding: 32px 40px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 28px 36px;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pl-calc-control {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .pl-calc-control label {
@@ -787,7 +568,7 @@
     justify-content: space-between;
     align-items: baseline;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
@@ -796,7 +577,7 @@
 }
 
 .pl-calc-control label .v {
-    font-size: 14px;
+    font-size: 13px;
     color: #ffffff;
     font-weight: 700;
     text-transform: none;
@@ -805,9 +586,9 @@
 
 .pl-calc-control input[type="range"] {
     width: 100%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1px;
     outline: none;
     -webkit-appearance: none;
     appearance: none;
@@ -815,62 +596,56 @@
 
 .pl-calc-control input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: #ffffff;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
-    transition: box-shadow 0.2s ease;
-}
-
-.pl-calc-control input[type="range"]::-webkit-slider-thumb:hover {
-    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
 }
 
 .pl-calc-control input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: #ffffff;
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
 }
 
 .pl-calc-separator {
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pl-calc-eng-label {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .pl-calc-tier-toggle {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 6px;
     margin-top: 8px;
 }
 
 .pl-calc-tier-toggle button {
     padding: 10px 4px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     font-family: 'Golos Text', sans-serif;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .pl-calc-tier-toggle button:hover {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.25);
     color: #ffffff;
 }
 
@@ -881,18 +656,18 @@
 }
 
 .pl-calc-results {
-    padding: 32px 32px;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .pl-calc-result-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
     font-family: 'Golos Text', sans-serif;
 }
 
@@ -903,15 +678,15 @@
 .pl-calc-result-row .v {
     color: #ffffff;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .pl-calc-result-total {
-    margin-top: 16px;
-    padding: 20px 24px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
+    margin-top: 14px;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
 }
 
 .pl-calc-result-total .label {
@@ -919,76 +694,59 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 4px;
     font-family: 'Golos Text', sans-serif;
 }
 
 .pl-calc-result-total .val {
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 24px;
+    font-weight: 700;
     color: #ffffff;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     font-family: 'Golos Text', sans-serif;
 }
 
 .pl-calc-result-total .val .per {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.25);
     font-weight: 400;
     margin-left: 4px;
 }
 
-.pl-calc-success {
-    border-color: rgba(214, 40, 40, 0.3);
-    margin-top: 12px;
-}
-
-.pl-calc-success .val {
-    color: #ffffff;
-}
-
-.pl-calc-am {
-    border-color: rgba(0, 134, 204, 0.3);
-    margin-top: 12px;
-}
-
-.pl-calc-am .val {
-    color: #ffffff;
-}
-
+.pl-calc-success,
+.pl-calc-am,
 .pl-calc-eng {
-    border-color: rgba(133, 36, 216, 0.3);
-    margin-top: 12px;
-}
-
-.pl-calc-eng .val {
-    color: #ffffff;
+    margin-top: 10px;
 }
 
 .pl-calc-note {
-    margin-top: 20px;
-    font-size: 11.5px;
-    color: rgba(255, 255, 255, 0.25);
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.2);
     line-height: 1.6;
     font-family: 'Golos Text', sans-serif;
 }
 
-.pl-calc-note strong {
-    color: rgba(255, 255, 255, 0.4);
+.pl-calc-note a {
+    color: rgba(255, 255, 255, 0.35);
 }
 
 /* =====================================================
    RESPONSIVE
    ===================================================== */
 @media (max-width: 768px) {
+    .pl-section {
+        padding-top: 80px;
+    }
+
     .pl-hero {
         padding-top: 100px;
         min-height: auto;
         padding-bottom: 60px;
     }
 
-    .pl-problems {
+    .pl-grid-6 {
         grid-template-columns: 1fr;
     }
 
@@ -996,20 +754,20 @@
         grid-template-columns: 1fr;
     }
 
-    .pl-module-capabilities {
+    .pl-chips-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pl-chips-label {
+        min-width: auto;
+    }
+
+    .pl-compare-grid {
         grid-template-columns: 1fr;
     }
 
-    .pl-mini-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .pl-personas {
-        grid-template-columns: 1fr;
-    }
-
-    .pl-pricing-table,
-    .pl-comparison {
+    .pl-pricing-table {
         display: block;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -1024,22 +782,12 @@
         text-align: center;
     }
 
-    .pl-trust-bar {
-        gap: var(--space-block-gap-md);
-    }
-
-    .pl-timeline::before {
-        left: 25px;
-    }
-
-    .pl-timeline-number {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
-    }
-
     .pl-form-row {
         grid-template-columns: 1fr;
+    }
+
+    .pl-form-buttons {
+        flex-direction: column;
     }
 
     .pl-calc-body {
@@ -1048,7 +796,7 @@
 
     .pl-calc-controls {
         border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         padding: 20px;
     }
 
