@@ -453,22 +453,48 @@
 
     <!-- CONTACT -->
     <section class="contact-section" id="contact">
-        <h2 class="contact-title" data-i18n="contact.title">Ready to Build the Future of Energy?</h2>
-        <form class="contact-form" id="contact-form">
-            <div class="form-group">
-                <label for="name" class="form-label" data-i18n="contact.name.label">Name <span class="required">*</span></label>
-                <input type="text" id="name" name="name" class="form-input" required>
-            </div>
-            <div class="form-group">
-                <label for="contact" class="form-label" data-i18n="contact.contact.label">Phone or Email <span class="required">*</span></label>
-                <input type="text" id="contact" name="contact" class="form-input" required>
-            </div>
-            <div class="form-group">
-                <label for="message" class="form-label" data-i18n="contact.message.label">Message</label>
-                <textarea id="message" name="message" class="form-textarea" rows="5"></textarea>
-            </div>
-            <button type="submit" class="form-submit" data-i18n="contact.submit">Submit</button>
-        </form>
+        <h2 class="contact-title" data-i18n="pl.contact.title">Ready to Build the Future of Energy?</h2>
+        <div class="contact-form-wrapper">
+            <form class="contact-form" id="contact-form">
+                <div class="pl-form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label" data-i18n="pl.contact.name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-i18n="pl.contact.email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                </div>
+                <div class="pl-form-row">
+                    <div class="form-group">
+                        <label for="company" class="form-label" data-i18n="pl.contact.company">Company <span class="required">*</span></label>
+                        <input type="text" id="company" name="company" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role" class="form-label" data-i18n="pl.contact.role">Role</label>
+                        <select id="role" name="role" class="pl-select">
+                            <option value="" data-i18n="pl.contact.role.select">Select your role</option>
+                            <option value="epc" data-i18n="pl.contact.role.epc">EPC / Installer</option>
+                            <option value="developer" data-i18n="pl.contact.role.developer">Developer</option>
+                            <option value="ipp" data-i18n="pl.contact.role.ipp">IPP / Energy Fund</option>
+                            <option value="investor" data-i18n="pl.contact.role.investor">Investor</option>
+                            <option value="manufacturer" data-i18n="pl.contact.role.manufacturer">Equipment Manufacturer</option>
+                            <option value="other" data-i18n="pl.contact.role.other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label" data-i18n="pl.contact.message">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="4"></textarea>
+                </div>
+                <div class="pl-hero-ctas">
+                    <button type="submit" class="pl-btn pl-btn-primary" data-i18n="pl.cta.try">Try the platform</button>
+                    <button type="submit" class="pl-btn pl-btn-secondary" id="contact-full" data-i18n="pl.cta.full.modules">Request full access to all modules</button>
+                </div>
+            </form>
+            <p class="pl-form-subtitle" data-i18n="pl.contact.or.email">Or email us at <a href="mailto:info@aita.world">info@aita.world</a></p>
+        </div>
     </section>
 
     <footer class="footer-section">
