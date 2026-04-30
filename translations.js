@@ -146,7 +146,7 @@ const translations = {
         "pl.nav.try": "Try the platform",
 
         // Platform Landing - Hero
-        "pl.hero.label": "For the entire energy industry",
+        "pl.hero.label": "For the renewable energy industry",
         "pl.hero.headline": "One platform for the entire lifecycle of your energy project",
         "pl.hero.sub": "From first client to operating asset — 10 stages, 28+ modules, one system",
         "pl.hero.cta.primary": "Try the platform",
@@ -693,7 +693,7 @@ const translations = {
         "pl.nav.try": "Спробувати платформу",
 
         // Platform Landing - Hero
-        "pl.hero.label": "Для всієї енергетичної індустрії",
+        "pl.hero.label": "Для відновлюваної енергетики",
         "pl.hero.headline": "Одна платформа для всього життєвого циклу вашого енергетичного проєкту",
         "pl.hero.sub": "Від першого клієнта до працюючого активу — 10 етапів, 28+ модулів, одна система",
         "pl.hero.cta.primary": "Спробувати платформу",
@@ -1240,7 +1240,7 @@ const translations = {
         "pl.nav.try": "Probar la plataforma",
 
         // Platform Landing - Hero
-        "pl.hero.label": "Para toda la industria energética",
+        "pl.hero.label": "Para la industria de energías renovables",
         "pl.hero.headline": "Una plataforma para todo el ciclo de vida de tu proyecto energético",
         "pl.hero.sub": "Del primer cliente al activo en operación — 10 etapas, 28+ módulos, un sistema",
         "pl.hero.cta.primary": "Probar la plataforma",
