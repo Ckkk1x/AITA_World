@@ -455,7 +455,7 @@
     <section class="contact-section" id="contact">
         <h2 class="contact-title" data-i18n="pl.contact.title">Ready to Build the Future of Energy?</h2>
         <div class="contact-form-wrapper">
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="platform-contact-form">
                 <div class="pl-form-row">
                     <div class="form-group">
                         <label for="name" class="form-label" data-i18n="pl.contact.name">Name <span class="required">*</span></label>
@@ -599,6 +599,51 @@
     });
     document.querySelectorAll('.pl-calc-control input[type="range"]').forEach(s=>s.addEventListener('input',calc));
     calc();
+
+    // Platform contact form submission
+    const plForm = document.getElementById('platform-contact-form');
+    if (plForm) {
+        plForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(plForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company');
+            const role = formData.get('role');
+            const message = formData.get('message');
+
+            const submitBtn = plForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.textContent : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.style.opacity = '0.6';
+            }
+
+            const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
+
+            try {
+                await fetch('https://n8n-prod.aita.today/webhook/universal-form', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        source: 'aita-platform-landing',
+                        name: name,
+                        contact: email,
+                        extra: {
+                            company: company || '',
+                            role: role || '',
+                            message: message || ''
+                        }
+                    })
+                });
+                window.location.replace(thankYouUrl);
+            } catch (error) {
+                console.error('Form error:', error);
+                window.location.replace(thankYouUrl);
+            }
+        });
+    }
     </script>
 </body>
 </html>
