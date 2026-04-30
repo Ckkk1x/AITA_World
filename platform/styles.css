@@ -2,6 +2,14 @@
    AITA PLATFORM LANDING — Linear-inspired minimal style
    ===================================================== */
 
+/* # Blobs — behind content */
+.parallax-blob.parallax-blob-left,
+.parallax-blob.parallax-blob-right {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
 /* # Sections */
 .pl-section {
     max-width: 1100px;
@@ -465,6 +473,13 @@
     line-height: 1.7;
     margin: 0;
     padding-bottom: 20px;
+}
+
+/* # Contact & Footer — above blobs */
+.contact-section,
+.footer-section {
+    position: relative;
+    z-index: 1;
 }
 
 /* =====================================================
