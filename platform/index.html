@@ -93,7 +93,7 @@
                 <h3 class="pl-feature-name" data-i18n="pl.modules.chat.title">Chat</h3>
                 <p class="pl-feature-desc" data-i18n="pl.feat.chat">Real-time messaging linked to every project and deal.</p>
             </div>
-            <div class="pl-feature-card">
+            <div class="pl-feature-card pl-feature-clickable" data-modal="dataroom-modal">
                 <div class="pl-feature-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 </div>
@@ -593,6 +593,45 @@
                     <span data-i18n="pl.modal.crm.flow.deal">Deal</span>
                     <span class="pl-modal-flow-arrow">→</span>
                     <span data-i18n="pl.modal.crm.flow.close">Close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DATAROOM MODAL -->
+    <div class="pl-modal-overlay" id="dataroom-modal">
+        <div class="pl-modal">
+            <button class="pl-modal-close" aria-label="Close">&times;</button>
+            <div class="pl-modal-header">
+                <h2 class="pl-modal-title" data-i18n="pl.modal.dataroom.title">Data Room</h2>
+                <p class="pl-modal-subtitle" data-i18n="pl.modal.dataroom.subtitle">Secure document storage — per project, company, SPV, deal</p>
+            </div>
+            <div class="pl-modal-body">
+                <div class="pl-modal-features">
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.dataroom.context">Documents in Context</h4>
+                        <p data-i18n="pl.modal.dataroom.context.desc">Each project, company, SPV, and deal has its own Data Room. Open a project — documents are right there.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.dataroom.upload">Direct Cloud Upload</h4>
+                        <p data-i18n="pl.modal.dataroom.upload.desc">Drag & drop files or entire folders. Direct upload to AWS S3 — no file size limits. Progress bar for every upload.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.dataroom.cad">CAD Viewer in Browser</h4>
+                        <p data-i18n="pl.modal.dataroom.cad.desc">DXF and DWG drawings render via WebGL — no extra software. Plus PDF, images, and Markdown preview.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.dataroom.ai">AI Search & Extraction</h4>
+                        <p data-i18n="pl.modal.dataroom.ai.desc">Semantic search across document contents. Auto text extraction from PDFs and images. AI agent finds answers in your files.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.dataroom.security">Security</h4>
+                        <p data-i18n="pl.modal.dataroom.security.desc">Download links expire in 15 minutes. Soft delete for audit. Entity-level isolation. Access follows project membership.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.dataroom.formats">All Formats</h4>
+                        <p data-i18n="pl.modal.dataroom.formats.desc">PDF, DOCX, XLSX, CAD (DXF/DWG), GeoJSON, images, CSV, Shapefile — and any other file type you need.</p>
+                    </div>
                 </div>
             </div>
         </div>
