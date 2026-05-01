@@ -72,7 +72,7 @@
                 <h3 class="pl-feature-name" data-i18n="pl.modules.crm.title">CRM</h3>
                 <p class="pl-feature-desc" data-i18n="pl.feat.crm">Leads, contacts, funnels. Full sales pipeline for energy B2B.</p>
             </div>
-            <div class="pl-feature-card">
+            <div class="pl-feature-card pl-feature-clickable" data-modal="projects-modal">
                 <div class="pl-feature-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                 </div>
@@ -593,6 +593,60 @@
                     <span data-i18n="pl.modal.crm.flow.deal">Deal</span>
                     <span class="pl-modal-flow-arrow">→</span>
                     <span data-i18n="pl.modal.crm.flow.close">Close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS MODAL -->
+    <div class="pl-modal-overlay" id="projects-modal">
+        <div class="pl-modal">
+            <button class="pl-modal-close" aria-label="Close">&times;</button>
+            <div class="pl-modal-header">
+                <h2 class="pl-modal-title" data-i18n="pl.modal.projects.title">Projects</h2>
+                <p class="pl-modal-subtitle" data-i18n="pl.modal.projects.subtitle">Full lifecycle management — from idea to decommissioning</p>
+            </div>
+            <div class="pl-modal-body">
+                <div class="pl-modal-features">
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.projects.lifecycle">10-Stage Lifecycle</h4>
+                        <p data-i18n="pl.modal.projects.lifecycle.desc">Lead → Feasibility → Legal → Design → RTB → Construction → Commissioning → Operate → Refinance → Exit. Progress, blockers, budget per stage.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.projects.finance">Financial Model</h4>
+                        <p data-i18n="pl.modal.projects.finance.desc">IRR, NPV, ROI, payback, EBITDA. Full CAPEX/OPEX breakdown. Discount rate, inflation, market volatility modeling.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.projects.legal">Legal & Compliance</h4>
+                        <p data-i18n="pl.modal.projects.legal.desc">All offtake types: PPA, FiT, FiP, CfD, VPPA, CPPA. Permits, guarantees, corporate structure — linked to Data Room.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.projects.solar">Solar Design & AI Audit</h4>
+                        <p data-i18n="pl.modal.projects.solar.desc">Built-in 3D CAD for solar plants. Auto-layout, shading, energy yield. AI audit checks engineering standards by country.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.projects.roles">Role-Based Access</h4>
+                        <p data-i18n="pl.modal.projects.roles.desc">Investor sees financials. Developer sees construction. Operator sees KPIs. Auditor sees compliance. Each role — own view.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.projects.types">12 Project Types</h4>
+                        <p data-i18n="pl.modal.projects.types.desc">Solar, BESS, Wind, Hybrid, EV Chargers, Hydro, Geothermal, Biomass, Microgrids, Substations, Data Centers and more.</p>
+                    </div>
+                </div>
+                <div class="pl-modal-flow">
+                    <span>Lead</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span>Feasibility</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span>Design</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span>RTB</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span>Build</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span>Operate</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span>Exit</span>
                 </div>
             </div>
         </div>
