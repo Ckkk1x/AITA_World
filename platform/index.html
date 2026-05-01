@@ -86,7 +86,7 @@
                 <h3 class="pl-feature-name" data-i18n="pl.modules.tasks.title">Tasks</h3>
                 <p class="pl-feature-desc" data-i18n="pl.feat.tasks">Kanban, dependencies, entity linking. Built for energy workflows.</p>
             </div>
-            <div class="pl-feature-card">
+            <div class="pl-feature-card pl-feature-clickable" data-modal="chat-modal">
                 <div class="pl-feature-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </div>
@@ -631,6 +631,45 @@
                     <div class="pl-modal-feature">
                         <h4 data-i18n="pl.modal.dataroom.formats">All Formats</h4>
                         <p data-i18n="pl.modal.dataroom.formats.desc">PDF, DOCX, XLSX, CAD (DXF/DWG), GeoJSON, images, CSV, Shapefile — and any other file type you need.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAT MODAL -->
+    <div class="pl-modal-overlay" id="chat-modal">
+        <div class="pl-modal">
+            <button class="pl-modal-close" aria-label="Close">&times;</button>
+            <div class="pl-modal-header">
+                <h2 class="pl-modal-title" data-i18n="pl.modal.chat.title">Chat</h2>
+                <p class="pl-modal-subtitle" data-i18n="pl.modal.chat.subtitle">One messaging system for tasks, deals, projects, and teams</p>
+            </div>
+            <div class="pl-modal-body">
+                <div class="pl-modal-features">
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.chat.unified">Unified Chat</h4>
+                        <p data-i18n="pl.modal.chat.unified.desc">Tasks, deals, projects, SPVs, companies — each has its own chat room. One system, same features everywhere. No switching between tools.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.chat.ai">@AITA AI Assistant</h4>
+                        <p data-i18n="pl.modal.chat.ai.desc">Type @AITA in any chat — AI reads context (task, project, deal), searches documents, works with tasks and leads. Answers appear right in the conversation.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.chat.realtime">Real-Time WebSocket</h4>
+                        <p data-i18n="pl.modal.chat.realtime.desc">Instant messages via WebSocket. Typing indicators, read receipts, delivery status. Edits and deletes sync across all participants.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.chat.auto">Auto Membership</h4>
+                        <p data-i18n="pl.modal.chat.auto.desc">Project access = project chat access. Task assignee joins task chat automatically. @mention someone — they're subscribed. Zero manual management.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.chat.threads">Threads & Files</h4>
+                        <p data-i18n="pl.modal.chat.threads.desc">Reply in threads, quote messages, forward between chats. Attach files, images, documents — uploaded to cloud with previews.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.chat.channels">Channels & Rooms</h4>
+                        <p data-i18n="pl.modal.chat.channels.desc">Direct messages, group chats, public and private channels. Labels for organization. Full-text search across all conversations.</p>
                     </div>
                 </div>
             </div>
