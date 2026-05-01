@@ -100,7 +100,7 @@
                 <h3 class="pl-feature-name" data-i18n="pl.modules.dataroom.title">Data Room</h3>
                 <p class="pl-feature-desc" data-i18n="pl.feat.dataroom">Secure documents with granular access. Per project, SPV, deal.</p>
             </div>
-            <div class="pl-feature-card">
+            <div class="pl-feature-card pl-feature-clickable" data-modal="company-modal">
                 <div class="pl-feature-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
                 </div>
@@ -593,6 +593,45 @@
                     <span data-i18n="pl.modal.crm.flow.deal">Deal</span>
                     <span class="pl-modal-flow-arrow">→</span>
                     <span data-i18n="pl.modal.crm.flow.close">Close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPANY MODAL -->
+    <div class="pl-modal-overlay" id="company-modal">
+        <div class="pl-modal">
+            <button class="pl-modal-close" aria-label="Close">&times;</button>
+            <div class="pl-modal-header">
+                <h2 class="pl-modal-title" data-i18n="pl.modal.company.title">Company</h2>
+                <p class="pl-modal-subtitle" data-i18n="pl.modal.company.subtitle">Full business profile, team, partners, and access control</p>
+            </div>
+            <div class="pl-modal-body">
+                <div class="pl-modal-features">
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.company.profile">Business Profile</h4>
+                        <p data-i18n="pl.modal.company.profile.desc">Registration, contacts, offices, strategy. 14 energy-specific company types: Developer, EPC, Investor, O&M, DSO, Trader and more.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.company.team">Team & Partners</h4>
+                        <p data-i18n="pl.modal.company.team.desc">Employees with positions and departments. Ownership structure: owners, board, shareholders. Partnerships between companies.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.company.multi">Multi-Company</h4>
+                        <p data-i18n="pl.modal.company.multi.desc">One user — multiple companies with different roles. Switch between companies without logging out. Separate data per company.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.company.access">Roles & Access</h4>
+                        <p data-i18n="pl.modal.company.access.desc">5 account roles (Owner to Read-only). 4 access levels per resource. Email invitations with expiry. Granular permissions.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.company.verification">Verification</h4>
+                        <p data-i18n="pl.modal.company.verification.desc">Multi-step company verification. Verified badge builds trust for deals and partnerships. Full audit trail of all changes.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.company.ai">AI Cost Control</h4>
+                        <p data-i18n="pl.modal.company.ai.desc">Track every AI request: tokens, cost, who used it, where. Set daily/monthly limits with warnings or hard blocks.</p>
+                    </div>
                 </div>
             </div>
         </div>
