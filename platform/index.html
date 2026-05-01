@@ -65,7 +65,7 @@
         <p class="pl-label" data-i18n="pl.modules.label">What you get</p>
         <h2 class="pl-title" data-i18n="pl.modules.title2">Everything your energy business needs. Connected.</h2>
         <div class="pl-grid-6">
-            <div class="pl-feature-card">
+            <div class="pl-feature-card pl-feature-clickable" data-modal="crm-modal">
                 <div class="pl-feature-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
@@ -548,6 +548,56 @@
         </div>
     </footer>
 
+    <!-- CRM MODAL -->
+    <div class="pl-modal-overlay" id="crm-modal">
+        <div class="pl-modal">
+            <button class="pl-modal-close" aria-label="Close">&times;</button>
+            <div class="pl-modal-header">
+                <h2 class="pl-modal-title" data-i18n="pl.modal.crm.title">CRM</h2>
+                <p class="pl-modal-subtitle" data-i18n="pl.modal.crm.subtitle">Full sales cycle — from first contact to closed deal</p>
+            </div>
+            <div class="pl-modal-body">
+                <div class="pl-modal-features">
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.crm.contacts">Contacts</h4>
+                        <p data-i18n="pl.modal.crm.contacts.desc">B2B and B2C database. CSV import. Shared access between teams.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.crm.leads">Leads & Funnels</h4>
+                        <p data-i18n="pl.modal.crm.leads.desc">Kanban board, custom stages, lead scoring (A/B/C), source tracking. Auto-actions on stage change.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.crm.deals">Deals & Negotiations</h4>
+                        <p data-i18n="pl.modal.crm.deals.desc">Structured negotiations with 3 contexts: seller / buyer / agreed. Line items, documents (NDA, contracts), full audit trail.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.crm.telephony">Built-in Telephony</h4>
+                        <p data-i18n="pl.modal.crm.telephony.desc">Calls from lead card. Recording, transcription. Auto-create lead on unknown incoming call.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.crm.ai">AI Features</h4>
+                        <p data-i18n="pl.modal.crm.ai.desc">Auto call reports, duplicate detection, client psychology profile, AI copilot that knows your pipeline.</p>
+                    </div>
+                    <div class="pl-modal-feature">
+                        <h4 data-i18n="pl.modal.crm.energy">Built for Energy</h4>
+                        <p data-i18n="pl.modal.crm.energy.desc">Leads have capacity (kW), region, service type. Deals support PPA, FiT, LCOE, IRR, CAPEX — no custom fields needed.</p>
+                    </div>
+                </div>
+                <div class="pl-modal-flow">
+                    <span data-i18n="pl.modal.crm.flow.contact">Contact</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span data-i18n="pl.modal.crm.flow.lead">Lead</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span data-i18n="pl.modal.crm.flow.funnel">Funnel</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span data-i18n="pl.modal.crm.flow.deal">Deal</span>
+                    <span class="pl-modal-flow-arrow">→</span>
+                    <span data-i18n="pl.modal.crm.flow.close">Close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -599,6 +649,26 @@
     });
     document.querySelectorAll('.pl-calc-control input[type="range"]').forEach(s=>s.addEventListener('input',calc));
     calc();
+
+    // Module modals
+    document.querySelectorAll('.pl-feature-clickable').forEach(card => {
+        card.addEventListener('click', () => {
+            const modal = document.getElementById(card.dataset.modal);
+            if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        });
+    });
+    document.querySelectorAll('.pl-modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+        });
+        const closeBtn = overlay.querySelector('.pl-modal-close');
+        if (closeBtn) closeBtn.addEventListener('click', () => { overlay.classList.remove('open'); document.body.style.overflow = ''; });
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.pl-modal-overlay.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+        }
+    });
 
     // Platform contact form submission
     const plForm = document.getElementById('platform-contact-form');
