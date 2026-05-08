@@ -4,6 +4,7 @@ const translations = {
         "nav.about": "About Us",
         "nav.products": "Products",
         "nav.team": "Team",
+        "nav.platform": "Platform",
         "nav.join": "Join us",
 
         // Hero
@@ -671,6 +672,7 @@ const translations = {
         "nav.about": "Про нас",
         "nav.products": "Продукти",
         "nav.team": "Команда",
+        "nav.platform": "Платформа",
         "nav.join": "Долучитись",
 
         // Hero
@@ -1338,6 +1340,7 @@ const translations = {
         "nav.about": "Sobre nosotros",
         "nav.products": "Productos",
         "nav.team": "Equipo",
+        "nav.platform": "Plataforma",
         "nav.join": "Únete",
 
         // Hero
