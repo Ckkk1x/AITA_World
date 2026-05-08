@@ -361,6 +361,37 @@
     font-size: 13px;
     color: rgba(255, 255, 255, 0.45);
     font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.pl-fc-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Golos Text', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.pl-fc-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.pl-fc-btn-primary {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.pl-fc-btn-primary:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: #000000;
+    border-color: rgba(255, 255, 255, 0.85);
 }
 
 /* Category header */

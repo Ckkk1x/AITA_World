@@ -479,6 +479,9 @@ const translations = {
         "pl.fc.custom.storage": "Unlimited",
         "pl.fc.ai.search": "AI document search",
         "pl.fc.ai.import": "PDF import with AI",
+        "pl.fc.btn.free": "Get started",
+        "pl.fc.btn.starter": "Get Starter",
+        "pl.fc.btn.custom": "Contact us",
         "pl.fc.cta.text": "Need more than 10 users? Let's discuss terms for your company.",
         "pl.fc.cta.btn": "Contact us",
 
@@ -1147,6 +1150,9 @@ const translations = {
         "pl.fc.custom.storage": "Необмежено",
         "pl.fc.ai.search": "AI-пошук по документах",
         "pl.fc.ai.import": "Імпорт PDF з AI",
+        "pl.fc.btn.free": "Почати",
+        "pl.fc.btn.starter": "Обрати Starter",
+        "pl.fc.btn.custom": "Зв'язатись",
         "pl.fc.cta.text": "Потрібно більше 10 користувачів? Обговоримо умови для вашої компанії.",
         "pl.fc.cta.btn": "Зв'язатись",
 
@@ -1815,6 +1821,9 @@ const translations = {
         "pl.fc.custom.storage": "Ilimitado",
         "pl.fc.ai.search": "Búsqueda AI de documentos",
         "pl.fc.ai.import": "Importación PDF con AI",
+        "pl.fc.btn.free": "Empezar",
+        "pl.fc.btn.starter": "Obtener Starter",
+        "pl.fc.btn.custom": "Contáctenos",
         "pl.fc.cta.text": "¿Necesita más de 10 usuarios? Hablemos sobre las condiciones para su empresa.",
         "pl.fc.cta.btn": "Contáctenos",
 
