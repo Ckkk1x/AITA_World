@@ -319,39 +319,136 @@
 }
 
 /* =====================================================
-   PRICING TABLE
+   COMPARE FEATURES TABLE (GitHub-style)
    ===================================================== */
-.pl-pricing-table {
+.pl-fc {
+    margin-top: 64px;
+}
+
+.pl-fc-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 64px;
     font-family: 'Golos Text', sans-serif;
+    table-layout: fixed;
 }
 
-.pl-pricing-table th,
-.pl-pricing-table td {
-    padding: 14px 20px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+.pl-fc-feature-col {
+    width: 40%;
 }
 
-.pl-pricing-table th {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 15px;
+.pl-fc-plan-col {
+    width: 20%;
+    text-align: center;
+    padding: 24px 16px;
+    vertical-align: bottom;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.pl-pricing-table th:first-child,
-.pl-pricing-table td:first-child {
-    color: rgba(255, 255, 255, 0.3);
+.pl-fc-plan-col.pl-fc-plan-hl {
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px 8px 0 0;
+}
+
+.pl-fc-plan-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.pl-fc-plan-price {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
     font-weight: 500;
 }
 
-.pl-pricing-highlight {
-    background: rgba(255, 255, 255, 0.02);
+/* Category header */
+.pl-fc-cat td {
+    padding: 28px 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Feature rows */
+.pl-fc-table tbody tr:not(.pl-fc-cat) td {
+    padding: 14px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: middle;
+}
+
+.pl-fc-table tbody tr:not(.pl-fc-cat) td:first-child {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    padding-right: 16px;
+}
+
+.pl-fc-table tbody tr:not(.pl-fc-cat) td:not(:first-child) {
+    text-align: center;
+}
+
+.pl-fc-hl {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Check / dash */
+.pl-fc-yes {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.pl-fc-no {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+}
+
+/* Custom CTA */
+.pl-fc-cta {
+    margin-top: 40px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.pl-fc-cta p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 16px 0;
+}
+
+.pl-fc-cta-btn {
+    display: inline-block;
+    padding: 10px 28px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.pl-fc-cta-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pl-fc {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .pl-fc-table {
+        min-width: 600px;
+    }
 }
 
 /* =====================================================
@@ -535,219 +632,6 @@
     color: #ffffff;
 }
 
-/* =====================================================
-   CALCULATOR
-   ===================================================== */
-.pl-calc-card {
-    margin-top: 64px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.015);
-    overflow: hidden;
-}
-
-.pl-calc-header {
-    padding: 28px 36px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.pl-calc-header h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 0 4px 0;
-    font-family: 'Golos Text', sans-serif;
-    letter-spacing: -0.02em;
-}
-
-.pl-calc-header p {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.35);
-    margin: 0;
-}
-
-.pl-calc-body {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-}
-
-.pl-calc-controls {
-    padding: 28px 36px;
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.pl-calc-control {
-    margin-bottom: 16px;
-}
-
-.pl-calc-control label {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.35);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    font-family: 'Golos Text', sans-serif;
-}
-
-.pl-calc-control label .v {
-    font-size: 13px;
-    color: #ffffff;
-    font-weight: 700;
-    text-transform: none;
-    letter-spacing: 0;
-}
-
-.pl-calc-control input[type="range"] {
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 1px;
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.pl-calc-control input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
-}
-
-.pl-calc-control input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
-}
-
-.pl-calc-separator {
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.pl-calc-eng-label {
-    color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.pl-calc-tier-toggle {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-top: 8px;
-}
-
-.pl-calc-tier-toggle button {
-    padding: 10px 4px;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    font-family: 'Golos Text', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.pl-calc-tier-toggle button:hover {
-    border-color: rgba(255, 255, 255, 0.25);
-    color: #ffffff;
-}
-
-.pl-calc-tier-toggle button.active {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
-}
-
-.pl-calc-results {
-    padding: 28px;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.pl-calc-result-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.4);
-    font-family: 'Golos Text', sans-serif;
-}
-
-.pl-calc-result-row:last-of-type {
-    border-bottom: none;
-}
-
-.pl-calc-result-row .v {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 13px;
-}
-
-.pl-calc-result-total {
-    margin-top: 14px;
-    padding: 18px 20px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-}
-
-.pl-calc-result-total .label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.3);
-    margin-bottom: 4px;
-    font-family: 'Golos Text', sans-serif;
-}
-
-.pl-calc-result-total .val {
-    font-size: 24px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.5px;
-    font-family: 'Golos Text', sans-serif;
-}
-
-.pl-calc-result-total .val .per {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.25);
-    font-weight: 400;
-    margin-left: 4px;
-}
-
-.pl-calc-success,
-.pl-calc-am,
-.pl-calc-eng {
-    margin-top: 10px;
-}
-
-.pl-calc-note {
-    margin-top: 16px;
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.2);
-    line-height: 1.6;
-    font-family: 'Golos Text', sans-serif;
-}
-
-.pl-calc-note a {
-    color: rgba(255, 255, 255, 0.35);
-}
 
 /* =====================================================
    MODULE MODALS

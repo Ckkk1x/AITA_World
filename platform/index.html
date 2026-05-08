@@ -199,179 +199,147 @@
     <section class="pl-section pl-section-tight" id="pricing">
         <h2 class="pl-title" data-i18n="pl.pricing.title2">Start free. Scale as you grow.</h2>
 
-        <table class="pl-pricing-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th data-i18n="pl.pricing.th.free">Free</th>
-                    <th class="pl-pricing-highlight" data-i18n="pl.pricing.th.team">Team</th>
-                    <th data-i18n="pl.pricing.th.company">Company</th>
-                    <th data-i18n="pl.pricing.th.enterprise">Enterprise</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-i18n="pl.pricing.row.price">Price</td>
-                    <td data-i18n="pl.pricing.free.price">EUR 0</td>
-                    <td class="pl-pricing-highlight" data-i18n="pl.pricing.team.price">EUR 299/mo</td>
-                    <td data-i18n="pl.pricing.company.price">EUR 1,499/mo</td>
-                    <td data-i18n="pl.pricing.enterprise.price">from EUR 5,000/mo</td>
-                </tr>
-                <tr>
-                    <td data-i18n="pl.pricing.row.users">Users</td>
-                    <td>5</td>
-                    <td class="pl-pricing-highlight">25</td>
-                    <td>100</td>
-                    <td data-i18n="pl.pricing.enterprise.users">Unlimited</td>
-                </tr>
-                <tr>
-                    <td data-i18n="pl.pricing.row.credits">Credits/mo</td>
-                    <td>50</td>
-                    <td class="pl-pricing-highlight">500</td>
-                    <td>3 000</td>
-                    <td>15 000+</td>
-                </tr>
-                <tr>
-                    <td data-i18n="pl.pricing.row.markup">Credit markup</td>
-                    <td>2.5x</td>
-                    <td class="pl-pricing-highlight">2.0x</td>
-                    <td>1.5x</td>
-                    <td>1.0x</td>
-                </tr>
-                <tr>
-                    <td data-i18n="pl.pricing.row.support">Support</td>
-                    <td data-i18n="pl.pricing.free.support">Community</td>
-                    <td class="pl-pricing-highlight" data-i18n="pl.pricing.team.support">Email 24h</td>
-                    <td data-i18n="pl.pricing.company.support">Priority 4h + AM</td>
-                    <td data-i18n="pl.pricing.enterprise.support">Dedicated 1h</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Compare features (GitHub-style) -->
+        <div class="pl-fc">
+            <table class="pl-fc-table">
+                <thead>
+                    <tr>
+                        <th class="pl-fc-feature-col"></th>
+                        <th class="pl-fc-plan-col">
+                            <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.free">Free</div>
+                            <div class="pl-fc-plan-price" data-i18n="pl.pricing.free.price">EUR 0</div>
+                        </th>
+                        <th class="pl-fc-plan-col pl-fc-plan-hl">
+                            <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.starter">Starter</div>
+                            <div class="pl-fc-plan-price" data-i18n="pl.pricing.starter.price">EUR 49/mo</div>
+                        </th>
+                        <th class="pl-fc-plan-col">
+                            <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.custom">Custom</div>
+                            <div class="pl-fc-plan-price" data-i18n="pl.pricing.custom.price">Contact us</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ── Platform ── -->
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.platform">Platform</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.users">Users</td>
+                        <td data-i18n="pl.fc.free.users">Up to 3</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.users">Up to 10</td>
+                        <td data-i18n="pl.fc.custom.users">Custom</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.verification">Priority verification</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.support">Support</td>
+                        <td data-i18n="pl.fc.free.support">Email</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.support">Personal chat</td>
+                        <td data-i18n="pl.fc.custom.support">Dedicated manager</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.balance">AI balance</td>
+                        <td>€5</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.balance">€50/mo</td>
+                        <td data-i18n="pl.fc.custom.balance">Custom</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.markup">Credit markup</td>
+                        <td>2.5×</td>
+                        <td class="pl-fc-hl">2.0×</td>
+                        <td data-i18n="pl.fc.custom.markup">Custom</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.partner">Partner network</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.plugins">Plugins</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
 
-        <!-- CALCULATOR -->
-        <div class="pl-calc-card">
-            <div class="pl-calc-header">
-                <h3 data-i18n="pl.calc.title">AITA Pricing Calculator</h3>
-                <p data-i18n="pl.calc.subtitle">Drag the sliders. Numbers update instantly.</p>
-            </div>
-            <div class="pl-calc-body">
-                <div class="pl-calc-controls">
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.tier">Tier <span class="v" id="lblTier">Company</span></label>
-                        <div class="pl-calc-tier-toggle">
-                            <button data-tier="team" data-i18n="pl.calc.tier.team">Team</button>
-                            <button data-tier="company" class="active" data-i18n="pl.calc.tier.company">Company</button>
-                            <button data-tier="enterprise" data-i18n="pl.calc.tier.enterprise">Enterprise</button>
-                        </div>
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.users">Users <span class="v" id="lblUsers">15</span></label>
-                        <input type="range" id="sUsers" min="1" max="200" value="15">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.imports">Import (PDF/DXF) /mo <span class="v" id="lblImports">15</span></label>
-                        <input type="range" id="sImports" min="0" max="200" value="15">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.audits">Audits /mo <span class="v" id="lblAudits">8</span></label>
-                        <input type="range" id="sAudits" min="0" max="100" value="8">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.docs">Solar Docs packs /mo <span class="v" id="lblDocs">5</span></label>
-                        <input type="range" id="sDocs" min="0" max="100" value="5">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.contracts">Contracts /mo <span class="v" id="lblContracts">3</span></label>
-                        <input type="range" id="sContracts" min="0" max="50" value="3">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.storage">Storage (GB) <span class="v" id="lblStorage">300</span></label>
-                        <input type="range" id="sStorage" min="0" max="5000" value="300" step="10">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.ai">AI level <span class="v" id="lblAi">Mid</span></label>
-                        <input type="range" id="sAi" min="0" max="2" value="1">
-                    </div>
-                    <div class="pl-calc-separator"></div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.gmv">Marketplace GMV /year (EUR K) <span class="v" id="lblGmv">2 000</span></label>
-                        <input type="range" id="sGmv" min="0" max="50000" value="2000" step="100">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.capital">Capital raised /year (EUR K) <span class="v" id="lblCap">5 000</span></label>
-                        <input type="range" id="sCap" min="0" max="100000" value="5000" step="100">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label data-i18n="pl.calc.assets">Assets under mgmt (MW) <span class="v" id="lblAm">0</span></label>
-                        <input type="range" id="sAm" min="0" max="500" value="0">
-                    </div>
-                    <div class="pl-calc-separator"></div>
-                    <div class="pl-calc-control">
-                        <label class="pl-calc-eng-label" data-i18n="pl.calc.capex">Engineering: CAPEX restructuring /year (EUR M) <span class="v" id="lblCapex">0</span></label>
-                        <input type="range" id="sCapex" min="0" max="100" value="0">
-                    </div>
-                    <div class="pl-calc-control">
-                        <label class="pl-calc-eng-label" data-i18n="pl.calc.greenfield">Engineering: new projects /year (MW) <span class="v" id="lblGreen">0</span></label>
-                        <input type="range" id="sGreen" min="0" max="500" value="0">
-                    </div>
-                </div>
-                <div class="pl-calc-results">
-                    <div class="pl-calc-result-row">
-                        <span data-i18n="pl.calc.result.sub">Subscription (Tier 1)</span>
-                        <span class="v" id="outSub">—</span>
-                    </div>
-                    <div class="pl-calc-result-row">
-                        <span data-i18n="pl.calc.result.eng">Engineering credits</span>
-                        <span class="v" id="outEng">—</span>
-                    </div>
-                    <div class="pl-calc-result-row">
-                        <span data-i18n="pl.calc.result.ai">AI Copilot credits</span>
-                        <span class="v" id="outAi">—</span>
-                    </div>
-                    <div class="pl-calc-result-row">
-                        <span data-i18n="pl.calc.result.storage">Storage credits</span>
-                        <span class="v" id="outSto">—</span>
-                    </div>
-                    <div class="pl-calc-result-row">
-                        <span data-i18n="pl.calc.result.total">Total credits used</span>
-                        <span class="v" id="outTotal">—</span>
-                    </div>
-                    <div class="pl-calc-result-row">
-                        <span data-i18n="pl.calc.result.included">Included in plan</span>
-                        <span class="v" id="outIncluded">—</span>
-                    </div>
+                    <!-- ── CRM ── -->
+                    <tr class="pl-fc-cat"><td colspan="4">CRM</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.crm">CRM</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.crm.cards">Card management</td>
+                        <td data-i18n="pl.fc.free.crm.cards">Manual</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                        <td data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.crm.psychotype">Client psychotype</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
 
-                    <div class="pl-calc-result-total">
-                        <div class="label" data-i18n="pl.calc.result.monthly">Cash SaaS / month (subscription + overage)</div>
-                        <div class="val" id="outMonthly">—</div>
-                    </div>
+                    <!-- ── Task Manager ── -->
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.tasks">Task Manager</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.tasks">Task Manager</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.tasks.voice">Voice task creation</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
 
-                    <div class="pl-calc-result-total pl-calc-success">
-                        <div class="label" data-i18n="pl.calc.result.success">Success fees / year (Tier 4)</div>
-                        <div class="val" id="outSuccess">—</div>
-                    </div>
+                    <!-- ── Chat ── -->
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.chat">Chat</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.chat">Chat</td>
+                        <td data-i18n="pl.fc.free.chat">Team only</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.chat">Team + companies</td>
+                        <td data-i18n="pl.fc.custom.chat">Unlimited</td>
+                    </tr>
 
-                    <div class="pl-calc-result-total pl-calc-am">
-                        <div class="label" data-i18n="pl.calc.result.am">Asset management, recurring / year (Tier 6)</div>
-                        <div class="val" id="outAm">—</div>
-                    </div>
+                    <!-- ── Data Room ── -->
+                    <tr class="pl-fc-cat"><td colspan="4">Data Room</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.storage">Storage</td>
+                        <td data-i18n="pl.fc.free.storage">5 GB</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.storage">50 GB</td>
+                        <td data-i18n="pl.fc.custom.storage">Unlimited</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.ai.search">AI document search</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.ai.import">PDF import with AI</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
 
-                    <div class="pl-calc-result-total pl-calc-eng">
-                        <div class="label" data-i18n="pl.calc.result.engcash">Engineering cash / year (Tier 5, restructuring 1%)</div>
-                        <div class="val" id="outEngCash">—</div>
-                    </div>
-
-                    <div class="pl-calc-result-total pl-calc-eng">
-                        <div class="label" data-i18n="pl.calc.result.equity">Engineering equity / paper (Tier 5, new projects 15%)</div>
-                        <div class="val" id="outEquity">—</div>
-                    </div>
-
-                    <div class="pl-calc-note" data-i18n="pl.calc.note">
-                        All numbers are estimates. Actual cost depends on real resource consumption. <a href="#faq">See FAQ</a> for details on credits, success fees, and engineering pricing.
-                    </div>
-                </div>
+            <!-- Custom plan CTA -->
+            <div class="pl-fc-cta">
+                <p data-i18n="pl.fc.cta.text">Need more than 10 users? Let's discuss terms for your company.</p>
+                <a href="mailto:hello@aita.world" class="pl-fc-cta-btn" data-i18n="pl.fc.cta.btn">Contact us</a>
             </div>
         </div>
+
     </section>
 
     <!-- WHY AITA -->
@@ -824,41 +792,6 @@
             if (!wasOpen) item.classList.add('open');
         });
     });
-
-    // Calculator
-    const TIER = {team:{flat:299,inc:500,mk:2},company:{flat:1499,inc:3000,mk:1.5},enterprise:{flat:5000,inc:15000,mk:1}};
-    const C = {imp:8,aud:12,doc:15,con:20,sto:.003,ai:[0,50,200]};
-    let tier = 'company';
-
-    function fmt(n){return n<1000?Math.round(n).toLocaleString('en'):n>=1e6?(n/1e6).toFixed(1)+'M':Math.round(n).toLocaleString('en');}
-
-    function calc(){
-        const t=TIER[tier], u=+sUsers.value, imp=+sImports.value, aud=+sAudits.value, doc=+sDocs.value, con=+sContracts.value, sto=+sStorage.value, ai=+sAi.value;
-        const gmv=+sGmv.value*1000, cap=+sCap.value*1000, am=+sAm.value, capex=+sCapex.value*1e6, green=+sGreen.value;
-        lblUsers.textContent=u;lblImports.textContent=imp;lblAudits.textContent=aud;lblDocs.textContent=doc;lblContracts.textContent=con;lblStorage.textContent=sto.toLocaleString('en');lblAi.textContent=['Low','Mid','High'][ai];
-        lblGmv.textContent=(gmv/1000).toLocaleString('en');lblCap.textContent=(cap/1000).toLocaleString('en');lblAm.textContent=am;lblCapex.textContent=(capex/1e6).toLocaleString('en');lblGreen.textContent=green;
-        const engCr=imp*C.imp+aud*C.aud+doc*C.doc+con*C.con, aiCr=u*C.ai[ai], stoCr=sto*C.sto, totalCr=engCr+aiCr+stoCr;
-        const over=Math.max(0,totalCr-t.inc)*t.mk, monthly=t.flat+over;
-        const sf=gmv*.02+cap*.03;
-        const amFee=am*1200;
-        const engCash=capex*.01;
-        const equity=green*0.7*0.15;
-        outSub.textContent='EUR '+fmt(t.flat);outEng.textContent=fmt(engCr);outAi.textContent=fmt(aiCr);outSto.textContent=fmt(stoCr);outTotal.textContent=fmt(totalCr);outIncluded.textContent=fmt(t.inc);
-        outMonthly.innerHTML='EUR '+fmt(monthly)+'<span class="per"> /mo</span>';
-        outSuccess.innerHTML='EUR '+fmt(sf)+'<span class="per"> /yr</span>';
-        outAm.innerHTML='EUR '+fmt(amFee)+'<span class="per"> /yr</span>';
-        outEngCash.innerHTML='EUR '+fmt(engCash)+'<span class="per"> /yr</span>';
-        outEquity.innerHTML=fmt(equity)+' MW<span class="per"> equiv.</span>';
-    }
-
-    document.querySelectorAll('.pl-calc-tier-toggle button').forEach(b=>{
-        b.addEventListener('click',()=>{
-            document.querySelectorAll('.pl-calc-tier-toggle button').forEach(x=>x.classList.remove('active'));
-            b.classList.add('active');tier=b.dataset.tier;lblTier.textContent=b.textContent;calc();
-        });
-    });
-    document.querySelectorAll('.pl-calc-control input[type="range"]').forEach(s=>s.addEventListener('input',calc));
-    calc();
 
     // Module modals
     document.querySelectorAll('.pl-feature-clickable').forEach(card => {
