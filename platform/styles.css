@@ -361,7 +361,6 @@
     font-size: 13px;
     color: rgba(255, 255, 255, 0.45);
     font-weight: 500;
-    margin-bottom: 12px;
 }
 
 .pl-fc-btn {
@@ -392,6 +391,12 @@
     background: rgba(255, 255, 255, 0.85);
     color: #000000;
     border-color: rgba(255, 255, 255, 0.85);
+}
+
+.pl-fc-btn-row td {
+    padding-top: 28px !important;
+    padding-bottom: 8px !important;
+    border-bottom: none !important;
 }
 
 /* Category header */
