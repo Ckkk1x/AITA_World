@@ -382,6 +382,119 @@
         </div>
     </section>
 
+    <!-- AI COST CALCULATOR -->
+    <section class="pl-section pl-section-tight" id="cost-calculator">
+        <p class="pl-label" data-i18n="pl.calc.label">Cost estimate</p>
+        <h2 class="pl-title" data-i18n="pl.calc.title">Estimate your monthly AI cost</h2>
+        <p class="pl-calc-subtitle" data-i18n="pl.calc.subtitle">Move the sliders to see how AITA scales with your team.</p>
+
+        <div class="pl-calc-card">
+            <!-- Currency toggle + total -->
+            <div class="pl-calc-hero">
+                <div class="pl-calc-currency" role="tablist" aria-label="Currency">
+                    <button class="pl-calc-currency-btn active" data-currency="EUR" aria-selected="true">EUR</button>
+                    <button class="pl-calc-currency-btn" data-currency="USD" aria-selected="false">USD</button>
+                </div>
+                <div class="pl-calc-total-block" aria-live="polite">
+                    <div class="pl-calc-result-label" data-i18n="pl.calc.estimated">Estimated monthly AI cost</div>
+                    <div class="pl-calc-result-value" id="pl-calc-total" data-state="loading">…</div>
+                    <div class="pl-calc-result-note" data-i18n="pl.calc.note">Approximate. Sign up to see the full breakdown.</div>
+                    <div class="pl-calc-error" id="pl-calc-error" role="status" hidden></div>
+                </div>
+            </div>
+
+            <!-- Text features section -->
+            <div class="pl-calc-section">
+                <div class="pl-calc-section-head">
+                    <h3 class="pl-calc-section-title" data-i18n="pl.calc.text.title">AI features (text)</h3>
+                </div>
+                <div class="pl-calc-control">
+                    <div class="pl-calc-input-row">
+                        <label for="pl-calc-employees" data-i18n="pl.calc.employees">Active employees</label>
+                        <output id="pl-calc-employees-value" for="pl-calc-employees">50</output>
+                    </div>
+                    <input type="range" id="pl-calc-employees" min="1" max="500" value="50" step="1" aria-label="Active employees">
+                    <div class="pl-calc-range-marks"><span>1</span><span>500</span></div>
+                    <div class="pl-calc-helper" id="pl-calc-text-perunit">—</div>
+                </div>
+
+                <!-- Breakdown chips -->
+                <div class="pl-calc-breakdown" id="pl-calc-breakdown">
+                    <div class="pl-calc-chip" data-cat="chat">
+                        <span class="pl-calc-chip-label" data-i18n="pl.calc.cat.chat">Chat</span>
+                        <span class="pl-calc-chip-value" data-id="cat-chat">—</span>
+                    </div>
+                    <div class="pl-calc-chip" data-cat="tasks">
+                        <span class="pl-calc-chip-label" data-i18n="pl.calc.cat.tasks">Tasks</span>
+                        <span class="pl-calc-chip-value" data-id="cat-tasks">—</span>
+                    </div>
+                    <div class="pl-calc-chip" data-cat="documents">
+                        <span class="pl-calc-chip-label" data-i18n="pl.calc.cat.documents">Documents</span>
+                        <span class="pl-calc-chip-value" data-id="cat-documents">—</span>
+                    </div>
+                    <div class="pl-calc-chip" data-cat="imports">
+                        <span class="pl-calc-chip-label" data-i18n="pl.calc.cat.imports">Imports</span>
+                        <span class="pl-calc-chip-value" data-id="cat-imports">—</span>
+                    </div>
+                    <div class="pl-calc-chip" data-cat="misc">
+                        <span class="pl-calc-chip-label" data-i18n="pl.calc.cat.misc">Misc</span>
+                        <span class="pl-calc-chip-value" data-id="cat-misc">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call Transcription section -->
+            <div class="pl-calc-section pl-calc-section-bordered">
+                <div class="pl-calc-section-head">
+                    <h3 class="pl-calc-section-title" data-i18n="pl.calc.calls.title">Call transcription (optional)</h3>
+                    <span class="pl-calc-section-sub" data-i18n="pl.calc.calls.sub">Set sellers to 0 to skip this section.</span>
+                </div>
+                <div class="pl-calc-control">
+                    <div class="pl-calc-input-row">
+                        <label for="pl-calc-sellers" data-i18n="pl.calc.sellers">Sellers using transcription</label>
+                        <output id="pl-calc-sellers-value" for="pl-calc-sellers">5</output>
+                    </div>
+                    <input type="range" id="pl-calc-sellers" min="0" max="50" value="5" step="1">
+                    <div class="pl-calc-range-marks"><span>0</span><span>50</span></div>
+                </div>
+                <div class="pl-calc-row-pair">
+                    <div class="pl-calc-control">
+                        <div class="pl-calc-input-row">
+                            <label for="pl-calc-calls" data-i18n="pl.calc.callsPerDay">Calls per day / seller</label>
+                            <output id="pl-calc-calls-value" for="pl-calc-calls">25</output>
+                        </div>
+                        <input type="range" id="pl-calc-calls" min="0" max="100" value="25" step="1">
+                    </div>
+                    <div class="pl-calc-control">
+                        <div class="pl-calc-input-row">
+                            <label for="pl-calc-minutes" data-i18n="pl.calc.avgMinutes">Avg call (min)</label>
+                            <output id="pl-calc-minutes-value" for="pl-calc-minutes">5</output>
+                        </div>
+                        <input type="range" id="pl-calc-minutes" min="1" max="30" value="5" step="1">
+                    </div>
+                </div>
+                <div class="pl-calc-call-stats" id="pl-calc-call-stats">
+                    <div class="pl-calc-call-stat">
+                        <span class="pl-calc-call-stat-label" data-i18n="pl.calc.callsPerMonth">Calls / month</span>
+                        <span class="pl-calc-call-stat-value" id="pl-calc-calls-per-month">—</span>
+                    </div>
+                    <div class="pl-calc-call-stat">
+                        <span class="pl-calc-call-stat-label" data-i18n="pl.calc.minutesPerMonth">Minutes / month</span>
+                        <span class="pl-calc-call-stat-value" id="pl-calc-minutes-per-month">—</span>
+                    </div>
+                    <div class="pl-calc-call-stat">
+                        <span class="pl-calc-call-stat-label" data-i18n="pl.calc.callCost">Per-call cost</span>
+                        <span class="pl-calc-call-stat-value" id="pl-calc-call-cost">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pl-calc-cta">
+                <a href="#contact" class="pl-btn pl-btn-primary" data-i18n="pl.calc.cta">Try the platform free</a>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="pl-section" id="faq">
         <p class="pl-label">FAQ</p>
