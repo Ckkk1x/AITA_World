@@ -629,21 +629,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── AI Cost Calculator (public landing endpoint) ─────────────────────
-(function initCostCalculator() {
-    const slider = document.getElementById('pl-calc-employees');
-    if (!slider) return; // Section absent on other pages
+function initCostCalculator() {
+    const employeesSlider = document.getElementById('pl-calc-employees');
+    if (!employeesSlider) return; // Section absent on other pages
 
-    const valueEl = document.getElementById('pl-calc-employees-value');
-    const totalEl = document.getElementById('pl-calc-total');
-    const resultEl = totalEl.closest('.pl-calc-result');
+    // ── DOM refs ──────────────────────────────────────────────────────
+    const employeesValueEl  = document.getElementById('pl-calc-employees-value');
+    const sellersSlider     = document.getElementById('pl-calc-sellers');
+    const sellersValueEl    = document.getElementById('pl-calc-sellers-value');
+    const callsSlider       = document.getElementById('pl-calc-calls');
+    const callsValueEl      = document.getElementById('pl-calc-calls-value');
+    const minutesSlider     = document.getElementById('pl-calc-minutes');
+    const minutesValueEl    = document.getElementById('pl-calc-minutes-value');
+    const totalEl           = document.getElementById('pl-calc-total');
+    const textPerUnitEl     = document.getElementById('pl-calc-text-perunit');
+    const callsPerMonthEl   = document.getElementById('pl-calc-calls-per-month');
+    const minutesPerMonthEl = document.getElementById('pl-calc-minutes-per-month');
+    const callCostEl        = document.getElementById('pl-calc-call-cost');
+    const currencyBtns      = document.querySelectorAll('.pl-calc-currency-btn');
+    const heroBlock         = document.querySelector('.pl-calc-total-block');
 
-    // Smart endpoint switch — dev preview / localhost use dev API,
-    // production landing (aita.world) hits prod API.
-    const host = location.hostname;
-    const API_BASE = (host.includes('aita.today') || host === 'localhost' || host === '127.0.0.1')
-        ? 'https://api.aita.today'
-        : 'https://api.aita.world';
+    // ── API base: 3-branch smart switch ───────────────────────────────
+    function getApiBase() {
+        const host = location.hostname;
+        if (host === 'localhost' || host === '127.0.0.1') {
+            return 'http://localhost:8766';         // dev CORS proxy
+        } else if (host.includes('aita.today')) {
+            return 'https://api.aita.today';        // staging / dev
+        } else {
+            return 'https://api.aita.world';        // production
+        }
+    }
 
+    // ── Constants ─────────────────────────────────────────────────────
     const REQUESTS_PER_EMPLOYEE_PER_MONTH = {
         AI_CHAT: 100, CHAT_MENTION: 20, TASK_AI: 40, MULTI_AGENT: 2,
         DOCUMENT_EXTRACTION: 6, CONTRACT_AUDIT: 1, CONTRACT_IMPORT: 1.6,
@@ -652,65 +670,231 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     const DAILY_REPORT_PER_COMPANY_PER_MONTH = 30;
 
-    function deriveItems(employees) {
+    const CATEGORY_PLACES = {
+        chat:      ['AI_CHAT', 'CHAT_MENTION'],
+        tasks:     ['TASK_AI', 'MULTI_AGENT'],
+        documents: ['DOCUMENT_EXTRACTION', 'CONTRACT_AUDIT', 'CONTRACT_IMPORT'],
+        imports:   ['IMPORT_EXTRACTION', 'IMPORT_LAYER_CLASSIFY', 'IMPORT_EMBEDDING'],
+        misc:      ['TELEGRAM_BOT', 'BESS_SCENARIO_PARSE', 'AI_LISTING', 'STRATEGY_DRAFT', 'DAILY_REPORT'],
+    };
+
+    // ── State ─────────────────────────────────────────────────────────
+    let activeCurrency = 'EUR';
+    let debounceTimer  = null;
+    let lastReqToken   = 0;
+
+    // ── Helpers ───────────────────────────────────────────────────────
+    function formatMoney(value, currency) {
+        const cur = currency || activeCurrency;
+        return new Intl.NumberFormat('en', {
+            style: 'currency',
+            currency: cur,
+            maximumFractionDigits: 0,
+        }).format(value);
+    }
+
+    function formatMoneySmall(value, currency) {
+        const cur = currency || activeCurrency;
+        return new Intl.NumberFormat('en', {
+            style: 'currency',
+            currency: cur,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        }).format(value);
+    }
+
+    /** Build items array for a given category and employee count. */
+    function deriveItemsForCategory(employees, category) {
         const emp = Math.max(0, Math.round(employees));
+        const places = CATEGORY_PLACES[category] || [];
         const items = [];
-        for (const place of Object.keys(REQUESTS_PER_EMPLOYEE_PER_MONTH)) {
-            const requests = Math.max(0, Math.round(emp * REQUESTS_PER_EMPLOYEE_PER_MONTH[place]));
-            if (requests > 0) items.push({ place, requests });
+        for (const place of places) {
+            if (place === 'DAILY_REPORT') {
+                // DAILY_REPORT is per-company, not per-employee
+                items.push({ place, requests: DAILY_REPORT_PER_COMPANY_PER_MONTH });
+            } else {
+                const rate = REQUESTS_PER_EMPLOYEE_PER_MONTH[place];
+                const requests = Math.max(0, Math.round(emp * (rate || 0)));
+                if (requests > 0) items.push({ place, requests });
+            }
         }
-        if (emp > 0) items.push({ place: 'DAILY_REPORT', requests: DAILY_REPORT_PER_COMPANY_PER_MONTH });
         return items;
     }
 
-    function formatEur(value) {
-        return new Intl.NumberFormat('en', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
-    }
-
-    let debounceTimer = null;
-    let lastReqToken = 0;
-
-    async function fetchEstimate(employees) {
-        const myToken = ++lastReqToken;
-        resultEl.setAttribute('data-loading', 'true');
-        try {
-            const items = deriveItems(employees);
-            const res = await fetch(API_BASE + '/api/public/billing/estimate', {
+    // ── Fetch helpers ─────────────────────────────────────────────────
+    async function fetchCategoryTotal(items, currency) {
+        if (!items || items.length === 0) return 0;
+        const API_BASE = getApiBase();
+        const res = await fetch(
+            API_BASE + '/api/public/billing/estimate?currency=' + currency,
+            {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ mode: 'advanced', items }),
-            });
-            if (myToken !== lastReqToken) return; // outdated
-            if (res.status === 429) {
-                totalEl.textContent = 'Slow down — try again in a minute';
-                totalEl.setAttribute('data-state', 'error');
-                return;
             }
-            if (!res.ok) {
-                totalEl.textContent = "Couldn’t load — try later";
-                totalEl.setAttribute('data-state', 'error');
-                return;
+        );
+        if (!res.ok) throw new Error('estimate ' + res.status);
+        const data = await res.json();
+        return data.totalEur || 0; // field name is totalEur regardless of currency
+    }
+
+    async function fetchTranscription(sellers, callsPerDay, avgMinutes, currency) {
+        const API_BASE = getApiBase();
+        const res = await fetch(
+            API_BASE + '/api/public/billing/estimate-transcription?currency=' + currency,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sellers,
+                    callsPerDay,
+                    avgMinutes,
+                }),
             }
-            const data = await res.json();
-            totalEl.textContent = formatEur(data.totalEur) + ' / mo';
+        );
+        if (!res.ok) throw new Error('transcription ' + res.status);
+        return res.json();
+    }
+
+    // ── UI updaters ───────────────────────────────────────────────────
+    function setChipValue(id, value) {
+        const el = document.querySelector('[data-id="' + id + '"]');
+        if (el) el.textContent = value;
+    }
+
+    function setLoadingState(loading) {
+        if (heroBlock) heroBlock.setAttribute('data-loading', loading ? 'true' : 'false');
+    }
+
+    // ── Main update function ──────────────────────────────────────────
+    async function update() {
+        const employees  = Math.max(1, +employeesSlider.value);
+        const sellers    = Math.max(0, +sellersSlider.value);
+        const callsPerDay = Math.max(0, +callsSlider.value);
+        const avgMinutes  = Math.max(1, +minutesSlider.value);
+        const currency    = activeCurrency;
+
+        const myToken = ++lastReqToken;
+        setLoadingState(true);
+        totalEl.setAttribute('data-state', 'loading');
+
+        try {
+            // Build 5 category item arrays
+            const catKeys = ['chat', 'tasks', 'documents', 'imports', 'misc'];
+            const catItems = catKeys.map(cat => deriveItemsForCategory(employees, cat));
+
+            // Build promise array: 5 text categories + optional call transcription
+            const textPromises = catItems.map(items => fetchCategoryTotal(items, currency));
+            const callPromise  = sellers > 0
+                ? fetchTranscription(sellers, callsPerDay, avgMinutes, currency)
+                : Promise.resolve(null);
+
+            // Fire all 6 in parallel
+            const [chatTotal, tasksTotal, docsTotal, importsTotal, miscTotal, callRes] =
+                await Promise.all([...textPromises, callPromise]);
+
+            // Race protection — discard if a newer request was started
+            if (myToken !== lastReqToken) return;
+
+            // Compute totals
+            const textTotal = chatTotal + tasksTotal + docsTotal + importsTotal + miscTotal;
+            const callTotal = callRes ? (callRes.totalEur || 0) : 0;
+            const combined  = textTotal + callTotal;
+
+            // Per-unit helpers
+            const perEmployee = employees > 0 ? textTotal / employees : 0;
+            const perCall = (callRes && callRes.callsPerMonth > 0) ? callTotal / callRes.callsPerMonth : 0;
+
+            // Update total
+            totalEl.textContent = formatMoney(combined, currency) + ' / mo';
             totalEl.setAttribute('data-state', 'ok');
+
+            // Update text helper
+            if (textPerUnitEl) {
+                textPerUnitEl.textContent = formatMoneySmall(perEmployee, currency) + ' / employee / mo';
+            }
+
+            // Update breakdown chips
+            setChipValue('cat-chat',      formatMoney(chatTotal, currency));
+            setChipValue('cat-tasks',     formatMoney(tasksTotal, currency));
+            setChipValue('cat-documents', formatMoney(docsTotal, currency));
+            setChipValue('cat-imports',   formatMoney(importsTotal, currency));
+            setChipValue('cat-misc',      formatMoney(miscTotal, currency));
+
+            // Update call stats
+            if (sellers > 0 && callRes) {
+                if (callsPerMonthEl)   callsPerMonthEl.textContent   = (callRes.callsPerMonth || 0).toLocaleString('en');
+                if (minutesPerMonthEl) minutesPerMonthEl.textContent = (callRes.minutesPerMonth || 0).toLocaleString('en');
+                if (callCostEl)        callCostEl.textContent        = formatMoneySmall(perCall, currency) + ' / call';
+            } else {
+                if (callsPerMonthEl)   callsPerMonthEl.textContent   = '—';
+                if (minutesPerMonthEl) minutesPerMonthEl.textContent = '—';
+                if (callCostEl)        callCostEl.textContent        = '—';
+            }
+
         } catch (err) {
             if (myToken !== lastReqToken) return;
-            totalEl.textContent = 'Offline';
+            const isRateLimit = err && err.message && err.message.includes('429');
+            totalEl.textContent = isRateLimit ? 'Slow down — try again in a minute' : 'Offline';
             totalEl.setAttribute('data-state', 'error');
         } finally {
-            if (myToken === lastReqToken) resultEl.removeAttribute('data-loading');
+            if (myToken === lastReqToken) setLoadingState(false);
         }
     }
 
-    slider.addEventListener('input', function(e) {
-        valueEl.textContent = e.target.value;
+    // ── Debounced trigger ─────────────────────────────────────────────
+    function scheduleUpdate() {
         clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(function() { fetchEstimate(+e.target.value); }, 300);
+        debounceTimer = setTimeout(update, 300);
+    }
+
+    // ── Slider wiring ─────────────────────────────────────────────────
+    employeesSlider.addEventListener('input', function(e) {
+        employeesValueEl.textContent = e.target.value;
+        scheduleUpdate();
     });
 
-    // Initial estimate on page load
-    fetchEstimate(+slider.value);
-})();
+    sellersSlider.addEventListener('input', function(e) {
+        sellersValueEl.textContent = e.target.value;
+        scheduleUpdate();
+    });
+
+    callsSlider.addEventListener('input', function(e) {
+        callsValueEl.textContent = e.target.value;
+        scheduleUpdate();
+    });
+
+    minutesSlider.addEventListener('input', function(e) {
+        minutesValueEl.textContent = e.target.value;
+        scheduleUpdate();
+    });
+
+    // ── Currency toggle wiring ────────────────────────────────────────
+    currencyBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const currency = btn.dataset.currency;
+            if (currency === activeCurrency) return;
+            activeCurrency = currency;
+            currencyBtns.forEach(function(b) {
+                const isActive = b.dataset.currency === currency;
+                b.classList.toggle('active', isActive);
+                b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+            scheduleUpdate();
+        });
+    });
+
+    // ── Initial render ────────────────────────────────────────────────
+    update();
+}
+
+// script.js is loaded in <head> without `defer`, so the body isn't parsed yet
+// when this file runs. Wait for DOMContentLoaded so the calculator elements
+// exist before we wire up listeners and fire the initial fetch.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCostCalculator);
+} else {
+    initCostCalculator();
+}
 
 
