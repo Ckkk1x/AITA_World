@@ -628,4 +628,89 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ── AI Cost Calculator (public landing endpoint) ─────────────────────
+(function initCostCalculator() {
+    const slider = document.getElementById('pl-calc-employees');
+    if (!slider) return; // Section absent on other pages
+
+    const valueEl = document.getElementById('pl-calc-employees-value');
+    const totalEl = document.getElementById('pl-calc-total');
+    const resultEl = totalEl.closest('.pl-calc-result');
+
+    // Smart endpoint switch — dev preview / localhost use dev API,
+    // production landing (aita.world) hits prod API.
+    const host = location.hostname;
+    const API_BASE = (host.includes('aita.today') || host === 'localhost' || host === '127.0.0.1')
+        ? 'https://api.aita.today'
+        : 'https://api.aita.world';
+
+    const REQUESTS_PER_EMPLOYEE_PER_MONTH = {
+        AI_CHAT: 100, CHAT_MENTION: 20, TASK_AI: 40, MULTI_AGENT: 2,
+        DOCUMENT_EXTRACTION: 6, CONTRACT_AUDIT: 1, CONTRACT_IMPORT: 1.6,
+        IMPORT_EXTRACTION: 10, IMPORT_LAYER_CLASSIFY: 16, IMPORT_EMBEDDING: 100,
+        TELEGRAM_BOT: 10, BESS_SCENARIO_PARSE: 0.2, AI_LISTING: 1.6, STRATEGY_DRAFT: 0.2,
+    };
+    const DAILY_REPORT_PER_COMPANY_PER_MONTH = 30;
+
+    function deriveItems(employees) {
+        const emp = Math.max(0, Math.round(employees));
+        const items = [];
+        for (const place of Object.keys(REQUESTS_PER_EMPLOYEE_PER_MONTH)) {
+            const requests = Math.max(0, Math.round(emp * REQUESTS_PER_EMPLOYEE_PER_MONTH[place]));
+            if (requests > 0) items.push({ place, requests });
+        }
+        if (emp > 0) items.push({ place: 'DAILY_REPORT', requests: DAILY_REPORT_PER_COMPANY_PER_MONTH });
+        return items;
+    }
+
+    function formatEur(value) {
+        return new Intl.NumberFormat('en', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+    }
+
+    let debounceTimer = null;
+    let lastReqToken = 0;
+
+    async function fetchEstimate(employees) {
+        const myToken = ++lastReqToken;
+        resultEl.setAttribute('data-loading', 'true');
+        try {
+            const items = deriveItems(employees);
+            const res = await fetch(API_BASE + '/api/public/billing/estimate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mode: 'advanced', items }),
+            });
+            if (myToken !== lastReqToken) return; // outdated
+            if (res.status === 429) {
+                totalEl.textContent = 'Slow down — try again in a minute';
+                totalEl.setAttribute('data-state', 'error');
+                return;
+            }
+            if (!res.ok) {
+                totalEl.textContent = "Couldn’t load — try later";
+                totalEl.setAttribute('data-state', 'error');
+                return;
+            }
+            const data = await res.json();
+            totalEl.textContent = formatEur(data.totalEur) + ' / mo';
+            totalEl.setAttribute('data-state', 'ok');
+        } catch (err) {
+            if (myToken !== lastReqToken) return;
+            totalEl.textContent = 'Offline';
+            totalEl.setAttribute('data-state', 'error');
+        } finally {
+            if (myToken === lastReqToken) resultEl.removeAttribute('data-loading');
+        }
+    }
+
+    slider.addEventListener('input', function(e) {
+        valueEl.textContent = e.target.value;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function() { fetchEstimate(+e.target.value); }, 300);
+    });
+
+    // Initial estimate on page load
+    fetchEstimate(+slider.value);
+})();
+
 

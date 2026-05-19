@@ -486,37 +486,6 @@ const translations = {
         "pl.fc.cta.text": "Need more than 10 users? Let's discuss terms for your company.",
         "pl.fc.cta.btn": "Contact us",
 
-        // Platform Landing - Calculator
-        "pl.calc.title": "AITA Pricing Calculator",
-        "pl.calc.subtitle": "Drag the sliders. Numbers update instantly.",
-        "pl.calc.tier": 'Tier <span class="v" id="lblTier">Company</span>',
-        "pl.calc.tier.team": "Team",
-        "pl.calc.tier.company": "Company",
-        "pl.calc.tier.enterprise": "Enterprise",
-        "pl.calc.users": 'Users <span class="v" id="lblUsers">15</span>',
-        "pl.calc.imports": 'Import (PDF/DXF) /mo <span class="v" id="lblImports">15</span>',
-        "pl.calc.audits": 'Audits /mo <span class="v" id="lblAudits">8</span>',
-        "pl.calc.docs": 'Solar Docs packs /mo <span class="v" id="lblDocs">5</span>',
-        "pl.calc.contracts": 'Contracts /mo <span class="v" id="lblContracts">3</span>',
-        "pl.calc.storage": 'Storage (GB) <span class="v" id="lblStorage">300</span>',
-        "pl.calc.ai": 'AI level <span class="v" id="lblAi">Mid</span>',
-        "pl.calc.gmv": 'Marketplace GMV /year (EUR K) <span class="v" id="lblGmv">2 000</span>',
-        "pl.calc.capital": 'Capital raised /year (EUR K) <span class="v" id="lblCap">5 000</span>',
-        "pl.calc.assets": 'Assets under mgmt (MW) <span class="v" id="lblAm">0</span>',
-        "pl.calc.capex": 'Engineering: CAPEX restructuring /year (EUR M) <span class="v" id="lblCapex">0</span>',
-        "pl.calc.greenfield": 'Engineering: new projects /year (MW) <span class="v" id="lblGreen">0</span>',
-        "pl.calc.result.sub": "Subscription (Tier 1)",
-        "pl.calc.result.eng": "Engineering credits",
-        "pl.calc.result.ai": "AI Copilot credits",
-        "pl.calc.result.storage": "Storage credits",
-        "pl.calc.result.total": "Total credits used",
-        "pl.calc.result.included": "Included in plan",
-        "pl.calc.result.monthly": "Cash SaaS / month (subscription + overage)",
-        "pl.calc.result.success": "Success fees / year (Tier 4)",
-        "pl.calc.result.am": "Asset management, recurring / year (Tier 6)",
-        "pl.calc.result.engcash": "Engineering cash / year (Tier 5, restructuring 1%)",
-        "pl.calc.result.equity": "Engineering equity / paper (Tier 5, new projects 15%)",
-        "pl.calc.note": 'All numbers are estimates. Actual cost depends on real resource consumption. <a href="#faq">See FAQ</a> for details on credits, success fees, and engineering pricing.',
         "pl.cta.discuss": "Want to discuss?",
 
         // Platform Landing - Who
@@ -668,7 +637,16 @@ const translations = {
         "pl.why.new.continuity": "One system, idea to exit",
         "pl.faq.title2": "Questions & answers",
         "pl.contact.title2": "Ready to start?",
-        "pl.contact.subtitle2": "Leave your contact. We'll set you up within 24 hours."
+        "pl.contact.subtitle2": "Leave your contact. We'll set you up within 24 hours.",
+
+        // AI Cost Calculator
+        "pl.calc.label": "Cost estimate",
+        "pl.calc.title": "Estimate your monthly AI cost",
+        "pl.calc.subtitle": "Drag the slider to see your approximate monthly AI spend at AITA scale.",
+        "pl.calc.employees": "Active employees",
+        "pl.calc.estimated": "Estimated monthly AI cost",
+        "pl.calc.note": "Approximate. Sign up to see your full breakdown.",
+        "pl.calc.cta": "Try the platform free"
     },
 
     uk: {
@@ -1158,37 +1136,6 @@ const translations = {
         "pl.fc.cta.text": "Потрібно більше 10 користувачів? Обговоримо умови для вашої компанії.",
         "pl.fc.cta.btn": "Зв'язатись",
 
-        // Platform Landing - Calculator
-        "pl.calc.title": "Калькулятор тарифів AITA",
-        "pl.calc.subtitle": "Рухайте слайдери. Числа оновлюються миттєво.",
-        "pl.calc.tier": 'Тариф <span class="v" id="lblTier">Company</span>',
-        "pl.calc.tier.team": "Team",
-        "pl.calc.tier.company": "Company",
-        "pl.calc.tier.enterprise": "Enterprise",
-        "pl.calc.users": 'Користувачі <span class="v" id="lblUsers">15</span>',
-        "pl.calc.imports": 'Імпорт (PDF/DXF) /міс <span class="v" id="lblImports">15</span>',
-        "pl.calc.audits": 'Аудити /міс <span class="v" id="lblAudits">8</span>',
-        "pl.calc.docs": 'Solar Docs пакети /міс <span class="v" id="lblDocs">5</span>',
-        "pl.calc.contracts": 'Контракти /міс <span class="v" id="lblContracts">3</span>',
-        "pl.calc.storage": 'Сховище (ГБ) <span class="v" id="lblStorage">300</span>',
-        "pl.calc.ai": 'Рівень AI <span class="v" id="lblAi">Mid</span>',
-        "pl.calc.gmv": 'GMV маркетплейсу /рік (EUR К) <span class="v" id="lblGmv">2 000</span>',
-        "pl.calc.capital": 'Залучений капітал /рік (EUR К) <span class="v" id="lblCap">5 000</span>',
-        "pl.calc.assets": 'Активи під управлінням (MW) <span class="v" id="lblAm">0</span>',
-        "pl.calc.capex": 'Інженерія: реструктуризація CAPEX /рік (EUR М) <span class="v" id="lblCapex">0</span>',
-        "pl.calc.greenfield": 'Інженерія: нові проєкти /рік (MW) <span class="v" id="lblGreen">0</span>',
-        "pl.calc.result.sub": "Підписка (Tier 1)",
-        "pl.calc.result.eng": "Інженерні кредити",
-        "pl.calc.result.ai": "AI Copilot кредити",
-        "pl.calc.result.storage": "Кредити сховища",
-        "pl.calc.result.total": "Всього використано кредитів",
-        "pl.calc.result.included": "Включено в план",
-        "pl.calc.result.monthly": "Cash SaaS / місяць (підписка + перевищення)",
-        "pl.calc.result.success": "Success fees / рік (Tier 4)",
-        "pl.calc.result.am": "Управління активами, recurring / рік (Tier 6)",
-        "pl.calc.result.engcash": "Інженерія cash / рік (Tier 5, реструктуризація 1%)",
-        "pl.calc.result.equity": "Інженерія equity / paper (Tier 5, нові проєкти 15%)",
-        "pl.calc.note": 'Усі числа є оцінками. Фактична вартість залежить від реального споживання ресурсів. <a href="#faq">Див. FAQ</a> для деталей про кредити, success fees та інженерне ціноутворення.',
         "pl.cta.discuss": "Хочете обговорити?",
 
         // Platform Landing - Who
@@ -1340,7 +1287,16 @@ const translations = {
         "pl.why.new.continuity": "Одна система, від ідеї до виходу",
         "pl.faq.title2": "Питання та відповіді",
         "pl.contact.title2": "Готові почати?",
-        "pl.contact.subtitle2": "Залиште контакт. Ми налаштуємо вас протягом 24 годин."
+        "pl.contact.subtitle2": "Залиште контакт. Ми налаштуємо вас протягом 24 годин.",
+
+        // AI Cost Calculator
+        "pl.calc.label": "Орієнтовна вартість",
+        "pl.calc.title": "Розрахуйте свою щомісячну вартість AI",
+        "pl.calc.subtitle": "Перетягуйте повзунок, щоб побачити приблизну щомісячну вартість AI у масштабі AITA.",
+        "pl.calc.employees": "Активних співробітників",
+        "pl.calc.estimated": "Орієнтовна щомісячна вартість AI",
+        "pl.calc.note": "Орієнтовно. Зареєструйтесь, щоб побачити повну деталізацію.",
+        "pl.calc.cta": "Спробувати платформу безкоштовно"
     },
 
     es: {
@@ -1830,37 +1786,6 @@ const translations = {
         "pl.fc.cta.text": "¿Necesita más de 10 usuarios? Hablemos sobre las condiciones para su empresa.",
         "pl.fc.cta.btn": "Contáctenos",
 
-        // Platform Landing - Calculator
-        "pl.calc.title": "Calculadora de precios AITA",
-        "pl.calc.subtitle": "Arrastra los controles. Los números se actualizan al instante.",
-        "pl.calc.tier": 'Plan <span class="v" id="lblTier">Company</span>',
-        "pl.calc.tier.team": "Team",
-        "pl.calc.tier.company": "Company",
-        "pl.calc.tier.enterprise": "Enterprise",
-        "pl.calc.users": 'Usuarios <span class="v" id="lblUsers">15</span>',
-        "pl.calc.imports": 'Importación (PDF/DXF) /mes <span class="v" id="lblImports">15</span>',
-        "pl.calc.audits": 'Auditorías /mes <span class="v" id="lblAudits">8</span>',
-        "pl.calc.docs": 'Paquetes Solar Docs /mes <span class="v" id="lblDocs">5</span>',
-        "pl.calc.contracts": 'Contratos /mes <span class="v" id="lblContracts">3</span>',
-        "pl.calc.storage": 'Almacenamiento (GB) <span class="v" id="lblStorage">300</span>',
-        "pl.calc.ai": 'Nivel de IA <span class="v" id="lblAi">Mid</span>',
-        "pl.calc.gmv": 'GMV Marketplace /año (EUR K) <span class="v" id="lblGmv">2 000</span>',
-        "pl.calc.capital": 'Capital captado /año (EUR K) <span class="v" id="lblCap">5 000</span>',
-        "pl.calc.assets": 'Activos bajo gestión (MW) <span class="v" id="lblAm">0</span>',
-        "pl.calc.capex": 'Ingeniería: reestructuración CAPEX /año (EUR M) <span class="v" id="lblCapex">0</span>',
-        "pl.calc.greenfield": 'Ingeniería: nuevos proyectos /año (MW) <span class="v" id="lblGreen">0</span>',
-        "pl.calc.result.sub": "Suscripción (Tier 1)",
-        "pl.calc.result.eng": "Créditos de ingeniería",
-        "pl.calc.result.ai": "Créditos AI Copilot",
-        "pl.calc.result.storage": "Créditos de almacenamiento",
-        "pl.calc.result.total": "Total de créditos usados",
-        "pl.calc.result.included": "Incluidos en el plan",
-        "pl.calc.result.monthly": "Cash SaaS / mes (suscripción + excedente)",
-        "pl.calc.result.success": "Success fees / año (Tier 4)",
-        "pl.calc.result.am": "Gestión de activos, recurrente / año (Tier 6)",
-        "pl.calc.result.engcash": "Ingeniería cash / año (Tier 5, reestructuración 1%)",
-        "pl.calc.result.equity": "Ingeniería equity / papel (Tier 5, nuevos proyectos 15%)",
-        "pl.calc.note": 'Todos los números son estimaciones. El coste real depende del consumo real de recursos. <a href="#faq">Ver FAQ</a> para detalles sobre créditos, success fees y precios de ingeniería.',
         "pl.cta.discuss": "¿Quieres discutirlo?",
 
         // Platform Landing - Who
@@ -2012,7 +1937,16 @@ const translations = {
         "pl.why.new.continuity": "Un sistema, de idea a salida",
         "pl.faq.title2": "Preguntas y respuestas",
         "pl.contact.title2": "¿Listo para empezar?",
-        "pl.contact.subtitle2": "Deja tu contacto. Te configuramos en 24 horas."
+        "pl.contact.subtitle2": "Deja tu contacto. Te configuramos en 24 horas.",
+
+        // AI Cost Calculator
+        "pl.calc.label": "Estimación de coste",
+        "pl.calc.title": "Calcula tu coste mensual de IA",
+        "pl.calc.subtitle": "Mueve el deslizador para ver tu gasto mensual aproximado de IA en AITA.",
+        "pl.calc.employees": "Empleados activos",
+        "pl.calc.estimated": "Coste mensual estimado de IA",
+        "pl.calc.note": "Aproximado. Regístrate para ver el desglose completo.",
+        "pl.calc.cta": "Probar la plataforma gratis"
     }
 };
 

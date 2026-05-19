@@ -382,6 +382,37 @@
         </div>
     </section>
 
+    <!-- AI COST CALCULATOR -->
+    <section class="pl-section pl-section-tight" id="cost-calculator">
+        <p class="pl-label" data-i18n="pl.calc.label">Cost estimate</p>
+        <h2 class="pl-title" data-i18n="pl.calc.title">Estimate your monthly AI cost</h2>
+        <p class="pl-calc-subtitle" data-i18n="pl.calc.subtitle">Drag the slider to see your approximate monthly AI spend at AITA scale.</p>
+
+        <div class="pl-calc-card">
+            <div class="pl-calc-input">
+                <div class="pl-calc-input-row">
+                    <label for="pl-calc-employees" data-i18n="pl.calc.employees">Active employees</label>
+                    <output id="pl-calc-employees-value" for="pl-calc-employees">50</output>
+                </div>
+                <input type="range" id="pl-calc-employees" min="1" max="500" value="50" step="1" aria-label="Active employees">
+                <div class="pl-calc-range-marks">
+                    <span>1</span>
+                    <span>500</span>
+                </div>
+            </div>
+
+            <div class="pl-calc-result" aria-live="polite" aria-atomic="true">
+                <div class="pl-calc-result-label" data-i18n="pl.calc.estimated">Estimated monthly AI cost</div>
+                <div class="pl-calc-result-value" id="pl-calc-total" data-state="loading">…</div>
+                <div class="pl-calc-result-note" data-i18n="pl.calc.note">Approximate. Sign up to see your full breakdown.</div>
+            </div>
+
+            <div class="pl-calc-cta">
+                <a href="#contact" class="pl-btn pl-btn-primary" data-i18n="pl.calc.cta">Try the platform free</a>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="pl-section" id="faq">
         <p class="pl-label">FAQ</p>
