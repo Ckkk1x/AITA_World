@@ -680,8 +680,21 @@ function initCostCalculator() {
 
     // ── State ─────────────────────────────────────────────────────────
     let activeCurrency = 'EUR';
-    let debounceTimer  = null;
-    let lastReqToken   = 0;
+    let textDebounceTimer = null;
+    let callDebounceTimer = null;
+    let lastTextToken = 0;
+    let lastCallToken = 0;
+    // Client-side response cache keyed on URL + body. Backend has its own
+    // 5-min cache; this layer dedupes identical client requests so rapid
+    // slider movements (back-and-forth to the same value) don't burn the
+    // rate limit. Entries never expire — the page itself is short-lived.
+    const responseCache = new Map();
+    // Remembered last *successful* values for each section. On error we
+    // keep showing these (with reduced opacity) instead of swapping in
+    // big "Slow down" text that resizes the layout.
+    let lastText = null;  // { totals: {chat,tasks,documents,imports,misc}, employees, currency }
+    let lastCall = null;  // { totalEur, callsPerMonth, minutesPerMonth, currency }
+    let lastErrorTimer = null;
 
     // ── Helpers ───────────────────────────────────────────────────────
     function formatMoney(value, currency) {
@@ -721,39 +734,45 @@ function initCostCalculator() {
         return items;
     }
 
-    // ── Fetch helpers ─────────────────────────────────────────────────
-    async function fetchCategoryTotal(items, currency) {
-        if (!items || items.length === 0) return 0;
+    // ── Fetch helpers (with client-side cache) ────────────────────────
+    async function postWithCache(path, currency, body) {
+        const cacheKey = path + '|' + currency + '|' + JSON.stringify(body);
+        if (responseCache.has(cacheKey)) return responseCache.get(cacheKey);
         const API_BASE = getApiBase();
         const res = await fetch(
-            API_BASE + '/api/public/billing/estimate?currency=' + currency,
+            API_BASE + path + '?currency=' + currency,
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ mode: 'advanced', items }),
+                body: JSON.stringify(body),
             }
         );
-        if (!res.ok) throw new Error('estimate ' + res.status);
+        if (!res.ok) {
+            const err = new Error('http ' + res.status);
+            err.status = res.status;
+            throw err;
+        }
         const data = await res.json();
-        return data.totalEur || 0; // field name is totalEur regardless of currency
+        responseCache.set(cacheKey, data);
+        return data;
     }
 
-    async function fetchTranscription(sellers, callsPerDay, avgMinutes, currency) {
-        const API_BASE = getApiBase();
-        const res = await fetch(
-            API_BASE + '/api/public/billing/estimate-transcription?currency=' + currency,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    sellers,
-                    callsPerDay,
-                    avgMinutes,
-                }),
-            }
+    async function fetchCategoryTotal(items, currency) {
+        if (!items || items.length === 0) return 0;
+        const data = await postWithCache(
+            '/api/public/billing/estimate',
+            currency,
+            { mode: 'advanced', items },
         );
-        if (!res.ok) throw new Error('transcription ' + res.status);
-        return res.json();
+        return data.totalEur || 0;
+    }
+
+    function fetchTranscription(sellers, callsPerDay, avgMinutes, currency) {
+        return postWithCache(
+            '/api/public/billing/estimate-transcription',
+            currency,
+            { sellers, callsPerDay, avgMinutes },
+        );
     }
 
     // ── UI updaters ───────────────────────────────────────────────────
@@ -766,107 +785,175 @@ function initCostCalculator() {
         if (heroBlock) heroBlock.setAttribute('data-loading', loading ? 'true' : 'false');
     }
 
-    // ── Main update function ──────────────────────────────────────────
-    async function update() {
-        const employees  = Math.max(1, +employeesSlider.value);
+    /**
+     * Show an inline, non-disruptive error notice. Does NOT change the big
+     * total text — that stays at its last-known good value with a subtle
+     * opacity hint. The notice auto-dismisses after 3.5s so the user knows
+     * to slow down without the layout shifting under them.
+     */
+    function showInlineError(messageKey, fallbackText) {
+        const errEl = document.getElementById('pl-calc-error');
+        if (!errEl) return;
+        const lang = localStorage.getItem('aita-lang') || 'en';
+        const translated = (typeof translations !== 'undefined'
+            && translations[lang]
+            && translations[lang][messageKey])
+            || fallbackText;
+        errEl.textContent = translated;
+        errEl.removeAttribute('hidden');
+        clearTimeout(lastErrorTimer);
+        lastErrorTimer = setTimeout(() => errEl.setAttribute('hidden', ''), 3500);
+    }
+
+    function classifyError(err) {
+        if (err && err.status === 429) return { key: 'pl.calc.err.ratelimit', fallback: 'Slow down — try again in a moment' };
+        return { key: 'pl.calc.err.offline', fallback: 'Couldn’t reach the calculator — try again later' };
+    }
+
+    /** Render combined total from cached lastText + lastCall. */
+    function renderCombined() {
+        const currency = activeCurrency;
+        const textTotal = lastText ? sumTextTotals(lastText.totals) : 0;
+        const callTotal = lastCall ? (lastCall.totalEur || 0) : 0;
+        const combined = textTotal + callTotal;
+        if (lastText || lastCall) {
+            totalEl.textContent = formatMoney(combined, currency) + ' / mo';
+            totalEl.setAttribute('data-state', 'ok');
+        }
+    }
+
+    function sumTextTotals(t) {
+        return (t.chat || 0) + (t.tasks || 0) + (t.documents || 0) + (t.imports || 0) + (t.misc || 0);
+    }
+
+    /** Render text-section helpers (chips + per-employee). Uses lastText. */
+    function renderTextSection() {
+        if (!lastText) return;
+        const currency = activeCurrency;
+        const t = lastText.totals;
+        const employees = lastText.employees;
+        const textTotal = sumTextTotals(t);
+        if (textPerUnitEl) {
+            const perEmployee = employees > 0 ? textTotal / employees : 0;
+            textPerUnitEl.textContent = formatMoneySmall(perEmployee, currency) + ' / employee / mo';
+        }
+        setChipValue('cat-chat',      formatMoney(t.chat || 0, currency));
+        setChipValue('cat-tasks',     formatMoney(t.tasks || 0, currency));
+        setChipValue('cat-documents', formatMoney(t.documents || 0, currency));
+        setChipValue('cat-imports',   formatMoney(t.imports || 0, currency));
+        setChipValue('cat-misc',      formatMoney(t.misc || 0, currency));
+    }
+
+    /** Render call-section helpers (callsPerMonth, minutesPerMonth, per-call). Uses lastCall. */
+    function renderCallSection() {
+        const currency = activeCurrency;
+        if (lastCall) {
+            const perCall = lastCall.callsPerMonth > 0 ? (lastCall.totalEur || 0) / lastCall.callsPerMonth : 0;
+            if (callsPerMonthEl)   callsPerMonthEl.textContent   = (lastCall.callsPerMonth || 0).toLocaleString('en');
+            if (minutesPerMonthEl) minutesPerMonthEl.textContent = (lastCall.minutesPerMonth || 0).toLocaleString('en');
+            if (callCostEl)        callCostEl.textContent        = formatMoneySmall(perCall, currency) + ' / call';
+        } else {
+            if (callsPerMonthEl)   callsPerMonthEl.textContent   = '—';
+            if (minutesPerMonthEl) minutesPerMonthEl.textContent = '—';
+            if (callCostEl)        callCostEl.textContent        = '—';
+        }
+    }
+
+    // ── Update functions (split: text and call are independent) ───────
+
+    /** Fetch only the 5 text-category breakdowns. Triggered by employees / currency. */
+    async function updateText() {
+        const employees = Math.max(1, +employeesSlider.value);
+        const currency  = activeCurrency;
+        const myToken   = ++lastTextToken;
+        setLoadingState(true);
+
+        try {
+            const catKeys = ['chat', 'tasks', 'documents', 'imports', 'misc'];
+            const catItems = catKeys.map(cat => deriveItemsForCategory(employees, cat));
+            const totals = await Promise.all(catItems.map(items => fetchCategoryTotal(items, currency)));
+            if (myToken !== lastTextToken) return; // outdated
+            lastText = {
+                employees,
+                currency,
+                totals: { chat: totals[0], tasks: totals[1], documents: totals[2], imports: totals[3], misc: totals[4] },
+            };
+            renderTextSection();
+            renderCombined();
+        } catch (err) {
+            if (myToken !== lastTextToken) return;
+            const e = classifyError(err);
+            showInlineError(e.key, e.fallback);
+            // Keep last value visible with reduced opacity (handled by data-loading attr)
+        } finally {
+            if (myToken === lastTextToken) setLoadingState(false);
+        }
+    }
+
+    /** Fetch only call transcription. Triggered by sellers / calls / minutes / currency. */
+    async function updateCall() {
         const sellers    = Math.max(0, +sellersSlider.value);
         const callsPerDay = Math.max(0, +callsSlider.value);
         const avgMinutes  = Math.max(1, +minutesSlider.value);
         const currency    = activeCurrency;
+        const myToken     = ++lastCallToken;
 
-        const myToken = ++lastReqToken;
+        if (sellers === 0) {
+            lastCall = null;
+            renderCallSection();
+            renderCombined();
+            return;
+        }
+
         setLoadingState(true);
-        totalEl.setAttribute('data-state', 'loading');
-
         try {
-            // Build 5 category item arrays
-            const catKeys = ['chat', 'tasks', 'documents', 'imports', 'misc'];
-            const catItems = catKeys.map(cat => deriveItemsForCategory(employees, cat));
-
-            // Build promise array: 5 text categories + optional call transcription
-            const textPromises = catItems.map(items => fetchCategoryTotal(items, currency));
-            const callPromise  = sellers > 0
-                ? fetchTranscription(sellers, callsPerDay, avgMinutes, currency)
-                : Promise.resolve(null);
-
-            // Fire all 6 in parallel
-            const [chatTotal, tasksTotal, docsTotal, importsTotal, miscTotal, callRes] =
-                await Promise.all([...textPromises, callPromise]);
-
-            // Race protection — discard if a newer request was started
-            if (myToken !== lastReqToken) return;
-
-            // Compute totals
-            const textTotal = chatTotal + tasksTotal + docsTotal + importsTotal + miscTotal;
-            const callTotal = callRes ? (callRes.totalEur || 0) : 0;
-            const combined  = textTotal + callTotal;
-
-            // Per-unit helpers
-            const perEmployee = employees > 0 ? textTotal / employees : 0;
-            const perCall = (callRes && callRes.callsPerMonth > 0) ? callTotal / callRes.callsPerMonth : 0;
-
-            // Update total
-            totalEl.textContent = formatMoney(combined, currency) + ' / mo';
-            totalEl.setAttribute('data-state', 'ok');
-
-            // Update text helper
-            if (textPerUnitEl) {
-                textPerUnitEl.textContent = formatMoneySmall(perEmployee, currency) + ' / employee / mo';
-            }
-
-            // Update breakdown chips
-            setChipValue('cat-chat',      formatMoney(chatTotal, currency));
-            setChipValue('cat-tasks',     formatMoney(tasksTotal, currency));
-            setChipValue('cat-documents', formatMoney(docsTotal, currency));
-            setChipValue('cat-imports',   formatMoney(importsTotal, currency));
-            setChipValue('cat-misc',      formatMoney(miscTotal, currency));
-
-            // Update call stats
-            if (sellers > 0 && callRes) {
-                if (callsPerMonthEl)   callsPerMonthEl.textContent   = (callRes.callsPerMonth || 0).toLocaleString('en');
-                if (minutesPerMonthEl) minutesPerMonthEl.textContent = (callRes.minutesPerMonth || 0).toLocaleString('en');
-                if (callCostEl)        callCostEl.textContent        = formatMoneySmall(perCall, currency) + ' / call';
-            } else {
-                if (callsPerMonthEl)   callsPerMonthEl.textContent   = '—';
-                if (minutesPerMonthEl) minutesPerMonthEl.textContent = '—';
-                if (callCostEl)        callCostEl.textContent        = '—';
-            }
-
+            const res = await fetchTranscription(sellers, callsPerDay, avgMinutes, currency);
+            if (myToken !== lastCallToken) return;
+            lastCall = res;
+            renderCallSection();
+            renderCombined();
         } catch (err) {
-            if (myToken !== lastReqToken) return;
-            const isRateLimit = err && err.message && err.message.includes('429');
-            totalEl.textContent = isRateLimit ? 'Slow down — try again in a minute' : 'Offline';
-            totalEl.setAttribute('data-state', 'error');
+            if (myToken !== lastCallToken) return;
+            const e = classifyError(err);
+            showInlineError(e.key, e.fallback);
         } finally {
-            if (myToken === lastReqToken) setLoadingState(false);
+            if (myToken === lastCallToken) setLoadingState(false);
         }
     }
 
-    // ── Debounced trigger ─────────────────────────────────────────────
-    function scheduleUpdate() {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(update, 300);
+    function scheduleText() {
+        clearTimeout(textDebounceTimer);
+        textDebounceTimer = setTimeout(updateText, 500);
+    }
+
+    function scheduleCall() {
+        clearTimeout(callDebounceTimer);
+        callDebounceTimer = setTimeout(updateCall, 500);
+    }
+
+    function scheduleAll() {
+        scheduleText();
+        scheduleCall();
     }
 
     // ── Slider wiring ─────────────────────────────────────────────────
+    // employees → text only (call is independent of employees count)
     employeesSlider.addEventListener('input', function(e) {
         employeesValueEl.textContent = e.target.value;
-        scheduleUpdate();
+        scheduleText();
     });
-
+    // sellers / calls / minutes → call only (text doesn't depend on these)
     sellersSlider.addEventListener('input', function(e) {
         sellersValueEl.textContent = e.target.value;
-        scheduleUpdate();
+        scheduleCall();
     });
-
     callsSlider.addEventListener('input', function(e) {
         callsValueEl.textContent = e.target.value;
-        scheduleUpdate();
+        scheduleCall();
     });
-
     minutesSlider.addEventListener('input', function(e) {
         minutesValueEl.textContent = e.target.value;
-        scheduleUpdate();
+        scheduleCall();
     });
 
     // ── Currency toggle wiring ────────────────────────────────────────
@@ -880,12 +967,13 @@ function initCostCalculator() {
                 b.classList.toggle('active', isActive);
                 b.setAttribute('aria-selected', isActive ? 'true' : 'false');
             });
-            scheduleUpdate();
+            scheduleAll();
         });
     });
 
     // ── Initial render ────────────────────────────────────────────────
-    update();
+    updateText();
+    updateCall();
 }
 
 // script.js is loaded in <head> without `defer`, so the body isn't parsed yet

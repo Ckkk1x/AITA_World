@@ -1042,12 +1042,16 @@
     color: #fff;
     line-height: 1;
     font-variant-numeric: tabular-nums;
+    /* Reserve height so a transient loading/error never shrinks the line
+       and shifts everything below it. 3rem font × ~1 line-height + small
+       padding margin for descenders. */
+    min-height: 3.25rem;
+    transition: opacity 200ms ease;
 }
 
-.pl-calc-result-value[data-state="error"] {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.1rem;
-    font-weight: 500;
+/* Soft loading state — keep the previous value visible, just fade slightly. */
+.pl-calc-total-block[data-loading="true"] .pl-calc-result-value {
+    opacity: 0.55;
 }
 
 .pl-calc-result-note {
@@ -1055,6 +1059,21 @@
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.45);
 }
+
+/* Inline non-disruptive error notice. Sits BELOW the big total and the
+   note — auto-dismisses from JS after 3.5s. Compact font, no layout
+   reservation when hidden. */
+.pl-calc-error {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: rgba(251, 191, 36, 0.95);     /* amber-300 — warning, not error */
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: inline-block;
+}
+.pl-calc-error[hidden] { display: none; }
 
 .pl-calc-cta { text-align: center; }
 
