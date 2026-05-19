@@ -642,11 +642,25 @@ const translations = {
         // AI Cost Calculator
         "pl.calc.label": "Cost estimate",
         "pl.calc.title": "Estimate your monthly AI cost",
-        "pl.calc.subtitle": "Drag the slider to see your approximate monthly AI spend at AITA scale.",
+        "pl.calc.subtitle": "Move the sliders to see how AITA scales with your team.",
         "pl.calc.employees": "Active employees",
         "pl.calc.estimated": "Estimated monthly AI cost",
-        "pl.calc.note": "Approximate. Sign up to see your full breakdown.",
-        "pl.calc.cta": "Try the platform free"
+        "pl.calc.note": "Approximate. Sign up to see the full breakdown.",
+        "pl.calc.cta": "Try the platform free",
+        "pl.calc.text.title": "AI features (text)",
+        "pl.calc.calls.title": "Call transcription (optional)",
+        "pl.calc.calls.sub": "Set sellers to 0 to skip this section.",
+        "pl.calc.sellers": "Sellers using transcription",
+        "pl.calc.callsPerDay": "Calls per day / seller",
+        "pl.calc.avgMinutes": "Avg call (min)",
+        "pl.calc.callsPerMonth": "Calls / month",
+        "pl.calc.minutesPerMonth": "Minutes / month",
+        "pl.calc.callCost": "Per-call cost",
+        "pl.calc.cat.chat": "Chat",
+        "pl.calc.cat.tasks": "Tasks",
+        "pl.calc.cat.documents": "Documents",
+        "pl.calc.cat.imports": "Imports",
+        "pl.calc.cat.misc": "Misc"
     },
 
     uk: {
@@ -1292,11 +1306,25 @@ const translations = {
         // AI Cost Calculator
         "pl.calc.label": "Орієнтовна вартість",
         "pl.calc.title": "Розрахуйте свою щомісячну вартість AI",
-        "pl.calc.subtitle": "Перетягуйте повзунок, щоб побачити приблизну щомісячну вартість AI у масштабі AITA.",
+        "pl.calc.subtitle": "Перетягуйте повзунки, щоб побачити, як AITA масштабується з вашою командою.",
         "pl.calc.employees": "Активних співробітників",
         "pl.calc.estimated": "Орієнтовна щомісячна вартість AI",
         "pl.calc.note": "Орієнтовно. Зареєструйтесь, щоб побачити повну деталізацію.",
-        "pl.calc.cta": "Спробувати платформу безкоштовно"
+        "pl.calc.cta": "Спробувати платформу безкоштовно",
+        "pl.calc.text.title": "AI-функції (текст)",
+        "pl.calc.calls.title": "Транскрипція дзвінків (необов'язково)",
+        "pl.calc.calls.sub": "Встановіть продавців на 0, щоб пропустити цю секцію.",
+        "pl.calc.sellers": "Продавців з транскрипцією",
+        "pl.calc.callsPerDay": "Дзвінків на день / продавець",
+        "pl.calc.avgMinutes": "Сер. дзвінок (хв)",
+        "pl.calc.callsPerMonth": "Дзвінків / місяць",
+        "pl.calc.minutesPerMonth": "Хвилин / місяць",
+        "pl.calc.callCost": "Вартість дзвінка",
+        "pl.calc.cat.chat": "Чат",
+        "pl.calc.cat.tasks": "Задачі",
+        "pl.calc.cat.documents": "Документи",
+        "pl.calc.cat.imports": "Імпорти",
+        "pl.calc.cat.misc": "Інше"
     },
 
     es: {
@@ -1942,11 +1970,25 @@ const translations = {
         // AI Cost Calculator
         "pl.calc.label": "Estimación de coste",
         "pl.calc.title": "Calcula tu coste mensual de IA",
-        "pl.calc.subtitle": "Mueve el deslizador para ver tu gasto mensual aproximado de IA en AITA.",
+        "pl.calc.subtitle": "Mueve los deslizadores para ver cómo AITA escala con tu equipo.",
         "pl.calc.employees": "Empleados activos",
         "pl.calc.estimated": "Coste mensual estimado de IA",
         "pl.calc.note": "Aproximado. Regístrate para ver el desglose completo.",
-        "pl.calc.cta": "Probar la plataforma gratis"
+        "pl.calc.cta": "Probar la plataforma gratis",
+        "pl.calc.text.title": "Funciones de IA (texto)",
+        "pl.calc.calls.title": "Transcripción de llamadas (opcional)",
+        "pl.calc.calls.sub": "Pon vendedores en 0 para omitir esta sección.",
+        "pl.calc.sellers": "Vendedores con transcripción",
+        "pl.calc.callsPerDay": "Llamadas al día / vendedor",
+        "pl.calc.avgMinutes": "Llamada media (min)",
+        "pl.calc.callsPerMonth": "Llamadas / mes",
+        "pl.calc.minutesPerMonth": "Minutos / mes",
+        "pl.calc.callCost": "Coste por llamada",
+        "pl.calc.cat.chat": "Chat",
+        "pl.calc.cat.tasks": "Tareas",
+        "pl.calc.cat.documents": "Documentos",
+        "pl.calc.cat.imports": "Importaciones",
+        "pl.calc.cat.misc": "Otros"
     }
 };
 
