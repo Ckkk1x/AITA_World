@@ -982,6 +982,38 @@
     font-variant-numeric: tabular-nums;
 }
 
+/* Editable numeric value — replaces <output>, allows manual entry */
+.pl-calc-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 4px 10px;
+    width: 5.5ch;
+    min-width: 5.5ch;
+    text-align: right;
+    outline: none;
+    transition: border-color 120ms, background 120ms;
+    -moz-appearance: textfield;
+    font-family: inherit;
+}
+.pl-calc-number::-webkit-outer-spin-button,
+.pl-calc-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.pl-calc-number:hover {
+    border-color: rgba(34, 197, 94, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+.pl-calc-number:focus {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.08);
+}
+
 .pl-calc-input input[type="range"] {
     -webkit-appearance: none;
     width: 100%;
@@ -1282,6 +1314,7 @@
     .pl-calc-card { padding: 24px 20px; }
     .pl-calc-result-value { font-size: 2.25rem; }
     .pl-calc-input-row output { font-size: 1.25rem; }
+    .pl-calc-number { font-size: 1.25rem; padding: 3px 8px; }
 
     .pl-calc-hero {
         flex-direction: column;
