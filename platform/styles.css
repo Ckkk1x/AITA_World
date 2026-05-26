@@ -1195,6 +1195,82 @@
     color: rgba(255, 255, 255, 0.4);
 }
 
+/* Section head with a trailing control (e.g. AI on/off switch) */
+.pl-calc-section-head-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* AI features on/off toggle switch */
+.pl-calc-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.pl-calc-switch-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: none;
+    letter-spacing: 0;
+}
+.pl-calc-switch input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.pl-calc-switch-track {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    transition: background 140ms;
+    flex-shrink: 0;
+}
+.pl-calc-switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 140ms;
+}
+.pl-calc-switch input:checked + .pl-calc-switch-track {
+    background: rgba(34, 197, 94, 0.55);
+}
+.pl-calc-switch input:checked + .pl-calc-switch-track .pl-calc-switch-thumb {
+    transform: translateX(18px);
+}
+.pl-calc-switch input:focus-visible + .pl-calc-switch-track {
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.4);
+}
+
+/* AI section dimmed when toggled off (CRM-only estimate) */
+.pl-calc-section-off .pl-calc-control,
+.pl-calc-section-off .pl-calc-breakdown {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Bottom result block: stack currency above the total, centered */
+.pl-calc-hero-bottom {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    margin-top: 8px;
+}
+.pl-calc-hero-bottom .pl-calc-currency {
+    flex-direction: row;
+    align-self: center;
+}
+
 /* Individual slider control block */
 .pl-calc-control {
     display: flex;
