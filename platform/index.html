@@ -386,7 +386,7 @@
     <section class="pl-section pl-section-tight" id="cost-calculator">
         <p class="pl-label" data-i18n="pl.calc.label">Cost estimate</p>
         <h2 class="pl-title" data-i18n="pl.calc.title">Estimate your monthly AI cost</h2>
-        <p class="pl-calc-subtitle" data-i18n="pl.calc.subtitle">Move the sliders to see how AITA scales with your team.</p>
+        <p class="pl-calc-subtitle" data-i18n="pl.calc.subtitle">Drag the sliders or type a value to see how AITA scales with your team.</p>
 
         <div class="pl-calc-card">
             <!-- Currency toggle + total -->
@@ -411,7 +411,7 @@
                 <div class="pl-calc-control">
                     <div class="pl-calc-input-row">
                         <label for="pl-calc-employees" data-i18n="pl.calc.employees">Active employees</label>
-                        <output id="pl-calc-employees-value" for="pl-calc-employees">50</output>
+                        <input type="number" class="pl-calc-number" id="pl-calc-employees-value" min="1" max="500" step="1" value="50" inputmode="numeric" aria-label="Active employees value">
                     </div>
                     <input type="range" id="pl-calc-employees" min="1" max="500" value="50" step="1" aria-label="Active employees">
                     <div class="pl-calc-range-marks"><span>1</span><span>500</span></div>
@@ -452,7 +452,7 @@
                 <div class="pl-calc-control">
                     <div class="pl-calc-input-row">
                         <label for="pl-calc-sellers" data-i18n="pl.calc.sellers">Sellers using transcription</label>
-                        <output id="pl-calc-sellers-value" for="pl-calc-sellers">5</output>
+                        <input type="number" class="pl-calc-number" id="pl-calc-sellers-value" min="0" max="50" step="1" value="5" inputmode="numeric" aria-label="Sellers value">
                     </div>
                     <input type="range" id="pl-calc-sellers" min="0" max="50" value="5" step="1">
                     <div class="pl-calc-range-marks"><span>0</span><span>50</span></div>
@@ -461,14 +461,14 @@
                     <div class="pl-calc-control">
                         <div class="pl-calc-input-row">
                             <label for="pl-calc-calls" data-i18n="pl.calc.callsPerDay">Calls per day / seller</label>
-                            <output id="pl-calc-calls-value" for="pl-calc-calls">25</output>
+                            <input type="number" class="pl-calc-number" id="pl-calc-calls-value" min="0" max="100" step="1" value="25" inputmode="numeric" aria-label="Calls per day value">
                         </div>
                         <input type="range" id="pl-calc-calls" min="0" max="100" value="25" step="1">
                     </div>
                     <div class="pl-calc-control">
                         <div class="pl-calc-input-row">
                             <label for="pl-calc-minutes" data-i18n="pl.calc.avgMinutes">Avg call (min)</label>
-                            <output id="pl-calc-minutes-value" for="pl-calc-minutes">5</output>
+                            <input type="number" class="pl-calc-number" id="pl-calc-minutes-value" min="1" max="30" step="1" value="5" inputmode="numeric" aria-label="Avg minutes value">
                         </div>
                         <input type="range" id="pl-calc-minutes" min="1" max="30" value="5" step="1">
                     </div>

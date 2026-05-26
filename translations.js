@@ -642,7 +642,7 @@ const translations = {
         // AI Cost Calculator
         "pl.calc.label": "Cost estimate",
         "pl.calc.title": "Estimate your monthly AI cost",
-        "pl.calc.subtitle": "Move the sliders to see how AITA scales with your team.",
+        "pl.calc.subtitle": "Drag the sliders or type a value to see how AITA scales with your team.",
         "pl.calc.employees": "Active employees",
         "pl.calc.estimated": "Estimated monthly AI cost",
         "pl.calc.note": "Approximate. Sign up to see the full breakdown.",
@@ -1308,7 +1308,7 @@ const translations = {
         // AI Cost Calculator
         "pl.calc.label": "Орієнтовна вартість",
         "pl.calc.title": "Розрахуйте свою щомісячну вартість AI",
-        "pl.calc.subtitle": "Перетягуйте повзунки, щоб побачити, як AITA масштабується з вашою командою.",
+        "pl.calc.subtitle": "Перетягуйте повзунки або введіть значення, щоб побачити, як AITA масштабується з вашою командою.",
         "pl.calc.employees": "Активних співробітників",
         "pl.calc.estimated": "Орієнтовна щомісячна вартість AI",
         "pl.calc.note": "Орієнтовно. Зареєструйтесь, щоб побачити повну деталізацію.",
@@ -1974,7 +1974,7 @@ const translations = {
         // AI Cost Calculator
         "pl.calc.label": "Estimación de coste",
         "pl.calc.title": "Calcula tu coste mensual de IA",
-        "pl.calc.subtitle": "Mueve los deslizadores para ver cómo AITA escala con tu equipo.",
+        "pl.calc.subtitle": "Mueve los deslizadores o escribe un valor para ver cómo AITA escala con tu equipo.",
         "pl.calc.employees": "Empleados activos",
         "pl.calc.estimated": "Coste mensual estimado de IA",
         "pl.calc.note": "Aproximado. Regístrate para ver el desglose completo.",

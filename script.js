@@ -936,25 +936,59 @@ function initCostCalculator() {
         scheduleCall();
     }
 
-    // ── Slider wiring ─────────────────────────────────────────────────
+    // ── Slider + number-input wiring ──────────────────────────────────
+    // Each control has a paired range slider and a <input type="number">.
+    // The slider drives the number field on drag; the number field drives
+    // the slider on typing, with clamping to the slider's [min, max] range
+    // applied on blur / Enter so partial typing (e.g. clearing the field
+    // to retype "200") isn't snapped back to min while the user is mid-edit.
+    function wirePair(slider, numberEl, schedule) {
+        const min = +slider.min;
+        const max = +slider.max;
+        // Slider → number (live)
+        slider.addEventListener('input', function() {
+            numberEl.value = slider.value;
+            schedule();
+        });
+        // Number → slider (live, unclamped while typing so partial input is ok)
+        numberEl.addEventListener('input', function() {
+            const raw = numberEl.value.trim();
+            if (raw === '') return; // user is mid-edit; don't recalc yet
+            const n = parseInt(raw, 10);
+            if (!Number.isFinite(n)) return;
+            // Clamp slider's displayed position to its range, but don't
+            // overwrite the number field — let the user finish typing.
+            const clamped = Math.min(max, Math.max(min, n));
+            slider.value = String(clamped);
+            schedule();
+        });
+        // On commit (blur / Enter), normalize the number field to a valid
+        // value in [min, max].
+        function commit() {
+            const raw = numberEl.value.trim();
+            const n = parseInt(raw, 10);
+            const clamped = Number.isFinite(n)
+                ? Math.min(max, Math.max(min, n))
+                : +slider.value;
+            numberEl.value = String(clamped);
+            slider.value = String(clamped);
+            schedule();
+        }
+        numberEl.addEventListener('blur', commit);
+        numberEl.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                numberEl.blur();
+            }
+        });
+    }
+
     // employees → text only (call is independent of employees count)
-    employeesSlider.addEventListener('input', function(e) {
-        employeesValueEl.textContent = e.target.value;
-        scheduleText();
-    });
+    wirePair(employeesSlider, employeesValueEl, scheduleText);
     // sellers / calls / minutes → call only (text doesn't depend on these)
-    sellersSlider.addEventListener('input', function(e) {
-        sellersValueEl.textContent = e.target.value;
-        scheduleCall();
-    });
-    callsSlider.addEventListener('input', function(e) {
-        callsValueEl.textContent = e.target.value;
-        scheduleCall();
-    });
-    minutesSlider.addEventListener('input', function(e) {
-        minutesValueEl.textContent = e.target.value;
-        scheduleCall();
-    });
+    wirePair(sellersSlider,   sellersValueEl,   scheduleCall);
+    wirePair(callsSlider,     callsValueEl,     scheduleCall);
+    wirePair(minutesSlider,   minutesValueEl,   scheduleCall);
 
     // ── Currency toggle wiring ────────────────────────────────────────
     currencyBtns.forEach(function(btn) {
