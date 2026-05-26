@@ -648,6 +648,8 @@ function initCostCalculator() {
     const callCostEl        = document.getElementById('pl-calc-call-cost');
     const currencyBtns      = document.querySelectorAll('.pl-calc-currency-btn');
     const heroBlock         = document.querySelector('.pl-calc-total-block');
+    const callsToggle       = document.getElementById('pl-calc-calls-toggle');
+    const callsSection      = document.getElementById('pl-calc-calls-section');
 
     // ── API base: 3-branch smart switch ───────────────────────────────
     function getApiBase() {
@@ -680,6 +682,7 @@ function initCostCalculator() {
 
     // ── State ─────────────────────────────────────────────────────────
     let activeCurrency = 'EUR';
+    let transcriptionEnabled = true; // call-transcription section toggle (optional add-on)
     let textDebounceTimer = null;
     let callDebounceTimer = null;
     let lastTextToken = 0;
@@ -822,7 +825,8 @@ function initCostCalculator() {
     function renderCombined() {
         const currency = activeCurrency;
         const textTotal = lastText ? sumTextTotals(lastText.totals) : 0;
-        const callTotal = lastCall ? (lastCall.totalEur || 0) : 0;
+        // Transcription is an optional add-on — excluded when toggled off.
+        const callTotal = (transcriptionEnabled && lastCall) ? (lastCall.totalEur || 0) : 0;
         const combined = textTotal + callTotal;
         if (lastText || lastCall) {
             totalEl.textContent = formatMoney(combined, currency) + ' ' + tUnit('pl.calc.unit.perMo', '/ mo');
@@ -843,7 +847,10 @@ function initCostCalculator() {
         const textTotal = sumTextTotals(t);
         if (textPerUnitEl) {
             const perEmployee = employees > 0 ? textTotal / employees : 0;
-            textPerUnitEl.textContent = formatMoneySmall(perEmployee, currency) + ' ' + tUnit('pl.calc.unit.perEmployeeMo', '/ employee / mo');
+            // Labelled so it's clear this is the average AI cost per employee.
+            textPerUnitEl.textContent = tUnit('pl.calc.perEmployeeLabel', 'Avg AI cost per employee')
+                + ': ' + formatMoneySmall(perEmployee, currency)
+                + ' ' + tUnit('pl.calc.unit.perMo', '/ mo');
         }
         setChipValue('cat-chat',      formatMoney(t.chat || 0, currency));
         setChipValue('cat-tasks',     formatMoney(t.tasks || 0, currency));
@@ -855,7 +862,7 @@ function initCostCalculator() {
     /** Render call-section helpers (callsPerMonth, minutesPerMonth, per-call). Uses lastCall. */
     function renderCallSection() {
         const currency = activeCurrency;
-        if (lastCall) {
+        if (transcriptionEnabled && lastCall) {
             const perCall = lastCall.callsPerMonth > 0 ? (lastCall.totalEur || 0) / lastCall.callsPerMonth : 0;
             if (callsPerMonthEl)   callsPerMonthEl.textContent   = (lastCall.callsPerMonth || 0).toLocaleString('en');
             if (minutesPerMonthEl) minutesPerMonthEl.textContent = (lastCall.minutesPerMonth || 0).toLocaleString('en');
@@ -900,6 +907,12 @@ function initCostCalculator() {
 
     /** Fetch only call transcription. Triggered by sellers / calls / minutes / currency. */
     async function updateCall() {
+        // Transcription toggled off → optional add-on excluded; no fetch.
+        if (!transcriptionEnabled) {
+            renderCallSection();
+            renderCombined();
+            return;
+        }
         const sellers    = Math.max(0, +sellersSlider.value);
         const callsPerDay = Math.max(0, +callsSlider.value);
         const avgMinutes  = Math.max(1, +minutesSlider.value);
@@ -1012,6 +1025,23 @@ function initCostCalculator() {
             scheduleAll();
         });
     });
+
+    // ── Call-transcription toggle wiring ──────────────────────────────
+    // Transcription is an optional add-on. Off → disable its inputs, dim
+    // the section, blank its stats, and drop its cost from the total.
+    function applyTranscriptionState() {
+        if (callsSection) callsSection.classList.toggle('pl-calc-section-off', !transcriptionEnabled);
+        [sellersSlider, sellersValueEl, callsSlider, callsValueEl, minutesSlider, minutesValueEl]
+            .forEach(function(el) { if (el) el.disabled = !transcriptionEnabled; });
+    }
+    if (callsToggle) {
+        callsToggle.addEventListener('change', function() {
+            transcriptionEnabled = callsToggle.checked;
+            applyTranscriptionState();
+            updateCall(); // refetch when re-enabled; no-op fetch when disabled
+        });
+        applyTranscriptionState();
+    }
 
     // ── Language change: re-render imperatively-built strings ─────────
     // The "/ mo", "/ employee / mo" and "/ call" suffixes are built in JS,
