@@ -810,6 +810,14 @@ function initCostCalculator() {
         return { key: 'pl.calc.err.offline', fallback: 'Couldn’t reach the calculator — try again later' };
     }
 
+    /** Read a unit-suffix string in the current UI language (falls back to EN). */
+    function tUnit(key, fallback) {
+        const lang = localStorage.getItem('aita-lang') || 'en';
+        return (typeof translations !== 'undefined'
+            && translations[lang]
+            && translations[lang][key]) || fallback;
+    }
+
     /** Render combined total from cached lastText + lastCall. */
     function renderCombined() {
         const currency = activeCurrency;
@@ -817,7 +825,7 @@ function initCostCalculator() {
         const callTotal = lastCall ? (lastCall.totalEur || 0) : 0;
         const combined = textTotal + callTotal;
         if (lastText || lastCall) {
-            totalEl.textContent = formatMoney(combined, currency) + ' / mo';
+            totalEl.textContent = formatMoney(combined, currency) + ' ' + tUnit('pl.calc.unit.perMo', '/ mo');
             totalEl.setAttribute('data-state', 'ok');
         }
     }
@@ -835,7 +843,7 @@ function initCostCalculator() {
         const textTotal = sumTextTotals(t);
         if (textPerUnitEl) {
             const perEmployee = employees > 0 ? textTotal / employees : 0;
-            textPerUnitEl.textContent = formatMoneySmall(perEmployee, currency) + ' / employee / mo';
+            textPerUnitEl.textContent = formatMoneySmall(perEmployee, currency) + ' ' + tUnit('pl.calc.unit.perEmployeeMo', '/ employee / mo');
         }
         setChipValue('cat-chat',      formatMoney(t.chat || 0, currency));
         setChipValue('cat-tasks',     formatMoney(t.tasks || 0, currency));
@@ -851,7 +859,7 @@ function initCostCalculator() {
             const perCall = lastCall.callsPerMonth > 0 ? (lastCall.totalEur || 0) / lastCall.callsPerMonth : 0;
             if (callsPerMonthEl)   callsPerMonthEl.textContent   = (lastCall.callsPerMonth || 0).toLocaleString('en');
             if (minutesPerMonthEl) minutesPerMonthEl.textContent = (lastCall.minutesPerMonth || 0).toLocaleString('en');
-            if (callCostEl)        callCostEl.textContent        = formatMoneySmall(perCall, currency) + ' / call';
+            if (callCostEl)        callCostEl.textContent        = formatMoneySmall(perCall, currency) + ' ' + tUnit('pl.calc.unit.perCall', '/ call');
         } else {
             if (callsPerMonthEl)   callsPerMonthEl.textContent   = '—';
             if (minutesPerMonthEl) minutesPerMonthEl.textContent = '—';
@@ -1003,6 +1011,16 @@ function initCostCalculator() {
             });
             scheduleAll();
         });
+    });
+
+    // ── Language change: re-render imperatively-built strings ─────────
+    // The "/ mo", "/ employee / mo" and "/ call" suffixes are built in JS,
+    // not via [data-i18n], so setLanguage() can't touch them. Re-render
+    // from the cached last values when the locale switches.
+    document.addEventListener('aita:langchange', function() {
+        renderCombined();
+        renderTextSection();
+        renderCallSection();
     });
 
     // ── Initial render ────────────────────────────────────────────────

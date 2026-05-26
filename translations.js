@@ -649,7 +649,10 @@ const translations = {
         "pl.calc.cta": "Try the platform free",
         "pl.calc.err.ratelimit": "Slow down — try again in a moment",
         "pl.calc.err.offline": "Couldn’t reach the calculator — try again later",
-        "pl.calc.text.title": "AI features (text)",
+        "pl.calc.text.title": "AI features",
+        "pl.calc.unit.perMo": "/ mo",
+        "pl.calc.unit.perEmployeeMo": "/ employee / mo",
+        "pl.calc.unit.perCall": "/ call",
         "pl.calc.calls.title": "Call transcription (optional)",
         "pl.calc.calls.sub": "Set sellers to 0 to skip this section.",
         "pl.calc.sellers": "Sellers using transcription",
@@ -1311,11 +1314,14 @@ const translations = {
         "pl.calc.subtitle": "Перетягуйте повзунки або введіть значення, щоб побачити, як AITA масштабується з вашою командою.",
         "pl.calc.employees": "Активних співробітників",
         "pl.calc.estimated": "Орієнтовна щомісячна вартість AI",
-        "pl.calc.note": "Оцінка за активного використання AI. Ви платите лише за те, що використовуєте — близько нуля, якщо ні. Зареєструйтесь, щоб побачити повну деталізацію.",
+        "pl.calc.note": "Оцінка за активне використання AI. Ви платите лише за те, чим користуєтесь — майже нуль, якщо не користуєтесь зовсім. Зареєструйтесь, щоб побачити повну деталізацію.",
         "pl.calc.cta": "Спробувати платформу безкоштовно",
         "pl.calc.err.ratelimit": "Не так швидко — спробуйте за мить",
         "pl.calc.err.offline": "Не вдалося з’єднатися з калькулятором — повторіть пізніше",
-        "pl.calc.text.title": "AI-функції (текст)",
+        "pl.calc.text.title": "AI-функції",
+        "pl.calc.unit.perMo": "/ міс",
+        "pl.calc.unit.perEmployeeMo": "/ співробітник / міс",
+        "pl.calc.unit.perCall": "/ дзвінок",
         "pl.calc.calls.title": "Транскрипція дзвінків (необов'язково)",
         "pl.calc.calls.sub": "Встановіть продавців на 0, щоб пропустити цю секцію.",
         "pl.calc.sellers": "Продавців з транскрипцією",
@@ -1981,7 +1987,10 @@ const translations = {
         "pl.calc.cta": "Probar la plataforma gratis",
         "pl.calc.err.ratelimit": "Más despacio — inténtalo en un momento",
         "pl.calc.err.offline": "No se pudo contactar con la calculadora — inténtalo más tarde",
-        "pl.calc.text.title": "Funciones de IA (texto)",
+        "pl.calc.text.title": "Funciones de IA",
+        "pl.calc.unit.perMo": "/ mes",
+        "pl.calc.unit.perEmployeeMo": "/ empleado / mes",
+        "pl.calc.unit.perCall": "/ llamada",
         "pl.calc.calls.title": "Transcripción de llamadas (opcional)",
         "pl.calc.calls.sub": "Pon vendedores en 0 para omitir esta sección.",
         "pl.calc.sellers": "Vendedores con transcripción",
@@ -2034,6 +2043,10 @@ function setLanguage(lang) {
     if (currentLangEl) {
         currentLangEl.textContent = langLabels[lang] || lang.toUpperCase();
     }
+
+    // Notify JS-rendered widgets (e.g. the cost calculator) so they can
+    // re-render strings they build imperatively — these aren't [data-i18n].
+    document.dispatchEvent(new CustomEvent('aita:langchange', { detail: { lang } }));
 }
 
 // Initialize language on DOM ready
