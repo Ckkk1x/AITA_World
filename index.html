@@ -69,20 +69,22 @@
     <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="img/favicon-512x512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180x180.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:ital@1&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:ital@1&display=swap" as="style">
+    <!-- Self-hosted brand fonts (first-party, strictly necessary — no Google contact). -->
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
     <script src="translations.js"></script>
     <script src="script.js"></script>
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "v4y0cwaq68");
+    <!--
+      Cookie consent. Microsoft Clarity (tag v4y0cwaq68) and Google Fonts load ONLY after consent
+      via cookie-consent.js. AITA_GFONTS holds the original Google Fonts href, re-injected on the
+      "External resources" opt-in; until then fonts come from fonts.css (self-hosted).
+    -->
+    <script>
+        window.AITA_CLARITY_TAG = "v4y0cwaq68";
+        window.AITA_GFONTS = ["https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:ital@1&display=swap"];
     </script>
+    <script src="cookie-consent.js" defer></script>
 </head>
 <body>
     <nav class="navbar" role="navigation">
@@ -425,15 +427,15 @@
         <form class="contact-form" id="contact-form">
             <div class="form-group">
                 <label for="name" class="form-label" data-i18n="contact.name.label">Name <span class="required">*</span></label>
-                <input type="text" id="name" name="name" class="form-input" required>
+                <input type="text" id="name" name="name" class="form-input" data-clarity-mask="true" required>
             </div>
             <div class="form-group">
                 <label for="contact" class="form-label" data-i18n="contact.contact.label">Phone or Email <span class="required">*</span></label>
-                <input type="text" id="contact" name="contact" class="form-input" required>
+                <input type="text" id="contact" name="contact" class="form-input" data-clarity-mask="true" required>
             </div>
             <div class="form-group">
                 <label for="message" class="form-label" data-i18n="contact.message.label">Message</label>
-                <textarea id="message" name="message" class="form-textarea" rows="5"></textarea>
+                <textarea id="message" name="message" class="form-textarea" rows="5" data-clarity-mask="true"></textarea>
             </div>
             <button type="submit" class="form-submit" data-i18n="contact.submit">Submit</button>
         </form>
@@ -486,6 +488,7 @@
             </div>
             <div class="footer-bottom">
                 <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a></p>
+                <p class="footer-copyright"><a href="#" class="footer-link" data-cc-open data-i18n="footer.cookie_preferences">Cookie preferences</a></p>
             </div>
         </div>
     </footer>

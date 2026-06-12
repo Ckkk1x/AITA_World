@@ -8,13 +8,17 @@
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://www.aita.world/privacy.html">
     <link rel="icon" type="image/png" href="images/aitalogowhite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap" rel="stylesheet" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" as="style">
+    <!-- Self-hosted brand fonts (first-party). Google Fonts loads only after consent. -->
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <script>
+        window.AITA_GFONTS = [
+            "https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap",
+            "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap"
+        ];
+    </script>
+    <script src="cookie-consent.js" defer></script>
     <style>
         .privacy-container {
             max-width: 900px;
@@ -203,6 +207,7 @@
             </div>
             <div class="footer-bottom">
                 <p class="footer-copyright">&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a></p>
+                <p class="footer-copyright"><a href="#" class="footer-link" data-cc-open>Cookie preferences</a></p>
             </div>
         </div>
     </footer>
