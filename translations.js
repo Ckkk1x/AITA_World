@@ -139,6 +139,7 @@ const translations = {
         "footer.address.value": "Bilbao, Basque Country, Spain",
         "footer.social": "Social Media",
         "footer.copyright": '&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a>',
+        "footer.cookie_preferences": "Cookie preferences",
 
         // Platform Landing - Navbar
         "pl.nav.modules": "Modules",
@@ -808,6 +809,7 @@ const translations = {
         "footer.address.value": "Більбао, Країна Басків, Іспанія",
         "footer.social": "Соціальні мережі",
         "footer.copyright": '&copy; 2026 AITA World. Усі права захищені. <a href="privacy.html" class="footer-link">Політика конфіденційності</a>',
+        "footer.cookie_preferences": "Налаштування куків",
 
         // Platform Landing - Navbar
         "pl.nav.modules": "Модулі",
@@ -1477,6 +1479,7 @@ const translations = {
         "footer.address.value": "Bilbao, País Vasco, España",
         "footer.social": "Redes sociales",
         "footer.copyright": '&copy; 2026 AITA World. Todos los derechos reservados. <a href="privacy.html" class="footer-link">Política de privacidad</a>',
+        "footer.cookie_preferences": "Preferencias de cookies",
 
         // Platform Landing - Navbar
         "pl.nav.modules": "Módulos",

@@ -60,3 +60,6 @@ yarn-debug.log
 *.tsbuildinfo
 
 dev-proxy.js
+
+# Local SDLC workflow artifacts (footprints/state) — specs/ are committed, agentic/ is not
+agentic/
