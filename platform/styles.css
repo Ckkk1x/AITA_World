@@ -363,6 +363,13 @@
     font-weight: 500;
 }
 
+.pl-fc-plan-note {
+    margin-top: 2px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+}
+
 .pl-fc-btn {
     display: inline-block;
     padding: 8px 20px;
