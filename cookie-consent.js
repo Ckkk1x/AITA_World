@@ -3,14 +3,18 @@
  *
  * GDPR Art. 6(1)(a) + LSSI-CE Art. 22.2 / AEPD 2023 guide compliant:
  *   • First-visit banner with three EQUAL-weight actions: Accept all / Reject all / Configure.
- *   • Nothing non-essential loads before an explicit choice — Microsoft Clarity and Google Fonts
- *     are injected ONLY after consent (strictly-necessary state uses self-hosted fonts.css).
+ *   • Nothing non-essential loads before an explicit choice — Microsoft Clarity, marketing pixels
+ *     and Google Fonts are injected ONLY after consent (strictly-necessary state uses fonts.css).
  *   • No pre-ticked boxes, no cookie wall, footer re-trigger, 24-month consent record + renewal,
  *     and GPC (Global Privacy Control) auto-reject.
+ *
+ * Consent categories: necessary (locked) | analytics | marketing | external.
  *
  * Per-page config (optional, set before this script):
  *   window.AITA_GFONTS = ["https://fonts.googleapis.com/css2?..."]  // Google Fonts hrefs to (re)inject on consent
  *   window.AITA_CLARITY_TAG = "v4y0cwaq68"                          // override default Clarity project tag
+ *   window.AITA_LINKEDIN_PARTNER_ID = "1234567"                     // LinkedIn Insight Tag — omitted → never loads
+ *   window.AITA_GADS_ID = "AW-123456789"                            // Google Ads tag — omitted → never loads
  *
  * Public API: window.AitaConsent.{ openPreferences, acceptAll, rejectAll, getConsent, reset }
  */
@@ -23,17 +27,23 @@
   var CONSENT_COOKIE = 'aita_consent';     // mirror cookie (server-readable, 24m)
   var SCHEMA_VERSION = 1;
   // Bump POLICY_VERSION whenever the cookie inventory changes → forces re-consent (renewal).
-  var POLICY_VERSION = '2026-06-12';
+  // 2026-08-06: added the `marketing` category (LinkedIn / Google Ads) to the inventory.
+  var POLICY_VERSION = '2026-08-06';
   var MAX_AGE_DAYS = 730;                  // 24 months
   var CLARITY_TAG = window.AITA_CLARITY_TAG || 'v4y0cwaq68';
   var GFONTS = window.AITA_GFONTS || [];
+  // Marketing tags stay unconfigured until a campaign actually needs them — an unset id means the
+  // pixel is never injected, consent or not. Consent alone is necessary but not sufficient.
+  var LINKEDIN_PARTNER_ID = window.AITA_LINKEDIN_PARTNER_ID || '';
+  var GADS_ID = window.AITA_GADS_ID || '';
   // Root-absolute so the link resolves from sub-directory pages (platform/, powerconnect2026/) too.
-  // Override with window.AITA_POLICY_URL once the dedicated Cookie Policy page ships.
-  var POLICY_URL = window.AITA_POLICY_URL || '/privacy.html';
+  var POLICY_URL = window.AITA_POLICY_URL || '/legal/cookies';
   var BEACON_ENABLED = false;              // server-side evidentiary log (see maybeBeacon) — off until /api/consent-log exists
   var BEACON_URL = '/api/consent-log';
   // Clarity cookies to clear when analytics consent is withdrawn.
   var CLARITY_COOKIES = ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'];
+  // LinkedIn Insight Tag + Google Ads cookies to clear when marketing consent is withdrawn.
+  var MARKETING_COOKIES = ['li_sugr', 'UserMatchHistory', 'bcookie', 'bscookie', 'lidc', 'li_gc', '_gcl_au', '_gcl_aw', '_gcl_dc'];
 
   var SUPPORTED_LANGS = ['en', 'uk', 'es'];
 
@@ -41,7 +51,7 @@
   var I18N = {
     en: {
       title: 'We value your privacy',
-      desc: 'We use strictly necessary cookies to run this site. With your consent we also use analytics and load external resources. You can accept, reject, or choose per category.',
+      desc: 'We use strictly necessary cookies to run this site. With your consent we also use analytics, marketing measurement, and load external resources. You can accept, reject, or choose per category.',
       policy: 'Cookie Policy',
       accept: 'Accept all',
       reject: 'Reject all',
@@ -56,12 +66,14 @@
       catNecessaryDesc: 'Required for the site to work (consent storage, security). Cannot be switched off.',
       catAnalytics: 'Analytics',
       catAnalyticsDesc: 'Microsoft Clarity — anonymous usage analytics and session replay. Sets _clck, _clsk, CLID, MUID, ANONCHK; data is processed in the US.',
+      catMarketing: 'Marketing and attribution',
+      catMarketingDesc: 'LinkedIn Insight Tag and Google Ads — measure B2B campaign performance and conversion attribution. Sets li_sugr, UserMatchHistory, _gcl_au; data is processed in the US.',
       catExternal: 'External resources',
       catExternalDesc: 'Google Fonts — loads Golos Text and Inter from Google’s CDN, which receives your IP. If off, fonts are served from our own server.'
     },
     uk: {
       title: 'Ми поважаємо вашу приватність',
-      desc: 'Ми використовуємо лише суворо необхідні куки для роботи сайту. За вашою згодою ми також застосовуємо аналітику та завантажуємо зовнішні ресурси. Можна прийняти, відхилити або обрати по категоріях.',
+      desc: 'Ми використовуємо лише суворо необхідні куки для роботи сайту. За вашою згодою ми також застосовуємо аналітику, маркетингову аналітику та завантажуємо зовнішні ресурси. Можна прийняти, відхилити або обрати по категоріях.',
       policy: 'Політика куків',
       accept: 'Прийняти все',
       reject: 'Відхилити все',
@@ -76,12 +88,14 @@
       catNecessaryDesc: 'Потрібні для роботи сайту (зберігання згоди, безпека). Не можна вимкнути.',
       catAnalytics: 'Аналітика',
       catAnalyticsDesc: 'Microsoft Clarity — анонімна аналітика та запис сесій. Ставить _clck, _clsk, CLID, MUID, ANONCHK; дані обробляються у США.',
+      catMarketing: 'Маркетинг та атрибуція',
+      catMarketingDesc: 'LinkedIn Insight Tag та Google Ads — вимірювання ефективності B2B-кампаній і атрибуція конверсій. Ставить li_sugr, UserMatchHistory, _gcl_au; дані обробляються у США.',
       catExternal: 'Зовнішні ресурси',
       catExternalDesc: 'Google Fonts — завантажує Golos Text та Inter з CDN Google, який отримує вашу IP-адресу. Якщо вимкнено — шрифти віддаються з нашого сервера.'
     },
     es: {
       title: 'Valoramos tu privacidad',
-      desc: 'Usamos cookies estrictamente necesarias para el funcionamiento del sitio. Con tu consentimiento también usamos analítica y cargamos recursos externos. Puedes aceptar, rechazar o elegir por categoría.',
+      desc: 'Usamos cookies estrictamente necesarias para el funcionamiento del sitio. Con tu consentimiento también usamos analítica, medición de marketing y cargamos recursos externos. Puedes aceptar, rechazar o elegir por categoría.',
       policy: 'Política de cookies',
       accept: 'Aceptar todo',
       reject: 'Rechazar todo',
@@ -96,6 +110,8 @@
       catNecessaryDesc: 'Necesarias para que el sitio funcione (almacenamiento del consentimiento, seguridad). No se pueden desactivar.',
       catAnalytics: 'Analítica',
       catAnalyticsDesc: 'Microsoft Clarity — analítica de uso anónima y repetición de sesiones. Establece _clck, _clsk, CLID, MUID, ANONCHK; los datos se procesan en EE. UU.',
+      catMarketing: 'Marketing y atribución',
+      catMarketingDesc: 'LinkedIn Insight Tag y Google Ads — miden el rendimiento de las campañas B2B y la atribución de conversiones. Establece li_sugr, UserMatchHistory, _gcl_au; los datos se procesan en EE. UU.',
       catExternal: 'Recursos externos',
       catExternalDesc: 'Google Fonts — carga Golos Text e Inter desde la CDN de Google, que recibe tu IP. Si está desactivado, las fuentes se sirven desde nuestro servidor.'
     }
@@ -127,6 +143,7 @@
       categories: {
         necessary: true,
         analytics: !!categories.analytics,
+        marketing: !!categories.marketing,
         external: !!categories.external
       },
       ts: new Date().toISOString(),
@@ -191,13 +208,46 @@
     })(window, document, 'clarity', 'script', CLARITY_TAG);
   }
 
-  function clearClarityCookies() {
+  function clearCookies(names) {
     var domains = ['', '; domain=.' + location.hostname.replace(/^www\./, '')];
-    CLARITY_COOKIES.forEach(function (name) {
+    names.forEach(function (name) {
       domains.forEach(function (d) {
         document.cookie = name + '=; path=/; Max-Age=0' + d;
       });
     });
+  }
+
+  // Marketing pixels. Both tags are opt-in AND opt-in-configured: without an id nothing is injected,
+  // so the site ships consent-ready while no campaign is running.
+  var marketingLoaded = false;
+  function loadMarketing() {
+    if (marketingLoaded) return;
+    if (!LINKEDIN_PARTNER_ID && !GADS_ID) return;
+    marketingLoaded = true;
+    if (LINKEDIN_PARTNER_ID) loadLinkedIn();
+    if (GADS_ID) loadGoogleAds();
+  }
+
+  function loadLinkedIn() {
+    window._linkedin_partner_id = LINKEDIN_PARTNER_ID;
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(LINKEDIN_PARTNER_ID);
+    addScript('https://snap.licdn.com/li.lms-analytics/insight.min.js');
+  }
+
+  function loadGoogleAds() {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    addScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GADS_ID));
+    window.gtag('js', new Date());
+    window.gtag('config', GADS_ID);
+  }
+
+  function addScript(src) {
+    if (document.querySelector('script[data-cc-tag][src="' + src + '"]')) return;
+    var s = document.createElement('script');
+    s.async = true; s.src = src; s.setAttribute('data-cc-tag', '');
+    document.head.appendChild(s);
   }
 
   var gfontsLoaded = false;
@@ -222,7 +272,14 @@
       loadClarity();
     } else if (priorActive && priorActive.analytics) {
       // Withdrawn after being active this session → purge cookies and reload for a clean state.
-      clearClarityCookies();
+      clearCookies(CLARITY_COOKIES);
+      reloadSoon();
+      return;
+    }
+    if (categories.marketing) {
+      loadMarketing();
+    } else if (priorActive && priorActive.marketing) {
+      clearCookies(MARKETING_COOKIES);
       reloadSoon();
       return;
     }
@@ -300,6 +357,7 @@
     var cats = h('ul', { className: 'cc-cats' }, [
       category('necessary', 'catNecessary', 'catNecessaryDesc', true, true),
       category('analytics', 'catAnalytics', 'catAnalyticsDesc', prefs.analytics, false),
+      category('marketing', 'catMarketing', 'catMarketingDesc', prefs.marketing, false),
       category('external', 'catExternal', 'catExternalDesc', prefs.external, false)
     ]);
     var panel = h('div', { className: 'cc-modal__panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'cc-modal-title' }, [
@@ -338,7 +396,7 @@
 
   function openPreferences() {
     var record = readConsent();
-    var prefs = record ? record.categories : { analytics: false, external: false };
+    var prefs = record ? record.categories : { analytics: false, marketing: false, external: false };
     if (modalEl && modalEl.parentNode) modalEl.parentNode.removeChild(modalEl);
     modalEl = buildModal(prefs);
     document.body.appendChild(modalEl);
@@ -361,19 +419,23 @@
     var prior = readConsent();
     var priorActive = prior && !isStale(prior) ? prior.categories : null;
     writeConsent(categories, gpc);
-    applyConsent({ analytics: !!categories.analytics, external: !!categories.external }, priorActive);
+    applyConsent({
+      analytics: !!categories.analytics,
+      marketing: !!categories.marketing,
+      external: !!categories.external
+    }, priorActive);
     hideBanner();
     closeModal();
   }
 
-  function acceptAll(gpc) { decide({ analytics: true, external: true }, gpc); }
-  function rejectAll(gpc) { decide({ analytics: false, external: false }, gpc); }
+  function acceptAll(gpc) { decide({ analytics: true, marketing: true, external: true }, gpc); }
+  function rejectAll(gpc) { decide({ analytics: false, marketing: false, external: false }, gpc); }
   function savePreferences() {
     var get = function (id) {
       var box = modalEl && modalEl.querySelector('[data-cc-cat="' + id + '"]');
       return !!(box && box.checked);
     };
-    decide({ analytics: get('analytics'), external: get('external') }, false);
+    decide({ analytics: get('analytics'), marketing: get('marketing'), external: get('external') }, false);
   }
 
   function onAction(e) {
