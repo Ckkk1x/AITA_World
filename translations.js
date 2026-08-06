@@ -138,7 +138,11 @@ const translations = {
         "footer.address": "Address:",
         "footer.address.value": "Bilbao, Basque Country, Spain",
         "footer.social": "Social Media",
-        "footer.copyright": '&copy; 2026 AITA World. All rights reserved. <a href="privacy.html" class="footer-link">Privacy Policy</a>',
+        "footer.copyright": "&copy; 2026 AITA World. All rights reserved.",
+        "footer.privacy_policy": "Privacy Policy",
+        "footer.cookie_policy": "Cookie Policy",
+        "footer.legal_notice": "Legal Notice",
+        "footer.terms_of_use": "Terms of Use",
         "footer.cookie_preferences": "Cookie preferences",
 
         // Platform Landing - Navbar
@@ -590,7 +594,7 @@ const translations = {
         "pl.footer.address": "Address:",
         "pl.footer.address.value": "Bilbao, Basque Country, Spain",
         "pl.footer.social": "Social Media",
-        "pl.footer.copyright": '&copy; 2026 AITA World. All rights reserved. <a href="../privacy.html" class="footer-link">Privacy Policy</a>',
+        "pl.footer.copyright": "&copy; 2026 AITA World. All rights reserved.",
 
         // Platform Landing - NEW short keys
         "pl.modules.label": "What you get",
@@ -808,7 +812,11 @@ const translations = {
         "footer.address": "Адреса:",
         "footer.address.value": "Більбао, Країна Басків, Іспанія",
         "footer.social": "Соціальні мережі",
-        "footer.copyright": '&copy; 2026 AITA World. Усі права захищені. <a href="privacy.html" class="footer-link">Політика конфіденційності</a>',
+        "footer.copyright": "&copy; 2026 AITA World. Усі права захищені.",
+        "footer.privacy_policy": "Політика конфіденційності",
+        "footer.cookie_policy": "Політика куків",
+        "footer.legal_notice": "Правова інформація",
+        "footer.terms_of_use": "Умови використання",
         "footer.cookie_preferences": "Налаштування куків",
 
         // Platform Landing - Navbar
@@ -1260,7 +1268,7 @@ const translations = {
         "pl.footer.address": "Адреса:",
         "pl.footer.address.value": "Більбао, Країна Басків, Іспанія",
         "pl.footer.social": "Соціальні мережі",
-        "pl.footer.copyright": '&copy; 2026 AITA World. Усі права захищені. <a href="../privacy.html" class="footer-link">Політика конфіденційності</a>',
+        "pl.footer.copyright": "&copy; 2026 AITA World. Усі права захищені.",
 
         // Platform Landing - NEW short keys
         "pl.modules.label": "Що ви отримуєте",
@@ -1478,7 +1486,11 @@ const translations = {
         "footer.address": "Dirección:",
         "footer.address.value": "Bilbao, País Vasco, España",
         "footer.social": "Redes sociales",
-        "footer.copyright": '&copy; 2026 AITA World. Todos los derechos reservados. <a href="privacy.html" class="footer-link">Política de privacidad</a>',
+        "footer.copyright": "&copy; 2026 AITA World. Todos los derechos reservados.",
+        "footer.privacy_policy": "Política de privacidad",
+        "footer.cookie_policy": "Política de cookies",
+        "footer.legal_notice": "Aviso Legal",
+        "footer.terms_of_use": "Términos de uso",
         "footer.cookie_preferences": "Preferencias de cookies",
 
         // Platform Landing - Navbar
@@ -1930,7 +1942,7 @@ const translations = {
         "pl.footer.address": "Dirección:",
         "pl.footer.address.value": "Bilbao, País Vasco, España",
         "pl.footer.social": "Redes sociales",
-        "pl.footer.copyright": '&copy; 2026 AITA World. Todos los derechos reservados. <a href="../privacy.html" class="footer-link">Política de privacidad</a>',
+        "pl.footer.copyright": "&copy; 2026 AITA World. Todos los derechos reservados.",
 
         // Platform Landing - NEW short keys
         "pl.modules.label": "Lo que obtienes",

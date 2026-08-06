@@ -2116,6 +2116,31 @@ body {
     text-decoration-color: rgba(255, 255, 255, 0.6);
 }
 
+/* Legal document links (privacy, cookies, aviso legal, terms, ENS, cookie preferences).
+   A single wrapping row rather than one stacked line per document. */
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 20px;
+    margin-top: 12px;
+}
+
+.footer-legal .footer-link {
+    font-family: 'Golos Text', sans-serif;
+    font-size: 11pt;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.footer-legal .footer-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration-color: rgba(255, 255, 255, 0.6);
+}
+
 /* # Бургер-меню кнопка */
 .burger-menu {
     display: none;

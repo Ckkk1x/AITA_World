@@ -1,0 +1,194 @@
+/*
+ * legal.css — shared styling for the /legal/* document pages
+ * (privacy, cookies, terms, aviso-legal, subprocessors).
+ *
+ * The legal texts are authored as semantic HTML by the compliance team using the
+ * .legal-* class contract below; this file is the only place that styles them, so
+ * a text update never needs a CSS change. Loaded after styles.css.
+ */
+
+.legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 120px var(--space-page-x) 80px;
+    color: #ffffff;
+    font-family: 'Golos Text', sans-serif;
+    line-height: 1.75;
+}
+
+/* ---- Back link + header ------------------------------------------------- */
+
+.legal-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.legal-back:hover {
+    opacity: 1;
+}
+
+.legal-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.legal-header h1 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.legal-meta {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- Sections ----------------------------------------------------------- */
+
+.legal-section {
+    margin-bottom: 44px;
+}
+
+.legal-section h2 {
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: #ffffff;
+}
+
+.legal-section h3 {
+    font-size: clamp(17px, 1.9vw, 20px);
+    font-weight: 600;
+    margin: 28px 0 14px;
+    color: #ffffff;
+}
+
+.legal-section p {
+    margin-bottom: 18px;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.legal-section ul,
+.legal-section ol {
+    margin: 0 0 18px 22px;
+    padding: 0;
+}
+
+.legal-section li {
+    margin-bottom: 12px;
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.legal-section strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.legal-section a,
+.legal-container .contact-email {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    transition: text-decoration-color 0.3s ease;
+}
+
+.legal-section a:hover,
+.legal-container .contact-email:hover {
+    text-decoration-color: #ffffff;
+}
+
+.legal-section code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.legal-address {
+    font-style: normal;
+    font-size: 17px;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.legal-note {
+    margin-bottom: 32px;
+    padding: 18px 22px;
+    border-left: 3px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 8px 8px 0;
+}
+
+.legal-note p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- Tables ------------------------------------------------------------- */
+
+/* Legal inventories are wide by nature — they scroll inside their own box so the
+   page body never scrolls horizontally on mobile. */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 24px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.legal-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.legal-table th,
+.legal-table td {
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.legal-table thead th {
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+.legal-table tbody th {
+    font-weight: 600;
+    color: #ffffff;
+    width: 34%;
+}
+
+@media (max-width: 768px) {
+    .legal-container {
+        padding: 100px 20px 60px;
+    }
+
+    .legal-section p,
+    .legal-section li {
+        font-size: 16px;
+    }
+
+    .legal-table {
+        min-width: 480px;
+    }
+}
