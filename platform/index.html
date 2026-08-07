@@ -200,65 +200,98 @@
     </section>
 
     <!-- PRICING -->
-    <section class="pl-section pl-section-tight" id="pricing">
+    <section class="pl-section pl-section-tight" id="pricing" data-billing="monthly" data-audience="company">
         <h2 class="pl-title" data-i18n="pl.pricing.title2">Start free. Scale as you grow.</h2>
+        <p class="pl-subtitle" data-i18n="pl.pr.sub">A personal plan for you, a company plan for your team — the company balance is spent first, your personal plan second.</p>
 
-        <!-- Compare features (GitHub-style) -->
+        <!-- Audience tabs + billing toggle -->
+        <div class="pl-pr-controls">
+            <div class="pl-pr-tabs" role="tablist" aria-label="Plan type">
+                <button type="button" class="pl-pr-tab is-active" data-audience="company" role="tab" aria-selected="true" data-i18n="pl.pr.tab.company">Company</button>
+                <button type="button" class="pl-pr-tab" data-audience="personal" role="tab" aria-selected="false" data-i18n="pl.pr.tab.personal">Personal</button>
+            </div>
+        </div>
+
+        <!-- ══════════ COMPANY ══════════ -->
+        <div class="pl-pr-panel" data-panel="company">
+        <div class="pl-pr-billing-row">
+            <div class="pl-pr-billing" role="group" aria-label="Billing period">
+                <button type="button" class="pl-pr-bill is-active" data-billing="monthly" data-i18n="pl.pr.bill.monthly">Monthly</button>
+                <button type="button" class="pl-pr-bill" data-billing="annual">
+                    <span data-i18n="pl.pr.bill.annual">Annual</span>
+                    <span class="pl-pr-save" data-i18n="pl.pr.bill.save">−18%</span>
+                </button>
+            </div>
+        </div>
+
         <div class="pl-fc">
-            <table class="pl-fc-table">
+            <table class="pl-fc-table pl-fc-table-4">
                 <thead>
                     <tr>
-                        <th class="pl-fc-feature-col"></th>
+                        <th class="pl-fc-feature-col">
+
+                            <div class="pl-pr-seats">
+                                <div class="pl-pr-seats-row">
+                                    <label for="pl-pr-managers" data-i18n="pl.pr.seats.label">Managers</label>
+                                    <input type="number" class="pl-calc-number" id="pl-pr-managers-value" min="1" max="50" step="1" value="8" inputmode="numeric" aria-label="Managers">
+                                </div>
+                                <input type="range" id="pl-pr-managers" min="1" max="50" value="8" step="1" aria-label="Managers">
+                                <div class="pl-pr-seats-hint" data-i18n="pl.pr.seats.hint">Drag to see your price</div>
+                            </div>
+                        </th>
                         <th class="pl-fc-plan-col">
                             <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.free">Free</div>
                             <div class="pl-fc-plan-price" data-i18n="pl.pricing.free.price">EUR 0</div>
                         </th>
+                        <th class="pl-fc-plan-col">
+                            <div class="pl-fc-plan-name">Corporate</div>
+                            <div class="pl-fc-plan-price" id="pl-pr-price-corp">€50/mo</div>
+                            <div class="pl-fc-plan-note" id="pl-pr-note-corp"></div>
+                        </th>
                         <th class="pl-fc-plan-col pl-fc-plan-hl">
-                            <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.starter">Starter</div>
-                            <div class="pl-fc-plan-price" data-i18n="pl.pricing.starter.price">from €50/mo</div>
-                            <div class="pl-fc-plan-note" data-i18n="pl.pricing.starter.note">€10 per manager/mo</div>
+                            <div class="pl-fc-plan-name">Corporate Gold</div>
+                            <div class="pl-fc-plan-price" id="pl-pr-price-gold">€150/mo</div>
+                            <div class="pl-fc-plan-note" id="pl-pr-note-gold"></div>
                         </th>
                         <th class="pl-fc-plan-col">
                             <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.custom">Custom</div>
-                            <div class="pl-fc-plan-price" data-i18n="pl.pricing.custom.price">Contact us</div>
+                            <div class="pl-fc-plan-price pl-fc-plan-price-text" data-i18n="pl.pricing.custom.price">Contact us</div>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- ── Platform ── -->
-                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.platform">Platform</td></tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.fc.cat.platform">Platform</td></tr>
                     <tr>
-                        <td data-i18n="pl.fc.users">Users</td>
-                        <td data-i18n="pl.fc.free.users">Up to 3</td>
-                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.users">Up to 5</td>
+                        <td data-i18n="pl.pr.managers">Managers</td>
+                        <td data-i18n="pl.pr.free.users">Up to 2</td>
+                        <td id="pl-pr-seats-corp">5</td>
+                        <td class="pl-fc-hl" id="pl-pr-seats-gold">3</td>
                         <td data-i18n="pl.fc.custom.users">Custom</td>
                     </tr>
                     <tr>
-                        <td data-i18n="pl.fc.verification">Priority verification</td>
+                        <td data-i18n="pl.pr.viewers">Free Viewer seats (read-only)</td>
                         <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
                     <tr>
-                        <td data-i18n="pl.fc.support">Support</td>
-                        <td data-i18n="pl.fc.free.support">Email</td>
-                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.support">Personal chat</td>
-                        <td data-i18n="pl.fc.custom.support">Dedicated manager</td>
-                    </tr>
-                    <tr>
                         <td data-i18n="pl.fc.balance">AI balance</td>
-                        <td>€5</td>
-                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.balance">€50/mo</td>
+                        <td data-i18n="pl.pr.c.free.balance">€10/mo</td>
+                        <td id="pl-pr-credits-corp">€50/mo</td>
+                        <td class="pl-fc-hl" id="pl-pr-credits-gold">€180/mo</td>
                         <td data-i18n="pl.fc.custom.balance">Custom</td>
                     </tr>
                     <tr>
-                        <td data-i18n="pl.fc.markup">Credit markup</td>
-                        <td>2.5×</td>
-                        <td class="pl-fc-hl">2.0×</td>
-                        <td data-i18n="pl.fc.custom.markup">Custom</td>
+                        <td data-i18n="pl.pr.memory">AI memory</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
                     <tr>
                         <td data-i18n="pl.fc.partner">Partner network</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
@@ -266,41 +299,79 @@
                     <tr>
                         <td data-i18n="pl.fc.plugins">Plugins</td>
                         <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.support">Support</td>
+                        <td data-i18n="pl.fc.free.support">Email</td>
+                        <td data-i18n="pl.pr.support.chat">Chat and email</td>
+                        <td class="pl-fc-hl" data-i18n="pl.pr.support.personal">Personal (Platform Support)</td>
+                        <td data-i18n="pl.fc.custom.support">Dedicated manager</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.requests">Feature requests reviewed in 24 h</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
                     <tr>
                         <td data-i18n="pl.fc.early">Early access to new features</td>
                         <td><span class="pl-fc-no">—</span></td>
-                        <td class="pl-fc-hl"><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
-
-                    <!-- ── CRM ── -->
-                    <tr class="pl-fc-cat"><td colspan="4">CRM</td></tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.pr.cat.crm">CRM</td></tr>
                     <tr>
                         <td data-i18n="pl.fc.crm">CRM</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
                     <tr>
                         <td data-i18n="pl.fc.crm.cards">Card management</td>
-                        <td data-i18n="pl.fc.free.crm.cards">Manual</td>
+                        <td data-i18n="pl.pr.manual">Manual</td>
+                        <td data-i18n="pl.fc.starter.crm.cards">AI auto</td>
                         <td class="pl-fc-hl" data-i18n="pl.fc.starter.crm.cards">AI auto</td>
                         <td data-i18n="pl.fc.starter.crm.cards">AI auto</td>
                     </tr>
                     <tr>
                         <td data-i18n="pl.fc.crm.psychotype">Client psychotype</td>
                         <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
-
-                    <!-- ── Task Manager ── -->
-                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.tasks">Task Manager</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.mod.commerce">Commerce: products, orders, invoices</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.contracts">Contracts from templates</td>
+                        <td data-i18n="pl.pr.manual">Manual</td>
+                        <td data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                        <td data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.pr.cat.projects">Projects</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.mod.projects">Projects</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.fc.cat.tasks">Task Manager</td></tr>
                     <tr>
                         <td data-i18n="pl.fc.tasks">Task Manager</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
@@ -308,49 +379,284 @@
                     <tr>
                         <td data-i18n="pl.fc.tasks.voice">Voice task creation</td>
                         <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
-
-                    <!-- ── Chat ── -->
-                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.chat">Chat</td></tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.fc.cat.chat">Chat</td></tr>
                     <tr>
                         <td data-i18n="pl.fc.chat">Chat</td>
-                        <td data-i18n="pl.fc.free.chat">Team only</td>
-                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.chat">Team + companies</td>
-                        <td data-i18n="pl.fc.custom.chat">Unlimited</td>
+                                                <td><span data-i18n="pl.fc.free.chat">Team only</span></td>
+                        <td><span data-i18n="pl.fc.starter.chat">Team + companies</span></td>
+                        <td class="pl-fc-hl"><span data-i18n="pl.fc.starter.chat">Team + companies</span></td>
+                        <td><span data-i18n="pl.fc.starter.chat">Team + companies</span></td>
                     </tr>
-
-                    <!-- ── Data Room ── -->
-                    <tr class="pl-fc-cat"><td colspan="4">Data Room</td></tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.pr.cat.dataroom">Data Room</td></tr>
                     <tr>
                         <td data-i18n="pl.fc.storage">Storage</td>
-                        <td data-i18n="pl.fc.free.storage">5 GB</td>
-                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.storage">50 GB</td>
-                        <td data-i18n="pl.fc.custom.storage">Unlimited</td>
+                                                <td>1 GB</td>
+                        <td>20 GB</td>
+                        <td class="pl-fc-hl">200 GB</td>
+                        <td><span data-i18n="pl.fc.custom.users">Custom</span></td>
                     </tr>
                     <tr>
                         <td data-i18n="pl.fc.ai.search">AI document search</td>
                         <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
                     <tr>
                         <td data-i18n="pl.fc.ai.import">PDF import with AI</td>
                         <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
                         <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
                         <td><span class="pl-fc-yes">✓</span></td>
                     </tr>
-                    <!-- CTA row -->
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.pr.cat.marketplace">Marketplace</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.listings">Publish listings</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.badge">Seller badge</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td data-i18n="pl.pr.verified">Verified</td>
+                        <td class="pl-fc-hl" data-i18n="pl.pr.verified">Verified</td>
+                        <td data-i18n="pl.pr.verified">Verified</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.ranking">Search ranking</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td data-i18n="pl.pr.rank.std">Standard</td>
+                        <td class="pl-fc-hl" data-i18n="pl.pr.top">Priority</td>
+                        <td data-i18n="pl.pr.top">Priority</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.comm.eq">Commission — equipment</td>
+                        <td>6%</td>
+                        <td>4%</td>
+                        <td class="pl-fc-hl">4%</td>
+                        <td data-i18n="pl.pr.negotiated">Negotiated</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.comm.sv">Commission — services</td>
+                        <td>10%</td>
+                        <td>8%</td>
+                        <td class="pl-fc-hl">8%</td>
+                        <td data-i18n="pl.pr.negotiated">Negotiated</td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="5" data-i18n="pl.pr.cat.referral">Referral programme</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.ref.access">Access to the referral programme</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                    </tr>
                     <tr class="pl-fc-btn-row">
                         <td></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="free" data-i18n="pl.fc.btn.free">Get started</a></td>
-                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="starter" data-i18n="pl.fc.btn.starter">Get Starter</a></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="custom" data-i18n="pl.fc.btn.custom">Contact us</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-free" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-corporate" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="company-gold" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-custom" data-i18n="pl.pr.btn.request">Request access</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        </div>
+
+        <!-- ══════════ PERSONAL ══════════ -->
+        <div class="pl-pr-panel" data-panel="personal" hidden>
+        <div class="pl-pr-billing-row">
+            <div class="pl-pr-billing" role="group" aria-label="Billing period">
+                <button type="button" class="pl-pr-bill is-active" data-billing="monthly" data-i18n="pl.pr.bill.monthly">Monthly</button>
+                <button type="button" class="pl-pr-bill" data-billing="annual">
+                    <span data-i18n="pl.pr.bill.annual">Annual</span>
+                    <span class="pl-pr-save" data-i18n="pl.pr.bill.save">−18%</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="pl-fc">
+            <table class="pl-fc-table">
+                <thead>
+                    <tr>
+                        <th class="pl-fc-feature-col">
+                        </th>
+                        <th class="pl-fc-plan-col">
+                            <div class="pl-fc-plan-name" data-i18n="pl.pricing.th.free">Free</div>
+                            <div class="pl-fc-plan-price" data-i18n="pl.pricing.free.price">EUR 0</div>
+                        </th>
+                        <th class="pl-fc-plan-col">
+                            <div class="pl-fc-plan-name">Citizenship</div>
+                            <div class="pl-fc-plan-price pl-pr-m" data-i18n="pl.pr.p.cit.price">€50/mo</div>
+                            <div class="pl-fc-plan-price pl-pr-a" data-i18n="pl.pr.p.cit.price.a">€492/yr</div>
+                            <div class="pl-fc-plan-note pl-pr-a" data-i18n="pl.pr.note.billed492">save €108</div>
+                        </th>
+                        <th class="pl-fc-plan-col pl-fc-plan-hl">
+                            <div class="pl-fc-plan-name">Gold Citizenship</div>
+                            <div class="pl-fc-plan-price pl-pr-m" data-i18n="pl.pr.p.gold.price">€100/mo</div>
+                            <div class="pl-fc-plan-price pl-pr-a" data-i18n="pl.pr.p.gold.price.a">€984/yr</div>
+                            <div class="pl-fc-plan-note pl-pr-a" data-i18n="pl.pr.note.billed984">save €216</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.platform">Platform</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.balance">AI balance</td>
+                        <td data-i18n="pl.pr.p.free.balance">€5/mo</td>
+                        <td data-i18n="pl.pr.p.cit.balance">€50/mo</td>
+                        <td class="pl-fc-hl" data-i18n="pl.pr.p.gold.balance">€110/mo (+10%)</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.memory">AI memory</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.partner">Partner network</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.plugins">Plugins</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.support">Support</td>
+                        <td data-i18n="pl.fc.free.support">Email</td>
+                        <td data-i18n="pl.fc.free.support">Email</td>
+                        <td class="pl-fc-hl" data-i18n="pl.pr.support.personal">Personal (Platform Support)</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.requests">Feature requests reviewed in 24 h</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.early">Early access to new features</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.pr.cat.crm">CRM</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.crm">CRM</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.crm.cards">Card management</td>
+                        <td data-i18n="pl.pr.manual">Manual</td>
+                        <td data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                        <td class="pl-fc-hl" data-i18n="pl.fc.starter.crm.cards">AI auto</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.crm.psychotype">Client psychotype</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.pr.cat.projects">Projects</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.mod.projects">Projects</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.tasks">Task Manager</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.tasks">Task Manager</td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.tasks.voice">Voice task creation</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.fc.cat.chat">Chat</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.chat">Chat</td>
+                                                <td><span data-i18n="pl.fc.free.chat">Team only</span></td>
+                        <td><span data-i18n="pl.fc.starter.chat">Team + companies</span></td>
+                        <td class="pl-fc-hl"><span data-i18n="pl.fc.starter.chat">Team + companies</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.pr.cat.dataroom">Data Room</td></tr>
+                    <tr>
+                        <td data-i18n="pl.fc.storage">Storage</td>
+                                                <td>5 GB</td>
+                        <td>50 GB</td>
+                        <td class="pl-fc-hl">100 GB</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.ai.search">AI document search</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.fc.ai.import">PDF import with AI</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.pr.cat.referral">Referral programme</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.ref.access">Access to the referral programme</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-yes">✓</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-cat"><td colspan="4" data-i18n="pl.pr.cat.invest">Investment</td></tr>
+                    <tr>
+                        <td data-i18n="pl.pr.invest.circle">Investor circle: pitch decks, briefings, forecasts</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.invest.priority">Priority on prices and procurement</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="pl.pr.invest.queue">Nominate a project for the financing queue</td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td><span class="pl-fc-no">—</span></td>
+                        <td class="pl-fc-hl"><span class="pl-fc-yes">✓</span></td>
+                    </tr>
+                    <tr class="pl-fc-btn-row">
+                        <td></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="personal-free" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="personal-citizenship" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="personal-gold" data-i18n="pl.pr.btn.request">Request access</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pl-fc-cta">
+            <p data-i18n="pl.pr.cta.personal">Your personal plan belongs to you, not to your employer — AI credits, referral rewards and billing stay with you if you change company.</p>
+        </div>
+        </div>
+
+        <p class="pl-pr-legal" data-i18n="pl.pr.legal">All prices are billed in EUR, excluding VAT. Viewer seats do not count as managers. Annual billing is charged upfront for 12 months.</p>
 
     </section>
 
@@ -583,9 +889,17 @@
                         <label for="plan" class="form-label" data-i18n="pl.contact.plan">Plan</label>
                         <select id="plan" name="plan" class="pl-select">
                             <option value="" data-i18n="pl.contact.plan.select">Select a plan</option>
-                            <option value="free">Free</option>
-                            <option value="starter">Starter</option>
-                            <option value="custom">Custom</option>
+                            <optgroup label="Personal" data-i18n-label="pl.pr.tab.personal">
+                                <option value="personal-free">Personal — Free</option>
+                                <option value="personal-citizenship">Personal — Citizenship</option>
+                                <option value="personal-gold">Personal — Gold Citizenship</option>
+                            </optgroup>
+                            <optgroup label="Company" data-i18n-label="pl.pr.tab.company">
+                                <option value="company-free">Company — Free</option>
+                                <option value="company-corporate">Company — Corporate</option>
+                                <option value="company-gold">Company — Corporate Gold</option>
+                                <option value="company-custom">Company — Custom</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>
@@ -929,12 +1243,108 @@
 
     <script>
     // Plan buttons → auto-select plan in form
-    document.querySelectorAll('.pl-fc-btn[data-plan]').forEach(btn => {
+    document.querySelectorAll('[data-plan]').forEach(btn => {
         btn.addEventListener('click', () => {
             const plan = document.getElementById('plan');
             if (plan) plan.value = btn.dataset.plan;
         });
     });
+
+    // Pricing: audience tabs (personal / company) + billing toggle (monthly / annual)
+    (function () {
+        const pricing = document.getElementById('pricing');
+        if (!pricing) return;
+        pricing.querySelectorAll('.pl-pr-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const audience = tab.dataset.audience;
+                pricing.dataset.audience = audience;
+                pricing.querySelectorAll('.pl-pr-tab').forEach(t => {
+                    const on = t === tab;
+                    t.classList.toggle('is-active', on);
+                    t.setAttribute('aria-selected', String(on));
+                });
+                pricing.querySelectorAll('.pl-pr-panel').forEach(pane => {
+                    pane.hidden = pane.dataset.panel !== audience;
+                });
+            });
+        });
+        pricing.querySelectorAll('.pl-pr-bill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                pricing.dataset.billing = btn.dataset.billing;
+                pricing.querySelectorAll('.pl-pr-bill').forEach(b => b.classList.toggle('is-active', b.dataset.billing === btn.dataset.billing));
+            });
+        });
+    })();
+
+
+    // Pricing: manager-count slider drives the Corporate / Corporate Gold prices
+    (function () {
+        const range = document.getElementById('pl-pr-managers');
+        const num   = document.getElementById('pl-pr-managers-value');
+        const pricing = document.getElementById('pricing');
+        if (!range || !num || !pricing) return;
+
+        const ANNUAL = 0.82;                      // −18%
+        const t = (key, fallback) => {
+            if (typeof translations === 'undefined') return fallback;
+            const lang = localStorage.getItem('aita-lang') || 'en';
+            const dict = translations[lang] || translations.en || {};
+            return dict[key] || fallback;
+        };
+        const LOCALES = { en: 'en-US', uk: 'uk-UA', es: 'es-ES' };
+        const money = v => {
+            const lang = localStorage.getItem('aita-lang') || 'en';
+            const frac = Math.round(v * 100) % 100 === 0 ? 0 : 2;
+            return '€' + v.toLocaleString(LOCALES[lang] || 'en-US', {
+                minimumFractionDigits: frac, maximumFractionDigits: frac
+            });
+        };
+
+        // €10 per manager, minimum €50, €20 per manager from the 11th
+        const corporate = n => n <= 5 ? 50 : (n <= 10 ? n * 10 : 100 + (n - 10) * 20);
+        // €50 per manager, minimum 3 managers
+        const gold = n => Math.max(n, 3) * 50;
+
+        function render() {
+            const n = Math.min(50, Math.max(1, parseInt(num.value, 10) || 1));
+            const annual = pricing.dataset.billing === 'annual';
+            const per = annual ? t('pl.pr.per.yr', '/yr') : t('pl.pr.per.mo', '/mo');
+            const forN = t('pl.pr.seats.for', 'for {n} managers').replace('{n}', n);
+
+            const paint = (plan, monthly) => {
+                // yearly totals are shown as whole euros — cents just make the number wrap
+                const total = annual ? Math.round(monthly * 12 * ANNUAL) : monthly;
+                document.getElementById('pl-pr-price-' + plan).textContent = money(total) + per;
+                const floor = plan === 'gold' ? 3 : 5;   // below this the plan's minimum charge applies
+                let note = n < floor
+                    ? t('pl.pr.seats.floor', 'minimum {v}').replace('{v}', money(total) + per)
+                    : forN;
+                if (annual) {
+                    const saved = Math.round(monthly * 12 - monthly * 12 * ANNUAL);
+                    note += ' · ' + t('pl.pr.save.amount', 'save {v}').replace('{v}', money(saved));
+                }
+                document.getElementById('pl-pr-note-' + plan).textContent = note;
+                document.getElementById('pl-pr-seats-' + plan).textContent = Math.max(n, floor);
+                // monthly AI allowance: Corporate 1:1 with the monthly rate, Gold +20%
+                const credits = plan === 'gold' ? monthly * 1.2 : monthly;
+                document.getElementById('pl-pr-credits-' + plan).textContent =
+                    money(credits) + t('pl.pr.per.mo', '/mo');
+            };
+            paint('corp', corporate(n));
+            paint('gold', gold(n));
+        }
+
+        const sync = src => {
+            const n = Math.min(50, Math.max(1, parseInt(src.value, 10) || 1));
+            range.value = n; num.value = n; render();
+        };
+        range.addEventListener('input', () => sync(range));
+        num.addEventListener('input', () => sync(num));
+        num.addEventListener('blur', () => sync(num));
+        pricing.querySelectorAll('.pl-pr-bill').forEach(b => b.addEventListener('click', () => setTimeout(render, 0)));
+        document.addEventListener('aita:langchange', render);
+        render();
+    })();
 
     // FAQ
     document.querySelectorAll('.pl-faq-question').forEach(btn => {

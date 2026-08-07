@@ -1434,3 +1434,263 @@
         grid-column: span 2;
     }
 }
+
+/* =====================================================
+   PRICING — audience tabs + billing toggle
+   ===================================================== */
+.pl-pr-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.pl-pr-tabs,
+.pl-pr-billing {
+    display: inline-flex;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.pl-pr-tab,
+.pl-pr-bill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: 'Golos Text', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 140ms, color 140ms;
+}
+
+.pl-pr-tab:hover,
+.pl-pr-bill:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.pl-pr-tab.is-active { background: #ffffff; color: #000000; }
+
+.pl-pr-bill.is-active {
+    background: rgba(34, 197, 94, 0.18);
+    color: #22c55e;
+}
+
+.pl-pr-save {
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.pl-pr-bill.is-active .pl-pr-save { background: rgba(34, 197, 94, 0.28); }
+
+/* Panels */
+.pl-pr-panel[hidden] { display: none; }
+
+/* Monthly / annual price swap */
+#pricing[data-billing="monthly"] .pl-pr-a { display: none; }
+#pricing[data-billing="annual"]  .pl-pr-m { display: none; }
+#pricing[data-billing="annual"] .pl-fc-plan-price.pl-pr-a { color: #22c55e; }
+
+/* Feature comparison with 4 plan columns */
+.pl-fc-table-4 .pl-fc-feature-col { width: 32%; }
+.pl-fc-table-4 .pl-fc-plan-col { width: 17%; }
+
+.pl-pr-legal {
+    max-width: 720px;
+    margin: 32px auto 0;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 768px) {
+    .pl-fc-table-4 { min-width: 760px; }
+    .pl-pr-controls { gap: 12px; }
+    .pl-pr-tabs, .pl-pr-billing { width: 100%; }
+    .pl-pr-tab, .pl-pr-bill { flex: 1; justify-content: center; padding: 9px 12px; }
+}
+
+
+/* Billing toggle inside the comparison-table header cell */
+.pl-fc-feature-col {
+    vertical-align: bottom;
+    padding-bottom: 24px;
+}
+
+.pl-fc-feature-col .pl-pr-billing {
+    padding: 3px;
+    gap: 3px;
+}
+
+.pl-fc-feature-col .pl-pr-bill {
+    padding: 6px 12px;
+    font-size: 12.5px;
+    gap: 6px;
+}
+
+.pl-fc-feature-col .pl-pr-save {
+    padding: 1px 5px;
+    font-size: 10px;
+}
+
+@media (max-width: 620px) {
+    .pl-fc-feature-col .pl-pr-bill { padding: 6px 8px; font-size: 11.5px; }
+}
+
+/* Pricing header — make the price the loudest thing in the cell */
+.pl-fc-plan-col { padding-bottom: 20px; }
+
+.pl-fc-plan-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+}
+
+.pl-fc-plan-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+#pricing[data-billing="annual"] .pl-fc-plan-price.pl-pr-a { color: #22c55e; }
+
+.pl-fc-plan-note {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+@media (max-width: 900px) {
+    .pl-fc-plan-price { font-size: 20px; }
+}
+
+.pl-fc-plan-price-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pl-fc-plan-price { white-space: nowrap; }
+
+/* Manager-count control, inside the comparison-table header cell */
+.pl-pr-seats {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    border-radius: 10px;
+    background: rgba(34, 197, 94, 0.06);
+    text-align: left;
+}
+
+.pl-pr-seats-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.pl-pr-seats-row label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+}
+
+.pl-pr-seats .pl-calc-number {
+    width: 62px;
+    padding: 4px 8px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Same slider treatment as the cost calculator */
+.pl-pr-seats input[type="range"] {
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.pl-pr-seats input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    transition: transform 120ms;
+}
+
+.pl-pr-seats input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.pl-pr-seats input[type="range"]::-webkit-slider-thumb:active { cursor: grabbing; }
+
+.pl-pr-seats input[type="range"]::-moz-range-thumb {
+    width: 20px; height: 20px;
+    background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+    border-radius: 50%;
+    cursor: grab;
+    border: 0;
+}
+
+.pl-pr-seats-hint {
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(34, 197, 94, 0.8);
+}
+
+@media (max-width: 768px) {
+    .pl-pr-seats { padding: 12px; }
+    .pl-pr-seats-row label { font-size: 12px; }
+}
+
+
+/* Billing toggle — centred on the page, above the table */
+.pl-pr-billing-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.pl-fc { margin-top: 32px; }
+
+/* Explanatory note inside a category header row */
+.pl-fc-cat-note {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(34, 197, 94, 0.85);
+    max-width: 620px;
+}
