@@ -459,10 +459,10 @@
                     </tr>
                     <tr class="pl-fc-btn-row">
                         <td></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-free" data-i18n="pl.pr.btn.request">Request access</a></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-corporate" data-i18n="pl.pr.btn.request">Request access</a></td>
-                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="company-gold" data-i18n="pl.pr.btn.request">Request access</a></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-custom" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-free" data-i18n="pl.pr.btn.c.free">Request · Free</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-corporate" data-i18n="pl.pr.btn.c.corp">Request · Corporate</a></td>
+                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="company-gold" data-i18n="pl.pr.btn.c.gold">Request · Gold</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="company-custom" data-i18n="pl.pr.btn.c.custom">Request · Custom</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -643,9 +643,9 @@
                     </tr>
                     <tr class="pl-fc-btn-row">
                         <td></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="personal-free" data-i18n="pl.pr.btn.request">Request access</a></td>
-                        <td><a href="#contact" class="pl-fc-btn" data-plan="personal-citizenship" data-i18n="pl.pr.btn.request">Request access</a></td>
-                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="personal-gold" data-i18n="pl.pr.btn.request">Request access</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="personal-free" data-i18n="pl.pr.btn.p.free">Request · Free</a></td>
+                        <td><a href="#contact" class="pl-fc-btn" data-plan="personal-citizenship" data-i18n="pl.pr.btn.p.cit">Request · Citizenship</a></td>
+                        <td class="pl-fc-hl"><a href="#contact" class="pl-fc-btn pl-fc-btn-primary" data-plan="personal-gold" data-i18n="pl.pr.btn.p.gold">Request · Gold</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -1322,13 +1322,30 @@
             paint('gold', gold(n));
         }
 
-        const sync = src => {
-            const n = Math.min(50, Math.max(1, parseInt(src.value, 10) || 1));
-            range.value = n; num.value = n; render();
+        const clamp = v => Math.min(50, Math.max(1, v));
+
+        range.addEventListener('input', () => {
+            num.value = range.value;
+            render();
+        });
+
+        // While typing, never rewrite the field — that would make it impossible
+        // to clear "8" and type "12". Just follow along with the slider.
+        num.addEventListener('input', () => {
+            const raw = parseInt(num.value, 10);
+            if (!Number.isFinite(raw)) return;
+            range.value = clamp(raw);
+            render();
+        });
+
+        // Normalise once the user is done: empty or out-of-range snaps back.
+        const settle = () => {
+            const n = clamp(parseInt(num.value, 10) || 1);
+            num.value = n; range.value = n; render();
         };
-        range.addEventListener('input', () => sync(range));
-        num.addEventListener('input', () => sync(num));
-        num.addEventListener('blur', () => sync(num));
+        num.addEventListener('change', settle);
+        num.addEventListener('blur', settle);
+        num.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); settle(); num.blur(); } });
         pricing.querySelectorAll('.pl-pr-bill').forEach(b => b.addEventListener('click', () => setTimeout(render, 0)));
         document.addEventListener('aita:langchange', render);
         render();
