@@ -218,8 +218,8 @@
             <div class="pl-pr-billing" role="group" aria-label="Billing period">
                 <button type="button" class="pl-pr-bill is-active" data-billing="monthly" data-i18n="pl.pr.bill.monthly">Monthly</button>
                 <button type="button" class="pl-pr-bill" data-billing="annual">
-                    <span data-i18n="pl.pr.bill.annual">Annual</span>
-                    <span class="pl-pr-save" data-i18n="pl.pr.bill.save">−18%</span>
+                    <span data-i18n="pl.pr.bill.annual">Yearly</span>
+                    <span class="pl-pr-save" data-i18n="pl.pr.bill.save">· Save 18%</span>
                 </button>
             </div>
         </div>
@@ -245,12 +245,24 @@
                         </th>
                         <th class="pl-fc-plan-col">
                             <div class="pl-fc-plan-name">Corporate</div>
-                            <div class="pl-fc-plan-price" id="pl-pr-price-corp">€50/mo</div>
+                            <div class="pl-pr-priceline">
+                                <span class="pl-fc-plan-price" id="pl-pr-price-corp">€50</span>
+                                <span class="pl-pr-unit">
+                                    <span id="pl-pr-unit-corp">EUR / month</span>
+                                    <span data-i18n="pl.pr.novat">excl. VAT</span>
+                                </span>
+                            </div>
                             <div class="pl-fc-plan-note" id="pl-pr-note-corp"></div>
                         </th>
                         <th class="pl-fc-plan-col pl-fc-plan-hl">
                             <div class="pl-fc-plan-name">Corporate Gold</div>
-                            <div class="pl-fc-plan-price" id="pl-pr-price-gold">€150/mo</div>
+                            <div class="pl-pr-priceline">
+                                <span class="pl-fc-plan-price" id="pl-pr-price-gold">€150</span>
+                                <span class="pl-pr-unit">
+                                    <span id="pl-pr-unit-gold">EUR / month</span>
+                                    <span data-i18n="pl.pr.novat">excl. VAT</span>
+                                </span>
+                            </div>
                             <div class="pl-fc-plan-note" id="pl-pr-note-gold"></div>
                         </th>
                         <th class="pl-fc-plan-col">
@@ -476,8 +488,8 @@
             <div class="pl-pr-billing" role="group" aria-label="Billing period">
                 <button type="button" class="pl-pr-bill is-active" data-billing="monthly" data-i18n="pl.pr.bill.monthly">Monthly</button>
                 <button type="button" class="pl-pr-bill" data-billing="annual">
-                    <span data-i18n="pl.pr.bill.annual">Annual</span>
-                    <span class="pl-pr-save" data-i18n="pl.pr.bill.save">−18%</span>
+                    <span data-i18n="pl.pr.bill.annual">Yearly</span>
+                    <span class="pl-pr-save" data-i18n="pl.pr.bill.save">· Save 18%</span>
                 </button>
             </div>
         </div>
@@ -494,15 +506,37 @@
                         </th>
                         <th class="pl-fc-plan-col">
                             <div class="pl-fc-plan-name">Citizenship</div>
-                            <div class="pl-fc-plan-price pl-pr-m" data-i18n="pl.pr.p.cit.price">€50/mo</div>
-                            <div class="pl-fc-plan-price pl-pr-a" data-i18n="pl.pr.p.cit.price.a">€492/yr</div>
-                            <div class="pl-fc-plan-note pl-pr-a" data-i18n="pl.pr.note.billed492">save €108</div>
+                            <div class="pl-pr-priceline pl-pr-m">
+                                <span class="pl-fc-plan-price" data-i18n="pl.pr.p.cit.price">€50</span>
+                                <span class="pl-pr-unit">
+                                    <span data-i18n="pl.pr.unit.mo">EUR / month</span>
+                                    <span data-i18n="pl.pr.novat">excl. VAT</span>
+                                </span>
+                            </div>
+                            <div class="pl-pr-priceline pl-pr-a">
+                                <span class="pl-fc-plan-price" data-i18n="pl.pr.p.cit.price.a">€492</span>
+                                <span class="pl-pr-unit">
+                                    <span data-i18n="pl.pr.unit.yr">EUR / year</span>
+                                    <span data-i18n="pl.pr.novat">excl. VAT</span>
+                                </span>
+                            </div>
                         </th>
                         <th class="pl-fc-plan-col pl-fc-plan-hl">
                             <div class="pl-fc-plan-name">Gold Citizenship</div>
-                            <div class="pl-fc-plan-price pl-pr-m" data-i18n="pl.pr.p.gold.price">€100/mo</div>
-                            <div class="pl-fc-plan-price pl-pr-a" data-i18n="pl.pr.p.gold.price.a">€984/yr</div>
-                            <div class="pl-fc-plan-note pl-pr-a" data-i18n="pl.pr.note.billed984">save €216</div>
+                            <div class="pl-pr-priceline pl-pr-m">
+                                <span class="pl-fc-plan-price" data-i18n="pl.pr.p.gold.price">€100</span>
+                                <span class="pl-pr-unit">
+                                    <span data-i18n="pl.pr.unit.mo">EUR / month</span>
+                                    <span data-i18n="pl.pr.novat">excl. VAT</span>
+                                </span>
+                            </div>
+                            <div class="pl-pr-priceline pl-pr-a">
+                                <span class="pl-fc-plan-price" data-i18n="pl.pr.p.gold.price.a">€984</span>
+                                <span class="pl-pr-unit">
+                                    <span data-i18n="pl.pr.unit.yr">EUR / year</span>
+                                    <span data-i18n="pl.pr.novat">excl. VAT</span>
+                                </span>
+                            </div>
                         </th>
                     </tr>
                 </thead>
@@ -1296,21 +1330,18 @@
         function render() {
             const n = Math.min(50, Math.max(1, parseInt(num.value, 10) || 1));
             const annual = pricing.dataset.billing === 'annual';
-            const per = annual ? t('pl.pr.per.yr', '/yr') : t('pl.pr.per.mo', '/mo');
+            const unit = annual ? t('pl.pr.unit.yr', 'EUR / year') : t('pl.pr.unit.mo', 'EUR / month');
             const forN = t('pl.pr.seats.for', 'for {n} managers').replace('{n}', n);
 
             const paint = (plan, monthly) => {
                 // yearly totals are shown as whole euros — cents just make the number wrap
                 const total = annual ? Math.round(monthly * 12 * ANNUAL) : monthly;
-                document.getElementById('pl-pr-price-' + plan).textContent = money(total) + per;
+                document.getElementById('pl-pr-price-' + plan).textContent = money(total);
+                document.getElementById('pl-pr-unit-' + plan).textContent = unit;
                 const floor = plan === 'gold' ? 3 : 5;   // below this the plan's minimum charge applies
                 let note = n < floor
-                    ? t('pl.pr.seats.floor', 'minimum {v}').replace('{v}', money(total) + per)
+                    ? t('pl.pr.seats.floor', 'minimum {v}').replace('{v}', money(total))
                     : forN;
-                if (annual) {
-                    const saved = Math.round(monthly * 12 - monthly * 12 * ANNUAL);
-                    note += ' · ' + t('pl.pr.save.amount', 'save {v}').replace('{v}', money(saved));
-                }
                 document.getElementById('pl-pr-note-' + plan).textContent = note;
                 document.getElementById('pl-pr-seats-' + plan).textContent = Math.max(n, floor);
                 // monthly AI allowance: Corporate 1:1 with the monthly rate, Gold +20%
