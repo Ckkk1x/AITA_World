@@ -121,6 +121,7 @@
 
 .legal-address {
     font-style: normal;
+    margin: 8px 0 20px;
     font-size: 17px;
     line-height: 1.9;
     color: rgba(255, 255, 255, 0.88);
