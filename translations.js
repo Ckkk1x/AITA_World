@@ -143,6 +143,7 @@ const translations = {
         "footer.cookie_policy": "Cookie Policy",
         "footer.legal_notice": "Legal Notice",
         "footer.terms_of_use": "Terms of Use",
+        "footer.delete_account": "Delete Account",
         "footer.cookie_preferences": "Cookie preferences",
 
         // Platform Landing - Navbar
@@ -908,6 +909,7 @@ const translations = {
         "footer.cookie_policy": "Політика куків",
         "footer.legal_notice": "Правова інформація",
         "footer.terms_of_use": "Умови використання",
+        "footer.delete_account": "Видалити акаунт",
         "footer.cookie_preferences": "Налаштування куків",
 
         // Platform Landing - Navbar
@@ -1673,6 +1675,7 @@ const translations = {
         "footer.cookie_policy": "Política de cookies",
         "footer.legal_notice": "Aviso Legal",
         "footer.terms_of_use": "Términos de uso",
+        "footer.delete_account": "Eliminar cuenta",
         "footer.cookie_preferences": "Preferencias de cookies",
 
         // Platform Landing - Navbar
