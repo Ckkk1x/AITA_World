@@ -1193,7 +1193,7 @@
                             </div>
                             <p id="lead-form-status" class="form-status"></p>
                             <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-                                <label>Leave this field empty <input type="text" name="website_url" tabindex="-1" autocomplete="off"></label>
+                                <label>Leave this field empty <input type="text" name="_aita_hp" tabindex="-1" autocomplete="off"></label>
                             </div>
                             <button type="submit" id="lead-form-btn" class="btn btn-primary form-submit">Submit</button>
                             <p class="form-consent">By submitting, you agree to be contacted by AITA World team.</p>
@@ -1312,7 +1312,7 @@
                 submitBtn.disabled = true;
                 setStatus('Sending…', '');
 
-                payload.website_url = window.aitaHoneypotValue(form);
+                payload._aita_hp = window.aitaHoneypotValue(form);
                 try {
                     await window.aitaSubmitForm('powerconnectLead', payload);
                     setStatus('✓ Submitted. We will contact you soon.', 'ok');

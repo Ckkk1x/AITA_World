@@ -931,7 +931,7 @@
                     <textarea id="message" name="message" class="form-textarea" rows="3"></textarea>
                 </div>
                 <div class="form-honeypot" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-                    <label>Leave this field empty <input type="text" name="website_url" tabindex="-1" autocomplete="off"></label>
+                    <label>Leave this field empty <input type="text" name="_aita_hp" tabindex="-1" autocomplete="off"></label>
                 </div>
                 <p class="form-error" id="platform-contact-form-error" role="alert" hidden style="color:#ff6b6b;margin:0 0 12px;"></p>
                 <div class="pl-hero-ctas">
@@ -1453,7 +1453,7 @@
                     plan: plan || '',
                     intent: intent,
                     message: message || '',
-                    website_url: window.aitaHoneypotValue(plForm)
+                    _aita_hp: window.aitaHoneypotValue(plForm)
                 });
                 window.location.replace('thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : ''));
             } catch (error) {

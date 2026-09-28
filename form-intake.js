@@ -82,7 +82,7 @@
 
     /** Hidden field humans never fill; the platform drops submissions that carry it. */
     window.aitaHoneypotValue = function (form) {
-        var field = form && form.querySelector('input[name="website_url"]');
+        var field = form && form.querySelector('input[name="_aita_hp"]');
         return field ? field.value : '';
     };
 })();

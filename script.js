@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     name: name,
                     contact: contact,
                     message: message || '',
-                    website_url: window.aitaHoneypotValue(contactForm)
+                    _aita_hp: window.aitaHoneypotValue(contactForm)
                 });
                 // Redirect ONLY after the platform confirmed it stored the lead.
                 window.location.replace('thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : ''));
