@@ -11,6 +11,7 @@
         window.AITA_CLARITY_TAG = "vxk9mqckng";
         window.AITA_GFONTS = ["https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap"];
     </script>
+    <script src="../form-intake.js"></script>
     <script src="../cookie-consent.js" defer></script>
     <style>
         /* =====================================================
@@ -1191,6 +1192,9 @@
                                 </select>
                             </div>
                             <p id="lead-form-status" class="form-status"></p>
+                            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                                <label>Leave this field empty <input type="text" name="website_url" tabindex="-1" autocomplete="off"></label>
+                            </div>
                             <button type="submit" id="lead-form-btn" class="btn btn-primary form-submit">Submit</button>
                             <p class="form-consent">By submitting, you agree to be contacted by AITA World team.</p>
                         </form>
@@ -1275,7 +1279,7 @@
             </div>
         </div>
         <script>
-        // Lead form — webhook to n8n → MailerLite
+        // Lead form — AITA landing-forms plugin (form-intake.js)
         (function () {
             var form = document.getElementById('lead-form');
             var statusEl = document.getElementById('lead-form-status');
@@ -1308,18 +1312,13 @@
                 submitBtn.disabled = true;
                 setStatus('Sending…', '');
 
+                payload.website_url = window.aitaHoneypotValue(form);
                 try {
-                    var res = await fetch(
-                        'https://n8n-prod.aita.today/webhook/universal-form',
-                        { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }
-                    );
-                    var data = {};
-                    try { data = await res.json(); } catch (e) {}
-                    if (!res.ok) { setStatus(data.error || data.message || 'Submit failed. Try again.', 'error'); return; }
+                    await window.aitaSubmitForm('powerconnectLead', payload);
                     setStatus('✓ Submitted. We will contact you soon.', 'ok');
                     form.reset();
                 } catch (err) {
-                    setStatus('Network error. Please try again.', 'error');
+                    setStatus(err && err.code === 'NETWORK_ERROR' ? 'Network error. Please try again.' : 'Submit failed. Please try again or write to info@aita.world.', 'error');
                 } finally {
                     submitBtn.disabled = false;
                 }
@@ -1334,20 +1333,14 @@
             if (!email) return;
 
             try {
-                await fetch(
-                    'https://n8n-prod.aita.today/webhook/universal-form',
-                    {
-                        method: 'POST',
-                        headers: { 'content-type': 'application/json' },
-                        body: JSON.stringify({
-                            source: 'powerconnect2026-datasheet',
-                            email: email,
-                            extra: { origin: 'PowerConnect2026-Datasheet' }
-                        })
-                    }
-                );
+                await window.aitaSubmitForm('powerconnectDatasheet', {
+                    source: 'powerconnect2026-datasheet',
+                    email: email,
+                    origin: 'PowerConnect2026-Datasheet'
+                });
             } catch (err) {
-                console.error('Datasheet lead webhook error:', err);
+                // The one-pager is public — the visitor still gets it; the failure is logged, not hidden in a redirect.
+                console.error('Datasheet lead submit error:', err);
             }
 
             window.open('https://aita-dataroom-9wh8.vercel.app/one-pager.html', '_blank');

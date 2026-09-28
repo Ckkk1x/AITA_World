@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../cookie-consent.css">
     <script src="../translations.js"></script>
+    <script src="../form-intake.js"></script>
     <script src="../script.js"></script>
     <script>
         window.AITA_GFONTS = ["https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap"];
@@ -929,6 +930,10 @@
                     <label for="message" class="form-label" data-i18n="pl.contact.message">Message</label>
                     <textarea id="message" name="message" class="form-textarea" rows="3"></textarea>
                 </div>
+                <div class="form-honeypot" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                    <label>Leave this field empty <input type="text" name="website_url" tabindex="-1" autocomplete="off"></label>
+                </div>
+                <p class="form-error" id="platform-contact-form-error" role="alert" hidden style="color:#ff6b6b;margin:0 0 12px;"></p>
                 <div class="pl-hero-ctas">
                     <button type="submit" class="pl-btn pl-btn-primary" data-i18n="pl.cta.try">Try the platform</button>
                     <button type="submit" class="pl-btn pl-btn-secondary" id="contact-full" data-i18n="pl.cta.full.modules">Request full access to all modules</button>
@@ -1433,28 +1438,35 @@
                 submitBtn.style.opacity = '0.6';
             }
 
-            const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
+            const errorBox = document.getElementById('platform-contact-form-error');
+            if (errorBox) { errorBox.textContent = ''; errorBox.hidden = true; }
+            // Which of the two submit buttons was pressed — "Try the platform" or "Request full access".
+            const intent = (e.submitter && e.submitter.id === 'contact-full') ? 'full-access' : 'try-platform';
 
             try {
-                await fetch('https://n8n-prod.aita.today/webhook/universal-form', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        source: 'aita-platform-landing',
-                        name: name,
-                        contact: email,
-                        extra: {
-                            company: company || '',
-                            role: role || '',
-                            plan: plan || '',
-                            message: message || ''
-                        }
-                    })
+                await window.aitaSubmitForm('platform', {
+                    source: 'aita-platform-landing',
+                    name: name,
+                    email: email,
+                    company: company || '',
+                    role: role || '',
+                    plan: plan || '',
+                    intent: intent,
+                    message: message || '',
+                    website_url: window.aitaHoneypotValue(plForm)
                 });
-                window.location.replace(thankYouUrl);
+                window.location.replace('thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : ''));
             } catch (error) {
                 console.error('Form error:', error);
-                window.location.replace(thankYouUrl);
+                if (errorBox) {
+                    errorBox.textContent = 'Could not send your request. Please try again or write to us at info@aita.world.';
+                    errorBox.hidden = false;
+                }
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.opacity = '';
+                }
             }
         });
     }
