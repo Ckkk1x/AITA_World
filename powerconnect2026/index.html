@@ -1264,6 +1264,9 @@
                     <p class="download-microcopy">Enter your email to download</p>
                     <form class="download-form" id="download-form" onsubmit="handleDownload(event)">
                         <input type="email" class="form-input" id="download-email" placeholder="name@company.com" required>
+                        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                            <label>Leave this field empty <input type="text" name="_aita_hp" tabindex="-1" autocomplete="off"></label>
+                        </div>
                         <button type="submit" class="btn btn-download">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -1273,6 +1276,7 @@
                             Get the One-Pager
                         </button>
                     </form>
+                    <p class="download-error" id="download-error" role="alert" hidden style="color:#ff6b6b;margin:8px 0;"></p>
                     <p class="download-small">We'll follow up with a personalized demo offer</p>
                     <p class="download-success" id="download-success">✓ Check your downloads — and watch your inbox!</p>
                 </div>
@@ -1329,22 +1333,47 @@
         <script>
         async function handleDownload(e) {
             e.preventDefault();
-            var email = document.getElementById('download-email').value.trim();
-            if (!email) return;
+            var form = document.getElementById('download-form');
+            var emailInput = document.getElementById('download-email');
+            var errorEl = document.getElementById('download-error');
+            var button = form.querySelector('button[type="submit"]');
+            var onePagerUrl = 'https://aita-dataroom-9wh8.vercel.app/one-pager.html';
+            var email = emailInput.value.trim();
+            if (!email || form.dataset.busy === '1') return;
 
+            form.dataset.busy = '1';
+            if (button) button.disabled = true;
+            errorEl.hidden = true;
             try {
                 await window.aitaSubmitForm('powerconnectDatasheet', {
                     source: 'powerconnect2026-datasheet',
                     email: email,
-                    origin: 'PowerConnect2026-Datasheet'
+                    origin: 'PowerConnect2026-Datasheet',
+                    _aita_hp: window.aitaHoneypotValue(form)
                 });
             } catch (err) {
-                // The one-pager is public — the visitor still gets it; the failure is logged, not hidden in a redirect.
+                // Say it honestly: the email was NOT saved. The one-pager is public,
+                // so the visitor still gets it — but we never claim a follow-up is coming.
                 console.error('Datasheet lead submit error:', err);
+                errorEl.textContent = '';
+                errorEl.appendChild(document.createTextNode("We couldn't save your email — please try again. You can still "));
+                var link = document.createElement('a');
+                link.href = onePagerUrl;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.textContent = 'open the one-pager';
+                link.style.color = 'inherit';
+                link.style.textDecoration = 'underline';
+                errorEl.appendChild(link);
+                errorEl.appendChild(document.createTextNode('.'));
+                errorEl.hidden = false;
+                form.dataset.busy = '';
+                if (button) button.disabled = false;
+                return;
             }
 
-            window.open('https://aita-dataroom-9wh8.vercel.app/one-pager.html', '_blank');
-            document.getElementById('download-form').style.display = 'none';
+            window.open(onePagerUrl, '_blank');
+            form.style.display = 'none';
             document.querySelector('.download-microcopy').style.display = 'none';
             document.querySelector('.download-small').style.display = 'none';
             document.getElementById('download-success').style.display = 'block';
