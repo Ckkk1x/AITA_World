@@ -17,10 +17,11 @@
     // page POST a submission into one form of one company.
     var FORM_KEYS = {
         prod: {
-            contact: '',
-            platform: '',
-            powerconnectLead: '',
-            powerconnectDatasheet: ''
+            // Aita Platform → plugin «Форми для лендингів» → folder «Сайт aita.world»
+            contact: 'lf_13u2ap1GhcBY87UnZQCbvp8N',               // Головна · контактна форма (#contact)
+            platform: 'lf_oC5CirvwiuHXCz2U85avsERv',              // Платформа · запит доступу (/platform)
+            powerconnectLead: 'lf_jcViJgFo85zizbntvs6vm9oY',      // PowerConnect 2026 · лід-форма
+            powerconnectDatasheet: 'lf_JDcP2Fo7scAPow8YcvWrB9xg'  // PowerConnect 2026 · one-pager
         },
         dev: {
             contact: '',
