@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обробка контактної форми
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        const WEBHOOK_URL = 'https://n8n-prod.aita.today/webhook/universal-form';
+        const errorBox = document.getElementById('contact-form-error');
 
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -499,52 +499,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = formData.get('name');
             const contact = formData.get('contact');
             const message = formData.get('message');
+            const currentLang = localStorage.getItem('aita-lang') || 'en';
+            const t = (key, fallback) => (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][key]) || fallback;
 
-            // Отримуємо кнопку відправки для показу стану завантаження
             const submitButton = contactForm.querySelector('.form-submit');
             const originalButtonText = submitButton ? submitButton.textContent : 'Submit';
-
-            // Показуємо стан завантаження
+            if (errorBox) { errorBox.textContent = ''; errorBox.hidden = true; }
             if (submitButton) {
                 submitButton.disabled = true;
-                const currentLang = localStorage.getItem('aita-lang') || 'en';
-                submitButton.textContent = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang]['contact.sending'] : 'Sending...';
+                submitButton.textContent = t('contact.sending', 'Sending...');
                 submitButton.style.opacity = '0.6';
             }
 
-            // Перенаправляємо на сторінку подяки після спроби відправки
-            const thankYouUrl = 'thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : '');
-
             try {
-                // Відправляємо POST запит на webhook
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        source: 'aita-world-landing',
-                        name: name,
-                        contact: contact,
-                        extra: {
-                            message: message || ''
-                        }
-                    })
+                await window.aitaSubmitForm('contact', {
+                    source: 'aita-world-landing',
+                    name: name,
+                    contact: contact,
+                    message: message || '',
+                    _aita_hp: window.aitaHoneypotValue(contactForm)
                 });
-                
-                // Логуємо результат для діагностики
-                console.log('Form submission response status:', response.status);
-                
-                // Перенаправляємо на сторінку подяки незалежно від відповіді
-                // (webhook може прийняти дані навіть якщо відповідь не ідеальна)
-                window.location.replace(thankYouUrl);
-                
+                // Redirect ONLY after the platform confirmed it stored the lead.
+                window.location.replace('thank-you.html' + (name ? '?name=' + encodeURIComponent(name) : ''));
             } catch (error) {
                 console.error('Error submitting form:', error);
-                
-                // Навіть при помилці перенаправляємо на сторінку подяки
-                // (на випадок, якщо дані все ж відправилися до webhook)
-                window.location.replace(thankYouUrl);
+                // Keep what the visitor typed and say so — never pretend it was sent.
+                if (errorBox) {
+                    errorBox.textContent = t('contact.error', 'Could not send your message. Please try again or write to us directly.');
+                    errorBox.hidden = false;
+                }
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    submitButton.style.opacity = '';
+                }
             }
         });
     }

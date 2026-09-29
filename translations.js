@@ -130,6 +130,7 @@ const translations = {
         "contact.message.label": "Message",
         "contact.submit": "Submit",
         "contact.sending": "Sending...",
+        "contact.error": "Could not send your message. Please try again or write to us at info@aita.world.",
 
         // Footer
         "footer.contact": "Contact",
@@ -896,6 +897,7 @@ const translations = {
         "contact.message.label": "Повідомлення",
         "contact.submit": "Надіслати",
         "contact.sending": "Надсилання...",
+        "contact.error": "Не вдалося надіслати повідомлення. Спробуйте ще раз або напишіть нам на info@aita.world.",
 
         // Footer
         "footer.contact": "Контакти",
@@ -1662,6 +1664,7 @@ const translations = {
         "contact.message.label": "Mensaje",
         "contact.submit": "Enviar",
         "contact.sending": "Enviando...",
+        "contact.error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos a info@aita.world.",
 
         // Footer
         "footer.contact": "Contacto",
