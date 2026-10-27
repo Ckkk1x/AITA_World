@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+  Source: task tsk_6rEHybLXttUytBb0, attachment «security-policy (EN).md» (revision 30 July 2026),
+  verbatim; «In force from: [publication date]» filled with the publication date.
+  The machine-readable twin is /.well-known/security.txt — byte-for-byte the task attachment,
+  `Expires: 2027-08-13`: renew it a week before that date.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security and Responsible Disclosure Policy | AITA World</title>
+    <meta name="description" content="How to report a security vulnerability in AITA World systems: scope, rules for researchers, response timeframes, severity classification and safe harbour.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aita.world/security">
+    <link rel="icon" type="image/png" href="/images/aitalogowhite.png">
+    <!-- Self-hosted brand fonts (first-party). Google Fonts loads only after consent. -->
+    <link rel="stylesheet" href="/fonts.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/cookie-consent.css">
+    <link rel="stylesheet" href="/legal/legal.css">
+    <script>
+        window.AITA_GFONTS = [
+            "https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&family=Instrument+Sans:wght@400&display=swap",
+            "https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap"
+        ];
+    </script>
+    <script src="/cookie-consent.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation">
+        <a href="/index.html" class="navbar-logo">
+            <img src="/images/aitalogowhite.png" alt="AITA Logo" class="logo-a">
+            <span class="logo-text">AITA WORLD</span>
+        </a>
+        <button class="burger-menu" id="burger-menu" aria-label="Toggle menu" aria-expanded="false">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        <div class="menu-overlay" id="menu-overlay"></div>
+        <div class="navbar-right" id="navbar-menu">
+            <a href="/index.html#about" class="nav-link">About Us</a>
+            <a href="/index.html#assets" class="nav-link">Products</a>
+            <a href="/index.html#contact" class="nav-button">Join us</a>
+        </div>
+    </nav>
+
+    <main class="legal-container">
+        <a href="/" class="legal-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to home
+        </a>
+
+        <article class="legal-content">
+
+            <header class="legal-header">
+                <h1>Security and Responsible Disclosure Policy</h1>
+                <p class="legal-meta">
+                    <strong>Last revision:</strong> July 30, 2026 |
+                    <strong>In force from:</strong> October 27, 2026
+                </p>
+            </header>
+
+            <section class="legal-section">
+                <p><strong>Applies to:</strong> <code>aita.world</code>, <code>app.aita.world</code>, <code>api.aita.world</code> and all systems operated by AITA World, S.L.<br>
+                <strong>Canonical URL:</strong> <code>https://aita.world/security</code><br>
+                <strong>Machine-readable version (RFC 9116):</strong> <a href="/.well-known/security.txt" class="contact-email"><code>https://aita.world/.well-known/security.txt</code></a><br>
+                <strong>Contact:</strong> <a href="mailto:security@aita.world">security@aita.world</a></p>
+                <p>This Security and Responsible Disclosure Policy (the "Policy") is an <strong>integral part</strong> of the <a href="https://app.aita.world/legal/master-terms" class="contact-email">Public Offer — Master Terms of Access to the Aita Platform</a> (the "Offer") and is incorporated into it by reference. This Policy is hosted on the public <code>aita.world</code> domain because the industry discovery standard (RFC 9116) expects it there, and because its audience — security researchers — are not Platform Participants at the moment they identify an issue. Capitalised terms used in this Policy have the meanings given in the Offer. In case of conflict, the Offer prevails.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>1. Aita's Commitment</h2>
+                <p>AITA World, S.L. ("Aita") takes the security of its Platform and the data entrusted to it seriously. We are grateful to security researchers, customers, partners and members of the public who identify potential vulnerabilities in our systems.</p>
+                <p>We commit to:</p>
+                <ul>
+                    <li>promptly acknowledge receipt of a report;</li>
+                    <li>investigate all credible reports in good faith;</li>
+                    <li>keep the reporter informed of progress;</li>
+                    <li>not initiate legal action against researchers acting in good faith under this Policy.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Scope</h2>
+                <p>This Policy covers vulnerabilities in systems for which Aita is the direct operator.</p>
+                <h3>In scope</h3>
+                <ul>
+                    <li><code>app.aita.world</code> and its subdomains (the Platform);</li>
+                    <li><code>aita.world</code> (public website);</li>
+                    <li><code>api.aita.world</code> (public Platform API);</li>
+                    <li>Aita's mobile application.</li>
+                </ul>
+                <h3>Out of scope</h3>
+                <ul>
+                    <li>Third-party services and infrastructure used by Aita — see the current list of subprocessors and vendors at <a href="/legal/subprocessors" class="contact-email">aita.world/legal/subprocessors</a>; please report vulnerabilities in those systems directly to the relevant provider;</li>
+                    <li>Social engineering attacks against Aita personnel;</li>
+                    <li>Physical security;</li>
+                    <li>Denial-of-service (DoS) or volumetric attacks;</li>
+                    <li>Issues that require the user to install a malicious browser extension, or physical access to a device;</li>
+                    <li>Vulnerabilities in outdated browsers or operating systems not supported by the Platform;</li>
+                    <li>Issues already known to Aita (we will let you know if this is the case).</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. What We Ask of Researchers</h2>
+                <p>To act under this Policy, a researcher must:</p>
+                <p><strong>3.1. Avoid harm.</strong> Do not access, alter, delete or exfiltrate data beyond the minimum required to demonstrate the vulnerability. Stop as soon as the issue is confirmed.</p>
+                <p><strong>3.2. Do not disrupt.</strong> No denial-of-service, no stress testing, no action that degrades Platform availability for other users.</p>
+                <p><strong>3.3. Use test accounts only.</strong> If an account is needed for testing, use one you lawfully own. Do not access other users' accounts or test against them.</p>
+                <p><strong>3.4. Keep it confidential.</strong> Do not disclose the vulnerability publicly (including on social media, blogs, or security forums) until Aita has confirmed remediation or given explicit consent to disclosure.</p>
+                <p><strong>3.5. Report promptly.</strong> Send a report to <strong><a href="mailto:security@aita.world">security@aita.world</a></strong> as soon as the issue is identified.</p>
+                <p><strong>3.6. Act in good faith.</strong> Test only systems you are authorised to test. Platform Participants are not authorised to conduct security testing under §2.2(e) of the <a href="https://app.aita.world/legal/aup" class="contact-email">Acceptable Use Policy</a> or §3.5(d) of the <a href="https://app.aita.world/legal/master-terms" class="contact-email">Public Offer</a> without prior written consent — this Responsible Disclosure Policy covers researchers who find issues incidentally, not those conducting targeted scanning.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. How to Report</h2>
+                <p>Send an email to <strong><a href="mailto:security@aita.world">security@aita.world</a></strong> with:</p>
+                <ul>
+                    <li><strong>Subject:</strong> <code>[Security] Short description of the issue</code></li>
+                    <li>Description of the vulnerability and its potential impact;</li>
+                    <li>Affected URL, endpoint or component;</li>
+                    <li>Step-by-step reproduction instructions;</li>
+                    <li>Any proof-of-concept material — screenshots, HTTP request/response logs — please attach as files rather than pasting sensitive data into the email body;</li>
+                    <li>Your contact details (name and email) if you would like updates on progress.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. Our Process</h2>
+                <div class="table-responsive">
+                    <table class="legal-table">
+                        <thead>
+                            <tr>
+                                <th>Step</th>
+                                <th>Timeframe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Acknowledgment of receipt</td><td>Within <strong>3 (three) business days</strong></td></tr>
+                            <tr><td>Initial triage and severity assessment</td><td>Within <strong>7 (seven) business days</strong></td></tr>
+                            <tr><td>Status update (confirmed / not confirmed / out of scope)</td><td>Within <strong>14 (fourteen) business days</strong></td></tr>
+                            <tr><td>Resolution of confirmed critical / high issues</td><td>Target <strong>30 (thirty) days</strong> from confirmation</td></tr>
+                            <tr><td>Resolution of confirmed medium / low issues</td><td>Target <strong>90 (ninety) days</strong> from confirmation</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>If a timeframe cannot be met, we will let you know with an explanation.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Severity Classification</h2>
+                <p>We classify vulnerabilities using the CVSS v3.1 base score as a reference:</p>
+                <div class="table-responsive">
+                    <table class="legal-table">
+                        <thead>
+                            <tr>
+                                <th>Severity</th>
+                                <th>CVSS range</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Critical</strong></td><td>9.0–10.0</td><td>Unauthenticated remote code execution (RCE), mass data leak, authentication bypass</td></tr>
+                            <tr><td><strong>High</strong></td><td>7.0–8.9</td><td>Privilege escalation, significant data exposure, stored XSS on sensitive pages</td></tr>
+                            <tr><td><strong>Medium</strong></td><td>4.0–6.9</td><td>CSRF, reflected XSS, IDOR with limited impact, sensitive info in error messages</td></tr>
+                            <tr><td><strong>Low</strong></td><td>0.1–3.9</td><td>Missing security headers, rate-limit bypass with minimal impact, overly verbose error messages</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Safe Harbour</h2>
+                <p>Aita will not initiate or support legal action against researchers who:</p>
+                <ul>
+                    <li>act in good faith and within this Policy;</li>
+                    <li>do not access data beyond what is necessary to demonstrate the issue;</li>
+                    <li>do not publicly disclose the vulnerability before Aita has fixed it or given consent to disclosure.</li>
+                </ul>
+                <p>If a third party initiates legal action against a researcher who acted in good faith under this Policy, Aita will take reasonable steps to make clear that the researcher acted within an authorised disclosure process.</p>
+                <p>This safe-harbour commitment does not waive Aita's rights regarding conduct outside this Policy.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>8. Aita's Own Security Practices</h2>
+                <p>We operate the following security controls on the Platform and infrastructure:</p>
+                <ul>
+                    <li>Encryption in transit (TLS 1.2+) and at rest (AES-256);</li>
+                    <li>Role-based access control with a default least-privilege model;</li>
+                    <li>Multi-factor authentication for Platform users and all internal Aita systems;</li>
+                    <li>Audit logging of access to sensitive resources;</li>
+                    <li>Web Application Firewall (WAF) and DDoS protection through our CDN / edge security provider (see <a href="/legal/subprocessors" class="contact-email">subprocessors list</a>);</li>
+                    <li>Automated dependency scanning and patch management;</li>
+                    <li>Documented incident response procedure;</li>
+                    <li>Notification of personal data breaches to the AEPD within 72 (seventy-two) hours as required by GDPR.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>9. Contacts</h2>
+                <address class="legal-address">
+                    <strong>AITA World, S.L.</strong><br>
+                    Sabino Arana 8, 2º, 48013 Bilbao, Bizkaia, Kingdom of Spain<br>
+                    Vulnerability reports and security incidents: <a href="mailto:security@aita.world">security@aita.world</a><br>
+                    General data protection queries: <a href="mailto:privacy@aita.world">privacy@aita.world</a><br>
+                    Legal queries: <a href="mailto:legal@aita.world">legal@aita.world</a>
+                </address>
+            </section>
+
+        </article>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column footer-main">
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-label">Email:</span>
+                        <a href="mailto:info@aita.world" class="footer-link">info@aita.world</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-label">Phone:</span>
+                        <a href="tel:+34695526230" class="footer-link">+34 695 526 230</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-label">Address:</span>
+                        <span class="footer-text">Bilbao, Basque Country, Spain</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 AITA World. All rights reserved.</p>
+                <nav class="footer-legal" aria-label="Legal">
+                    <a href="/legal/privacy" class="footer-link">Privacy Policy</a>
+                    <a href="/legal/cookies" class="footer-link">Cookie Policy</a>
+                    <a href="/legal/aviso-legal" class="footer-link">Legal Notice</a>
+                    <a href="/legal/terms" class="footer-link">Terms of Use</a>
+                    <a href="/legal/delete-account" class="footer-link">Delete Account</a>
+                    <a href="/legal/ens" class="footer-link" title="Declaración de Conformidad con el ENS (Categoría BÁSICA)">ENS</a>
+                    <a href="#" class="footer-link" data-cc-open>Cookie preferences</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

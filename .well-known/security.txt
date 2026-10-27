@@ -1,0 +1,9 @@
+# Security contact for aita.world, app.aita.world, api.aita.world
+# and all systems operated by AITA World, S.L. (CIF B75859744).
+# Please review the full policy before submitting a report.
+
+Contact: mailto:security@aita.world
+Expires: 2027-08-13T00:00:00Z
+Preferred-Languages: uk, en, ru, es
+Canonical: https://aita.world/.well-known/security.txt
+Policy: https://aita.world/security
