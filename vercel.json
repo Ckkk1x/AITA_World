@@ -53,6 +53,11 @@
       "permanent": true
     },
     {
+      "source": "/platform/",
+      "destination": "/access",
+      "permanent": true
+    },
+    {
       "source": "/platform/:path*",
       "destination": "/access",
       "permanent": true
