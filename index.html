@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk" data-theme="dark"><head><!--i18n--><link rel="alternate" hreflang="uk" href="./"><link rel="alternate" hreflang="en" href="en/"><link rel="alternate" hreflang="es" href="es/"><link rel="alternate" hreflang="pl" href="pl/"><link rel="alternate" hreflang="hu" href="hu/"><link rel="alternate" hreflang="de" href="de/"><link rel="alternate" hreflang="x-default" href="en/"><script>(function(){var L=["en", "es", "pl", "hu", "de"],m=location.search.match(/[?&]lang=(\w+)/);try{if(m)localStorage.setItem("aitaLang",m[1]);if(m||localStorage.getItem("aitaLang")=="uk")return}catch(e){if(m)return}try{if(document.referrer&&new URL(document.referrer).host==location.host)return}catch(e){}var n=navigator.languages||[navigator.language||""],w="en";for(var i=0;i<n.length;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(c=="uk"||c=="ru"){w="uk";break}if(L.indexOf(c)>=0){w=c;break}}if(w=="uk")return;var f=location.pathname.split("/").pop();location.replace(w+"/"+(f&&f!="index.html"?f:"")+location.search+location.hash)})()</script><!--/i18n--><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="uk" data-theme="dark"><head><!--i18n--><link rel="alternate" hreflang="uk" href="uk/"><link rel="alternate" hreflang="en" href="en/"><link rel="alternate" hreflang="es" href="es/"><link rel="alternate" hreflang="pl" href="pl/"><link rel="alternate" hreflang="hu" href="hu/"><link rel="alternate" hreflang="de" href="de/"><link rel="alternate" hreflang="x-default" href="./"><script>(function(){var L=["uk", "en", "es", "pl", "hu", "de"],m=location.search.match(/[?&]lang=(\w+)/),w="en";if(m&&m[1]=="src")return;var c=m?m[1]:String(navigator.language||(navigator.languages||[""])[0]).slice(0,2).toLowerCase();if(c=="ru")c="uk";if(L.indexOf(c)>=0)w=c;var f=location.pathname.split("/").pop();location.replace(w+"/"+(f&&f!="index.html"?f:"")+location.search.replace(/[?&]lang=\w+/,"").replace(/^&/,"?")+location.hash)})()</script><!--/i18n--><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Inter:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <style>
@@ -129,17 +129,17 @@ footer b{color:var(--ink);font-size:16px;margin-right:12px}
   .cta .btn{width:100%}
 }
 </style></head><body>
-<nav><style>
-:root,[data-theme="dark"]{--bg:#000000;--card:#0d0d0d;--soft:#141414}
-[data-theme="light"]{--bg:#ffffff;--card:#ffffff;--soft:#fafafa}
-nav{background:#000 !important;backdrop-filter:none}
-[data-theme="light"] nav{background:#fff !important}
-.logo .mk{display:block;height:20px;width:auto}
-.logo .mk-l{display:none}
-[data-theme="light"] .logo .mk-d{display:none}
-[data-theme="light"] .logo .mk-l{display:block}
+<nav><style id="hdr">
+/* шапка — одна для всіх сторінок (еталон — головна, 28.10.2026) */
+body>nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #e6e6e6;font:16px/1.5 "Golos Text",-apple-system,"Segoe UI",sans-serif;color:#111}
+body>nav>.w{max-width:1440px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:60px}
+body>nav .logo{display:flex;align-items:center}
+body>nav .logo .mk{display:block;height:20px;width:auto}
+body>nav .links{display:flex;gap:32px;font-size:15px}
+body>nav .nr .btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;border:1px solid #111;border-radius:8px;background:#111;color:#fff;font-size:14px;font-weight:500;white-space:nowrap}
+@media(max-width:760px){body>nav>.w{grid-template-columns:1fr auto;height:56px;padding:0 20px}}
 </style><div class="w">
-  <a class="logo" aria-label="Aita"><svg class="mk mk-d" viewBox="0.475 0.467 90.548 81.672"><path fill="#ffffff" d="M35.327,8.909C36.329,3.913 40.772,0.355 45.867,0.470C50.779,0.569 54.964,4.065 55.935,8.881C60.018,29.131 70.226,47.636 85.175,61.891C88.832,63.732 91.106,67.509 91.021,71.602C90.943,75.691 88.539,79.379 84.829,81.101C80.259,83.223 74.829,81.870 71.788,77.852C62.947,70.571 52.914,64.871 42.132,61.005C40.636,60.463 39.499,59.223 39.093,57.684C38.598,55.737 39.392,53.691 41.071,52.587C42.410,51.710 44.102,51.571 45.567,52.218C52.059,55.085 58.830,57.276 65.771,58.755C61.269,46.527 54.431,35.292 45.638,25.675C33.311,39.167 24.893,55.762 21.289,73.678C20.420,78.000 16.952,81.325 12.597,82.011C7.497,82.814 2.571,79.788 0.982,74.876C-0.318,70.839 0.935,66.417 4.159,63.661C20.158,49.231 31.086,30.033 35.323,8.909Z"/></svg><svg class="mk mk-l" viewBox="0.024 0.017 91.449 82.571"><path fill="#000000" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg></a>
+  <a class="logo" aria-label="Aita" href="./"><svg class="mk" viewBox="0.024 0.017 91.449 82.571"><path fill="#000000" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg></a>
   <span class="links"><span id="slBtn" role="button" aria-haspopup="true" style="position:relative;cursor:pointer">Наші рішення<div class="sl-pop" id="slPop"><style>
 /* меню «Рішення»: «Aita для» винесено з «Ресурсів» окремим пунктом (Антон, 22.10.2026) */
 #slPop{position:absolute;left:50%;top:calc(100% + 18px);transform:translate(-50%,6px);width:260px;padding:12px;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.05);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;cursor:default;z-index:20}
@@ -186,7 +186,17 @@ body>nav>.w{height:60px}
   document.addEventListener("click",function(e){if(!b.contains(e.target))b.classList.remove("on")});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")b.classList.remove("on")});addEventListener("blur",function(){b.classList.remove("on")})})();
 </script></div></span><span><a href="pricing.html" style="color:inherit">Ціни</a></span><style>.links>span:nth-child(2):after{content:none!important}</style></span>
-  <span class="nr" style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><span id="theme" hidden></span><style>
+  <span class="nr" style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><a class="btn sm" href="access.html">Запит на доступ</a></span>
+</div></nav><style>
+:root,[data-theme="dark"]{--bg:#000000;--card:#0d0d0d;--soft:#141414}
+[data-theme="light"]{--bg:#ffffff;--card:#ffffff;--soft:#fafafa}
+nav{background:#000 !important;backdrop-filter:none}
+[data-theme="light"] nav{background:#fff !important}
+.logo .mk{display:block;height:20px;width:auto}
+.logo .mk-l{display:none}
+[data-theme="light"] .logo .mk-d{display:none}
+[data-theme="light"] .logo .mk-l{display:block}
+</style><span id="theme" hidden></span><style>
 /* поле 80 від краю, як у Linear (контейнер 1280) */
 .w{max-width:1440px!important;padding:0 80px!important}
 .hero h1{font-weight:600}
@@ -227,8 +237,7 @@ html[data-theme],body{background:#fff}
 .hp .pin b{background:#fff;color:#333}
 .hp .tr{color:#555}
 .hp .av{background:#f2f2f2!important;border-color:#e3e3e3!important}
-</style><a class="btn sm" href="access.html">Запит на доступ</a><span class="burger"></span></span>
-</div></nav>
+</style>
 <div class="w hero">
   <h1 id="hh" style="text-align:center;padding-top:48px"><link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,600;1,600&display=swap" rel="stylesheet"><style>
 .sub{display:block;margin:20px auto 0;max-width:640px;font:400 20px/1.4 "Golos Text",sans-serif;letter-spacing:0;color:var(--mute);white-space:normal;text-align:center}
@@ -980,7 +989,7 @@ loop();
     if(d.hwBack){if(base!=null&&scrollY>base)glide(base-scrollY,1000);base=null}});
 })();
 </script></div>
-  <div id="hwBar"><div class="hw-in"><span class="hw-tx">Відкриваємо доступ першим командам — покажемо Aita безкоштовно</span><a class="btn">Запит на доступ</a><a class="btn ghost">Безкоштовне демо</a></div></div><div id="hwBarS" style="height:1px;margin-top:-1px"></div><style>#hwBar{z-index:4}#hwBar .btn{border-radius:12px}.btn{font-weight:500}</style><script>
+  <div id="hwBar"><div class="hw-in"><span class="hw-tx">Відкриваємо доступ першим командам — покажемо Aita безкоштовно</span><a class="btn" href="access.html">Запит на доступ</a><a class="btn ghost" href="demo.html">Безкоштовне демо</a></div></div><div id="hwBarS" style="height:1px;margin-top:-1px"></div><style>#hwBar{z-index:4}#hwBar .btn{border-radius:12px}.btn{font-weight:500}</style><script>
 // кнопки — липкою смугою, як логотипи клієнтів у Notion: поки їхнє місце нижче екрана (вікно розгорнуте), смуга тримається внизу екрана, а далі стає на своє місце; підпис — лише коли смуга на місці
 (function(){var bar=document.getElementById("hwBar");if("IntersectionObserver" in window)new IntersectionObserver(function(es){es.forEach(function(e){bar.classList.toggle("stuck",!e.isIntersecting&&e.boundingClientRect.top>0)})}).observe(document.getElementById("hwBarS"))})();
 </script>
@@ -1058,7 +1067,7 @@ document.addEventListener("DOMContentLoaded",function(){var el0=document.getElem
   document.querySelectorAll(".memb .mem-f[data-mem]").forEach(function(el){var f=D.frames[el.getAttribute("data-mem")];if(!f)return;
     var fr=document.createElement("iframe");fr.setAttribute("scrolling","no");fr.setAttribute("tabindex","-1");fr.setAttribute("aria-hidden","true");
     fr.srcdoc=head+f.html+"</body></html>";el.appendChild(fr);items.push({el:el,fr:fr,f:f})});
-  function fit(){var m=innerWidth<=760;items.forEach(function(it){var s=m?0.8:0.84,stage=it.el.parentNode.clientWidth,left=m?16:24;
+  function fit(){var m=matchMedia("(max-width:760px)").matches;items.forEach(function(it){var s=m?0.8:0.84,stage=it.el.parentNode.clientWidth,left=m?16:24;
     var w=Math.round((stage-left+10)/s);it.fr.style.width=w+"px";it.fr.style.height=Math.round(it.f.h*1.6)+"px";it.fr.style.transform="scale("+s+")"})}
   fit();addEventListener("resize",function(){cancelAnimationFrame(fit.r);fit.r=requestAnimationFrame(fit)});
 });
@@ -1069,7 +1078,7 @@ document.addEventListener("DOMContentLoaded",function(){var D=JSON.parse(documen
   document.querySelectorAll(".nb .frame[data-nb]").forEach(function(el){var f=D.frames[el.getAttribute("data-nb")];if(!f)return;
     var fr=document.createElement("iframe");fr.setAttribute("scrolling","no");fr.setAttribute("tabindex","-1");fr.setAttribute("aria-hidden","true");
     fr.style.width=f.w+"px";fr.style.height=f.h+"px";fr.srcdoc=head(f.css||D.css)+f.html+'</body></html>';el.appendChild(fr);items.push({el:el,fr:fr,f:f,s:+el.getAttribute("data-s")})});
-  function fit(){var k=innerWidth<=760?0.8:1;items.forEach(function(it){var s=it.s*k;it.fr.style.transform="scale("+s+")";it.el.style.width=Math.round(it.f.w*s)+"px";it.el.style.height=Math.round(it.f.h*s)+"px"})}
+  function fit(){var k=matchMedia("(max-width:760px)").matches?0.8:1;items.forEach(function(it){var s=it.s*k;it.fr.style.transform="scale("+s+")";it.el.style.width=Math.round(it.f.w*s)+"px";it.el.style.height=Math.round(it.f.h*s)+"px"})}
   fit();addEventListener("resize",function(){cancelAnimationFrame(fit.r);fit.r=requestAnimationFrame(fit)});
 });
 </script></div></div></section><section class="hub"><style>
@@ -1099,7 +1108,7 @@ document.addEventListener("DOMContentLoaded",function(){var el=document.getEleme
   var fr=document.createElement("iframe");fr.setAttribute("scrolling","no");fr.setAttribute("tabindex","-1");fr.setAttribute("aria-hidden","true");
   fr.srcdoc=head(f)+f.html.replace(/hubav:(\w+)/g,function(m,k){return D.av[k]||''})+'</body></html>';var clip=document.createElement("div");clip.className="hub-clip";clip.appendChild(fr);box.appendChild(clip);
   function fit(){var cw=box.parentNode.clientWidth,iw=f.w,h=f.h,s=s0;
-   if(innerWidth<=760){var MW={draft:520};if(MW[n]){iw=MW[n];try{var b=fr.contentDocument&&fr.contentDocument.body;if(b&&b.firstElementChild)h=b.firstElementChild.getBoundingClientRect().height}catch(e){}}
+   if(matchMedia("(max-width:760px)").matches){var MW={draft:520};if(MW[n]){iw=MW[n];try{var b=fr.contentDocument&&fr.contentDocument.body;if(b&&b.firstElementChild)h=b.firstElementChild.getBoundingClientRect().height}catch(e){}}
      s=Math.min(1.15,cw/iw)}
    fr.style.width=iw+"px";fr.style.height=h+"px";fr.style.transform="scale("+s+")";box.style.width=clip.style.width=Math.round(iw*s)+"px";box.style.height=clip.style.height=Math.round(h*s)+"px"}
   fit();fr.addEventListener("load",function(){setTimeout(fit,50);setTimeout(fit,800)});addEventListener("resize",function(){cancelAnimationFrame(fit.r);fit.r=requestAnimationFrame(fit)})});
@@ -1246,4 +1255,68 @@ document.addEventListener("DOMContentLoaded",function(){if(!("IntersectionObserv
   setTimeout(function(){document.querySelectorAll("iframe").forEach(function(fr){if(fr.id==="hwDemo")return;fr.__vis=true;io.observe(fr);
     fr.addEventListener("load",function(){setTimeout(function(){set(fr,fr.__vis)},0)})})},0);
 });
-</script></body></html>
+</script><!--mob--><style id="mob">
+/* мобільна версія (28.10.2026): лише ≤760 px, десктоп не змінюється. Спільний блок для всіх сторінок */
+.mnav-b,.mnav{display:none}
+@media(max-width:760px){
+html{-webkit-text-size-adjust:100%}
+/* поле 20 px на всіх сторінках */
+.w,main.w{padding-left:20px!important;padding-right:20px!important}
+/* шапка: логотип · «Запит на доступ» · бургер */
+body>nav{z-index:50!important}
+body>nav .links,body>nav .burger{display:none!important}
+body>nav .nr{gap:6px!important}
+body>nav .nr .btn{display:inline-flex!important;height:40px;padding:0 14px;font-size:14px;border-radius:10px}
+body>nav .logo{display:flex;align-items:center;min-height:44px;min-width:44px}
+.mnav-b{display:grid;place-items:center;flex:none;width:44px;height:44px;margin-right:-10px;padding:0;border:0;background:transparent;color:#111;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mnav-b i{position:relative;display:block;width:20px;height:2px;border-radius:2px;background:currentColor;transition:background .15s}
+.mnav-b i:before,.mnav-b i:after{content:"";position:absolute;left:0;width:20px;height:2px;border-radius:2px;background:currentColor;transition:transform .25s}
+.mnav-b i:before{top:-6px}.mnav-b i:after{top:6px}
+.mnav-o .mnav-b i{background:transparent}
+.mnav-o .mnav-b i:before{transform:translateY(6px) rotate(45deg)}
+.mnav-o .mnav-b i:after{transform:translateY(-6px) rotate(-45deg)}
+.mnav{display:block;position:fixed;left:0;right:0;top:56px;bottom:0;z-index:49;background:#fff;overflow-y:auto;overscroll-behavior:contain;padding:8px 20px calc(24px + env(safe-area-inset-bottom));font-family:"Golos Text",-apple-system,"Segoe UI",sans-serif;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+.mnav-o .mnav{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s}
+html.mnav-o,html.mnav-o body{overflow:hidden}
+.mnav .mi{display:flex;align-items:center;min-height:56px;font-size:20px;font-weight:500;line-height:1.25;color:#111;border-bottom:1px solid #ececec}
+.mnav .mg{padding:16px 0 8px;border-bottom:1px solid #ececec}
+.mnav .mg>b{display:block;margin:0 0 2px;font-size:13px;font-weight:500;color:#8a8a8a}
+.mnav .mg a{display:flex;align-items:center;flex-wrap:wrap;min-height:48px;font-size:20px;font-weight:500;line-height:1.25;color:#111}
+.mnav .tg{margin-left:10px!important;font-size:12px!important;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:0!important}
+.mnav .cur{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+/* типографіка: одна шкала — h1 40/44 (стаття 34/38), тіло 16 */
+.hero h1,#hh,.pr-h h1,.tm-h h1{font-size:40px!important;line-height:44px!important}
+.pt-h h1{font-size:36px!important;line-height:40px!important}
+.art h1{font-size:34px!important;line-height:38px!important}
+h1,h2,h3,h4{overflow-wrap:break-word}
+:lang(de) :is(h1,h2,h3,h4,b,.nm,summary,.afaq-q,td,th),:lang(hu) :is(h1,h2,h3,h4,b,.nm,summary,.afaq-q,td,th){-webkit-hyphens:auto;hyphens:auto}
+/* дотикові цілі ≥ 44 px */
+.more2,.lk,.crumb.back{display:inline-flex!important;align-items:center;min-height:44px}
+.fc .rm{height:44px;padding:0 16px}
+/* підвал: дві колонки замість рядка дрібних пунктів */
+footer{padding:32px 0 calc(32px + env(safe-area-inset-bottom))!important}
+footer .w{display:grid!important;grid-template-columns:1fr 1fr;gap:0 16px!important}
+footer .w>b{grid-column:1/-1;margin:0 0 8px!important}
+footer .w>span{display:flex;align-items:center;min-height:40px;font-size:15px}
+/* кадри статей блогу: вирівнювання обрізаних кадрів — від лівого краю */
+.art .shot{justify-content:flex-start}
+.art .shot .frame{margin-left:auto;margin-right:auto}
+}
+</style><script id="mob-js">
+(function(){var nav=document.querySelector("body>nav"),L=nav&&nav.querySelector(".links"),nr=nav&&nav.querySelector(".nr");if(!L||!nr)return;
+var H=document.documentElement,here=(location.pathname.split("/").pop()||"index.html");
+var b=document.createElement("button");b.type="button";b.className="mnav-b";b.setAttribute("aria-label","Menu");b.setAttribute("aria-expanded","false");b.setAttribute("aria-controls","mnav");b.innerHTML="<i></i>";nr.appendChild(b);
+var p=document.createElement("div");p.className="mnav";p.id="mnav";
+function mark(a){var h=a.getAttribute("href");if(h&&h.split("#")[0]==here)a.classList.add("cur")}
+[].forEach.call(L.children,function(sp){if(sp.tagName!="SPAN")return;var pop=sp.querySelector(".sl-pop,.rs-pop");
+ if(pop){var g=document.createElement("div");g.className="mg";var t=document.createElement("b");t.textContent=((sp.firstChild&&sp.firstChild.nodeValue)||"").trim();g.appendChild(t);
+  pop.querySelectorAll("a").forEach(function(a){var c=a.cloneNode(true);mark(c);g.appendChild(c)});p.appendChild(g)}
+ else{var a=sp.querySelector("a");if(!a)return;var c=a.cloneNode(true);c.removeAttribute("style");c.className="mi";mark(c);p.appendChild(c)}});
+document.body.appendChild(p);
+function set(o){H.classList.toggle("mnav-o",o);b.setAttribute("aria-expanded",o?"true":"false");if(o)p.style.top=Math.round(nav.getBoundingClientRect().bottom)+"px"}
+b.addEventListener("click",function(){set(!H.classList.contains("mnav-o"))});
+p.addEventListener("click",function(e){if(e.target.closest("a[href]"))set(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
+addEventListener("resize",function(){if(!matchMedia("(max-width:760px)").matches&&H.classList.contains("mnav-o"))set(false)});
+})();
+</script><!--/mob--></body></html>

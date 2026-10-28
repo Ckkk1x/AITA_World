@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><!--i18n--><link rel="alternate" hreflang="uk" href="../access.html"><link rel="alternate" hreflang="en" href="../en/access.html"><link rel="alternate" hreflang="es" href="../es/access.html"><link rel="alternate" hreflang="pl" href="../pl/access.html"><link rel="alternate" hreflang="hu" href="../hu/access.html"><link rel="alternate" hreflang="de" href="../de/access.html"><link rel="alternate" hreflang="x-default" href="../en/access.html"><!--/i18n--><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="es"><head><!--i18n--><link rel="alternate" hreflang="uk" href="../uk/access.html"><link rel="alternate" hreflang="en" href="../en/access.html"><link rel="alternate" hreflang="es" href="../es/access.html"><link rel="alternate" hreflang="pl" href="../pl/access.html"><link rel="alternate" hreflang="hu" href="../hu/access.html"><link rel="alternate" hreflang="de" href="../de/access.html"><link rel="alternate" hreflang="x-default" href="../access.html"><style>footer .lsw{margin-left:auto;display:flex;flex-wrap:wrap;gap:2px}footer .lsw a{color:inherit;text-decoration:none;font-size:13px;padding:4px 9px;border-radius:999px;transition:color .15s,background .15s}footer .lsw a:hover{color:var(--ink)}footer .lsw a.on{color:var(--ink);background:rgba(127,127,127,.12);pointer-events:none}@media(max-width:760px){footer .w>.lsw{grid-column:1/-1;margin:16px 0 0 -9px}footer .lsw a{font-size:14px;padding:10px 9px}}</style><!--/i18n--><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Inter:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 <style>
 /* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
@@ -25,7 +25,16 @@ footer .w{display:flex;gap:28px;flex-wrap:wrap;align-items:center}
 footer b{color:#111;font-size:16px;margin-right:12px}
 @media(max-width:760px){.w{padding:0 20px}nav .w{grid-template-columns:1fr auto;height:56px}.links{display:none}h2{font-size:32px}}
 </style></head><body>
-<nav><style>.btn{font-weight:500}</style><div class="w">
+<nav><style id="hdr">
+/* шапка — одна для всіх сторінок (еталон — головна, 28.10.2026) */
+body>nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #e6e6e6;font:16px/1.5 "Golos Text",-apple-system,"Segoe UI",sans-serif;color:#111}
+body>nav>.w{max-width:1440px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:60px}
+body>nav .logo{display:flex;align-items:center}
+body>nav .logo .mk{display:block;height:20px;width:auto}
+body>nav .links{display:flex;gap:32px;font-size:15px}
+body>nav .nr .btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;border:1px solid #111;border-radius:8px;background:#111;color:#fff;font-size:14px;font-weight:500;white-space:nowrap}
+@media(max-width:760px){body>nav>.w{grid-template-columns:1fr auto;height:56px;padding:0 20px}}
+</style><div class="w">
   <a class="logo" aria-label="Aita" href="./"><svg class="mk" viewBox="0.024 0.017 91.449 82.571"><path fill="#000000" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg></a>
   <span class="links"><span id="slBtn" role="button" aria-haspopup="true" style="position:relative;cursor:pointer">Nuestras soluciones<div class="sl-pop" id="slPop"><style>
 /* меню «Рішення»: «Aita для» винесено з «Ресурсів» окремим пунктом (Антон, 22.10.2026) */
@@ -40,7 +49,7 @@ footer b{color:#111;font-size:16px;margin-right:12px}
 .links>#slBtn.on:after{transform:rotate(180deg)}
 /* «Ресурси» тепер одна колонка — «Компанія» */
 #rsPop{grid-template-columns:1fr!important;width:240px!important}
-</style><div><a style="opacity:.45;cursor:default;pointer-events:none" aria-disabled="true">Energía<span class="tg" style="margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px">en desarrollo</span></a><a style="opacity:.45;cursor:default;pointer-events:none">Otros sectores<span class="tg" style="margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px">próximamente</span></a></div><script>
+</style><div><a style="opacity:.45;cursor:default;pointer-events:none" aria-disabled="true">Energía<span class="tg" style="margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px">en desarrollo</span></a><a style="opacity:.45;cursor:default;pointer-events:none">Otros sectores<span class="tg" style="margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px">pronto</span></a></div><script>
 (function(){var b=document.getElementById("slBtn"),p=document.getElementById("slPop"),t=null;
   b.addEventListener("mouseenter",function(){clearTimeout(t);b.classList.add("on")});
   b.addEventListener("mouseleave",function(){clearTimeout(t);t=setTimeout(function(){b.classList.remove("on")},180)});
@@ -74,7 +83,7 @@ body>nav>.w{height:60px}
   document.addEventListener("keydown",function(e){if(e.key==="Escape")b.classList.remove("on")});addEventListener("blur",function(){b.classList.remove("on")})})();
 </script></div></span><span><a href="pricing.html" style="color:inherit">Precios</a></span><style>.links>span:nth-child(2):after{content:none!important}</style></span>
   <span class="nr" style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><a class="btn sm" href="access.html">Solicitar acceso</a></span>
-</div></nav>
+</div></nav><style>.btn{font-weight:500}</style>
 <style>
 /* сторінка «Запит на доступ»: одна колонка по центру — заголовок, підзаголовок, форма; поля на підкладках, без обводок */
 .ac{max-width:560px;margin:0 auto;padding:176px 0 160px;text-align:center}
@@ -131,7 +140,7 @@ body>nav>.w{height:60px}
         </div>
         <label><span>Correo de trabajo</span><input name="email" type="email" autocomplete="email" placeholder="oleg@vector.ua" required></label>
         <label><span>Cuántas personas tiene el equipo</span><select name="size" required><option value="" selected disabled>Seleccionar</option><option>hasta 10</option><option>10–50</option><option>50–200</option><option>200+</option></select></label>
-        <label><span>Paquete <em>— puedes decidirlo más tarde</em></span><select name="plan"><option value="">Aún no lo hemos decidido</option><option>Start — €50/mes</option><option>Medio — €150/mes</option><option>Corporativo — €380/mes</option></select></label>
+        <label><span>Paquete <em>— puedes decidirlo más tarde</em></span><select name="plan"><option value="">Aún no lo hemos decidido</option><option>Start — €50/mes</option><option>Media — €150/mes</option><option>Corporativo — €380/mes</option></select></label>
         <label><span>Qué quieres gestionar en Aita <em>— opcional</em></span><textarea name="note" placeholder="Por ejemplo: ventas, proyectos, correspondencia con clientes"></textarea></label>
         <button class="btn go" type="submit">Solicitar acceso</button>
         <div class="fine">Te responderemos al correo de trabajo</div>
@@ -155,7 +164,7 @@ body>nav>.w{height:60px}
 })();
 </script>
 
-<footer><div class="w"><b>Aita</b><span>Nuestras soluciones</span><span>Módulos</span><span>Precios</span><span>Socios</span><span>Blog</span><span>Sobre nosotros</span><span>Inversores</span><span>Contactos</span><span>Legal</span></div></footer>
+<footer><div class="w"><b>Aita</b><span>Nuestras soluciones</span><span>Módulos</span><span>Precios</span><span>Socios</span><span>Blog</span><span>Sobre nosotros</span><span>Inversores</span><span>Contactos</span><span>Legal</span><div class="lsw" role="navigation" aria-label="Language"><a href="../uk/access.html" hreflang="uk" lang="uk">Українська</a><a href="../en/access.html" hreflang="en" lang="en">English</a><a href="../es/access.html" hreflang="es" lang="es" class="on" aria-current="true">Español</a><a href="../pl/access.html" hreflang="pl" lang="pl">Polski</a><a href="../hu/access.html" hreflang="hu" lang="hu">Magyar</a><a href="../de/access.html" hreflang="de" lang="de">Deutsch</a></div></div></footer>
 <style id="navfix">
 /* меню: активний пункт — за поточною сторінкою, наведення — на всіх пунктах (Антон 27.10) */
 body>nav .links>span{color:#4d4d4d!important;font-weight:400!important;transition:color .15s}
@@ -167,4 +176,68 @@ body>nav .links>#slBtn:after,body>nav .links>#rsBtn:after{vertical-align:-3px!im
 </style><script>
 (function(){var f=(location.pathname.split("/").pop()||"index.html"),m={"modules.html":1,"pricing.html":3,"energy.html":0,"blog.html":2,"blog-clients.html":2,"blog-memory.html":2,"partners.html":2,"become-partner.html":2,"about.html":2},k=m[f],s=document.querySelectorAll("body>nav .links>span");if(k!=null&&s[k])s[k].classList.add("cur")})();
 </script>
-</body></html>
+<!--mob--><style id="mob">
+/* мобільна версія (28.10.2026): лише ≤760 px, десктоп не змінюється. Спільний блок для всіх сторінок */
+.mnav-b,.mnav{display:none}
+@media(max-width:760px){
+html{-webkit-text-size-adjust:100%}
+/* поле 20 px на всіх сторінках */
+.w,main.w{padding-left:20px!important;padding-right:20px!important}
+/* шапка: логотип · «Запит на доступ» · бургер */
+body>nav{z-index:50!important}
+body>nav .links,body>nav .burger{display:none!important}
+body>nav .nr{gap:6px!important}
+body>nav .nr .btn{display:inline-flex!important;height:40px;padding:0 14px;font-size:14px;border-radius:10px}
+body>nav .logo{display:flex;align-items:center;min-height:44px;min-width:44px}
+.mnav-b{display:grid;place-items:center;flex:none;width:44px;height:44px;margin-right:-10px;padding:0;border:0;background:transparent;color:#111;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mnav-b i{position:relative;display:block;width:20px;height:2px;border-radius:2px;background:currentColor;transition:background .15s}
+.mnav-b i:before,.mnav-b i:after{content:"";position:absolute;left:0;width:20px;height:2px;border-radius:2px;background:currentColor;transition:transform .25s}
+.mnav-b i:before{top:-6px}.mnav-b i:after{top:6px}
+.mnav-o .mnav-b i{background:transparent}
+.mnav-o .mnav-b i:before{transform:translateY(6px) rotate(45deg)}
+.mnav-o .mnav-b i:after{transform:translateY(-6px) rotate(-45deg)}
+.mnav{display:block;position:fixed;left:0;right:0;top:56px;bottom:0;z-index:49;background:#fff;overflow-y:auto;overscroll-behavior:contain;padding:8px 20px calc(24px + env(safe-area-inset-bottom));font-family:"Golos Text",-apple-system,"Segoe UI",sans-serif;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+.mnav-o .mnav{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s}
+html.mnav-o,html.mnav-o body{overflow:hidden}
+.mnav .mi{display:flex;align-items:center;min-height:56px;font-size:20px;font-weight:500;line-height:1.25;color:#111;border-bottom:1px solid #ececec}
+.mnav .mg{padding:16px 0 8px;border-bottom:1px solid #ececec}
+.mnav .mg>b{display:block;margin:0 0 2px;font-size:13px;font-weight:500;color:#8a8a8a}
+.mnav .mg a{display:flex;align-items:center;flex-wrap:wrap;min-height:48px;font-size:20px;font-weight:500;line-height:1.25;color:#111}
+.mnav .tg{margin-left:10px!important;font-size:12px!important;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:0!important}
+.mnav .cur{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+/* типографіка: одна шкала — h1 40/44 (стаття 34/38), тіло 16 */
+.hero h1,#hh,.pr-h h1,.tm-h h1{font-size:40px!important;line-height:44px!important}
+.pt-h h1{font-size:36px!important;line-height:40px!important}
+.art h1{font-size:34px!important;line-height:38px!important}
+h1,h2,h3,h4{overflow-wrap:break-word}
+:lang(de) :is(h1,h2,h3,h4,b,.nm,summary,.afaq-q,td,th),:lang(hu) :is(h1,h2,h3,h4,b,.nm,summary,.afaq-q,td,th){-webkit-hyphens:auto;hyphens:auto}
+/* дотикові цілі ≥ 44 px */
+.more2,.lk,.crumb.back{display:inline-flex!important;align-items:center;min-height:44px}
+.fc .rm{height:44px;padding:0 16px}
+/* підвал: дві колонки замість рядка дрібних пунктів */
+footer{padding:32px 0 calc(32px + env(safe-area-inset-bottom))!important}
+footer .w{display:grid!important;grid-template-columns:1fr 1fr;gap:0 16px!important}
+footer .w>b{grid-column:1/-1;margin:0 0 8px!important}
+footer .w>span{display:flex;align-items:center;min-height:40px;font-size:15px}
+/* кадри статей блогу: вирівнювання обрізаних кадрів — від лівого краю */
+.art .shot{justify-content:flex-start}
+.art .shot .frame{margin-left:auto;margin-right:auto}
+}
+</style><script id="mob-js">
+(function(){var nav=document.querySelector("body>nav"),L=nav&&nav.querySelector(".links"),nr=nav&&nav.querySelector(".nr");if(!L||!nr)return;
+var H=document.documentElement,here=(location.pathname.split("/").pop()||"index.html");
+var b=document.createElement("button");b.type="button";b.className="mnav-b";b.setAttribute("aria-label","Menu");b.setAttribute("aria-expanded","false");b.setAttribute("aria-controls","mnav");b.innerHTML="<i></i>";nr.appendChild(b);
+var p=document.createElement("div");p.className="mnav";p.id="mnav";
+function mark(a){var h=a.getAttribute("href");if(h&&h.split("#")[0]==here)a.classList.add("cur")}
+[].forEach.call(L.children,function(sp){if(sp.tagName!="SPAN")return;var pop=sp.querySelector(".sl-pop,.rs-pop");
+ if(pop){var g=document.createElement("div");g.className="mg";var t=document.createElement("b");t.textContent=((sp.firstChild&&sp.firstChild.nodeValue)||"").trim();g.appendChild(t);
+  pop.querySelectorAll("a").forEach(function(a){var c=a.cloneNode(true);mark(c);g.appendChild(c)});p.appendChild(g)}
+ else{var a=sp.querySelector("a");if(!a)return;var c=a.cloneNode(true);c.removeAttribute("style");c.className="mi";mark(c);p.appendChild(c)}});
+document.body.appendChild(p);
+function set(o){H.classList.toggle("mnav-o",o);b.setAttribute("aria-expanded",o?"true":"false");if(o)p.style.top=Math.round(nav.getBoundingClientRect().bottom)+"px"}
+b.addEventListener("click",function(){set(!H.classList.contains("mnav-o"))});
+p.addEventListener("click",function(e){if(e.target.closest("a[href]"))set(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
+addEventListener("resize",function(){if(!matchMedia("(max-width:760px)").matches&&H.classList.contains("mnav-o"))set(false)});
+})();
+</script><!--/mob--></body></html>
