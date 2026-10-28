@@ -119,6 +119,8 @@
 
   function currentLang() {
     var l;
+    // сторінки нового лендінгу кажуть свою мову явно (/uk/, /en/ … — мова за адресою, а не за браузером)
+    if (window.AITA_CONSENT_LANG) return SUPPORTED_LANGS.indexOf(window.AITA_CONSENT_LANG) !== -1 ? window.AITA_CONSENT_LANG : 'en';
     try { l = localStorage.getItem('aita-lang'); } catch (e) { l = null; }
     if (!l) {
       var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
