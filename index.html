@@ -914,7 +914,6 @@ function oAt(el,fx,fy){var b=el.getBoundingClientRect(),q=D.getBoundingClientRec
 async function oClick(){O.classList.add("dn");await sleep(100);O.classList.remove("dn");await sleep(70)}
 // авто-вибір не поспішає: курсор клацає пошук, вписує частину запиту, наводиться на варіант і чекає — є час клацнути самому;
 // далі дописує, наводиться на потрібний і обирає. Клік відвідувача будь-коли перемагає
-function barPlaced(){try{var b=parent.document.getElementById("hwBar");return !!b&&!b.classList.contains("stuck")&&parent.innerWidth>760}catch(e){return false}}
 async function autoPick(ap,pick){var k=AUTO[an++%AUTO.length],rows=document.querySelectorAll("#sbp .row:not(.rx)"),key=rows[k].dataset.s,a=QA[key];
   async function type(from,add){for(var i=1;i<=add.length;i++){if(!ap.on)return false;var q=from+add.slice(0,i);sbText(q);filt(q);await sleep(rnd(140,220))}return ap.on}
   var p=oAt($("sb"),.62,1);oSet(p[0]+rnd(120,180),p[1]+rnd(90,130));O.classList.add("vis");
@@ -924,7 +923,7 @@ async function autoPick(ap,pick){var k=AUTO[an++%AUTO.length],rows=document.quer
   p=oAt(document.querySelector(a[2]),rnd(.25,.45),rnd(.35,.65));await oSeg(p[0],p[1],650);
   await sleep(2000);if(!ap.on)return pick;
   if(!await type(a[0],a[1]))return pick;await sleep(400);
-  p=oAt(rows[k],rnd(.2,.35),rnd(.35,.65));await oSeg(p[0],p[1],600);await sleep(700);if(!ap.on)return pick;while(ap.on&&barPlaced())await sleep(300);if(!ap.on)return pick;await oClick();
+  p=oAt(rows[k],rnd(.2,.35),rnd(.35,.65));await oSeg(p[0],p[1],600);await sleep(700);if(!ap.on)return pick;await oClick();
   O.classList.remove("vis");$("sb").classList.remove("hv");rows[k].classList.remove("hv");
   return key}
 async function scene(){
@@ -932,8 +931,7 @@ async function scene(){
   var wait=FIRST?4200:3000,pick=new Promise(function(res){chose=res});FIRST=false;
   var s=await Promise.race([pick,sleep(wait).then(function(){return null})]);
   // прогорнув нижче пошуку — вікно саме не відкриваємо, доки рядок знову не видно повністю
-  // і доки смуга кнопок стоїть на своєму місці (відвідувач прогорнув до неї) — розгорнуте вікно штовхнуло б її й усе нижче
-  while(s===null&&(!topSeen||barPlaced()))s=await Promise.race([pick,sleep(2000).then(function(){return null})]);
+  while(s===null&&!topSeen)s=await Promise.race([pick,sleep(2000).then(function(){return null})]);
   var auto=false;
   if(s===null){if(!$("sbp").classList.contains("on")){var ap={on:true};window.AP=ap;auto=true;
       s=await Promise.race([pick.then(function(v){auto=false;return v}),autoPick(ap,pick)]);
