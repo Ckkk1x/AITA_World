@@ -305,10 +305,10 @@ body>nav .logo{display:flex;align-items:center;min-height:44px;min-width:44px}
 .mnav{display:block;position:fixed;left:0;right:0;top:56px;bottom:0;z-index:49;background:#fff;overflow-y:auto;overscroll-behavior:contain;padding:8px 20px calc(24px + env(safe-area-inset-bottom));font-family:"Golos Text",-apple-system,"Segoe UI",sans-serif;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
 .mnav-o .mnav{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s}
 html.mnav-o,html.mnav-o body{overflow:hidden}
-.mnav .mi{display:flex;align-items:center;min-height:56px;font-size:20px;font-weight:500;line-height:1.25;color:#111;border-bottom:1px solid #ececec}
-.mnav .mg{padding:16px 0 8px;border-bottom:1px solid #ececec}
-.mnav .mg>b{display:block;margin:0 0 2px;font-size:13px;font-weight:500;color:#8a8a8a}
-.mnav .mg a{display:flex;align-items:center;flex-wrap:wrap;min-height:48px;font-size:20px;font-weight:500;line-height:1.25;color:#111}
+.mnav .mnav-i{display:flex;align-items:center;min-height:56px;font-size:20px;font-weight:500;line-height:1.25;color:#111;border-bottom:1px solid #ececec}
+.mnav .mnav-g{padding:16px 0 8px;border-bottom:1px solid #ececec}
+.mnav .mnav-g>b{display:block;margin:0 0 2px;font-size:13px;font-weight:500;color:#8a8a8a}
+.mnav .mnav-g a{display:flex;align-items:center;flex-wrap:wrap;min-height:48px;font-size:20px;font-weight:500;line-height:1.25;color:#111}
 .mnav .tg{margin-left:10px!important;font-size:12px!important;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:0!important}
 .mnav .cur{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
 /* типографіка: одна шкала — h1 40/44 (стаття 34/38), тіло 16 */
@@ -336,9 +336,9 @@ var b=document.createElement("button");b.type="button";b.className="mnav-b";b.se
 var p=document.createElement("div");p.className="mnav";p.id="mnav";
 function mark(a){var h=a.getAttribute("href");if(h&&h.split("#")[0]==here)a.classList.add("cur")}
 [].forEach.call(L.children,function(sp){if(sp.tagName!="SPAN")return;var pop=sp.querySelector(".sl-pop,.rs-pop");
- if(pop){var g=document.createElement("div");g.className="mg";var t=document.createElement("b");t.textContent=((sp.firstChild&&sp.firstChild.nodeValue)||"").trim();g.appendChild(t);
+ if(pop){var g=document.createElement("div");g.className="mnav-g";var t=document.createElement("b");t.textContent=((sp.firstChild&&sp.firstChild.nodeValue)||"").trim();g.appendChild(t);
   pop.querySelectorAll("a").forEach(function(a){var c=a.cloneNode(true);mark(c);g.appendChild(c)});p.appendChild(g)}
- else{var a=sp.querySelector("a");if(!a)return;var c=a.cloneNode(true);c.removeAttribute("style");c.className="mi";mark(c);p.appendChild(c)}});
+ else{var a=sp.querySelector("a");if(!a)return;var c=a.cloneNode(true);c.removeAttribute("style");c.className="mnav-i";mark(c);p.appendChild(c)}});
 document.body.appendChild(p);
 function set(o){H.classList.toggle("mnav-o",o);b.setAttribute("aria-expanded",o?"true":"false");if(o)p.style.top=Math.round(nav.getBoundingClientRect().bottom)+"px"}
 b.addEventListener("click",function(){set(!H.classList.contains("mnav-o"))});
