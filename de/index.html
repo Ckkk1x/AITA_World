@@ -954,6 +954,7 @@ function oAt(el,fx,fy){var b=el.getBoundingClientRect(),q=D.getBoundingClientRec
 async function oClick(){O.classList.add("dn");await sleep(100);O.classList.remove("dn");await sleep(70)}
 // авто-вибір не поспішає: курсор клацає пошук, вписує частину запиту, наводиться на варіант і чекає — є час клацнути самому;
 // далі дописує, наводиться на потрібний і обирає. Клік відвідувача будь-коли перемагає
+function barPlaced(){try{var b=parent.document.getElementById("hwBar");return !!b&&!b.classList.contains("stuck")&&parent.innerWidth>760}catch(e){return false}}
 async function autoPick(ap,pick){var k=AUTO[an++%AUTO.length],rows=document.querySelectorAll("#sbp .row:not(.rx)"),key=rows[k].dataset.s,a=QA[key];
   async function type(from,add){for(var i=1;i<=add.length;i++){if(!ap.on)return false;var q=from+add.slice(0,i);sbText(q);filt(q);await sleep(rnd(140,220))}return ap.on}
   var p=oAt($("sb"),.62,1);oSet(p[0]+rnd(120,180),p[1]+rnd(90,130));O.classList.add("vis");
@@ -963,7 +964,7 @@ async function autoPick(ap,pick){var k=AUTO[an++%AUTO.length],rows=document.quer
   p=oAt(document.querySelector(a[2]),rnd(.25,.45),rnd(.35,.65));await oSeg(p[0],p[1],650);
   await sleep(2000);if(!ap.on)return pick;
   if(!await type(a[0],a[1]))return pick;await sleep(400);
-  p=oAt(rows[k],rnd(.2,.35),rnd(.35,.65));await oSeg(p[0],p[1],600);await sleep(700);if(!ap.on)return pick;await oClick();
+  p=oAt(rows[k],rnd(.2,.35),rnd(.35,.65));await oSeg(p[0],p[1],600);await sleep(700);if(!ap.on)return pick;while(ap.on&&barPlaced())await sleep(300);if(!ap.on)return pick;await oClick();
   O.classList.remove("vis");$("sb").classList.remove("hv");rows[k].classList.remove("hv");
   return key}
 async function scene(){
@@ -971,7 +972,8 @@ async function scene(){
   var wait=FIRST?4200:3000,pick=new Promise(function(res){chose=res});FIRST=false;
   var s=await Promise.race([pick,sleep(wait).then(function(){return null})]);
   // прогорнув нижче пошуку — вікно саме не відкриваємо, доки рядок знову не видно повністю
-  while(s===null&&!topSeen)s=await Promise.race([pick,sleep(2000).then(function(){return null})]);
+  // і доки смуга кнопок стоїть на своєму місці (відвідувач прогорнув до неї) — розгорнуте вікно штовхнуло б її й усе нижче
+  while(s===null&&(!topSeen||barPlaced()))s=await Promise.race([pick,sleep(2000).then(function(){return null})]);
   var auto=false;
   if(s===null){if(!$("sbp").classList.contains("on")){var ap={on:true};window.AP=ap;auto=true;
       s=await Promise.race([pick.then(function(v){auto=false;return v}),autoPick(ap,pick)]);
@@ -1029,7 +1031,7 @@ loop();
     if(d.hwBack){if(base!=null&&scrollY>base)glide(base-scrollY,1000);base=null}});
 })();
 </script></div>
-  <div id="hwBar"><div class="hw-in"><span class="hw-tx">Wir öffnen den Zugang für die ersten Teams — wir zeigen dir Aita kostenlos</span><a class="btn" href="access">Zugang anfragen</a><a class="btn ghost" href="demo">Kostenlose Demo</a></div></div><div id="hwBarS" style="height:1px;margin-top:-1px"></div><style>#hwBar{z-index:4}#hwBar .btn{border-radius:12px}.btn{font-weight:500}</style><style>/* смуга кнопок не стрибає: кнопки завжди по центру (сітка 1fr auto auto 1fr), підпис лише проявляється ліворуч, не зсуваючи кнопок */@media(min-width:761px){#hwBar .hw-in{display:grid;grid-template-columns:1fr auto auto 1fr;justify-content:stretch}#hwBar .hw-tx,#hwBar.stuck .hw-tx{grid-column:1;justify-self:end;max-width:none;margin:0 12px 0 0;white-space:normal;text-align:right;overflow:visible;text-wrap:balance;transition:opacity .3s}#hwBar.stuck .hw-tx{opacity:0}#hwBar .btn:not(.ghost){grid-column:2}#hwBar .btn.ghost{grid-column:3}}</style><script>
+  <div id="hwBar"><div class="hw-in"><span class="hw-tx">Wir öffnen den Zugang für die ersten Teams — wir zeigen dir Aita kostenlos</span><a class="btn" href="access">Zugang anfragen</a><a class="btn ghost" href="demo">Kostenlose Demo</a></div></div><div id="hwBarS" style="height:1px;margin-top:-1px"></div><style>#hwBar{z-index:4}#hwBar .btn{border-radius:12px}.btn{font-weight:500}</style><script>
 // кнопки — липкою смугою, як логотипи клієнтів у Notion: поки їхнє місце нижче екрана (вікно розгорнуте), смуга тримається внизу екрана, а далі стає на своє місце; підпис — лише коли смуга на місці
 (function(){var bar=document.getElementById("hwBar");if("IntersectionObserver" in window)new IntersectionObserver(function(es){es.forEach(function(e){bar.classList.toggle("stuck",!e.isIntersecting&&e.boundingClientRect.top>0)})}).observe(document.getElementById("hwBarS"))})();
 </script>
