@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="hu"><head><!--i18n--><link rel="alternate" hreflang="uk" href="../pricing.html"><link rel="alternate" hreflang="en" href="../en/pricing.html"><link rel="alternate" hreflang="es" href="../es/pricing.html"><link rel="alternate" hreflang="pl" href="../pl/pricing.html"><link rel="alternate" hreflang="hu" href="../hu/pricing.html"><link rel="alternate" hreflang="de" href="../de/pricing.html"><link rel="alternate" hreflang="x-default" href="../en/pricing.html"><!--/i18n--><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Inter:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+/* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
+:root{--ink:#111;--mute:#737373;--line:#e6e6e6;--btn:#111;--btnt:#fff}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 "Golos Text",-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+.w{max-width:1440px;margin:0 auto;padding:0 80px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;border-radius:12px;background:var(--btn);color:var(--btnt);font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer}
+.btn.ghost{background:#f0f0f0;color:#111}
+.btn.sm{height:36px;padding:0 14px;font-size:14px;border-radius:8px}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5}
+nav .w{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:72px}
+.logo .mk{display:block;height:20px;width:auto}
+.links{display:flex;gap:32px;font-size:15px}
+.links>span{color:#4d4d4d}
+.links>span:nth-child(2):after{content:" ▾";font-size:11px}
+
+.nr{display:flex;justify-content:flex-end}
+h2{font-size:56px;line-height:1.05;letter-spacing:-.03em;margin:0;font-weight:500}
+footer{background:#fafafa;border-top:1px solid var(--line);padding:40px 0;font-size:14px;color:var(--mute)}
+footer .w{display:flex;gap:28px;flex-wrap:wrap;align-items:center}
+footer b{color:#111;font-size:16px;margin-right:12px}
+@media(max-width:760px){.w{padding:0 20px}nav .w{grid-template-columns:1fr auto;height:56px}.links{display:none}h2{font-size:32px}}
+</style></head><body>
+<nav><style>.btn{font-weight:500}</style><div class="w">
+  <a class="logo" aria-label="Aita" href="./"><svg class="mk" viewBox="0.024 0.017 91.449 82.571"><path fill="#000000" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg></a>
+  <span class="links"><span id="slBtn" role="button" aria-haspopup="true" style="position:relative;cursor:pointer">Megoldásaink<div class="sl-pop" id="slPop"><style>
+/* меню «Рішення»: «Aita для» винесено з «Ресурсів» окремим пунктом (Антон, 22.10.2026) */
+#slPop{position:absolute;left:50%;top:calc(100% + 18px);transform:translate(-50%,6px);width:260px;padding:12px;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.05);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;cursor:default;z-index:20}
+#slPop:before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+#slBtn.on #slPop{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#slPop h6{margin:4px 10px 6px;font-size:12px;font-weight:500;color:#8a8a8a}
+#slPop a{display:block;padding:5px 10px;border-radius:8px;font-size:17px;font-weight:500;color:#111;cursor:pointer}
+#slPop a:hover{background:#f4f4f4}
+#slBtn.on{color:#111}
+.links>#slBtn:after{content:"";display:inline-block;width:14px;height:14px;margin-left:4px;vertical-align:-2px;font-size:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .2s}
+.links>#slBtn.on:after{transform:rotate(180deg)}
+/* «Ресурси» тепер одна колонка — «Компанія» */
+#rsPop{grid-template-columns:1fr!important;width:240px!important}
+</style><div><a style="opacity:.45;cursor:default;pointer-events:none" aria-disabled="true">Energetika<span class="tg" style="margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px">fejlesztés alatt</span></a><a style="opacity:.45;cursor:default;pointer-events:none">Más iparágak<span class="tg" style="margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px">hamarosan</span></a></div><script>
+(function(){var b=document.getElementById("slBtn"),p=document.getElementById("slPop"),t=null;
+  b.addEventListener("mouseenter",function(){clearTimeout(t);b.classList.add("on")});
+  b.addEventListener("mouseleave",function(){clearTimeout(t);t=setTimeout(function(){b.classList.remove("on")},180)});
+  b.addEventListener("click",function(e){if(!p.contains(e.target)||e.target===p)b.classList.toggle("on")});
+  document.addEventListener("click",function(e){if(!b.contains(e.target))b.classList.remove("on")});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")b.classList.remove("on")});addEventListener("blur",function(){b.classList.remove("on")})})();
+</script></div></span><span><a href="modules.html" style="color:inherit">Modulok</a></span><span id="rsBtn" role="button" aria-haspopup="true" style="position:relative;cursor:pointer">Források<div class="rs-pop" id="rsPop"><style>
+/* меню «Ресурси»: відкривається наведенням (і кліком), як у Notion */
+#rsPop{position:absolute;left:50%;top:calc(100% + 18px);transform:translate(-50%,6px);display:grid;grid-template-columns:1fr 1fr;gap:8px;width:440px;padding:12px;border-radius:16px;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.05);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;cursor:default;z-index:20}
+#rsPop:before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
+#rsBtn.on #rsPop{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#rsPop h6{margin:4px 10px 6px;font-size:12px;font-weight:500;color:#8a8a8a}
+#rsPop a{display:block;padding:5px 10px;border-radius:8px;font-size:17px;font-weight:500;color:#111;cursor:pointer}
+#rsPop a:hover{background:#f4f4f4}
+#rsBtn.on{color:#111}
+/* мітка «в розробці» біля пункту */
+#rsPop a .tg{margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px}
+/* стрілка біля «Ресурси» — шеврон, при відкритті повертається */
+.links>#rsBtn:after{content:"";display:inline-block;width:14px;height:14px;margin-left:4px;vertical-align:-2px;font-size:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .2s}
+.links>#rsBtn.on:after{transform:rotate(180deg)}
+/* шапка нижча (72 → 60) */
+body>nav>.w{height:60px}
+@media(max-width:760px){body>nav>.w{height:56px}}
+</style><div><a href="partners.html">Partnerek</a><a href="blog.html">Blog</a><a style="opacity:.45;cursor:default;pointer-events:none">Útmutatók<span class="tg">fejlesztés alatt</span></a><a style="opacity:.45;cursor:default;pointer-events:none">Újdonságok<span class="tg">fejlesztés alatt</span></a><a href="about.html">Rólunk</a></div><script>
+// відкривається наведенням (закривається з невеликою затримкою, щоб встигнути дійти курсором), а також кліком
+(function(){var b=document.getElementById("rsBtn"),p=document.getElementById("rsPop"),t=null;
+  b.addEventListener("mouseenter",function(){clearTimeout(t);b.classList.add("on")});
+  b.addEventListener("mouseleave",function(){clearTimeout(t);t=setTimeout(function(){b.classList.remove("on")},180)});
+  b.addEventListener("click",function(e){if(!p.contains(e.target)||e.target===p)b.classList.toggle("on")});
+  document.addEventListener("click",function(e){if(!b.contains(e.target))b.classList.remove("on")});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")b.classList.remove("on")});addEventListener("blur",function(){b.classList.remove("on")})})();
+</script></div></span><span><a href="pricing.html" style="color:inherit">Árak</a></span><style>.links>span:nth-child(2):after{content:none!important}</style></span>
+  <span class="nr" style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><a class="btn sm" href="access.html">Hozzáférés kérése</a></span>
+</div></nav>
+<style>
+/* сторінка «Ціни»: ті самі токени й відступи, що на головній; без обводок — підкладки */
+.pr-h{text-align:center;padding:176px 0 0}
+.pr-h h1{margin:0;font:600 72px/1.04 "Inter",sans-serif;letter-spacing:-.04em}
+.pr-h p{margin:32px auto 0;max-width:640px;font-size:20px;line-height:28px;color:var(--mute)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:72px}
+.plan{background:#f7f7f7;border-radius:24px;padding:28px;display:flex;flex-direction:column}
+.plan.rec{background:rgba(0,96,255,.07)}
+.plan .nm{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600}
+.plan .bd{font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px;background:rgba(0,96,255,.14);color:#0b3fa8}
+.plan .who{margin-top:6px;color:var(--mute);font-size:15px}
+.plan .pz{margin-top:28px;font-size:48px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.plan .pz small{font-size:16px;font-weight:400;color:var(--mute);letter-spacing:0;margin-left:4px}
+.plan .btn{margin-top:24px;height:48px;border-radius:12px;font-size:16px}
+.plan ul{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:12px;font-size:15px}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li:before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:rgba(0,184,0,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300a000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+.pr-note{margin-top:20px;text-align:center;color:var(--mute);font-size:15px}
+.pr-sec{margin-top:128px}
+.pr-sec h2{margin:0 0 32px}
+.adds{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.add{background:#f7f7f7;border-radius:24px;padding:24px 28px;display:flex;flex-direction:column;gap:6px}
+.add b{font-size:18px;font-weight:600}
+.add span{color:var(--mute);font-size:15px}
+.add em{font-style:normal;margin-top:10px;align-self:flex-start;font-size:14px;padding:4px 12px;border-radius:999px;background:#fff;color:#111}
+.faq{display:grid;gap:10px;max-width:900px}
+.faq details{background:#f7f7f7;border-radius:16px;padding:18px 24px}
+.faq summary{cursor:pointer;font-size:17px;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--mute);font-weight:400}
+.faq details[open] summary:after{content:"−"}
+.faq p{margin:12px 0 0;color:#555;font-size:15px;line-height:1.55}
+.pr-end{padding:192px 0 128px;text-align:center}
+.pr-end h2{margin:0 auto 32px;max-width:900px}
+.pr-end .b{display:flex;gap:16px;justify-content:center}
+.pr-end .btn{height:52px;padding:0 28px;font-size:16px;border-radius:12px}
+@media(max-width:760px){.pr-h{padding-top:96px}.pr-h h1{font-size:42px}.pr-h p{font-size:16px;line-height:24px}.plans,.adds{grid-template-columns:1fr}.pr-sec{margin-top:72px}.pr-end{padding:96px 0 72px}.pr-end .b{flex-direction:column}}
+</style>
+<div class="w">
+  <div class="pr-h"><h1>Egy csomag az egész cégnek</h1><p>Minden funkció, korlátlan felhasználó. Árak euróban, ÁFA nélkül, havi fizetéssel.</p><style>@media(min-width:761px){.pr-h p{max-width:none!important;white-space:nowrap}}</style></div>
+  <div class="plans">
+    <div class="plan"><div class="nm">Start</div><div class="who">Kis csapatoknak</div><div class="pz">€50<small>/hó</small></div><a class="btn ghost" href="access.html">Hozzáférés kérése</a>
+      <ul><li>€50 AI-kredit havonta</li><li>AI-tokenek: az alapár 2,0×-a</li><li>25 GB tárhely</li><li>Korlátlan felhasználó</li><li>Minden funkció</li></ul></div>
+    <div class="plan rec"><div class="nm">Közepes <span class="bd">Népszerű</span></div><div class="who">Közepes cégeknek</div><div class="pz">€150<small>/hó</small></div><a class="btn" href="access.html">Hozzáférés kérése</a>
+      <ul><li>€150 AI-kredit havonta</li><li>AI-tokenek: az alapár 1,9×-e</li><li>100 GB tárhely</li><li>Korlátlan felhasználó</li><li>Minden funkció</li></ul></div>
+    <div class="plan"><div class="nm">Vállalati</div><div class="who">Nagyvállalatoknak</div><div class="pz">€380<small>/hó</small></div><a class="btn ghost" href="access.html">Hozzáférés kérése</a>
+      <ul><li>€380 AI-kredit havonta</li><li>AI-tokenek: az alapár 1,8×-a</li><li>350 GB tárhely</li><li>Korlátlan felhasználó</li><li>Minden funkció</li></ul></div>
+  </div>
+  <div class="pr-note">Minél nagyobb a csomag, annál kisebb a felár az AI-tokeneken. Ugyanannyi pénzért több tokent kapsz.</div>
+
+  <div class="pr-sec"><h2>Kiegészítők és szolgáltatások</h2>
+    <div class="adds">
+      <div class="add"><b>Támogatási menedzser</b><span>Válasz a megkeresésedre 4 órán belül.</span><em>€50 menedzserenként havonta</em></div>
+      <div class="add"><b>Extra tárhely</b><span>További +50, +250 vagy +500 GB az adataidnak.</span><em>Egyedi ajánlat alapján</em></div>
+      <div class="add"><b>Onboarding</b><span>Beállítjuk a folyamatokat, az adatokat és a csapat munkáját az Aitában.</span><em>Egyedi ajánlat alapján</em></div>
+      <div class="add"><b>Folyamat-digitalizálás</b><span>Felépítjük az üzleti folyamatodat az Aitában.</span><em>Egyedi ajánlat alapján</em></div>
+    </div>
+  </div>
+
+  <div class="pr-sec"><style id="afaq-css">
+.afaq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+.afaq-h{position:sticky;top:96px}
+.afaq-l{display:inline-block;font-size:13px;font-weight:500;padding:4px 10px;border:1px solid #e6e6e6;border-radius:8px;color:#4d4d4d;background:#fff}
+.afaq-h h2{margin:20px 0 0;text-wrap:balance}.afaq-h h2 span{color:#8a8a8a}
+.afaq-h p{margin:20px 0 0;color:#737373;font-size:16px;line-height:1.55;max-width:360px}
+.afaq-list{border-top:1px solid #e6e6e6}
+.afaq-i{border-bottom:1px solid #e6e6e6}
+.afaq-q{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;font-size:20px;line-height:1.35;font-weight:500;color:#111;cursor:pointer}
+.afaq-q:focus-visible{outline:2px solid #111;outline-offset:4px;border-radius:4px}
+.afaq-b{flex:none;width:32px;height:32px;border-radius:50%;background:#f2f2f2;position:relative;transition:background .25s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.afaq-b:before,.afaq-b:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.6px;margin:-.8px 0 0 -6px;background:#111;border-radius:2px;transition:background .25s}
+.afaq-b:after{transform:rotate(90deg)}
+.afaq-q:hover .afaq-b{background:#e8e8e8}
+.afaq-i.on .afaq-b{background:#111;transform:rotate(135deg)}.afaq-i.on .afaq-b:before,.afaq-i.on .afaq-b:after{background:#fff}
+.afaq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.7,.2,1)}
+.afaq-a>div{overflow:hidden}
+.afaq-a p{margin:0;padding:0 56px 24px 0;color:#4d4d4d;font-size:16px;line-height:1.6;opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .35s}
+.afaq-i.on .afaq-a{grid-template-rows:1fr}.afaq-i.on .afaq-a p{opacity:1;transform:none;transition-delay:.08s}
+@media(prefers-reduced-motion:reduce){.afaq-a,.afaq-a p,.afaq-b{transition:none}}
+@media(max-width:760px){.afaq{grid-template-columns:1fr;gap:32px}.afaq-h{position:static}.afaq-q{font-size:17px;padding:20px 0}.afaq-a p{padding-right:0}}
+</style><div class="afaq"><div class="afaq-h"><span class="afaq-l">Kérdések</span><h2>Gyakori kérdések, <span>rövid válaszok</span></h2></div><div class="afaq-list"><div class="afaq-i on"><button class="afaq-q" type="button" aria-expanded="true">Működik az Aita csomag nélkül?<span class="afaq-b" aria-hidden="true"></span></button><div class="afaq-a"><div><p>Igen, a platform működik. De az AI-ügynökök, az asszisztens és a dokumentumelemzés ki lesznek kapcsolva.</p></div></div></div><div class="afaq-i"><button class="afaq-q" type="button" aria-expanded="false">Mit jelent az AI-token szorzó?<span class="afaq-b" aria-hidden="true"></span></button><div class="afaq-a"><div><p>Ez az alapáruk szorzója. Nagyobb csomagban kisebb, így ugyanannyi pénzért több tokent kapsz. A feltöltések a csomagod szorzójával számolódnak.</p></div></div></div><div class="afaq-i"><button class="afaq-q" type="button" aria-expanded="false">Lehet csomagot váltani?<span class="afaq-b" aria-hidden="true"></span></button><div class="afaq-a"><div><p>Igen. Nagyobbra azonnal válthatsz, a díj és az AI-kreditek újraszámolásával. Kisebbre — a következő időszaktól.</p></div></div></div><div class="afaq-i"><button class="afaq-q" type="button" aria-expanded="false">Hol tárolódnak az adataink, és hogyan védjük őket?<span class="afaq-b" aria-hidden="true"></span></button><div class="afaq-a"><div><p>Az EU adatközpontjaiban — Frankfurtban és Madridban. Az adatok átvitel és tárolás közben is titkosítva vannak. A hozzáférés felhasználónként állítható be, minden művelet naplózásra kerül. Betartjuk a GDPR-t.</p></div></div></div><div class="afaq-i"><button class="afaq-q" type="button" aria-expanded="false">Össze lehet kötni az Aitát más rendszerekkel?<span class="afaq-b" aria-hidden="true"></span></button><div class="afaq-a"><div><p>Igen. Van REST API, levelezés-bekötés OAuth-on keresztül, OAuth 2.1 külső alkalmazásokhoz, webhookok és MCP AI-kliensekhez.</p></div></div></div></div></div><script>
+// «Питання»: один відкритий пункт за раз, плавне розкриття
+document.querySelectorAll(".afaq").forEach(function(f){var it=f.querySelectorAll(".afaq-i");
+  it.forEach(function(i){i.querySelector(".afaq-q").addEventListener("click",function(){var o=!i.classList.contains("on");
+    it.forEach(function(x){x.classList.remove("on");x.querySelector(".afaq-q").setAttribute("aria-expanded","false")});
+    if(o){i.classList.add("on");this.setAttribute("aria-expanded","true")}})})});
+</script></div>
+
+  <div class="pr-end"><div class="b"><a class="btn" href="access.html">Hozzáférés kérése</a><a class="btn ghost" href="demo.html">Ingyenes demó</a></div></div>
+</div>
+<footer><div class="w"><b>Aita</b><span>Megoldásaink</span><span>Modulok</span><span>Árak</span><span>Partnerek</span><span>Blog</span><span>Rólunk</span><span>Befektetők</span><span>Kapcsolat</span><span>Jogi információk</span></div></footer>
+<style id="navfix">
+/* меню: активний пункт — за поточною сторінкою, наведення — на всіх пунктах (Антон 27.10) */
+body>nav .links>span{color:#4d4d4d!important;font-weight:400!important;transition:color .15s}
+body>nav .links>span:hover,body>nav .links>span.on,body>nav .links>span.cur{color:#111!important}
+body>nav .links>span.cur{font-weight:500!important}
+/* оптичне центрування меню (Антон 27.10): центр «ваги» тексту на 15 px лівіше геометричного (довгий пункт зліва, стрілки легкі) — зсув праворуч; рядкові літери на ~1 px нижче центру шапки — підйом; стрілки опущено до середини рядкових */
+@media(min-width:761px){body>nav .links{transform:translate(15px,-1px)}}
+body>nav .links>#slBtn:after,body>nav .links>#rsBtn:after{vertical-align:-3px!important}
+</style><script>
+(function(){var f=(location.pathname.split("/").pop()||"index.html"),m={"modules.html":1,"pricing.html":3,"energy.html":0,"blog.html":2,"blog-clients.html":2,"blog-memory.html":2,"partners.html":2,"become-partner.html":2,"about.html":2},k=m[f],s=document.querySelectorAll("body>nav .links>span");if(k!=null&&s[k])s[k].classList.add("cur")})();
+</script>
+</body></html>
