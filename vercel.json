@@ -46,6 +46,26 @@
       "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing).html",
       "destination": "/:page",
       "permanent": true
+    },
+    {
+      "source": "/platform",
+      "destination": "/access",
+      "permanent": true
+    },
+    {
+      "source": "/platform/:path*",
+      "destination": "/access",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
