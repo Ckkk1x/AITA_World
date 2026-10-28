@@ -31,6 +31,21 @@
       "source": "/legal/terms-of-use",
       "destination": "/legal/terms",
       "permanent": true
+    },
+    {
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing).html",
+      "destination": "/:lang/:page",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(uk|en|es|pl|hu|de)/index.html",
+      "destination": "/:lang/",
+      "permanent": true
+    },
+    {
+      "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing).html",
+      "destination": "/:page",
+      "permanent": true
     }
   ],
   "headers": [
@@ -44,5 +59,14 @@
       ]
     }
   ],
-  "cleanUrls": true
+  "rewrites": [
+    {
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing)",
+      "destination": "/:lang/:page.html"
+    },
+    {
+      "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing)",
+      "destination": "/:page.html"
+    }
+  ]
 }
