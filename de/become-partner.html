@@ -39,7 +39,7 @@ function go(){
   // меню на телефоні рахує позицію від шапки — смужку прибрати ще до відкриття меню
   document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("[aria-label=Menu]"))b.remove()},true)}
 if(document.body)go();else document.addEventListener("DOMContentLoaded",go)})()</script>
-<!--/i18n--><meta charset="utf-8"><title>Partner werden — Aita</title><meta name="description" content="Wir erklären die Konditionen, zeigen die Plattform und vereinbaren, womit wir starten"><meta property="og:title" content="Partner werden — Aita"><meta property="og:description" content="Wir erklären die Konditionen, zeigen die Plattform und vereinbaren, womit wir starten"><meta property="og:site_name" content="Aita"><meta property="og:type" content="website"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!--/i18n--><meta charset="utf-8"><meta name="robots" content="noindex"><title>Partnerschaft — Aita</title><meta name="description" content="Seite in Arbeit"><meta property="og:title" content="Partnerschaft — Aita"><meta property="og:description" content="Seite in Arbeit"><meta property="og:site_name" content="Aita"><meta property="og:type" content="website"><meta name="viewport" content="width=device-width,initial-scale=1">
 
 <style>
 /* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
@@ -113,7 +113,7 @@ body>nav .nr .btn{display:inline-flex;align-items:center;justify-content:center;
 /* шапка нижча (72 → 60) */
 body>nav>.w{height:60px}
 @media(max-width:760px){body>nav>.w{height:56px}}
-</style><div><a href="partners">Partnerschaft</a><a href="blog">Blog</a><a style="opacity:.45;cursor:default;pointer-events:none">Guides<span class="tg">in Arbeit</span></a><a style="opacity:.45;cursor:default;pointer-events:none">Neuigkeiten<span class="tg">in Arbeit</span></a><a href="about">Über uns</a></div><script>
+</style><div><a style="opacity:.45;cursor:default;pointer-events:none" aria-disabled="true">Partnerschaft<span class="tg">in Arbeit</span></a><a href="blog">Blog</a><a style="opacity:.45;cursor:default;pointer-events:none">Guides<span class="tg">in Arbeit</span></a><a style="opacity:.45;cursor:default;pointer-events:none">Neuigkeiten<span class="tg">in Arbeit</span></a><a href="about">Über uns</a></div><script>
 // відкривається наведенням (закривається з невеликою затримкою, щоб встигнути дійти курсором), а також кліком
 (function(){var b=document.getElementById("rsBtn"),p=document.getElementById("rsPop"),t=null;
   b.addEventListener("mouseenter",function(){clearTimeout(t);b.classList.add("on")});
@@ -123,109 +123,16 @@ body>nav>.w{height:60px}
   document.addEventListener("keydown",function(e){if(e.key==="Escape")b.classList.remove("on")});addEventListener("blur",function(){b.classList.remove("on")})})();
 </script></div></span><span><a href="pricing" style="color:inherit">Preise</a></span><style>.links>span:nth-child(2):after{content:none!important}</style></span>
   <span class="nr" style="display:flex;justify-content:flex-end;align-items:center;gap:10px"><a class="btn sm" href="access">Zugang anfragen</a></span>
-</div></nav><!--/part:nav--><style>.btn{font-weight:500}</style>
-<style>
-/* сторінка «Стати партнером»: як «Безкоштовне демо» — ліворуч що буде далі, праворуч форма */
-.ac{display:grid;grid-template-columns:1fr 560px;gap:96px;align-items:start;padding:176px 0 160px}
-.ac h1{margin:0;font:600 72px/1.04 "Inter",sans-serif;letter-spacing:-.04em}
-.ac .lead{margin:32px 0 0;max-width:480px;font-size:20px;line-height:28px;color:var(--mute)}
-.ac .nx{margin-top:56px;display:grid;gap:12px;max-width:480px}
-.ac .nx div{display:flex;gap:16px;align-items:center;font-size:16px;line-height:24px}
-.ac .nx i{flex:none;width:32px;height:32px;border-radius:50%;background:#f2f2f2;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:600}
-.ac .nx div:first-child i{background:#00b800;color:#fff}
-.fm{background:#f7f7f7;border-radius:24px;padding:32px;display:grid;gap:16px}
-.fm label{display:grid;gap:8px;font-size:14px;font-weight:500}
-.fm label>span{display:block}
-.fm label em{font-style:normal;font-weight:400;color:var(--mute)}
-.fm input,.fm textarea,.fm select{font:inherit;font-size:16px;border:0;border-radius:8px;background:#fff;padding:14px 16px;outline:none;transition:box-shadow .15s}
-.fm textarea{min-height:104px;resize:vertical}
-.fm select{appearance:none;-webkit-appearance:none;cursor:pointer;color:#111;padding-right:44px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 16px center/18px no-repeat}
-.fm select:invalid{color:#8a8a8a}
-.fm input:focus,.fm textarea:focus,.fm select:focus{box-shadow:0 0 0 2px #0060ff}
-.fm .bad{box-shadow:0 0 0 2px #ff0000}
-.fm .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fm .go{font:inherit;font-weight:500;margin-top:8px;height:52px;border-radius:12px;font-size:16px;border:0;cursor:pointer;width:100%}
-.fm .fine{font-size:13px;color:var(--mute);text-align:center}
-.ac>*{min-width:0}.fm select,.fm input{min-width:0;width:100%}
-.done{background:#f7f7f7;border-radius:24px;padding:56px 32px;text-align:center;display:none}
-.done .ok{width:56px;height:56px;margin:0 auto 20px;border-radius:50%;background:rgba(0,184,0,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300a000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/28px no-repeat}
-.done b{display:block;font-size:24px;font-weight:600}
-.done p{margin:10px auto 0;max-width:360px;color:var(--mute);font-size:16px;line-height:24px}
-.sent .fm{display:none}.sent .done{display:block}
-@media(max-width:1100px){.ac{grid-template-columns:1fr;gap:48px}}
-@media(max-width:760px){.ac{padding:96px 0 72px}.ac h1{font-size:42px}.ac .lead{font-size:16px;line-height:24px}.ac .nx{margin-top:32px}.fm{padding:20px}.fm .two{grid-template-columns:1fr}}
+</div></nav><!--/part:nav--><style>
+/* «Партнерство» — заглушка: сторінка в розробці, вхід із меню й футера закрито (Антон 30.10.2026) */
+.stub{min-height:calc(100vh - 260px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px}
+.stub h1{margin:0;font-size:56px;line-height:1.05;letter-spacing:-.03em;font-weight:500}
+.stub .tg{display:inline-block;margin-top:20px;font-size:14px;font-weight:500;padding:4px 12px;border-radius:999px;background:#f2f2f2;color:#8a8a8a}
+.stub .b{margin-top:40px}
+@media(max-width:760px){.stub h1{font-size:40px}}
 </style>
-<div class="w">
-  <div class="ac">
-    <div>
-      <h1>Partner werden</h1>
-      <p class="lead">Wir erklären die Konditionen, zeigen die Plattform und vereinbaren, womit wir starten</p>
-      <div class="nx">
-        <div><i>1</i><span>Du sendest eine Anfrage</span></div>
-        <div><i>2</i><span>Termin: Konditionen und deine Kunden</span></div>
-        <div><i>3</i><span>Vertrag, Zugang zur Plattform und Schulung</span></div>
-      </div>
-    </div>
-    <div id="acBox"><style>
-/* подяка після надсилання: поля зникають, картка плавно стискається, галочка малюється, текст підіймається */
-#acBox{position:relative;border-radius:24px;transition:height .55s cubic-bezier(.4,0,.2,1)}
-#acBox .fm{transition:opacity .28s ease,transform .28s ease}
-#acBox.out .fm{opacity:0;transform:translateY(-8px)}
-#acBox .done{padding:64px 32px}
-#acBox .done .ok{background:none;width:72px;height:72px;margin:0 auto 24px;transform:scale(.4);opacity:0}
-#acBox .done .ok circle{fill:rgba(0,184,0,.14)}
-#acBox .done .ok path{fill:none;stroke:#00a000;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20}
-#acBox .done b,#acBox .done p{opacity:0;transform:translateY(10px)}
-#acBox.play .done .ok{animation:acPop .5s cubic-bezier(.34,1.56,.64,1) forwards}
-#acBox.play .done .ok path{animation:acDraw .4s .3s ease-out forwards}
-#acBox.play .done b{animation:acUp .45s .45s ease-out forwards}
-#acBox.play .done p{animation:acUp .45s .55s ease-out forwards}
-#acBox .done p em{font-style:normal;color:#111}
-@keyframes acPop{to{transform:scale(1);opacity:1}}
-@keyframes acDraw{to{stroke-dashoffset:0}}
-@keyframes acUp{to{opacity:1;transform:none}}
-</style>
-      <form class="fm" novalidate data-clarity-mask="true">
-        <div class="two">
-          <label><span>Name</span><input name="name" autocomplete="name" placeholder="Oleh Koval" required></label>
-          <label><span>Unternehmen</span><input name="company" autocomplete="organization" placeholder="Vektor" required></label>
-        </div>
-        <label><span>Geschäftliche E-Mail</span><input name="email" type="email" autocomplete="email" placeholder="oleg@vector.ua" required></label>
-        <label><span>Was macht dein Unternehmen</span><select name="kind" required><option value="" selected disabled>Auswählen</option><option>Wir verkaufen CRM oder andere Business-Software</option><option>Wir führen Software ein und richten Prozesse ein</option><option>Wir beraten zur Automatisierung</option><option>Sonstiges</option></select></label>
-        <label><span>Wie viele Kunden betreust du aktuell</span><select name="clients" required><option value="" selected disabled>Auswählen</option><option>bis 10</option><option>10–50</option><option>50–200</option><option>200+</option></select></label>
-        <label><span>Website des Unternehmens <em>— optional</em></span><input name="site" type="url" autocomplete="url" placeholder="vector.ua"></label>
-        <label><span>Welche deiner Kunden passen zu Aita <em>— optional</em></span><textarea name="note" placeholder="Zum Beispiel: Großhändler für Ausrüstung, denen CRM und Aufgaben an einem Ort fehlen"></textarea></label>
-        <div style="display:none" aria-hidden="true"><input type="text" name="_aita_hp" tabindex="-1" autocomplete="off"></div><button class="btn go" type="submit">Anfrage senden</button>
-        <div class="fine">Wir schreiben dir an deine geschäftliche E-Mail-Adresse, um einen Termin zu vereinbaren</div><div class="err" role="alert" hidden style="margin-top:12px;font-size:14px;color:#d00000">Deine Anfrage konnte nicht gesendet werden. Versuch es noch einmal oder schreib an <a href="mailto:info@aita.world" style="color:inherit">info@aita.world</a>.</div>
-      </form>
-      <div class="done"><svg class="ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><b>Danke!</b><p>Wir melden uns per E-Mail bei dir <em></em></p></div>
-    </div>
-  </div>
-</div>
-<script>
-// перевірка обов'язкових полів; після надсилання — анімована подяка замість форми
-(function(){
-  var box=document.getElementById("acBox"),f=box.querySelector("form");
-  f.addEventListener("input",function(e){e.target.classList.remove("bad")});
-  f.addEventListener("submit",function(e){e.preventDefault();var ok=true;
-    f.querySelectorAll("[required]").forEach(function(i){var v=i.value.trim(),bad=!v||(i.type==="email"&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));i.classList.toggle("bad",bad);if(bad&&ok){ok=false;i.focus()}});
-    if(!ok||f.dataset.busy)return;
-    // заявка — у плагін «Форми для лендингів» (папка «Сайт aita.world»); подяка лише після 2xx, інакше — помилка і введене лишається
-    var err=f.querySelector(".err"),btn=f.querySelector("button[type=submit]"),p={source:"aita-world-landing-v2",page:location.pathname,lang:document.documentElement.lang};
-    new FormData(f).forEach(function(v,k){p[k]=String(v).trim()});
-    f.dataset.busy="1";btn.disabled=true;err.hidden=true;
-    fetch("https://api.aita.world/api/plugins/landing-forms/public/f/lf_qRAIKExhbMUcekB6K2gwWYS3",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(p)})
-      .then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(!r.ok||d.ok===false)throw new Error(d.code||r.status)})})
-      .then(function(){
-        box.querySelector(".done em").textContent=f.email.value.trim();
-        box.style.height=box.offsetHeight+"px";box.classList.add("out");document.activeElement.blur();
-        setTimeout(function(){box.classList.add("sent");box.style.height=box.querySelector(".done").offsetHeight+"px";box.classList.add("play");
-          setTimeout(function(){box.style.height=""},600)},280)})
-      .catch(function(){err.hidden=false;btn.disabled=false;delete f.dataset.busy})});
-})();
-</script>
-
-<!--part:footer--><style>/* футер: пункти — посилання; юридичні сторінки й налаштування cookie — з основного сайту aita.world */footer .w>a{color:inherit;text-decoration:none;transition:color .15s}footer .w>a:hover{color:var(--ink,#111)}footer .w>.fbr{flex-basis:100%;height:0}@media(min-width:761px){footer .w{row-gap:12px!important}}footer .w>span[aria-disabled]{white-space:nowrap}@media(max-width:760px){footer .w>a{display:flex;align-items:center;min-height:40px;font-size:15px}footer .w>.fbr{grid-column:1/-1;height:1px;background:var(--line,#e6e6e6);margin:8px 0}footer .w>span[aria-disabled]{grid-column:1/-1}}</style><footer><div class="w"><b>Aita</b><span style="opacity:.55;cursor:default" aria-disabled="true">Unsere Lösungen<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">in Arbeit</span></span><a href="modules">Module</a><a href="pricing">Preise</a><a href="partners">Partnerschaft</a><a href="blog">Blog</a><a href="about">Über uns</a><span style="opacity:.55;cursor:default" aria-disabled="true">Investoren<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">in Arbeit</span></span><a href="mailto:info@aita.world">Schreib uns</a><i class="fbr" aria-hidden="true"></i><a href="/de/legal/aviso-legal">Rechtliches</a><a href="/de/legal/privacy">Datenschutz</a><a href="/de/legal/cookies">Cookies</a><a href="/de/legal/terms">Nutzungsbedingungen</a><a href="/de/legal/delete-account">Konto löschen</a><a href="/de/legal/ens">ENS</a><a href="#" onclick="window.AitaConsent&amp;&amp;AitaConsent.openPreferences();return false">Cookie-Einstellungen</a><label class="lsw"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span>Deutsch</span><span class="chev"></span><select aria-label="Language" onchange="try{localStorage.setItem('aitaLang',this.selectedOptions[0].lang)}catch(e){}location.href=this.value"><option value="../uk/become-partner" lang="uk">Українська</option><option value="../en/become-partner" lang="en">English</option><option value="../es/become-partner" lang="es">Español</option><option value="../pl/become-partner" lang="pl">Polski</option><option value="../hu/become-partner" lang="hu">Magyar</option><option value="../de/become-partner" lang="de" selected>Deutsch</option></select></label></div></footer><!--/part:footer-->
+<div class="w stub"><h1>Partnerschaft</h1><span class="tg">in Arbeit</span><div class="b"><a class="btn ghost" href="./">Zur Startseite</a></div></div>
+<!--part:footer--><style>/* футер: пункти — посилання; юридичні сторінки й налаштування cookie — з основного сайту aita.world */footer .w>a{color:inherit;text-decoration:none;transition:color .15s}footer .w>a:hover{color:var(--ink,#111)}footer .w>.fbr{flex-basis:100%;height:0}@media(min-width:761px){footer .w{row-gap:12px!important}}footer .w>span[aria-disabled]{white-space:nowrap}@media(max-width:760px){footer .w>a{display:flex;align-items:center;min-height:40px;font-size:15px}footer .w>.fbr{grid-column:1/-1;height:1px;background:var(--line,#e6e6e6);margin:8px 0}footer .w>span[aria-disabled]{grid-column:1/-1}}</style><footer><div class="w"><b>Aita</b><span style="opacity:.55;cursor:default" aria-disabled="true">Unsere Lösungen<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">in Arbeit</span></span><a href="modules">Module</a><a href="pricing">Preise</a><span style="opacity:.55;cursor:default" aria-disabled="true">Partnerschaft<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">in Arbeit</span></span><a href="blog">Blog</a><a href="about">Über uns</a><span style="opacity:.55;cursor:default" aria-disabled="true">Investoren<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">in Arbeit</span></span><a href="mailto:info@aita.world">Schreib uns</a><i class="fbr" aria-hidden="true"></i><a href="/de/legal/aviso-legal">Rechtliches</a><a href="/de/legal/privacy">Datenschutz</a><a href="/de/legal/cookies">Cookies</a><a href="/de/legal/terms">Nutzungsbedingungen</a><a href="/de/legal/delete-account">Konto löschen</a><a href="/de/legal/ens">ENS</a><a href="#" onclick="window.AitaConsent&amp;&amp;AitaConsent.openPreferences();return false">Cookie-Einstellungen</a><label class="lsw"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span>Deutsch</span><span class="chev"></span><select aria-label="Language" onchange="try{localStorage.setItem('aitaLang',this.selectedOptions[0].lang)}catch(e){}location.href=this.value"><option value="../uk/become-partner" lang="uk">Українська</option><option value="../en/become-partner" lang="en">English</option><option value="../es/become-partner" lang="es">Español</option><option value="../pl/become-partner" lang="pl">Polski</option><option value="../hu/become-partner" lang="hu">Magyar</option><option value="../de/become-partner" lang="de" selected>Deutsch</option></select></label></div></footer><!--/part:footer-->
 <!--part:navfix--><style id="navfix">
 /* меню: активний пункт — за поточною сторінкою, наведення — на всіх пунктах (Антон 27.10) */
 body>nav .links>span{color:#4d4d4d!important;font-weight:400!important;transition:color .15s}
