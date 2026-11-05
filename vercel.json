@@ -33,7 +33,7 @@
       "permanent": true
     },
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing).html",
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|energy|modules|partners|pricing).html",
       "destination": "/:lang/:page",
       "permanent": true
     },
@@ -43,7 +43,7 @@
       "permanent": true
     },
     {
-      "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing).html",
+      "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|energy|modules|partners|pricing).html",
       "destination": "/:page",
       "permanent": true
     }
@@ -61,11 +61,11 @@
   ],
   "rewrites": [
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing)",
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|energy|modules|partners|pricing)",
       "destination": "/:lang/:page.html"
     },
     {
-      "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|modules|partners|pricing)",
+      "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|energy|modules|partners|pricing)",
       "destination": "/:page.html"
     }
   ]
