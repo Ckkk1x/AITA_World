@@ -204,6 +204,7 @@ body>nav>.w{height:60px}
     fetch("https://api.aita.world/api/plugins/landing-forms/public/f/lf_pzorVthubdt1BieK6OMA9Vrx",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(p)})
       .then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(!r.ok||d.ok===false)throw new Error(d.code||r.status)})})
       .then(function(){
+        if(window.fbq)window.fbq("track","Lead");
         box.querySelector(".done em").textContent=f.email.value.trim();
         box.style.height=box.offsetHeight+"px";box.classList.add("out");document.activeElement.blur();
         setTimeout(function(){box.classList.add("sent");box.style.height=box.querySelector(".done").offsetHeight+"px";box.classList.add("play");
