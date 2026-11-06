@@ -522,6 +522,25 @@
   }
 
   // ---- Public API ---------------------------------------------------------
+  // ---- Campaign params ----------------------------------------------------
+  // Carries utm_* / fbclid from the ad link through internal links, so the demo and access forms
+  // can attach them to the lead. URL only: nothing is stored, so no consent is involved.
+  var CAMPAIGN_PARAM = /^(utm_(source|medium|campaign|term|content)|fbclid)$/;
+  function carryCampaignParams(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || a.origin !== location.origin || /\.(?!html$)[a-z0-9]+$/i.test(a.pathname)) return;
+    var url = new URL(a.href);
+    if (url.pathname === location.pathname) return;
+    new URLSearchParams(location.search).forEach(function (v, k) {
+      if (CAMPAIGN_PARAM.test(k) && !url.searchParams.has(k)) url.searchParams.set(k, v);
+    });
+    a.href = url.href;
+  }
+  if (location.search) {
+    document.addEventListener('click', carryCampaignParams, true);
+    document.addEventListener('auxclick', carryCampaignParams, true);
+  }
+
   window.AitaConsent = {
     openPreferences: openPreferences,
     acceptAll: function () { acceptAll(false); },
