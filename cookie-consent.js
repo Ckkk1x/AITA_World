@@ -15,6 +15,7 @@
  *   window.AITA_CLARITY_TAG = "v4y0cwaq68"                          // override default Clarity project tag
  *   window.AITA_LINKEDIN_PARTNER_ID = "1234567"                     // LinkedIn Insight Tag — omitted → never loads
  *   window.AITA_GADS_ID = "AW-123456789"                            // Google Ads tag — omitted → never loads
+ *   window.AITA_META_PIXEL_ID = "1234567890"                        // Meta Pixel — overrides META_PIXEL_ID below
  *
  * Public API: window.AitaConsent.{ openPreferences, acceptAll, rejectAll, getConsent, reset }
  */
@@ -37,6 +38,7 @@
   // pixel is never injected, consent or not. Consent alone is necessary but not sufficient.
   var LINKEDIN_PARTNER_ID = window.AITA_LINKEDIN_PARTNER_ID || '';
   var GADS_ID = window.AITA_GADS_ID || '';
+  var META_PIXEL_ID = window.AITA_META_PIXEL_ID || '';
   // Root-absolute so the link resolves from sub-directory pages (platform/, powerconnect2026/) too.
   var POLICY_URL = window.AITA_POLICY_URL || '/legal/cookies';
   var BEACON_ENABLED = false;              // server-side evidentiary log (see maybeBeacon) — off until /api/consent-log exists
@@ -225,10 +227,11 @@
   var marketingLoaded = false;
   function loadMarketing() {
     if (marketingLoaded) return;
-    if (!LINKEDIN_PARTNER_ID && !GADS_ID) return;
+    if (!LINKEDIN_PARTNER_ID && !GADS_ID && !META_PIXEL_ID) return;
     marketingLoaded = true;
     if (LINKEDIN_PARTNER_ID) loadLinkedIn();
     if (GADS_ID) loadGoogleAds();
+    if (META_PIXEL_ID) loadMetaPixel();
   }
 
   function loadLinkedIn() {
@@ -244,6 +247,20 @@
     addScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GADS_ID));
     window.gtag('js', new Date());
     window.gtag('config', GADS_ID);
+  }
+
+  function loadMetaPixel() {
+    if (window.fbq) return;
+    var fbq = window.fbq = function () {
+      fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+    };
+    if (!window._fbq) window._fbq = fbq;
+    fbq.push = fbq; fbq.loaded = true; fbq.version = '2.0'; fbq.queue = [];
+    addScript('https://connect.facebook.net/en_US/fbevents.js');
+    // autoConfig off: Meta must not read form fields or page content on its own.
+    fbq('set', 'autoConfig', false, META_PIXEL_ID);
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
   }
 
   function addScript(src) {
