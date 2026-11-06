@@ -210,6 +210,7 @@ body>nav>.w{height:60px}
     // заявка — у плагін «Форми для лендингів» (папка «Сайт aita.world»); подяка лише після 2xx, інакше — помилка і введене лишається
     var err=f.querySelector(".err"),btn=f.querySelector("button[type=submit]"),p={source:"aita-world-landing-v2",page:location.pathname,lang:document.documentElement.lang};
     new FormData(f).forEach(function(v,k){p[k]=String(v).trim()});
+    new URLSearchParams(location.search).forEach(function(v,k){if(/^(utm_(source|medium|campaign|term|content)|fbclid)$/.test(k))p[k]=v});
     f.dataset.busy="1";btn.disabled=true;err.hidden=true;
     fetch("https://api.aita.world/api/plugins/landing-forms/public/f/lf_QdVKkiTx3tYkkdLyWvavNaJp",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(p)})
       .then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(!r.ok||d.ok===false)throw new Error(d.code||r.status)})})
