@@ -28,7 +28,8 @@
   var SCHEMA_VERSION = 1;
   // Bump POLICY_VERSION whenever the cookie inventory changes → forces re-consent (renewal).
   // 2026-08-06: added the `marketing` category (LinkedIn / Google Ads) to the inventory.
-  var POLICY_VERSION = '2026-08-06';
+  // 2026-11-06: added Meta Pixel to the marketing inventory.
+  var POLICY_VERSION = '2026-11-06';
   var MAX_AGE_DAYS = 730;                  // 24 months
   var CLARITY_TAG = window.AITA_CLARITY_TAG || 'v4y0cwaq68';
   var GFONTS = window.AITA_GFONTS || [];
@@ -42,8 +43,8 @@
   var BEACON_URL = '/api/consent-log';
   // Clarity cookies to clear when analytics consent is withdrawn.
   var CLARITY_COOKIES = ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'];
-  // LinkedIn Insight Tag + Google Ads cookies to clear when marketing consent is withdrawn.
-  var MARKETING_COOKIES = ['li_sugr', 'UserMatchHistory', 'bcookie', 'bscookie', 'lidc', 'li_gc', '_gcl_au', '_gcl_aw', '_gcl_dc'];
+  // LinkedIn Insight Tag, Google Ads and Meta Pixel cookies to clear when marketing consent is withdrawn.
+  var MARKETING_COOKIES = ['li_sugr', 'UserMatchHistory', 'bcookie', 'bscookie', 'lidc', 'li_gc', '_gcl_au', '_gcl_aw', '_gcl_dc', '_fbp', '_fbc'];
 
   var SUPPORTED_LANGS = ['en', 'uk', 'es'];
 
@@ -67,7 +68,7 @@
       catAnalytics: 'Analytics',
       catAnalyticsDesc: 'Microsoft Clarity — anonymous usage analytics and session replay. Sets _clck, _clsk, CLID, MUID, ANONCHK; data is processed in the US.',
       catMarketing: 'Marketing and attribution',
-      catMarketingDesc: 'LinkedIn Insight Tag and Google Ads — measure B2B campaign performance and conversion attribution. Sets li_sugr, UserMatchHistory, _gcl_au; data is processed in the US.',
+      catMarketingDesc: 'LinkedIn Insight Tag, Google Ads and Meta Pixel — measure campaign performance and conversion attribution. Sets li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; data is processed in the US.',
       catExternal: 'External resources',
       catExternalDesc: 'Google Fonts — loads Golos Text and Inter from Google’s CDN, which receives your IP. If off, fonts are served from our own server.'
     },
@@ -89,7 +90,7 @@
       catAnalytics: 'Аналітика',
       catAnalyticsDesc: 'Microsoft Clarity — анонімна аналітика та запис сесій. Ставить _clck, _clsk, CLID, MUID, ANONCHK; дані обробляються у США.',
       catMarketing: 'Маркетинг та атрибуція',
-      catMarketingDesc: 'LinkedIn Insight Tag та Google Ads — вимірювання ефективності B2B-кампаній і атрибуція конверсій. Ставить li_sugr, UserMatchHistory, _gcl_au; дані обробляються у США.',
+      catMarketingDesc: 'LinkedIn Insight Tag, Google Ads та Meta Pixel — вимірювання ефективності кампаній і атрибуція конверсій. Ставить li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; дані обробляються у США.',
       catExternal: 'Зовнішні ресурси',
       catExternalDesc: 'Google Fonts — завантажує Golos Text та Inter з CDN Google, який отримує вашу IP-адресу. Якщо вимкнено — шрифти віддаються з нашого сервера.'
     },
@@ -111,7 +112,7 @@
       catAnalytics: 'Analítica',
       catAnalyticsDesc: 'Microsoft Clarity — analítica de uso anónima y repetición de sesiones. Establece _clck, _clsk, CLID, MUID, ANONCHK; los datos se procesan en EE. UU.',
       catMarketing: 'Marketing y atribución',
-      catMarketingDesc: 'LinkedIn Insight Tag y Google Ads — miden el rendimiento de las campañas B2B y la atribución de conversiones. Establece li_sugr, UserMatchHistory, _gcl_au; los datos se procesan en EE. UU.',
+      catMarketingDesc: 'LinkedIn Insight Tag, Google Ads y Meta Pixel — miden el rendimiento de las campañas y la atribución de conversiones. Establece li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; los datos se procesan en EE. UU.',
       catExternal: 'Recursos externos',
       catExternalDesc: 'Google Fonts — carga Golos Text e Inter desde la CDN de Google, que recibe tu IP. Si está desactivado, las fuentes se sirven desde nuestro servidor.'
     }
