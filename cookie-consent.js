@@ -528,9 +528,12 @@
   var CAMPAIGN_PARAM = /^(utm_(source|medium|campaign|term|content)|fbclid)$/;
   function carryCampaignParams(e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-    if (!a || a.origin !== location.origin || /\.(?!html$)[a-z0-9]+$/i.test(a.pathname)) return;
+    if (!a) return;
+    // Sign-up buttons lead to the platform (app.aita.world), which stores the params on the new account.
+    var signup = a.hasAttribute('data-signup');
+    if (!signup && (a.origin !== location.origin || /\.(?!html$)[a-z0-9]+$/i.test(a.pathname))) return;
     var url = new URL(a.href);
-    if (url.pathname === location.pathname) return;
+    if (!signup && url.pathname === location.pathname) return;
     new URLSearchParams(location.search).forEach(function (v, k) {
       if (CAMPAIGN_PARAM.test(k) && !url.searchParams.has(k)) url.searchParams.set(k, v);
     });
@@ -540,6 +543,20 @@
     document.addEventListener('click', carryCampaignParams, true);
     document.addEventListener('auxclick', carryCampaignParams, true);
   }
+
+  // Sign-up click → Meta event with the ad's utm_* (only when the pixel is loaded, i.e. after marketing consent).
+  // The registration itself happens on the platform; this marks the hand-off from the landing.
+  function trackSignupClick(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[data-signup]') : null;
+    if (!a || typeof window.fbq !== 'function') return;
+    var data = {};
+    new URLSearchParams(location.search).forEach(function (v, k) {
+      if (/^utm_/.test(k)) data[k] = v;
+    });
+    window.fbq('trackCustom', 'StartRegistration', data);
+  }
+  document.addEventListener('click', trackSignupClick, true);
+  document.addEventListener('auxclick', trackSignupClick, true);
 
   window.AitaConsent = {
     openPreferences: openPreferences,
