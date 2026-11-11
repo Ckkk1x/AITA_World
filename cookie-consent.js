@@ -48,7 +48,7 @@
   // LinkedIn Insight Tag, Google Ads and Meta Pixel cookies to clear when marketing consent is withdrawn.
   var MARKETING_COOKIES = ['li_sugr', 'UserMatchHistory', 'bcookie', 'bscookie', 'lidc', 'li_gc', '_gcl_au', '_gcl_aw', '_gcl_dc', '_fbp', '_fbc'];
 
-  var SUPPORTED_LANGS = ['en', 'uk', 'es'];
+  var SUPPORTED_LANGS = ['en', 'uk', 'es', 'pl', 'hu', 'de'];
 
   // ---- i18n (self-contained so the component works on pages without translations.js) ----
   var I18N = {
@@ -117,6 +117,72 @@
       catMarketingDesc: 'LinkedIn Insight Tag, Google Ads y Meta Pixel — miden el rendimiento de las campañas y la atribución de conversiones. Establece li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; los datos se procesan en EE. UU.',
       catExternal: 'Recursos externos',
       catExternalDesc: 'Google Fonts — carga Golos Text e Inter desde la CDN de Google, que recibe tu IP. Si está desactivado, las fuentes se sirven desde nuestro servidor.'
+    },
+    pl: {
+      title: 'Szanujemy Twoją prywatność',
+      desc: 'Używamy niezbędnych plików cookie, aby strona działała. Za Twoją zgodą używamy też analityki, pomiaru marketingowego i ładujemy zasoby zewnętrzne. Możesz zaakceptować, odrzucić lub wybrać kategorie.',
+      policy: 'Polityka cookie',
+      accept: 'Akceptuj wszystkie',
+      reject: 'Odrzuć wszystkie',
+      configure: 'Ustawienia',
+      save: 'Zapisz wybór',
+      close: 'Zamknij',
+      prefsTitle: 'Ustawienia plików cookie',
+      prefsDesc: 'Wybierz, na które pliki cookie się zgadzasz. Niezbędne pliki cookie są zawsze włączone. Nic więcej nie zostanie załadowane, dopóki nie zapiszesz wyboru.',
+      alwaysOn: 'Zawsze aktywne',
+      footerLink: 'Ustawienia plików cookie',
+      catNecessary: 'Niezbędne',
+      catNecessaryDesc: 'Potrzebne do działania strony (zapis zgody, bezpieczeństwo). Nie można ich wyłączyć.',
+      catAnalytics: 'Analityka',
+      catAnalyticsDesc: 'Microsoft Clarity — anonimowa analityka korzystania ze strony i nagrania sesji. Ustawia _clck, _clsk, CLID, MUID, ANONCHK; dane są przetwarzane w USA.',
+      catMarketing: 'Marketing i atrybucja',
+      catMarketingDesc: 'LinkedIn Insight Tag, Google Ads i Meta Pixel — mierzą skuteczność kampanii i atrybucję konwersji. Ustawiają li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; dane są przetwarzane w USA.',
+      catExternal: 'Zasoby zewnętrzne',
+      catExternalDesc: 'Google Fonts — ładuje Golos Text i Inter z CDN Google, który otrzymuje Twój adres IP. Jeśli wyłączone, czcionki są ładowane z naszego serwera.'
+    },
+    hu: {
+      title: 'Fontos számunkra az adatvédelem',
+      desc: 'Az oldal működéséhez feltétlenül szükséges sütiket használunk. A hozzájárulásoddal analitikát és marketingmérést is használunk, valamint külső erőforrásokat töltünk be. Elfogadhatod, elutasíthatod, vagy kategóriánként választhatsz.',
+      policy: 'Süti-szabályzat',
+      accept: 'Összes elfogadása',
+      reject: 'Összes elutasítása',
+      configure: 'Beállítások',
+      save: 'Választás mentése',
+      close: 'Bezárás',
+      prefsTitle: 'Sütibeállítások',
+      prefsDesc: 'Válaszd ki, mely sütiket engedélyezed. A feltétlenül szükséges sütik mindig be vannak kapcsolva. Semmi más nem töltődik be, amíg nem mented a választásod.',
+      alwaysOn: 'Mindig aktív',
+      footerLink: 'Sütibeállítások',
+      catNecessary: 'Feltétlenül szükséges',
+      catNecessaryDesc: 'Az oldal működéséhez kellenek (a hozzájárulás tárolása, biztonság). Nem kapcsolhatók ki.',
+      catAnalytics: 'Analitika',
+      catAnalyticsDesc: 'Microsoft Clarity — névtelen használati analitika és munkamenet-visszajátszás. Beállítja: _clck, _clsk, CLID, MUID, ANONCHK; az adatok kezelése az USA-ban történik.',
+      catMarketing: 'Marketing és attribúció',
+      catMarketingDesc: 'LinkedIn Insight Tag, Google Ads és Meta Pixel — a kampányok eredményességét és a konverziók attribúcióját mérik. Beállítja: li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; az adatok kezelése az USA-ban történik.',
+      catExternal: 'Külső erőforrások',
+      catExternalDesc: 'Google Fonts — a Golos Text és az Inter betűtípust a Google CDN-jéről tölti be, amely megkapja az IP-címedet. Ha ki van kapcsolva, a betűtípusokat a saját szerverünk szolgálja ki.'
+    },
+    de: {
+      title: 'Wir respektieren Ihre Privatsphäre',
+      desc: 'Wir verwenden unbedingt erforderliche Cookies, damit diese Website funktioniert. Mit Ihrer Einwilligung nutzen wir außerdem Analyse und Marketing-Messung und laden externe Ressourcen. Sie können alle akzeptieren, alle ablehnen oder nach Kategorien wählen.',
+      policy: 'Cookie-Richtlinie',
+      accept: 'Alle akzeptieren',
+      reject: 'Alle ablehnen',
+      configure: 'Einstellungen',
+      save: 'Auswahl speichern',
+      close: 'Schließen',
+      prefsTitle: 'Cookie-Einstellungen',
+      prefsDesc: 'Wählen Sie, welche Cookies Sie zulassen. Unbedingt erforderliche Cookies sind immer aktiv. Nichts anderes wird geladen, bevor Sie Ihre Auswahl speichern.',
+      alwaysOn: 'Immer aktiv',
+      footerLink: 'Cookie-Einstellungen',
+      catNecessary: 'Unbedingt erforderlich',
+      catNecessaryDesc: 'Für den Betrieb der Website nötig (Speichern der Einwilligung, Sicherheit). Können nicht deaktiviert werden.',
+      catAnalytics: 'Analyse',
+      catAnalyticsDesc: 'Microsoft Clarity — anonyme Nutzungsanalyse und Sitzungsaufzeichnung. Setzt _clck, _clsk, CLID, MUID, ANONCHK; die Daten werden in den USA verarbeitet.',
+      catMarketing: 'Marketing und Attribution',
+      catMarketingDesc: 'LinkedIn Insight Tag, Google Ads und Meta Pixel — messen den Kampagnenerfolg und die Zuordnung von Conversions. Setzt li_sugr, UserMatchHistory, _gcl_au, _fbp, _fbc; die Daten werden in den USA verarbeitet.',
+      catExternal: 'Externe Ressourcen',
+      catExternalDesc: 'Google Fonts — lädt Golos Text und Inter vom CDN von Google, das Ihre IP-Adresse erhält. Wenn deaktiviert, kommen die Schriften von unserem eigenen Server.'
     }
   };
 
@@ -213,6 +279,17 @@
     })(window, document, 'clarity', 'script', CLARITY_TAG);
   }
 
+  // Microsoft Clarity Consent API v2 (required for EEA/UK/CH visitors since 31.10.2025): tell Clarity what the
+  // visitor allowed. Sent after the tag is queued on consent, and again (denied) right before a withdrawal reload.
+  // https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-consent-api-v2
+  function clarityConsent(categories) {
+    if (typeof window.clarity !== 'function') return;
+    window.clarity('consentv2', {
+      ad_Storage: categories.marketing ? 'granted' : 'denied',
+      analytics_Storage: categories.analytics ? 'granted' : 'denied'
+    });
+  }
+
   function clearCookies(names) {
     var domains = ['', '; domain=.' + location.hostname.replace(/^www\./, '')];
     names.forEach(function (name) {
@@ -288,9 +365,9 @@
 
   // Apply the granted categories. `priorActive` lets us detect a withdrawal that needs a reload.
   function applyConsent(categories, priorActive) {
-    if (categories.analytics) {
-      loadClarity();
-    } else if (priorActive && priorActive.analytics) {
+    if (categories.analytics) loadClarity();
+    clarityConsent(categories);
+    if (!categories.analytics && priorActive && priorActive.analytics) {
       // Withdrawn after being active this session → purge cookies and reload for a clean state.
       clearCookies(CLARITY_COOKIES);
       reloadSoon();
