@@ -78,12 +78,22 @@
       "permanent": true
     },
     {
+      "source": "/platform/",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
       "source": "/platform/:path*",
       "destination": "/pricing",
       "permanent": true
     },
     {
       "source": "/powerconnect2026",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/powerconnect2026/",
       "destination": "/",
       "permanent": true
     },
