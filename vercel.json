@@ -46,9 +46,79 @@
       "source": "/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|energy|modules|partners|pricing).html",
       "destination": "/:page",
       "permanent": true
+    },
+    {
+      "source": "/legal/master-terms",
+      "destination": "https://app.aita.world/legal/master-terms",
+      "permanent": true
+    },
+    {
+      "source": "/legal/aup",
+      "destination": "https://app.aita.world/legal/aup",
+      "permanent": true
+    },
+    {
+      "source": "/legal/dpa",
+      "destination": "https://app.aita.world/legal/dpa",
+      "permanent": true
+    },
+    {
+      "source": "/legal/sla",
+      "destination": "https://app.aita.world/legal/sla",
+      "permanent": true
+    },
+    {
+      "source": "/legal/platform-privacy",
+      "destination": "https://app.aita.world/legal/platform-privacy",
+      "permanent": true
+    },
+    {
+      "source": "/platform",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/platform/:path*",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/powerconnect2026",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/powerconnect2026/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.clarity.ms https://scripts.clarity.ms https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.clarity.ms https://c.bing.com https://www.facebook.com; font-src 'self' data:; connect-src 'self' https://api.aita.world https://*.clarity.ms https://c.bing.com https://www.facebook.com https://connect.facebook.net; media-src 'self' data: blob:; frame-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+        }
+      ]
+    },
     {
       "source": "/.well-known/security.txt",
       "headers": [
