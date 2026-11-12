@@ -38,7 +38,7 @@
   // pixel is never injected, consent or not. Consent alone is necessary but not sufficient.
   var LINKEDIN_PARTNER_ID = window.AITA_LINKEDIN_PARTNER_ID || '';
   var GADS_ID = window.AITA_GADS_ID || '';
-  var META_PIXEL_ID = window.AITA_META_PIXEL_ID || '1143163817948144';
+  var META_PIXEL_ID = window.AITA_META_PIXEL_ID || '1007963848332064';
   // Root-absolute so the link resolves from sub-directory pages (platform/, powerconnect2026/) too.
   var POLICY_URL = window.AITA_POLICY_URL || '/legal/cookies';
   var BEACON_ENABLED = false;              // server-side evidentiary log (see maybeBeacon) — off until /api/consent-log exists
