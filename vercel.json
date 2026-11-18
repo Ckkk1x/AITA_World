@@ -3,6 +3,11 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/:lang(uk|en|es|pl|hu|de)/modules/:slug([a-z0-9-]+).html",
+      "destination": "/:lang/modules/:slug",
+      "permanent": true
+    },
+    {
       "source": "/privacy.html",
       "destination": "/legal/privacy",
       "permanent": true
@@ -140,6 +145,10 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/:lang(uk|en|es|pl|hu|de)/modules/:slug([a-z0-9-]+)",
+      "destination": "/:lang/modules/:slug.html"
+    },
     {
       "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|energy|modules|partners|pricing)",
       "destination": "/:lang/:page.html"
