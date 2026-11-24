@@ -131,7 +131,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
   });
   [].forEach.call(h.querySelectorAll('a[hreflang]'), function (a) { a.addEventListener('click', function () { try { localStorage.setItem('aitaLang', a.lang); } catch (e) {} }); });
-  // «view this page in …» bar: saved choice, else browser language (ru → uk, unknown → en); lives at the top of the fixed header
+  // «view this page in …» bar: offers the browser language (ru → uk, unknown → en), unless this page's language was chosen before; lives at the top of the fixed header
   var LB = {uk:['Переглянути сторінку мовою','Перейти'],en:['View this page in','Switch'],es:['Ver esta página en','Cambiar'],pl:['Zobacz stronę w języku','Przejdź'],hu:['Oldal megtekintése:','Váltás'],de:['Seite anzeigen auf','Wechseln']};
   var killOld = function () { [].forEach.call(document.querySelectorAll('.lbar'), function (x) { x.remove(); }); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', killOld); else killOld();
@@ -139,7 +139,8 @@
   var fit = function () { if (sp) sp.style.height = h.offsetHeight + 'px'; };
   (function () {
     var sv = null; try { sv = localStorage.getItem('aitaLang'); } catch (e) {}
-    var c = LB[sv] ? sv : String(navigator.language || (navigator.languages || [''])[0]).slice(0, 2).toLowerCase();
+    if (sv === LG) return;   // the visitor already chose this page's language
+    var c = String(navigator.language || (navigator.languages || [''])[0]).slice(0, 2).toLowerCase();
     if (c === 'ru') c = 'uk'; if (!LB[c]) c = 'en';
     if (c === LG || !lurl(c)) return;
     try { if (!sv && localStorage.getItem('aitaLangBar')) return; } catch (e) {}
