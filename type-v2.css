@@ -1,0 +1,84 @@
+/* type-v2.css — the new landing's type system (final/index.v2.html :root) applied to the cloned live pages.
+   Linked last in <head> of every cloned page. Only text sizes / line heights / weights / family change;
+   layouts stay as they are. Product mock-ups (iframes, .frame, .md-shot, record cards, chat panels, ui_pj/ui_spv)
+   are NOT matched: every rule below targets a marketing role selector, never a bare tag inside a mock.
+   Steps: display 64/64 · h2 48/56 · h3 28/36 · lead 20/28 · body 16/24 · ui 14/20 · note 12/18
+   Phones (<=760px): display 40/44 · h2 32/40 · lead 18/26. Weights: 500 headings & controls, 400 text. */
+:root{
+  --fs-display:64px; --lh-display:64px;
+  --fs-h2:48px;      --lh-h2:56px;
+  --fs-h3:28px;      --lh-h3:36px;
+  --fs-lead:20px;    --lh-lead:28px;
+  --fs-body:16px;    --lh-body:24px;
+  --fs-ui:14px;      --lh-ui:20px;
+  --fs-note:12px;    --lh-note:18px;
+  --ls-display:-.025em; --ls-h2:-.02em; --ls-h3:-.01em;
+  --ff:'Golos Text',-apple-system,'Segoe UI',sans-serif;
+}
+@media (max-width:760px){
+  :root{ --fs-display:40px; --lh-display:44px; --fs-h2:32px; --lh-h2:40px; --fs-lead:18px; --lh-lead:26px }
+}
+body{font-family:var(--ff)}
+
+/* ---------- display 64/64: page titles ---------- */
+.h3row h1.mname,
+.pr-h h1, .tm-h h1, .ac h1, .top h1.e2h1,
+body > .w > h1, main.w > h1, .w > h1,
+#hh, #hh .hw-t, #hh .hw-wd{
+  font-family:var(--ff)!important;font-size:var(--fs-display)!important;line-height:var(--lh-display)!important;
+  font-weight:500!important;letter-spacing:var(--ls-display)!important}
+/* big stat figures on cards keep the display step */
+.c > b, .e2stats b{font-size:var(--fs-display)!important;line-height:var(--lh-display)!important;font-weight:500!important;letter-spacing:var(--ls-display)!important}
+
+/* ---------- h2 48/56: section heads, article & legal titles ---------- */
+.w > h2, .w > h2 .ln, .e2sec h2, .en-end h2, .afaq-h h2, .afaq-h h2 span,
+.pr-sec > h2, .tm-sec > h2, .final h2, .hs h3, .e2s4h h3, .e2trt h3,
+header.col h1, .legal-header h1, .privacy-header h1{
+  font-family:var(--ff)!important;font-size:var(--fs-h2)!important;line-height:var(--lh-h2)!important;
+  font-weight:500!important;letter-spacing:var(--ls-h2)!important}
+.plan .pz{font-size:var(--fs-h2)!important;line-height:var(--lh-h2)!important;font-weight:500!important;letter-spacing:var(--ls-h2)!important}
+
+/* ---------- h3 28/36: card & block titles ---------- */
+.c3 > div > h3, .ai > div > h3, .acc > div > h3, .go3 > div > h3, .h3row p.promise, a.banner h3,
+.col > h2, section.col h2, .tx > h3, .nb-wide .nb-t > h3, .e2t h3, .e2mkt h3, .e2mkt .e2chip, .e2wl h3,
+.legal-section > h2, .ens-section > h2, .fc b{
+  font-family:var(--ff)!important;font-size:var(--fs-h3)!important;line-height:var(--lh-h3)!important;
+  font-weight:500!important;letter-spacing:var(--ls-h3)!important}
+
+/* ---------- lead 20/28 ---------- */
+header.col p.lead, .h3row p.lead, .ac p.lead, .pr-h > p, .e2big, .final > p, section.mig .w > p,
+.afaq-q, .l4 summary{
+  font-size:var(--fs-lead)!important;line-height:var(--lh-lead)!important;letter-spacing:0!important}
+/* small titles that sit on the lead step (weight 500) */
+.l4 > section > h2, section.md-next h2, .g6 > div > h3, .nb-t > h3, .plan .nm, .legal-section h3, .ens-section h3{
+  font-size:var(--fs-lead)!important;line-height:var(--lh-lead)!important;font-weight:500!important;letter-spacing:0!important}
+
+/* ---------- body 16/24 ---------- */
+.col > p, section.col p, .col li, .fc p, .afaq-a p, .e2t p, .e2mkt p, .e2s4h p, .next-g a,
+.plan li, .nb-t p.fsub,
+.legal-section p, .legal-section li, .legal-section address, .legal-address, .ens-section p, .ens-section li{
+  font-size:var(--fs-body)!important;line-height:var(--lh-body)!important}
+.next-g a{font-weight:500!important}
+
+/* ---------- controls: buttons 16 / 500 ---------- */
+a.btn:not(.sm), button.btn:not(.sm){font-size:var(--fs-body)!important;font-weight:500!important}
+a.btn.sm, button.btn.sm{font-size:var(--fs-ui)!important;font-weight:500!important}
+
+/* ---------- ui 14/20: meta, captions, footer, legal tables ---------- */
+p.meta, figcaption, figure.wide b, a.crumb, .more2, .pr-note, .add span, .nt p, .e2wr p, .plan .who,
+.legal-table td, .legal-table th, .legal-meta, .legal-back, .legal-lang-note span,
+footer a, footer span:not(.tg), .lbar .lb-t, .lsw span, .lb-s span, .lb-c a{
+  font-size:var(--fs-ui)!important;line-height:var(--lh-ui)!important}
+.mg > h2{font-size:var(--fs-ui)!important;line-height:var(--lh-ui)!important;font-weight:500!important}
+
+/* ---------- note 12/18: tags, badges ---------- */
+span.tg:not(:is(.rc,.ui,.frame,.md-shot,#agP,.g6 .w) *), .afaq-l{font-size:var(--fs-note)!important;line-height:var(--lh-note)!important}
+
+/* ---------- cookie banner on the same scale ---------- */
+.cc-banner__title{font-size:var(--fs-lead)!important;line-height:var(--lh-lead)!important;font-weight:500!important}
+.cc-banner__desc, .cc-link{font-size:var(--fs-ui)!important;line-height:var(--lh-ui)!important}
+.cc-btn{font-size:var(--fs-ui)!important;font-weight:500!important}
+
+/* children that inherited the old line height of their parent */
+.plan .pz small{line-height:var(--lh-body)!important}
+.plan .nm .bd{line-height:var(--lh-note)!important}
