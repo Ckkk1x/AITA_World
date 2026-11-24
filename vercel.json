@@ -3,6 +3,11 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/uk/energy",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/:lang(uk|en|es|pl|hu|de)/modules/:slug([a-z0-9-]+).html",
       "destination": "/:lang/modules/:slug",
       "permanent": true
