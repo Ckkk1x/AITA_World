@@ -1752,4 +1752,9 @@
         <priority>0.6</priority>
         <xhtml:link rel="alternate" hreflang="uk" href="https://www.aita.world/uk/modules/companies"/><xhtml:link rel="alternate" hreflang="en" href="https://www.aita.world/en/modules/companies"/><xhtml:link rel="alternate" hreflang="es" href="https://www.aita.world/es/modules/companies"/><xhtml:link rel="alternate" hreflang="pl" href="https://www.aita.world/pl/modules/companies"/><xhtml:link rel="alternate" hreflang="hu" href="https://www.aita.world/hu/modules/companies"/><xhtml:link rel="alternate" hreflang="de" href="https://www.aita.world/de/modules/companies"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.aita.world/en/modules/companies"/>
     </url>
+    <url>
+        <loc>https://www.aita.world/uk/download</loc>
+        <lastmod>2026-11-24</lastmod>
+        <priority>0.6</priority>
+    </url>
 </urlset>
