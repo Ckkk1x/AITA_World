@@ -41,7 +41,7 @@ function go(){
 if(document.body)go();else document.addEventListener("DOMContentLoaded",go)})()</script>
 <!--/i18n--><title>Panel · Aita</title><meta name="description" content="Los indicadores clave en una sola pantalla"><meta property="og:title" content="Panel · Aita"><meta property="og:description" content="Los indicadores clave en una sola pantalla"><meta property="og:site_name" content="Aita"><meta property="og:type" content="website"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/type-v2.css">
 </head><body>
-<!--part:nav--><script src="/partials/header.js?v=1795529587" data-lang="es" data-base="/es/" data-home="/es/energy"></script><!--/part:nav--><script>window.AITA_M="Panel";</script><style>
+<!--part:nav--><script src="/partials/header.js?v=1795539265" data-lang="es" data-base="/es/" data-home="/es/energy"></script><!--/part:nav--><script>window.AITA_M="Panel";</script><style>
 /* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
 :root{--ink:#111;--mute:#737373;--line:#e6e6e6;--btn:#111;--btnt:#fff}
 *{box-sizing:border-box}
@@ -404,7 +404,7 @@ document.getElementById('mod').innerHTML=`
  <span class="md-tag" style="background:#eef0f2;color:#555">${x.g}</span>
  <h1><span class="tile" style="background:${tint(name)}">${icon(name)}</span>${name}</h1>
  <p>${D[name]||''}.</p>
- <div class="mx-ctas" style="justify-content:flex-start"><a class="btn mx-blue" href="../demo">Te lo mostramos con tus datos</a><a class="btn ghost" href="https://app.aita.world/auth/register" data-signup>Prueba gratis</a></div>
+ <div class="mx-ctas" style="justify-content:flex-start"><a class="btn mx-blue" href="../demo">Te lo mostramos con tus datos</a><a class="btn ghost" href="https://app.aita.world/auth/register" data-signup>Regístrate</a></div>
 </div><div class="md-shot">Captura del módulo «${name}» en la plataforma</div></section>
 
 <div class="md-blocks">
@@ -481,7 +481,7 @@ c.tasks=[t[0],{tab:"",h:"La conversación se convierte en un registro en la fich
  var tile=function(k){return '<a href="'+modUrl(k)+'"><span class="tile" style="background:'+tint(k)+'">'+icon(k)+'</span><span><b>'+k+'</b><small>'+(D[k]||IDX[k].g)+'</small></span></a>'};
  var h='<div class="m2"><div class="crumb"><a href="../modules">Módulos</a> › '+name+'</div>'
  +'<h1>'+c.h1+'</h1><p class="lead">'+c.sub+'</p>'
- +'<div class="mx-ctas" style="justify-content:flex-start"><a class="btn mx-blue" href="../demo">Demo gratuita</a><a class="btn ghost" href="https://app.aita.world/auth/register" data-signup>Prueba gratis</a></div>'
+ +'<div class="mx-ctas" style="justify-content:flex-start"><a class="btn mx-blue" href="../demo">Demo gratuita</a><a class="btn ghost" href="https://app.aita.world/auth/register" data-signup>Regístrate</a></div>'
  +media(c.hero,c.h1)
  +'<section><h2>En qué se diferencia «'+name+'» en Aita</h2><div class="diff">'+c.diff.map(function(d){return '<div><b>'+d[1]+'</b><p>En lugar de: '+d[0].charAt(0).toLowerCase()+d[0].slice(1)+'</p></div>'}).join('')+'</div></section>'
  +'<section><h2>Cómo funciona</h2>'+c.tasks.map(function(t){return '<div class="row"><h3>'+t.h+'</h3><p>'+t.p+'</p>'+(t.link?'<a href="'+t.link[0]+'">'+t.link[1]+' →</a>':'')+media(t,t.h)+'</div>'}).join('')+'</section>'

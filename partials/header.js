@@ -13,12 +13,12 @@
   var HOME = me.getAttribute('data-home') || (B + '../' + (X ? 'index' + X : ''));
   var LG = me.getAttribute('data-lang') || 'uk';
   var TT = {
-    en: {sol:'Our solutions',st:'Startups',oth:'Other industries',soon:'soon',mod:'Modules',res:'Resources',part:'Partnership',dev:'in development',blog:'Blog',guides:'Guides',news:'What’s new',about:'About us',dl:'Download',price:'Pricing',cta:'Get started free',menu:'Menu',main:'Main menu',home:'Aita — home',plat:'Platform'},
-    uk: {sol:'Наші рішення',st:'Стартапи',oth:'Інші галузі',soon:'згодом',mod:'Модулі',res:'Ресурси',part:'Партнерство',dev:'в розробці',blog:'Блог',guides:'Гайди',news:'Що нового',about:'Про нас',dl:'Завантажити',price:'Ціни',cta:'Почати безкоштовно',menu:'Меню',main:'Головне меню',home:'Aita — на головну',plat:'Платформа'},
-    es: {sol:'Nuestras soluciones',st:'Startups',oth:'Otros sectores',soon:'pronto',mod:'Módulos',res:'Recursos',part:'Alianzas',dev:'en desarrollo',blog:'Blog',guides:'Guías',news:'Novedades',about:'Sobre nosotros',dl:'Descargar',price:'Precios',cta:'Prueba gratis',menu:'Menú',main:'Menú principal',home:'Aita — inicio',plat:'Plataforma'},
-    pl: {sol:'Nasze rozwiązania',st:'Startupy',oth:'Inne branże',soon:'wkrótce',mod:'Moduły',res:'Zasoby',part:'Partnerstwo',dev:'w budowie',blog:'Blog',guides:'Poradniki',news:'Co nowego',about:'O nas',dl:'Pobierz',price:'Ceny',cta:'Wypróbuj za darmo',menu:'Menu',main:'Menu główne',home:'Aita — strona główna',plat:'Platforma'},
-    hu: {sol:'Megoldásaink',st:'Startupok',oth:'Más iparágak',soon:'hamarosan',mod:'Modulok',res:'Források',part:'Partnerség',dev:'készül',blog:'Blog',guides:'Útmutatók',news:'Újdonságok',about:'Rólunk',dl:'Letöltés',price:'Árak',cta:'Próbáld ki ingyen',menu:'Menü',main:'Főmenü',home:'Aita — kezdőlap',plat:'Platform'},
-    de: {sol:'Unsere Lösungen',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',dl:'Download',price:'Preise',cta:'Kostenlos testen',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
+    en: {sol:'Our solutions',en:'Energy',st:'Startups',oth:'Other industries',soon:'soon',mod:'Modules',res:'Resources',part:'Partnership',dev:'in development',blog:'Blog',guides:'Guides',news:'What’s new',about:'About us',dl:'Download',price:'Pricing',cta:'Sign up',menu:'Menu',main:'Main menu',home:'Aita — home',plat:'Platform'},
+    uk: {sol:'Наші рішення',en:'Енергетика',st:'Стартапи',oth:'Інші галузі',soon:'згодом',mod:'Модулі',res:'Ресурси',part:'Партнерство',dev:'в розробці',blog:'Блог',guides:'Гайди',news:'Що нового',about:'Про нас',dl:'Завантажити',price:'Ціни',cta:'Зареєструватися',menu:'Меню',main:'Головне меню',home:'Aita — на головну',plat:'Платформа'},
+    es: {sol:'Nuestras soluciones',en:'Energía',st:'Startups',oth:'Otros sectores',soon:'pronto',mod:'Módulos',res:'Recursos',part:'Alianzas',dev:'en desarrollo',blog:'Blog',guides:'Guías',news:'Novedades',about:'Sobre nosotros',dl:'Descargar',price:'Precios',cta:'Regístrate',menu:'Menú',main:'Menú principal',home:'Aita — inicio',plat:'Plataforma'},
+    pl: {sol:'Nasze rozwiązania',en:'Energetyka',st:'Startupy',oth:'Inne branże',soon:'wkrótce',mod:'Moduły',res:'Zasoby',part:'Partnerstwo',dev:'w budowie',blog:'Blog',guides:'Poradniki',news:'Co nowego',about:'O nas',dl:'Pobierz',price:'Ceny',cta:'Zarejestruj się',menu:'Menu',main:'Menu główne',home:'Aita — strona główna',plat:'Platforma'},
+    hu: {sol:'Megoldásaink',en:'Energetika',st:'Startupok',oth:'Más iparágak',soon:'hamarosan',mod:'Modulok',res:'Források',part:'Partnerség',dev:'készül',blog:'Blog',guides:'Útmutatók',news:'Újdonságok',about:'Rólunk',dl:'Letöltés',price:'Árak',cta:'Regisztráció',menu:'Menü',main:'Főmenü',home:'Aita — kezdőlap',plat:'Platform'},
+    de: {sol:'Unsere Lösungen',en:'Energie',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',dl:'Download',price:'Preise',cta:'Registrieren',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
   };
   var T = TT[LG] || TT.uk, EN = LG !== 'uk';
   // language switch: data-<l> on this tag wins; otherwise /<cur>/page → /<l>/page, landing: / ↔ /<l>/energy
@@ -36,6 +36,7 @@
   var langItems = LANGS.map(function (l) { var u = l[0] === LG ? null : lurl(l[0]);
     return '<a' + (l[0] === LG ? ' class="ah-cur" aria-current="true"' : (u ? ' href="' + u + '"' : ' class="off"')) + ' lang="' + l[0] + '" hreflang="' + l[0] + '">' + l[2] + '</a>'; }).join('');
   var GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
+  var ENH = HOME;   // the energy landing of this language (data-home)
   var L = function (p) { return B + (p ? p + X : (X ? 'index' + X : '')); };
   var MARK = '<svg viewBox="0.024 0.017 91.449 82.571" aria-hidden="true"><path fill="currentColor" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg>';
   var CSS = ''
@@ -74,7 +75,7 @@
   + '.ah-lb a{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#111;color:#fff;text-decoration:none;font-weight:500;white-space:nowrap}'
   + '.ah-lb button{all:unset;box-sizing:border-box;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#6e6e73;cursor:pointer}'
   + '.ah-lb button:hover{background:rgba(0,0,0,.06);color:#1d1d1f}.ah-lb button svg{display:block;width:14px;height:14px}'
-  + '@media(max-width:760px){.ah-lb{justify-content:flex-start;padding:10px 48px 12px 20px}.ah-lb-t{flex-basis:100%}.ah-lb-s,.ah-lb a{height:36px}}'
+  + '@media(max-width:760px){.ah-lb{justify-content:flex-start;padding:10px 52px 12px 20px}.ah-lb-t{flex-basis:100%}.ah-lb-c{flex:1;gap:8px}.ah-lb-s{flex:1;justify-content:space-between;height:44px;padding:0 16px}.ah-lb a{height:44px;padding:0 18px}.ah-lb button{width:44px;height:44px;top:10px;transform:none;right:4px}}'
   + '.ah-cta{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:8px;background:#111;color:#fff;font-size:14px;font-weight:500;text-decoration:none;transition:background-color .15s,color .15s}'
   + '.ah-cta:hover{background:#333}'
   + '.ah a:focus-visible,.ah-links>*:focus-visible{outline:2px solid #0060ff;outline-offset:2px}'
@@ -98,7 +99,7 @@
   + '<a class="ah-logo" href="' + (hero ? '#top' : HOME) + '" aria-label="'+T.home+'">' + MARK + '</a>'
   + '<nav class="ah-links" aria-label="'+T.main+'">'
   +   '<span class="ah-dd" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">'+T.sol+'<span class="ah-pop">'
-  +     '<a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a></span></span>'
+  +     '<a href="' + ENH + '">'+T.en+'</a><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a></span></span>'
   +   '<a href="' + L('modules') + '">'+T.mod+'</a>'
   +   '<span class="ah-dd" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">'+T.res+'<span class="ah-pop two">'
   +     '<a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a><a href="' + L('blog') + '">'+T.blog+'</a>'
@@ -112,7 +113,7 @@
   + '</div>'
   + '<button class="ah-bg" type="button" aria-label="'+T.menu+'" aria-expanded="false"><i></i></button>'
   + '</div><div class="ah-m" role="dialog" aria-label="'+T.menu+'">'
-  +   '<b>'+T.sol+'</b><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a>'
+  +   '<b>'+T.sol+'</b><a href="' + ENH + '">'+T.en+'</a><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a>'
   +   '<b>'+T.plat+'</b><a href="' + L('modules') + '">'+T.mod+'</a><a href="' + L('pricing') + '">'+T.price+'</a>'
   +   '<b>'+T.res+'</b><a href="' + L('blog') + '">'+T.blog+'</a><a href="' + L('about') + '">'+T.about+'</a><a href="' + L('download') + '">'+T.dl+'</a><a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a>'
   +   '<b>'+LNAME+'</b><div class="ah-ml">' + langItems + '</div>'
