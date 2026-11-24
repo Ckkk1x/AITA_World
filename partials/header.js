@@ -13,12 +13,12 @@
   var HOME = me.getAttribute('data-home') || (B + '../' + (X ? 'index' + X : ''));
   var LG = me.getAttribute('data-lang') || 'uk';
   var TT = {
-    en: {sol:'Our solutions',st:'Startups',oth:'Other industries',soon:'soon',mod:'Modules',res:'Resources',part:'Partnership',dev:'in development',blog:'Blog',guides:'Guides',news:'What’s new',about:'About us',price:'Pricing',cta:'Get started free',menu:'Menu',main:'Main menu',home:'Aita — home',plat:'Platform'},
-    uk: {sol:'Наші рішення',st:'Стартапи',oth:'Інші галузі',soon:'згодом',mod:'Модулі',res:'Ресурси',part:'Партнерство',dev:'в розробці',blog:'Блог',guides:'Гайди',news:'Що нового',about:'Про нас',price:'Ціни',cta:'Почати безкоштовно',menu:'Меню',main:'Головне меню',home:'Aita — на головну',plat:'Платформа'},
-    es: {sol:'Nuestras soluciones',st:'Startups',oth:'Otros sectores',soon:'pronto',mod:'Módulos',res:'Recursos',part:'Alianzas',dev:'en desarrollo',blog:'Blog',guides:'Guías',news:'Novedades',about:'Sobre nosotros',price:'Precios',cta:'Prueba gratis',menu:'Menú',main:'Menú principal',home:'Aita — inicio',plat:'Plataforma'},
-    pl: {sol:'Nasze rozwiązania',st:'Startupy',oth:'Inne branże',soon:'wkrótce',mod:'Moduły',res:'Zasoby',part:'Partnerstwo',dev:'w budowie',blog:'Blog',guides:'Poradniki',news:'Co nowego',about:'O nas',price:'Ceny',cta:'Wypróbuj za darmo',menu:'Menu',main:'Menu główne',home:'Aita — strona główna',plat:'Platforma'},
-    hu: {sol:'Megoldásaink',st:'Startupok',oth:'Más iparágak',soon:'hamarosan',mod:'Modulok',res:'Források',part:'Partnerség',dev:'készül',blog:'Blog',guides:'Útmutatók',news:'Újdonságok',about:'Rólunk',price:'Árak',cta:'Próbáld ki ingyen',menu:'Menü',main:'Főmenü',home:'Aita — kezdőlap',plat:'Platform'},
-    de: {sol:'Unsere Lösungen',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',price:'Preise',cta:'Kostenlos testen',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
+    en: {sol:'Our solutions',st:'Startups',oth:'Other industries',soon:'soon',mod:'Modules',res:'Resources',part:'Partnership',dev:'in development',blog:'Blog',guides:'Guides',news:'What’s new',about:'About us',dl:'Download',price:'Pricing',cta:'Get started free',menu:'Menu',main:'Main menu',home:'Aita — home',plat:'Platform'},
+    uk: {sol:'Наші рішення',st:'Стартапи',oth:'Інші галузі',soon:'згодом',mod:'Модулі',res:'Ресурси',part:'Партнерство',dev:'в розробці',blog:'Блог',guides:'Гайди',news:'Що нового',about:'Про нас',dl:'Завантажити',price:'Ціни',cta:'Почати безкоштовно',menu:'Меню',main:'Головне меню',home:'Aita — на головну',plat:'Платформа'},
+    es: {sol:'Nuestras soluciones',st:'Startups',oth:'Otros sectores',soon:'pronto',mod:'Módulos',res:'Recursos',part:'Alianzas',dev:'en desarrollo',blog:'Blog',guides:'Guías',news:'Novedades',about:'Sobre nosotros',dl:'Descargar',price:'Precios',cta:'Prueba gratis',menu:'Menú',main:'Menú principal',home:'Aita — inicio',plat:'Plataforma'},
+    pl: {sol:'Nasze rozwiązania',st:'Startupy',oth:'Inne branże',soon:'wkrótce',mod:'Moduły',res:'Zasoby',part:'Partnerstwo',dev:'w budowie',blog:'Blog',guides:'Poradniki',news:'Co nowego',about:'O nas',dl:'Pobierz',price:'Ceny',cta:'Wypróbuj za darmo',menu:'Menu',main:'Menu główne',home:'Aita — strona główna',plat:'Platforma'},
+    hu: {sol:'Megoldásaink',st:'Startupok',oth:'Más iparágak',soon:'hamarosan',mod:'Modulok',res:'Források',part:'Partnerség',dev:'készül',blog:'Blog',guides:'Útmutatók',news:'Újdonságok',about:'Rólunk',dl:'Letöltés',price:'Árak',cta:'Próbáld ki ingyen',menu:'Menü',main:'Főmenü',home:'Aita — kezdőlap',plat:'Platform'},
+    de: {sol:'Unsere Lösungen',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',dl:'Download',price:'Preise',cta:'Kostenlos testen',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
   };
   var T = TT[LG] || TT.uk, EN = LG !== 'uk';
   // language switch: data-<l> on this tag wins; otherwise /<cur>/page → /<l>/page, landing: / ↔ /<l>/energy
@@ -104,6 +104,7 @@
   +     '<a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a><a href="' + L('blog') + '">'+T.blog+'</a>'
   +     '<a class="off">'+T.guides+'<span class="ah-tg">'+T.dev+'</span></a><a class="off">'+T.news+'<span class="ah-tg">'+T.dev+'</span></a>'
   +     '<a href="' + L('about') + '">'+T.about+'</a></span></span>'
+  +   '<a href="/uk/download">'+T.dl+'</a>'
   +   '<a href="' + L('pricing') + '">'+T.price+'</a>'
   + '</nav>'
   + '<div class="ah-r">'
