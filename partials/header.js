@@ -11,9 +11,16 @@
   var X = me.getAttribute('data-ext') || '';   // ".html" for local copies without clean URLs
   // logo → the new landing at the site root (one level above uk/)
   var HOME = me.getAttribute('data-home') || (B + '../' + (X ? 'index' + X : ''));
-  var EN = me.getAttribute('data-lang') === 'en';
-  var T = EN ? {sol:'Our solutions',st:'Startups',oth:'Other industries',soon:'soon',mod:'Modules',res:'Resources',part:'Partnership',dev:'in development',blog:'Blog',guides:'Guides',news:'What’s new',about:'About us',price:'Pricing',cta:'Get started free',menu:'Menu',main:'Main menu',home:'Aita — home',plat:'Platform'}
-             : {sol:'Наші рішення',st:'Стартапи',oth:'Інші галузі',soon:'згодом',mod:'Модулі',res:'Ресурси',part:'Партнерство',dev:'в розробці',blog:'Блог',guides:'Гайди',news:'Що нового',about:'Про нас',price:'Ціни',cta:'Почати безкоштовно',menu:'Меню',main:'Головне меню',home:'Aita — на головну',plat:'Платформа'};
+  var LG = me.getAttribute('data-lang') || 'uk';
+  var TT = {
+    en: {sol:'Our solutions',st:'Startups',oth:'Other industries',soon:'soon',mod:'Modules',res:'Resources',part:'Partnership',dev:'in development',blog:'Blog',guides:'Guides',news:'What’s new',about:'About us',price:'Pricing',cta:'Get started free',menu:'Menu',main:'Main menu',home:'Aita — home',plat:'Platform'},
+    uk: {sol:'Наші рішення',st:'Стартапи',oth:'Інші галузі',soon:'згодом',mod:'Модулі',res:'Ресурси',part:'Партнерство',dev:'в розробці',blog:'Блог',guides:'Гайди',news:'Що нового',about:'Про нас',price:'Ціни',cta:'Почати безкоштовно',menu:'Меню',main:'Головне меню',home:'Aita — на головну',plat:'Платформа'},
+    es: {sol:'Nuestras soluciones',st:'Startups',oth:'Otros sectores',soon:'pronto',mod:'Módulos',res:'Recursos',part:'Alianzas',dev:'en desarrollo',blog:'Blog',guides:'Guías',news:'Novedades',about:'Sobre nosotros',price:'Precios',cta:'Prueba gratis',menu:'Menú',main:'Menú principal',home:'Aita — inicio',plat:'Plataforma'},
+    pl: {sol:'Nasze rozwiązania',st:'Startupy',oth:'Inne branże',soon:'wkrótce',mod:'Moduły',res:'Zasoby',part:'Partnerstwo',dev:'w budowie',blog:'Blog',guides:'Poradniki',news:'Co nowego',about:'O nas',price:'Ceny',cta:'Wypróbuj za darmo',menu:'Menu',main:'Menu główne',home:'Aita — strona główna',plat:'Platforma'},
+    hu: {sol:'Megoldásaink',st:'Startupok',oth:'Más iparágak',soon:'hamarosan',mod:'Modulok',res:'Források',part:'Partnerség',dev:'készül',blog:'Blog',guides:'Útmutatók',news:'Újdonságok',about:'Rólunk',price:'Árak',cta:'Próbáld ki ingyen',menu:'Menü',main:'Főmenü',home:'Aita — kezdőlap',plat:'Platform'},
+    de: {sol:'Unsere Lösungen',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',price:'Preise',cta:'Kostenlos testen',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
+  };
+  var T = TT[LG] || TT.uk, EN = LG !== 'uk';
   var L = function (p) { return B + (p ? p + X : (X ? 'index' + X : '')); };
   var MARK = '<svg viewBox="0.024 0.017 91.449 82.571" aria-hidden="true"><path fill="currentColor" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg>';
   var CSS = ''
