@@ -21,6 +21,21 @@
     de: {sol:'Unsere Lösungen',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',price:'Preise',cta:'Kostenlos testen',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
   };
   var T = TT[LG] || TT.uk, EN = LG !== 'uk';
+  // language switch: data-<l> on this tag wins; otherwise /<cur>/page → /<l>/page, landing: / ↔ /<l>/energy
+  var LANGS = [['uk','UA','Українська'],['en','EN','English'],['es','ES','Español'],['pl','PL','Polski'],['hu','HU','Magyar'],['de','DE','Deutsch']];
+  var LNAME = {uk:'Мова',en:'Language',es:'Idioma',pl:'Język',hu:'Nyelv',de:'Sprache'}[LG] || 'Мова';
+  var lurl = function (l) {
+    var a = me.getAttribute('data-' + l); if (a !== null) return a;
+    if (X) return null;
+    var p = location.pathname, m = p.match(/^\/(uk|en|es|pl|hu|de)(\/.*)?$/);
+    if (p === '/' || p === '/index.html' || (m && /^\/energy(\.html)?$/.test(m[2] || ''))) return l === 'uk' ? '/' : '/' + l + '/energy';
+    if (m) return '/' + l + (m[2] || '/');
+    return null;
+  };
+  var CURL = LANGS.filter(function (l) { return l[0] === LG; })[0] || LANGS[0];
+  var langItems = LANGS.map(function (l) { var u = l[0] === LG ? null : lurl(l[0]);
+    return '<a' + (l[0] === LG ? ' class="cur" aria-current="true"' : (u ? ' href="' + u + '"' : ' class="off"')) + ' lang="' + l[0] + '" hreflang="' + l[0] + '">' + l[2] + '</a>'; }).join('');
+  var GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
   var L = function (p) { return B + (p ? p + X : (X ? 'index' + X : '')); };
   var MARK = '<svg viewBox="0.024 0.017 91.449 82.571" aria-hidden="true"><path fill="currentColor" d="M34.896,8.778C35.933,3.677 40.434,0.017 45.639,0.017C50.844,0.016 55.345,3.676 56.371,8.779C60.448,28.946 70.592,47.364 85.450,61.528C89.522,63.609 91.881,67.981 91.415,72.530C90.950,77.079 87.754,80.883 83.353,82.126C78.953,83.369 74.239,81.799 71.462,78.166C62.659,70.929 52.739,65.292 41.976,61.426C40.196,60.763 38.875,59.235 38.567,57.362C38.258,55.488 39.004,53.597 40.507,52.437C42.011,51.278 44.028,51.042 45.763,51.812C52.007,54.566 58.458,56.680 65.062,58.140C60.642,46.435 54.059,35.645 45.639,26.345C33.568,39.678 25.282,56.076 21.716,73.833C20.751,78.493 16.885,82.006 12.154,82.523C7.424,83.040 2.901,80.441 0.967,76.093C-0.967,71.745 0.142,66.657 3.682,63.478C19.731,49.106 30.642,29.896 34.896,8.778Z"/></svg>';
   var CSS = ''
@@ -40,7 +55,26 @@
   + '.ah-pop a{display:block;white-space:nowrap;padding:5px 10px;border-radius:8px;font-size:17px;line-height:24px;font-weight:500;color:#111;text-decoration:none}'
   + '.ah-pop a:hover{background:#f4f4f4}.ah-pop a.off{opacity:.45;pointer-events:none}'
   + '.ah-tg{margin-left:8px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:2px}'
-  + '.ah-cta{justify-self:end;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:8px;background:#111;color:#fff;font-size:14px;font-weight:500;text-decoration:none;transition:background-color .15s,color .15s}'
+  + '.ah-r{justify-self:end;display:flex;align-items:center;gap:20px}'
+  + '.ah-lang{display:inline-flex;align-items:center;gap:6px;position:relative;cursor:pointer;font-size:14px;line-height:20px;color:#5c5c5c;transition:color .15s}'
+  + '.ah-lang:hover,.ah-lang.on{color:#111}.ah-lang>svg{width:16px;height:16px;display:block}'
+  + '.ah-lang:after{margin-left:0!important}'
+  + '.ah-lang .ah-pop{left:auto;right:-12px;transform:translate(0,6px);min-width:180px}.ah-lang.on .ah-pop{transform:translate(0,0)}'
+  + '.ah-pop a.cur{color:#111;background:#f4f4f4;cursor:default}'
+  + '.ah.ah-over .ah-lang{color:rgba(255,255,255,.85)}.ah.ah-over .ah-lang:hover,.ah.ah-over .ah-lang.on{color:#fff}'
+  + '.ah.open .ah-lang{color:#5c5c5c}'
+  + '.ah-m .ah-ml{display:flex;flex-wrap:wrap;gap:8px;padding-top:6px}.ah-m .ah-ml a{min-height:40px;padding:0 14px;border:1px solid #e6e6e6;border-radius:999px;font-size:16px}.ah-m .ah-ml a.cur{background:#111;color:#fff;border-color:#111}'
+  + '.ah-lb{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 12px;padding:10px 52px 10px 20px;position:relative;background:#f5f5f7;border-bottom:1px solid #e6e6e6;font-size:14px;line-height:1.4;color:#1d1d1f}'
+  + '.ah-lb-c{display:flex;align-items:center;gap:8px}'
+  + '.ah-lb-s{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1px solid #d2d2d7;border-radius:999px;background:#fff;font-weight:500;white-space:nowrap}'
+  + '.ah-lb-s select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}'
+  + '.ah-lb-s i{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}'
+  + '.ah-lb-s:focus-within{outline:2px solid #0060ff;outline-offset:2px}'
+  + '.ah-lb a{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#111;color:#fff;text-decoration:none;font-weight:500;white-space:nowrap}'
+  + '.ah-lb button{all:unset;box-sizing:border-box;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#6e6e73;cursor:pointer}'
+  + '.ah-lb button:hover{background:rgba(0,0,0,.06);color:#1d1d1f}.ah-lb button svg{display:block;width:14px;height:14px}'
+  + '@media(max-width:760px){.ah-lb{justify-content:flex-start;padding:10px 48px 12px 20px}.ah-lb-t{flex-basis:100%}.ah-lb-s,.ah-lb a{height:36px}}'
+  + '.ah-cta{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:8px;background:#111;color:#fff;font-size:14px;font-weight:500;text-decoration:none;transition:background-color .15s,color .15s}'
   + '.ah-cta:hover{background:#333}'
   + '.ah a:focus-visible,.ah-links>*:focus-visible{outline:2px solid #0060ff;outline-offset:2px}'
   /* transparent over the hero */
@@ -56,7 +90,7 @@
   + '.ah-m b{display:block;margin:20px 0 6px;font-size:12px;font-weight:500;color:#8a8a8a}'
   + '.ah-m a{display:flex;align-items:center;min-height:48px;font-size:20px;line-height:28px;font-weight:500;color:#111;text-decoration:none;border-bottom:1px solid #eee}.ah-m a.off{color:#aaa;pointer-events:none}'
   + '@media (max-width:1024px){.ah .ah-w{padding:0 40px;grid-template-columns:1fr auto auto}.ah-links{display:none}.ah-bg{display:inline-flex}}'
-  + '@media (max-width:760px){.ah .ah-w{padding:0 20px}}';
+  + '@media (max-width:760px){.ah .ah-w{padding:0 20px}.ah-r>.ah-lang{display:none}}';
   // start in the right state (no white flash over the hero on reload) and without transitions until the first frame
   var startOver = hero && (window.scrollY || 0) < (window.innerHeight || 800) / 2;
   var HTML = '<header class="ah ah-init' + (startOver ? ' ah-over' : '') + '" role="banner"><div class="ah-w">'
@@ -71,12 +105,16 @@
   +     '<a href="' + L('about') + '">'+T.about+'</a></span></span>'
   +   '<a href="' + L('pricing') + '">'+T.price+'</a>'
   + '</nav>'
-  + '<a class="ah-cta" href="https://app.aita.world/auth/register" data-signup>'+T.cta+'</a>'
+  + '<div class="ah-r">'
+  +   '<span class="ah-dd ah-lang" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="'+LNAME+': '+CURL[2]+'">' + GLOBE + CURL[1] + '<span class="ah-pop">' + langItems + '</span></span>'
+  +   '<a class="ah-cta" href="https://app.aita.world/auth/register" data-signup>'+T.cta+'</a>'
+  + '</div>'
   + '<button class="ah-bg" type="button" aria-label="'+T.menu+'" aria-expanded="false"><i></i></button>'
   + '</div><div class="ah-m" role="dialog" aria-label="'+T.menu+'">'
   +   '<b>'+T.sol+'</b><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a>'
   +   '<b>'+T.plat+'</b><a href="' + L('modules') + '">'+T.mod+'</a><a href="' + L('pricing') + '">'+T.price+'</a>'
   +   '<b>'+T.res+'</b><a href="' + L('blog') + '">'+T.blog+'</a><a href="' + L('about') + '">'+T.about+'</a><a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a>'
+  +   '<b>'+LNAME+'</b><div class="ah-ml">' + langItems + '</div>'
   + '</div></header>' + (hero ? '' : '<div class="ah-sp" aria-hidden="true"></div>');
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
   me.insertAdjacentHTML('afterend', HTML);
@@ -92,6 +130,35 @@
     document.addEventListener('click', function (e) { if (!b.contains(e.target)) set(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
   });
+  [].forEach.call(h.querySelectorAll('a[hreflang]'), function (a) { a.addEventListener('click', function () { try { localStorage.setItem('aitaLang', a.lang); } catch (e) {} }); });
+  // «view this page in …» bar: saved choice, else browser language (ru → uk, unknown → en); lives at the top of the fixed header
+  var LB = {uk:['Переглянути сторінку мовою','Перейти'],en:['View this page in','Switch'],es:['Ver esta página en','Cambiar'],pl:['Zobacz stronę w języku','Przejdź'],hu:['Oldal megtekintése:','Váltás'],de:['Seite anzeigen auf','Wechseln']};
+  var killOld = function () { [].forEach.call(document.querySelectorAll('.lbar'), function (x) { x.remove(); }); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', killOld); else killOld();
+  var sp = h.nextElementSibling && h.nextElementSibling.classList.contains('ah-sp') ? h.nextElementSibling : null;
+  var fit = function () { if (sp) sp.style.height = h.offsetHeight + 'px'; };
+  (function () {
+    var sv = null; try { sv = localStorage.getItem('aitaLang'); } catch (e) {}
+    var c = LB[sv] ? sv : String(navigator.language || (navigator.languages || [''])[0]).slice(0, 2).toLowerCase();
+    if (c === 'ru') c = 'uk'; if (!LB[c]) c = 'en';
+    if (c === LG || !lurl(c)) return;
+    try { if (!sv && localStorage.getItem('aitaLangBar')) return; } catch (e) {}
+    var b = document.createElement('div'); b.className = 'ah-lb'; b.setAttribute('role', 'region');
+    b.innerHTML = '<span class="ah-lb-t"></span><span class="ah-lb-c"><label class="ah-lb-s"><span></span><i></i><select></select></label><a></a></span>'
+      + '<button type="button" aria-label="Close"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg></button>';
+    var t = b.querySelector('.ah-lb-t'), sel = b.querySelector('select'), nm = b.querySelector('.ah-lb-s span'), a = b.querySelector('a');
+    var full = {}; LANGS.forEach(function (l) { full[l[0]] = l[2]; });
+    [c].concat(LANGS.map(function (l) { return l[0]; }).filter(function (l) { return l !== c && l !== LG && lurl(l); })).forEach(function (l) {
+      var o = document.createElement('option'); o.value = l; o.lang = l; o.textContent = full[l]; sel.appendChild(o); });
+    var upd = function (l) { b.setAttribute('lang', l); t.textContent = LB[l][0]; nm.textContent = full[l]; a.textContent = LB[l][1]; a.href = lurl(l); a.hreflang = l; sel.setAttribute('aria-label', LB[l][0]); };
+    upd(c); sel.onchange = function () { upd(sel.value); };
+    a.onclick = function () { try { localStorage.setItem('aitaLang', sel.value); } catch (e) {} };
+    var close = function () { b.remove(); h.classList.remove('ah-hasbar'); fit(); };
+    b.querySelector('button').onclick = function () { try { localStorage.setItem('aitaLang', LG); } catch (e) {} close(); };
+    h.insertBefore(b, h.firstChild); h.classList.add('ah-hasbar'); fit();
+    addEventListener('resize', fit);
+    h.querySelector('.ah-bg').addEventListener('click', close);   // the phone menu is positioned from a 60 px header
+  })();
   // phone menu
   var bg = h.querySelector('.ah-bg');
   bg.addEventListener('click', function () { var o = h.classList.toggle('open'); bg.setAttribute('aria-expanded', o ? 'true' : 'false'); document.documentElement.style.overflow = o ? 'hidden' : ''; });
