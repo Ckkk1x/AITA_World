@@ -103,8 +103,7 @@
   +   '<span class="ah-dd" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">'+T.res+'<span class="ah-pop two">'
   +     '<a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a><a href="' + L('blog') + '">'+T.blog+'</a>'
   +     '<a class="off">'+T.guides+'<span class="ah-tg">'+T.dev+'</span></a><a class="off">'+T.news+'<span class="ah-tg">'+T.dev+'</span></a>'
-  +     '<a href="' + L('about') + '">'+T.about+'</a></span></span>'
-  +   '<a href="/uk/download">'+T.dl+'</a>'
+  +     '<a href="' + L('about') + '">'+T.about+'</a><a href="' + L('download') + '">'+T.dl+'</a></span></span>'
   +   '<a href="' + L('pricing') + '">'+T.price+'</a>'
   + '</nav>'
   + '<div class="ah-r">'
@@ -115,7 +114,7 @@
   + '</div><div class="ah-m" role="dialog" aria-label="'+T.menu+'">'
   +   '<b>'+T.sol+'</b><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a>'
   +   '<b>'+T.plat+'</b><a href="' + L('modules') + '">'+T.mod+'</a><a href="' + L('pricing') + '">'+T.price+'</a>'
-  +   '<b>'+T.res+'</b><a href="' + L('blog') + '">'+T.blog+'</a><a href="' + L('about') + '">'+T.about+'</a><a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a>'
+  +   '<b>'+T.res+'</b><a href="' + L('blog') + '">'+T.blog+'</a><a href="' + L('about') + '">'+T.about+'</a><a href="' + L('download') + '">'+T.dl+'</a><a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a>'
   +   '<b>'+LNAME+'</b><div class="ah-ml">' + langItems + '</div>'
   + '</div></header>' + (hero ? '' : '<div class="ah-sp" aria-hidden="true"></div>');
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);

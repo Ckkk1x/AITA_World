@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pl"><head><!--prod--><link rel="icon" href="/favicon.ico" sizes="16x16 20x20 24x24 32x32 48x48"><link rel="icon" type="image/png" sizes="16x16" href="/aita-mark-16-black.png"><link rel="icon" type="image/png" sizes="32x32" href="/aita-mark-32-black.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192-maskable.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#000000"><meta property="og:image" content="https://www.aita.world/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preload" href="/fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/golos-text-latin-ext.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-italic-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/fonts.css"><link rel="stylesheet" href="/cookie-consent.css"><script>window.AITA_GFONTS=[];window.AITA_CONSENT_LANG="pl";window.AITA_CLARITY_TAG="v4y0cwaq68"</script><script src="/cookie-consent.js" defer></script><!--/prod--><!--i18n--><link rel="alternate" hreflang="uk" href="https://www.aita.world/uk/download"><link rel="alternate" hreflang="en" href="https://www.aita.world/en/download"><link rel="alternate" hreflang="es" href="https://www.aita.world/es/download"><link rel="alternate" hreflang="pl" href="https://www.aita.world/pl/download"><link rel="alternate" hreflang="hu" href="https://www.aita.world/hu/download"><link rel="alternate" hreflang="de" href="https://www.aita.world/de/download"><link rel="alternate" hreflang="x-default" href="https://www.aita.world/en/download"><link rel="canonical" href="https://www.aita.world/pl/download"><style>footer .lsw{margin-left:auto;position:relative;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid var(--line,rgba(127,127,127,.3));border-radius:999px;color:var(--ink,#111);font-size:14px;background:transparent}footer .lsw:hover{border-color:currentColor}footer .lsw select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}footer .lsw .chev{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);margin-left:2px}footer .lsw:focus-within{outline:2px solid #0060ff;outline-offset:2px}@media(max-width:760px){footer .w>.lsw{grid-column:1/-1;justify-self:start;margin:16px 0 0;height:44px}}</style><!-- Смужка мови (як в Apple): зʼявляється, коли мова сторінки ≠ вибраній (aitaLang) або мові браузера.
+     Пропонує мову браузера; не показується, якщо мову сторінки вже обирали (navigator.language; ru → uk; інша → en).
+     Можна просто «Перейти» або обрати іншу мову у списку; вибір запамʼятовується, «×» = лишитись на мові сторінки.
+     Живе всередині липкої шапки. build.py підставляє pl (мова сторінки) і partners (адреса без мови). -->
+<style>
+.lbar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 12px;padding:10px 52px 10px 20px;position:relative;background:#f5f5f7;border-bottom:1px solid #e6e6e6;font:14px/1.4 "Golos Text",-apple-system,"Segoe UI",sans-serif;color:#1d1d1f}
+.lbar .lb-c{display:flex;align-items:center;gap:8px}
+.lbar .lb-s{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1px solid #d2d2d7;border-radius:999px;background:#fff;font-weight:500;white-space:nowrap}
+.lbar .lb-s select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}
+.lbar .lb-s i{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.lbar .lb-s:focus-within{outline:2px solid #0060ff;outline-offset:2px}
+.lbar a{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#111;color:#fff;text-decoration:none;font-weight:500;white-space:nowrap}
+.lbar button{all:unset;box-sizing:border-box;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#6e6e73;cursor:pointer}
+.lbar button:hover{background:rgba(0,0,0,.06);color:#1d1d1f}.lbar button:focus-visible{outline:2px solid #0060ff}.lbar button svg{display:block;width:14px;height:14px}
+@media(max-width:760px){.lbar{justify-content:flex-start;padding:10px 48px 12px 20px}.lbar .lb-t{flex-basis:100%}.lbar .lb-s,.lbar a{height:36px}}
+</style>
+<script>(function(){
+var T={uk:["Переглянути сторінку мовою","Перейти"],en:["View this page in","Switch"],es:["Ver esta página en","Cambiar"],
+       pl:["Zobacz stronę w języku","Przejdź"],hu:["Oldal megtekintése:","Váltás"],de:["Seite anzeigen auf","Wechseln"]},
+    N={uk:"Українська",en:"English",es:"Español",pl:"Polski",hu:"Magyar",de:"Deutsch"},
+    P="pl",F="download",s=null;
+try{s=localStorage.getItem("aitaLang")}catch(e){}
+function keep(l){try{localStorage.setItem("aitaLang",l)}catch(e){}}
+if(s==P)return;var c=String(navigator.language||(navigator.languages||[""])[0]).slice(0,2).toLowerCase();
+if(c=="ru")c="uk";if(!T[c])c="en";if(c==P)return;
+try{if(!s&&localStorage.getItem("aitaLangBar"))return}catch(e){}  // давнє «×» до запамʼятовування мови
+function go(){
+  var b=document.createElement("div");b.className="lbar";b.setAttribute("role","region");
+  b.innerHTML='<span class="lb-t"></span><span class="lb-c"><label class="lb-s"><span></span><i></i><select></select></label><a></a></span>'+
+    '<button type="button" aria-label="Close"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg></button>';
+  var t=b.querySelector(".lb-t"),sel=b.querySelector("select"),nm=b.querySelector(".lb-s span"),a=b.querySelector("a");
+  [c].concat(Object.keys(N).filter(function(l){return l!=c&&l!=P})).forEach(function(l){var o=document.createElement("option");o.value=l;o.lang=l;o.textContent=N[l];sel.appendChild(o)});
+  function upd(l){b.setAttribute("lang",l);t.textContent=T[l][0];nm.textContent=N[l];a.textContent=T[l][1];a.href="../"+l+"/"+F;a.hreflang=l;sel.setAttribute("aria-label",T[l][0])}
+  upd(c);sel.onchange=function(){upd(sel.value)};
+  a.onclick=function(){keep(sel.value)};
+  b.querySelector("button").onclick=function(){keep(P);b.remove()};
+  var n=document.querySelector("body>nav");if(n)n.insertBefore(b,n.firstChild);else document.body.insertBefore(b,document.body.firstChild);
+  // меню на телефоні рахує позицію від шапки — смужку прибрати ще до відкриття меню
+  document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("[aria-label=Menu]"))b.remove()},true)}
+if(document.body)go();else document.addEventListener("DOMContentLoaded",go)})()</script>
+<!--/i18n--><meta charset="utf-8"><title>Pobierz Aita — na Maca, telefon i tablet</title><meta name="description" content="Aita na Maca, iPhone’a, iPada i Androida."><meta property="og:title" content="Pobierz Aita — na Maca, telefon i tablet"><meta property="og:description" content="Aita na Maca, iPhone’a, iPada i Androida."><meta property="og:site_name" content="Aita"><meta property="og:type" content="website"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style>
+/* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
+:root{--ink:#111;--mute:#737373;--line:#e6e6e6;--btn:#111;--btnt:#fff}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 "Golos Text",-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+.w{max-width:1440px;margin:0 auto;padding:0 80px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;border-radius:12px;background:var(--btn);color:var(--btnt);font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer}
+.btn.ghost{background:#f0f0f0;color:#111}
+.btn.sm{height:36px;padding:0 14px;font-size:14px;border-radius:8px}
+body>nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5}
+body>nav .w{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:72px}
+.logo .mk{display:block;height:20px;width:auto}
+.links{display:flex;gap:32px;font-size:15px}
+.links>span{color:#4d4d4d}
+.links>span:nth-child(2):after{content:" ▾";font-size:11px}
+
+.nr{display:flex;justify-content:flex-end}
+h2{font-size:56px;line-height:1.05;letter-spacing:-.03em;margin:0;font-weight:500}
+footer{background:#fafafa;border-top:1px solid var(--line);padding:40px 0;font-size:14px;color:var(--mute)}
+footer .w{display:flex;gap:28px;flex-wrap:wrap;align-items:center}
+footer b{color:#111;font-size:16px;margin-right:12px}
+@media(max-width:760px){.w{padding:0 20px}body>nav .w{grid-template-columns:1fr auto;height:56px}.links{display:none}h2{font-size:32px}}
+</style><link rel="stylesheet" href="/type-v2.css">
+</head><body>
+<!--part:nav--><script src="/partials/header.js?v=1795529587" data-lang="pl" data-base="/pl/" data-home="/pl/energy"></script><!--/part:nav--><style>
+/* «Завантажити» — сторінка застосунків. Екрани в пристроях — DOM-знімки мобільної Aita (/ui/mobile-*.html) з демо-даними */
+.dp{--mute:#737373;--line:#e6e6e6}
+.dp-hero{display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:72px;align-items:center;padding-top:88px;padding-bottom:64px}
+.dp-hero h1{margin:0 0 20px;font-size:var(--fs-display,64px);line-height:var(--lh-display,64px);font-weight:500;letter-spacing:var(--ls-display,-.025em)}
+.dp-lead{margin:0 0 32px;font-size:var(--fs-lead,20px);line-height:var(--lh-lead,28px);color:var(--mute);max-width:520px}
+.dp-btns{display:flex;gap:8px;flex-wrap:wrap}
+.dp-btns .btn{gap:8px}
+.dp-btns svg{display:block;flex:none}
+.dp-more{display:inline-block;margin-top:20px;font-size:var(--fs-ui,14px);line-height:var(--lh-ui,20px);color:var(--mute)}
+.dp-more:hover{color:#111}
+
+/* пристрої: темний корпус, тонкий кант, пласка тінь; екран — iframe зі знімком */
+.dp-stage{position:relative;width:600px;height:640px}
+.dp-dev{position:absolute;background:#141414;box-shadow:inset 0 0 0 1px #2a2a2a,0 0 0 1px rgba(0,0,0,.04),0 24px 48px -24px rgba(0,0,0,.3)}
+.dp-scr{position:absolute;overflow:hidden;background:#000}
+.dp-sb{display:flex;align-items:center;justify-content:space-between;color:#fff;font-size:10px;line-height:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.dp-sb svg{display:block}
+.dp-sb i{display:flex;gap:4px;align-items:center}
+.dp-scr iframe{display:block;border:0;transform-origin:0 0;pointer-events:none;background:#000}
+.dp-tab{left:0;top:0;width:440px;height:637px;border-radius:36px;-webkit-mask-image:linear-gradient(#000 72%,transparent 100%);mask-image:linear-gradient(#000 72%,transparent 100%)}
+.dp-tab .dp-scr{inset:14px;border-radius:22px}
+.dp-tab .dp-sb{height:16px;padding:0 14px}
+.dp-tab iframe{width:820px;height:1180px;transform:scale(.50244)}
+.dp-ph{left:372px;top:143px;width:228px;height:497px;border-radius:40px}
+.dp-ph .dp-scr{inset:8px;border-radius:32px}
+.dp-ph .dp-sb{height:26px;padding:4px 20px 0 24px}
+.dp-ph iframe{width:390px;height:844px;transform:scale(.54359)}
+.dp-isl{position:absolute;left:50%;top:15px;width:62px;height:18px;margin-left:-31px;border-radius:9px;background:#000;z-index:2}
+
+/* блок «Завантажити»: колонки як у Figma, пристрій + кнопка як у Telegram */
+.dp-dl{padding-top:64px;padding-bottom:120px;scroll-margin-top:96px}
+.dp-dl h2{margin:0 0 40px}
+.dp-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.dp-art{position:relative;aspect-ratio:4/3;border-radius:20px;background:#f2f2f2;overflow:hidden;margin-bottom:28px}
+.dp-col h3{margin:0 0 8px;font-size:var(--fs-h3,28px);line-height:var(--lh-h3,36px);font-weight:500;letter-spacing:var(--ls-h3,-.01em)}
+.dp-col p{margin:0 0 24px;font-size:var(--fs-body,16px);line-height:var(--lh-body,24px);color:var(--mute);max-width:440px}
+.dp-col .dp-btns{margin-bottom:24px}
+.dp-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.dp-list li{border-bottom:1px solid var(--line)}
+.dp-list a,.dp-list span.dp-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;font-size:16px;line-height:24px}
+.dp-list a:hover b{text-decoration:underline;text-underline-offset:4px}
+.dp-list b{font-weight:400}
+.dp-list em{font-style:normal;font-size:14px;color:var(--mute);text-align:right}
+.dp-note{margin:32px 0 0;font-size:14px;line-height:20px;color:var(--mute)}
+.dp-note a{color:#111;text-decoration:underline;text-underline-offset:3px}
+
+.dp-lap{position:absolute;left:50%;top:16%;width:76%;transform:translateX(-50%)}
+.dp-lid{background:#141414;border-radius:14px 14px 0 0;padding:2.2% 2.2% 3%;box-shadow:inset 0 0 0 1px #2a2a2a}
+.dp-lid img{display:block;width:100%;height:auto;border-radius:3px}
+.dp-base{position:relative;height:14px;margin:0 -7%;background:linear-gradient(#e2e2e2,#c9c9c9);border-radius:0 0 12px 12px;box-shadow:0 18px 30px -18px rgba(0,0,0,.35)}
+.dp-base:before{content:"";position:absolute;left:50%;top:0;width:16%;height:5px;margin-left:-8%;background:#b5b5b5;border-radius:0 0 6px 6px}
+.dp-art .dp-ph{left:50%;top:13%;margin-left:-114px}
+
+@media(max-width:1180px){.dp-hero{grid-template-columns:1fr;gap:48px}.dp-hero .dp-copy{order:-1}}
+@media(max-width:760px){
+  .dp-hero{padding-top:48px}
+  .dp-stage{transform:scale(.56);transform-origin:0 0;height:358px;width:336px}
+  .dp-cols{grid-template-columns:1fr;gap:56px}
+  .dp-art .dp-ph{transform:scale(.8);transform-origin:50% 0}
+}
+</style>
+
+<main class="dp">
+  <section class="w dp-hero">
+    <div class="dp-stage" aria-hidden="true">
+      <div class="dp-dev dp-tab">
+        <div class="dp-scr">
+          <div class="dp-sb"><span>9:41</span><i><svg width="13" height="9" viewBox="0 0 15 10"><path d="M7.5 2.2c1.9 0 3.6.7 4.9 1.9l1-1A8.3 8.3 0 0 0 7.5.8 8.3 8.3 0 0 0 1.6 3.1l1 1a6.9 6.9 0 0 1 4.9-1.9Zm0 2.9c1.1 0 2.1.4 2.9 1.1l1-1a5.5 5.5 0 0 0-7.8 0l1 1c.8-.7 1.8-1.1 2.9-1.1Zm0 2.9.1.1L9 6.7a2.1 2.1 0 0 0-3 0l1.5 1.4Z" fill="#fff"/></svg><svg width="20" height="9" viewBox="0 0 22 10"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="#fff" opacity=".45"/><rect x="2" y="2" width="14" height="6" rx="1.4" fill="#fff"/><rect x="19.6" y="3.3" width="1.4" height="3.4" rx=".7" fill="#fff" opacity=".45"/></svg></i></div>
+          <iframe src="/ui/mobile-crm-tablet-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe>
+        </div>
+      </div>
+      <div class="dp-dev dp-ph">
+        <div class="dp-isl"></div>
+        <div class="dp-scr">
+          <div class="dp-sb"><span>9:41</span><i><svg width="13" height="9" viewBox="0 0 15 10"><path d="M7.5 2.2c1.9 0 3.6.7 4.9 1.9l1-1A8.3 8.3 0 0 0 7.5.8 8.3 8.3 0 0 0 1.6 3.1l1 1a6.9 6.9 0 0 1 4.9-1.9Zm0 2.9c1.1 0 2.1.4 2.9 1.1l1-1a5.5 5.5 0 0 0-7.8 0l1 1c.8-.7 1.8-1.1 2.9-1.1Zm0 2.9.1.1L9 6.7a2.1 2.1 0 0 0-3 0l1.5 1.4Z" fill="#fff"/></svg><svg width="20" height="9" viewBox="0 0 22 10"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="#fff" opacity=".45"/><rect x="2" y="2" width="14" height="6" rx="1.4" fill="#fff"/><rect x="19.6" y="3.3" width="1.4" height="3.4" rx=".7" fill="#fff" opacity=".45"/></svg></i></div>
+          <iframe src="/ui/mobile-tasks-phone-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="dp-copy">
+      <h1>Aita na wszystkich Twoich urządzeniach</h1>
+      <p class="dp-lead">Zadania, leady i asystent — na budowie, w drodze i przy biurku. To, co zmienisz w telefonie, zespół od razu widzi na komputerze.</p>
+      <div class="dp-btns">
+        <!-- TODO: посилання на сторінку застосунку в App Store -->
+        <a class="btn" href="#downloads"><svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M11.6 8.5c0-1.9 1.6-2.8 1.6-2.9-.9-1.3-2.2-1.4-2.7-1.5-1.1-.1-2.2.7-2.8.7-.6 0-1.5-.7-2.4-.6-1.3 0-2.4.7-3.1 1.9-1.3 2.3-.3 5.6.9 7.5.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6 1.6-.9 2.2-1.8c.7-1 1-2 1-2.1-.1 0-1.8-.7-1.8-3ZM9.8 2.9c.5-.6.8-1.4.7-2.2-.7 0-1.6.5-2.1 1.1-.5.5-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1.1Z"/></svg>App Store</a>
+        <!-- TODO: посилання на сторінку застосунку в Google Play -->
+        <a class="btn" href="#downloads"><svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M1 .7 8.3 8 1 15.3c-.3-.2-.5-.5-.5-1V1.7c0-.5.2-.8.5-1Zm8.1 8.1 1.9 1.9-8.6 4.9 6.7-6.8Zm0-1.6L2.4.4 11 5.3 9.1 7.2Zm2.7-1.5 2 1.2c.6.4.6 1.4 0 1.8l-2 1.2L9.7 8l2.1-2.3Z"/></svg>Google Play</a>
+      </div>
+      <a class="dp-more" href="#downloads">Aplikacja na komputer ↓</a>
+    </div>
+  </section>
+
+  <section class="w dp-dl" id="downloads">
+    <h2>Pobierz Aita</h2>
+    <div class="dp-cols">
+
+      <div class="dp-col">
+        <div class="dp-art" aria-hidden="true">
+          <div class="dp-lap">
+            <div class="dp-lid"><img src="/img/mod-projects-en.jpg" alt="" width="1440" height="900" loading="lazy"></div>
+            <div class="dp-base"></div>
+          </div>
+        </div>
+        <h3>Na komputerze</h3>
+        <p>Osobne okno z kartami do codziennej pracy. Te same dane co w telefonie. Na razie tylko na Maca.</p>
+        <div class="dp-btns">
+          <!-- TODO: пряме посилання на .dmg -->
+          <a class="btn" href="#"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4 7.5 8 11.5l4-4M3 14h10"/></svg><span>Pobierz na Maca</span></a>
+        </div>
+        <ul class="dp-list">
+          <li><a href="#"><b>macOS</b><em>Apple Silicon i Intel · macOS 13 lub nowszy</em></a></li>
+        </ul>
+      </div>
+
+      <div class="dp-col">
+        <div class="dp-art" aria-hidden="true">
+          <div class="dp-dev dp-ph">
+            <div class="dp-isl"></div>
+            <div class="dp-scr">
+              <div class="dp-sb"><span>9:41</span><i><svg width="13" height="9" viewBox="0 0 15 10"><path d="M7.5 2.2c1.9 0 3.6.7 4.9 1.9l1-1A8.3 8.3 0 0 0 7.5.8 8.3 8.3 0 0 0 1.6 3.1l1 1a6.9 6.9 0 0 1 4.9-1.9Zm0 2.9c1.1 0 2.1.4 2.9 1.1l1-1a5.5 5.5 0 0 0-7.8 0l1 1c.8-.7 1.8-1.1 2.9-1.1Zm0 2.9.1.1L9 6.7a2.1 2.1 0 0 0-3 0l1.5 1.4Z" fill="#fff"/></svg><svg width="20" height="9" viewBox="0 0 22 10"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="#fff" opacity=".45"/><rect x="2" y="2" width="14" height="6" rx="1.4" fill="#fff"/><rect x="19.6" y="3.3" width="1.4" height="3.4" rx=".7" fill="#fff" opacity=".45"/></svg></i></div>
+              <iframe src="/ui/mobile-ai-phone-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe>
+            </div>
+          </div>
+        </div>
+        <h3>Na telefonie i tablecie</h3>
+        <p>Zadania, CRM i asystent AI pod ręką — na budowie czy w drodze.</p>
+        <div class="dp-btns">
+          <a class="btn" href="#"><svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M11.6 8.5c0-1.9 1.6-2.8 1.6-2.9-.9-1.3-2.2-1.4-2.7-1.5-1.1-.1-2.2.7-2.8.7-.6 0-1.5-.7-2.4-.6-1.3 0-2.4.7-3.1 1.9-1.3 2.3-.3 5.6.9 7.5.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6 1.6-.9 2.2-1.8c.7-1 1-2 1-2.1-.1 0-1.8-.7-1.8-3ZM9.8 2.9c.5-.6.8-1.4.7-2.2-.7 0-1.6.5-2.1 1.1-.5.5-.9 1.4-.8 2.2.8.1 1.7-.4 2.2-1.1Z"/></svg>App Store</a>
+          <a class="btn" href="#"><svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor"><path d="M1 .7 8.3 8 1 15.3c-.3-.2-.5-.5-.5-1V1.7c0-.5.2-.8.5-1Zm8.1 8.1 1.9 1.9-8.6 4.9 6.7-6.8Zm0-1.6L2.4.4 11 5.3 9.1 7.2Zm2.7-1.5 2 1.2c.6.4.6 1.4 0 1.8l-2 1.2L9.7 8l2.1-2.3Z"/></svg>Google Play</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="dp-note">Bez instalacji: <a href="https://app.aita.world">otwórz wersję webową</a></p>
+  </section>
+</main>
+<!--part:footer--><style>/* футер: пункти — посилання; юридичні сторінки й налаштування cookie — з основного сайту aita.world */footer .w>a{color:inherit;text-decoration:none;transition:color .15s}footer .w>a:hover{color:var(--ink,#111)}footer .w>.fbr{flex-basis:100%;height:0}@media(min-width:761px){footer .w{row-gap:12px!important}}footer .w>span[aria-disabled]{white-space:nowrap}@media(max-width:760px){footer .w>a{display:flex;align-items:center;min-height:40px;font-size:15px}footer .w>.fbr{grid-column:1/-1;height:1px;background:var(--line,#e6e6e6);margin:8px 0}footer .w>span[aria-disabled]{grid-column:1/-1}}</style><footer><div class="w"><b>Aita</b><span style="opacity:.55;cursor:default" aria-disabled="true">Nasze rozwiązania<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">w budowie</span></span><a href="modules">Moduły</a><a href="pricing">Ceny</a><span style="opacity:.55;cursor:default" aria-disabled="true">Partnerstwo<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">w budowie</span></span><a href="blog">Blog</a><a href="about">O nas</a><span style="opacity:.55;cursor:default" aria-disabled="true">Inwestorzy<span class="tg" style="margin-left:6px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:#ececec;color:#8a8a8a;vertical-align:1px">w budowie</span></span><a href="mailto:info@aita.world">Napisz do nas</a><i class="fbr" aria-hidden="true"></i><a href="/pl/legal/aviso-legal">Prawne</a><a href="/pl/legal/privacy">Prywatność</a><a href="/pl/legal/cookies">Pliki cookie</a><a href="/pl/legal/terms">Warunki korzystania</a><a href="/pl/legal/delete-account">Usunięcie konta</a><a href="/pl/legal/ens">ENS</a><a href="/pl/security">Bezpieczeństwo</a><a href="#" onclick="window.AitaConsent&amp;&amp;AitaConsent.openPreferences();return false">Ustawienia cookie</a><label class="lsw"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span>Polski</span><span class="chev"></span><select aria-label="Language" onchange="try{localStorage.setItem('aitaLang',this.selectedOptions[0].lang)}catch(e){}location.href=this.value"><option value="../uk/download" lang="uk">Українська</option><option value="../en/download" lang="en">English</option><option value="../es/download" lang="es">Español</option><option value="../pl/download" lang="pl" selected>Polski</option><option value="../hu/download" lang="hu">Magyar</option><option value="../de/download" lang="de">Deutsch</option></select></label></div></footer><!--/part:footer-->
+
+<!--part:mob--><!--mob--><style id="mob">
+/* мобільна версія (28.10.2026): лише ≤760 px, десктоп не змінюється. Спільний блок для всіх сторінок */
+.mnav-b,.mnav{display:none}
+@media(max-width:760px){
+html{-webkit-text-size-adjust:100%}
+/* поле 20 px на всіх сторінках */
+.w,main.w{padding-left:20px!important;padding-right:20px!important}
+/* шапка: логотип · «Запит на доступ» · бургер */
+body>nav{z-index:50!important}
+body>nav .links,body>nav .burger{display:none!important}
+body>nav .nr{gap:6px!important}
+body>nav .nr .btn{display:inline-flex!important;height:40px;padding:0 14px;font-size:14px;border-radius:10px}
+body>nav .logo{display:flex;align-items:center;min-height:44px;min-width:44px}
+.mnav-b{display:grid;place-items:center;flex:none;width:44px;height:44px;margin-right:-10px;padding:0;border:0;background:transparent;color:#111;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mnav-b i{position:relative;display:block;width:20px;height:2px;border-radius:2px;background:currentColor;transition:background .15s}
+.mnav-b i:before,.mnav-b i:after{content:"";position:absolute;left:0;width:20px;height:2px;border-radius:2px;background:currentColor;transition:transform .25s}
+.mnav-b i:before{top:-6px}.mnav-b i:after{top:6px}
+.mnav-o .mnav-b i{background:transparent}
+.mnav-o .mnav-b i:before{transform:translateY(6px) rotate(45deg)}
+.mnav-o .mnav-b i:after{transform:translateY(-6px) rotate(-45deg)}
+.mnav{display:block;position:fixed;left:0;right:0;top:56px;bottom:0;z-index:49;background:#fff;overflow-y:auto;overscroll-behavior:contain;padding:8px 20px calc(24px + env(safe-area-inset-bottom));font-family:"Golos Text",-apple-system,"Segoe UI",sans-serif;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+.mnav-o .mnav{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s}
+html.mnav-o{overflow:hidden}
+.mnav .mnav-i{display:flex;align-items:center;min-height:56px;font-size:20px;font-weight:500;line-height:1.25;color:#111;border-bottom:1px solid #ececec}
+.mnav .mnav-g{padding:16px 0 8px;border-bottom:1px solid #ececec}
+.mnav .mnav-g>b{display:block;margin:0 0 2px;font-size:13px;font-weight:500;color:#8a8a8a}
+.mnav .mnav-g a{display:flex;align-items:center;flex-wrap:wrap;min-height:48px;font-size:20px;font-weight:500;line-height:1.25;color:#111}
+.mnav .tg{margin-left:10px!important;font-size:12px!important;font-weight:500;padding:2px 8px;border-radius:999px;background:#f2f2f2;color:#8a8a8a;vertical-align:0!important}
+.mnav .cur{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+/* типографіка: одна шкала — h1 40/44 (стаття 34/38), тіло 16 */
+.hero h1,#hh,.pr-h h1,.tm-h h1{font-size:40px!important;line-height:44px!important}
+.pt-h h1{font-size:36px!important;line-height:40px!important}
+.art h1{font-size:34px!important;line-height:38px!important}
+h1,h2,h3,h4{overflow-wrap:break-word}
+:lang(de) :is(h1,h2,h3,h4,b,.nm,summary,.afaq-q,td,th),:lang(hu) :is(h1,h2,h3,h4,b,.nm,summary,.afaq-q,td,th){-webkit-hyphens:auto;hyphens:auto}
+/* дотикові цілі ≥ 44 px */
+.more2,.lk,.crumb.back{display:inline-flex!important;align-items:center;min-height:44px}
+.fc .rm{height:44px;padding:0 16px}
+/* підвал: дві колонки замість рядка дрібних пунктів */
+footer{padding:32px 0 calc(32px + env(safe-area-inset-bottom))!important}
+footer .w{display:grid!important;grid-template-columns:1fr 1fr;gap:0 16px!important}
+footer .w>b{grid-column:1/-1;margin:0 0 8px!important}
+footer .w>span{display:flex;align-items:center;min-height:40px;font-size:15px}
+/* кадри статей блогу: вирівнювання обрізаних кадрів — від лівого краю */
+.art .shot{justify-content:flex-start}
+.art .shot .frame{margin-left:auto;margin-right:auto}
+}
+</style><script id="mob-js">
+(function(){var nav=document.querySelector("body>nav"),L=nav&&nav.querySelector(".links"),nr=nav&&nav.querySelector(".nr");if(!L||!nr)return;
+var H=document.documentElement,here=(location.pathname.split("/").pop()||"index.html");
+var b=document.createElement("button");b.type="button";b.className="mnav-b";b.setAttribute("aria-label","Menu");b.setAttribute("aria-expanded","false");b.setAttribute("aria-controls","mnav");b.innerHTML="<i></i>";nr.appendChild(b);
+var p=document.createElement("div");p.className="mnav";p.id="mnav";
+function mark(a){var h=a.getAttribute("href");if(h&&h.split("#")[0]==here)a.classList.add("cur")}
+[].forEach.call(L.children,function(sp){if(sp.tagName!="SPAN")return;var pop=sp.querySelector(".sl-pop,.rs-pop");
+ if(pop){var g=document.createElement("div");g.className="mnav-g";var t=document.createElement("b");t.textContent=((sp.firstChild&&sp.firstChild.nodeValue)||"").trim();g.appendChild(t);
+  pop.querySelectorAll("a").forEach(function(a){var c=a.cloneNode(true);mark(c);g.appendChild(c)});p.appendChild(g)}
+ else{var a=sp.querySelector("a");if(!a)return;var c=a.cloneNode(true);c.removeAttribute("style");c.className="mnav-i";mark(c);p.appendChild(c)}});
+document.body.appendChild(p);
+function set(o){if(o)p.style.top=Math.max(0,Math.round(nav.getBoundingClientRect().bottom))+"px";H.classList.toggle("mnav-o",o);b.setAttribute("aria-expanded",o?"true":"false")}
+b.addEventListener("click",function(){set(!H.classList.contains("mnav-o"))});
+p.addEventListener("click",function(e){if(e.target.closest("a[href]"))set(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
+addEventListener("resize",function(){if(!matchMedia("(max-width:760px)").matches&&H.classList.contains("mnav-o"))set(false)});
+})();
+</script><!--/mob--><!--/part:mob--></body></html>
