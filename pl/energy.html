@@ -26,7 +26,7 @@
   --fs-body:16px;    --lh-body:24px;
   --fs-ui:14px;      --lh-ui:20px;
   --fs-note:12px;    --lh-note:18px;
-  --ink:#111; --mute:#5c5c5c; --faint:#737373; --line:#e6e6e6; --bg:#fff;
+  --ink:#111; --mute:#5c5c5c; --faint:#5c5c5c; --line:#e6e6e6; --bg:#fff;
   --max:1280px; --pad:80px;
   --r-ctl:8px;
 }
@@ -116,7 +116,7 @@ a{color:inherit;text-decoration:none}
 .status b{font-weight:400;font-size:var(--fs-ui);line-height:var(--lh-ui);color:var(--faint)}
 .proj{background:#f6f6f6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
 .proj .img img{width:100%;height:100%;object-fit:cover;display:block}
-.proj .img{height:200px;background:#ececec;display:flex;align-items:center;justify-content:center;color:#8a8a8a;font-size:var(--fs-ui)}
+.proj .img{height:200px;background:#ececec;display:flex;align-items:center;justify-content:center;color:#5c5c5c;font-size:var(--fs-ui)}
 .proj .t{padding:24px;display:flex;flex-direction:column;gap:4px}
 .proj h3{margin:0;font-size:var(--fs-lead);line-height:var(--lh-lead);font-weight:500}
 .proj p{margin:0;font-size:var(--fs-ui);line-height:var(--lh-ui);color:var(--faint)}
@@ -243,11 +243,11 @@ a{color:inherit;text-decoration:none}
 .one1 .g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
 .one1 .c{border-radius:20px;padding:32px 36px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
 .one1 .c b{font:500 64px/1 "Golos Text",system-ui,sans-serif;letter-spacing:-.03em}
-.one1 .c p{margin:24px 0 0;font-size:16px;line-height:24px;color:#444;max-width:300px}
-.one1 .c1{background:#eef8ee}.one1 .c1 b{color:#0a7d0a}
-.one1 .c2{background:#eef4ff}.one1 .c2 b{color:#0050d6}
-.one1 .c3{background:#fff6e2}.one1 .c3 b{color:#8a5c00}
-.one1 .lk{display:inline-block;margin-top:20px;margin-left:6px;color:#8a8a8a;font-size:16px}
+.one1 .c p{margin:24px 0 0;font-size:16px;line-height:24px;color:#5c5c5c;max-width:300px}
+.one1 .c1{background:#f5f5f7}.one1 .c1 b{color:inherit}
+.one1 .c2{background:#f5f5f7}.one1 .c2 b{color:inherit}
+.one1 .c3{background:#f5f5f7}.one1 .c3 b{color:inherit}
+.one1 .lk{display:inline-block;margin-top:20px;margin-left:6px;color:#5c5c5c;font-size:16px}
 .one1 .lk:hover{color:#111}
 @media(max-width:760px){.one1 .g{grid-template-columns:1fr}.one1 .c{min-height:200px}.one1 .c b{font-size:48px}}
 
@@ -304,7 +304,7 @@ html{scroll-behavior:smooth}
 
 
 /* «Уся компанія»: module pills on a grey panel (Whereby «Including:» style) */
-.mlist{margin-top:40px;padding:40px 40px 32px;border-radius:24px;background:#F7F9FF;text-align:center}
+.mlist{margin-top:40px;padding:40px 40px 32px;border-radius:24px;background:#f5f5f7;text-align:center}
 .mcap{margin:0 0 20px;font-size:var(--fs-ui);line-height:var(--lh-ui);color:var(--faint)}
 .mpls{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:1080px;margin:0 auto}
 .mpl{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 16px;border-radius:12px;background:#fff;font-size:var(--fs-body);line-height:1;color:var(--ink);transition:box-shadow .15s}
@@ -344,7 +344,7 @@ html{scroll-behavior:smooth}
 #work .mlist{background:none;padding:0;border-radius:0}
 
 /* soft edges: grey bands fade into the white sections around them (not where they touch the team photo) */
-.sec.band{--g:#F7F9FF;background:linear-gradient(#fff,var(--g) 120px,var(--g) calc(100% - 120px),#fff)}
+.sec.band{--g:#f5f5f7;background:linear-gradient(#fff,var(--g) 120px,var(--g) calc(100% - 120px),#fff)}
 .sec.band:has(+ .team-sec){background:linear-gradient(#fff,var(--g) 120px)}
 .sec.team-sec + .sec.band{background:linear-gradient(var(--g),var(--g) calc(100% - 120px),#fff)}
 @media (max-width:760px){ .sec.band{background:linear-gradient(#fff,var(--g) 72px,var(--g) calc(100% - 72px),#fff)} .sec.band:has(+ .team-sec){background:linear-gradient(#fff,var(--g) 72px)} .sec.team-sec + .sec.band{background:linear-gradient(var(--g),var(--g) calc(100% - 72px),#fff)} }
@@ -380,7 +380,7 @@ html{scroll-behavior:smooth}
 .mgc a:hover span:nth-child(2){text-decoration:underline;text-underline-offset:3px}
 .mgc .mi{flex:none;width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:0;display:flex;align-items:center;justify-content:center;color:var(--ink)}
 .mgc .mi svg{width:18px;height:18px}
-.mgc em{font-style:normal;padding:2px 8px;border-radius:999px;background:#FDF3D8;color:#8a5a00;font-size:var(--fs-note);line-height:var(--lh-note);font-weight:500}
+.mgc em{font-style:normal;padding:2px 8px;border-radius:999px;background:#ececec;color:#5c5c5c;font-size:var(--fs-note);line-height:var(--lh-note);font-weight:500}
 .mpanel .more{display:block;width:max-content;margin:32px auto 0}
 @media (max-width:1024px){ .mpanel{padding:48px 32px 40px} .mgrid{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:760px){ .mpanel{padding:40px 20px 32px;border-radius:16px} .mgrid{margin-top:32px;gap:28px 16px} .mgc .mx{display:none} .mgc a{gap:10px;font-size:15px} .mgc .mi{width:32px;height:32px} }
@@ -454,7 +454,7 @@ html{scroll-behavior:smooth}
 
 
 /* «Для кого» — same layout as the earlier modules panel (Hashnode «everything else»): white panel, grouped columns, icon tile + name + one line */
-.ipanel{margin-top:48px;background:#F7F9FF;border-radius:24px;padding:56px}
+.ipanel{margin-top:48px;background:#f5f5f7;border-radius:24px;padding:56px}
 .ipgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px}
 .ipc h3{margin:0 0 16px;font-size:var(--fs-ui);line-height:var(--lh-ui);font-weight:500;color:var(--faint)}
 .ipc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
@@ -468,17 +468,17 @@ html{scroll-behavior:smooth}
 @media (max-width:760px){ .ipanel{margin-top:32px;padding:28px 20px;border-radius:16px} .ipgrid{grid-template-columns:1fr;gap:28px} }
 
 /* «Для кого» as module-style pills on a light panel */
-.icp-pills{margin-top:48px;padding:40px;border-radius:24px;background:#F7F9FF!important;text-align:center}
+.icp-pills{margin-top:48px;padding:40px;border-radius:24px;background:#f5f5f7!important;text-align:center}
 .icp-pills .mpl{cursor:default}
 .icp-pills .mpl:hover{box-shadow:none}
 @media (max-width:760px){ .icp-pills{margin-top:32px;padding:24px 16px;border-radius:16px} }
 
 /* «Для кого»: centred heading, light-blue band like «What you get», no button; flows into the next band */
-#who.icpl{background:#F7F9FF;padding:var(--sp-sec,128px) 0 0;margin-bottom:0}
+#who.icpl{background:#f5f5f7;padding:var(--sp-sec,128px) 0 0;margin-bottom:0}
 #who .icpl-h{justify-content:center;text-align:center}
 #who .icpl-h h2{text-align:center}
 #who .icp-pills{background:none!important;padding:0;margin-top:40px}
-#who + .sec.band{margin-top:0;background:linear-gradient(var(--g,#F7F9FF),var(--g,#F7F9FF) calc(100% - 120px),#fff)}
+#who + .sec.band{margin-top:0;background:linear-gradient(var(--g,#f5f5f7),var(--g,#f5f5f7) calc(100% - 120px),#fff)}
 @media (max-width:760px){ #who .icp-pills{margin-top:28px} }
 
 /* «Уся компанія» small cards: every inner picture sits in the same box — full width, 32px from the top and bottom of the coloured area */
@@ -499,8 +499,8 @@ html{scroll-behavior:smooth}
 /* FAQ: same design as the «Питання» block on the pricing page (afaq) — label, two-tone heading, +/× buttons, one item open at a time; type on the page scale */
 .faq .afaq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
 .faq .afaq-h{position:sticky;top:96px}
-.faq .afaq-l{display:inline-block;font-size:var(--fs-ui);line-height:var(--lh-ui);font-weight:500;padding:4px 10px;border:1px solid var(--line);border-radius:8px;color:#4d4d4d;background:#fff}
-.faq .afaq-h h2{margin:20px 0 0;text-wrap:balance}.faq .afaq-h h2 span{color:#8a8a8a}
+.faq .afaq-l{display:inline-block;font-size:var(--fs-ui);line-height:var(--lh-ui);font-weight:500;padding:4px 10px;border:1px solid var(--line);border-radius:8px;color:#5c5c5c;background:#fff}
+.faq .afaq-h h2{margin:20px 0 0;text-wrap:balance}.faq .afaq-h h2 span{color:#5c5c5c}
 .faq .afaq-list{border-top:1px solid var(--line)}
 .faq .afaq-i{border-bottom:1px solid var(--line)}
 .faq .afaq-q{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;font-size:var(--fs-lead);line-height:var(--lh-lead);font-weight:500;color:var(--ink);cursor:pointer}
@@ -512,7 +512,7 @@ html{scroll-behavior:smooth}
 .faq .afaq-i.on .afaq-b{background:#111;transform:rotate(135deg)}.faq .afaq-i.on .afaq-b:before,.faq .afaq-i.on .afaq-b:after{background:#fff}
 .faq .afaq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.7,.2,1)}
 .faq .afaq-a>div{overflow:hidden}
-.faq .afaq-a p{margin:0;padding:0 56px 24px 0;color:#4d4d4d;font-size:var(--fs-body);line-height:var(--lh-body);opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .35s}
+.faq .afaq-a p{margin:0;padding:0 56px 24px 0;color:#5c5c5c;font-size:var(--fs-body);line-height:var(--lh-body);opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .35s}
 .faq .afaq-i.on .afaq-a{grid-template-rows:1fr}.faq .afaq-i.on .afaq-a p{opacity:1;transform:none;transition-delay:.08s}
 @media(prefers-reduced-motion:reduce){.faq .afaq-a,.faq .afaq-a p,.faq .afaq-b{transition:none}}
 @media(max-width:1024px){.faq .afaq{gap:40px}}
@@ -531,7 +531,7 @@ footer .row + .row{margin-top:20px;padding-top:20px;border-top:1px solid var(--l
 footer .brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:500;font-size:var(--fs-body);margin-right:12px}
 footer .brand svg{height:16px;width:auto}
 footer a:hover{color:var(--ink)}
-footer .soon{color:#9a9a9a}
+footer .soon{color:#5c5c5c}
 footer .soon i{font-style:normal;margin-left:6px;font-size:var(--fs-note);padding:1px 8px;border-radius:999px;background:#f0f0f0;color:var(--faint)}
 footer .copy{margin-left:auto}
 
@@ -558,7 +558,7 @@ footer .copy{margin-left:auto}
    --sp-sec       white space between the content of two white sections
    --sp-head      h2 (or h2 + lead) -> first content of the section
    --sp-band      inner padding of a blue band on a faded edge (fade is 120 / 72 px,
-                  so content always sits on full #F7F9FF, never on the fade)
+                  so content always sits on full #f5f5f7, never on the fade)
    --sp-band-out  white margin outside a band's faded edge, so the fade does not
                   start right under the previous section's content
    Where a band touches the team photo there is no fade, so that side uses --sp-sec.
@@ -645,7 +645,7 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 </head>
 <body>
 
-<script data-lang="pl" src="/partials/header.js?v=1795529587" data-base="/pl/" data-home="/pl/energy" data-hero></script>
+<script data-lang="pl" src="/partials/header.js?v=1795539265" data-base="/pl/" data-home="/pl/energy" data-hero></script>
 
 <main id="top">
   <section class="hero" aria-label="Baner główny">
@@ -731,15 +731,15 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 .nb-card .nb-t .more2{margin-top:16px;font-size:15px}
 .nb .frame{position:absolute;overflow:hidden;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 40px rgba(0,0,0,.08);pointer-events:none;user-select:none;background:#fff}
 .nb .fsub{color:var(--mute)}
-.nb .more2{color:#8a8a8a}.nb .more2:hover{color:#111}
+.nb .more2{color:#5c5c5c}.nb .more2:hover{color:#111}
 .nb iframe{border:0;display:block;transform-origin:0 0;position:absolute;left:0;top:0;background:#fff;pointer-events:none}
-.nb .ph{border-radius:12px 0 0 0;background:#ececec;display:grid;place-items:center;color:#8a8a8a;font-size:14px;text-align:center;padding:24px}
+.nb .ph{border-radius:12px 0 0 0;background:#ececec;display:grid;place-items:center;color:#5c5c5c;font-size:14px;text-align:center;padding:24px}
 @media(max-width:760px){.nb-wide{grid-template-columns:1fr;height:auto}.nb-wide .nb-t{padding:28px}.nb-wide .nb-t h3{font-size:24px}.nb-wide .nb-t .more2{margin-top:16px}.nb-wide .nb-s{height:300px;padding:0 0 0 28px}.nb-three{grid-template-columns:1fr}}
 .nb{gap:32px!important}.nb-three{gap:32px!important}
-.nb-three .nb-card:nth-child(1) .nb-s{background:#eef8ee!important}
-.nb-three .nb-card:nth-child(2) .nb-s{background:#fff6e2!important}
-.nb-three .nb-card:nth-child(3) .nb-s{background:#fdeeee!important}
-.mem-mini .mem-s:after{background:linear-gradient(rgba(255,246,226,0),#fff6e2)!important}
+.nb-three .nb-card:nth-child(1) .nb-s{background:#f5f5f7!important}
+.nb-three .nb-card:nth-child(2) .nb-s{background:#f5f5f7!important}
+.nb-three .nb-card:nth-child(3) .nb-s{background:#f5f5f7!important}
+.mem-mini .mem-s:after{background:linear-gradient(rgba(245,245,247,0),#f5f5f7)!important}
 .nb-two{grid-template-columns:repeat(2,1fr)}
 @media(max-width:760px){.nb-two{grid-template-columns:1fr}}
 .nb iframe{background:transparent}
@@ -757,8 +757,8 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 #work .nb .shot.fr{overflow:hidden}
 #work .nb .shot.fr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
 #work .nb a:hover .more2{color:#111}
-#work .nb-two .nb-card:nth-child(1) .nb-s{background:#eef4ff!important}
-#work .nb-two .nb-card:nth-child(2) .nb-s{background:#f3effe!important}
+#work .nb-two .nb-card:nth-child(1) .nb-s{background:#f5f5f7!important}
+#work .nb-two .nb-card:nth-child(2) .nb-s{background:#f5f5f7!important}
 </style><a class="nb-wide" href="/pl/modules/projects"><div class="nb-t"><h3>Projekty elektrowni<span class="tag">pilot</span></h3><p class="fsub">Etapy, pieniądze, zadania i pliki są na jednej karcie projektu, więc zespół i inwestor patrzą w to samo miejsce.</p><span class="more2">Zobacz moduł →</span></div><div class="nb-s"><div class="shot fr" data-w="1440" data-h="900" data-x="0" data-y="0" data-vw="1440" data-vh="900" aria-hidden="true"><iframe src="/ui/live-projects-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe></div></div></a><div class="nb-three"><a class="nb-card" href="/pl/modules/projects"><div class="nb-s"><img class="shot" src="/img/proj-khorvatskyi-bess.jpg" alt="" loading="lazy" decoding="async"></div><div class="nb-t"><h3>Projektowanie elektrowni w 3D<span class="tag">pilot</span></h3><p class="fsub">Model 3D, schemat jednokreskowy i kosztorys, tworzone przez AI i nasze algorytmy.</p><span class="more2">Zobacz moduł →</span></div></a><a class="nb-card" href="/pl/modules/leads"><div class="nb-s"><div class="shot fr" data-w="1440" data-h="900" data-x="0" data-y="90" data-vw="640" data-vh="520" aria-hidden="true"><iframe src="/ui/live-leads-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe></div></div><div class="nb-t"><h3>Klienci i sprzedaż</h3><p class="fsub">Zapytania ze strony, poczty i telefonu trafiają do lejka, a karta klienta uzupełnia się po każdym mailu i rozmowie.</p><span class="more2">Zobacz moduł →</span></div></a><a class="nb-card" href="/pl/modules/knowledge-base"><div class="nb-s"><div class="shot fr" data-w="1440" data-h="900" data-x="280" data-y="100" data-vw="880" data-vh="520" aria-hidden="true"><iframe src="/ui/live-kb-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe></div></div><div class="nb-t"><h3>Dokumenty i baza wiedzy</h3><p class="fsub">Pliki leżą tam, gdzie zespół będzie ich szukać, a agent AI bierze stąd dane do dokumentów.</p><span class="more2">Zobacz moduł →</span></div></a></div><div class="nb-three nb-two"><a class="nb-card" href="/pl/modules/finance"><div class="nb-s"><img class="shot" src="/img/mod-finance-en.jpg" alt="" loading="lazy" decoding="async"></div><div class="nb-t"><h3>Model finansowy dla banku<span class="tag">pilot</span></h3><p class="fsub">IRR, NPV i CAPEX elektrowni w jednym modelu — dla banku i inwestora.</p><span class="more2">Zobacz moduł →</span></div></a><a class="nb-card" href="/pl/modules/tasks"><div class="nb-s"><div class="shot fr" data-w="1440" data-h="900" data-x="0" data-y="60" data-vw="1100" data-vh="640" aria-hidden="true"><iframe src="/ui/live-tasks-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe></div></div><div class="nb-t"><h3>Zadania, poczta, spotkania</h3><p class="fsub">Tablica pokazuje odpowiedzialnych, terminy i opóźnienia, a każde zadanie ma swoją dyskusję i pliki.</p><span class="more2">Zobacz moduł →</span></div></a></div></div>
       <a class="more nb-all" href="/pl/modules">Zobacz wszystkie moduły →</a>
     </div>
@@ -802,7 +802,7 @@ footer .row + .row{margin-top:24px;padding-top:24px}
       <h2>Jedna cena dla całej firmy</h2>
       <div class="g">
         <div class="c c1"><b>∞</b><p>Użytkownicy bez limitu: dodaj zespół, doradców i freelancerów bez dopłat</p></div>
-        <div class="c c2"><b>Wszystkie funkcje</b><p>Ten sam zestaw funkcji w każdym pakiecie</p></div>
+        <div class="c c2"><b>Wszystkie moduły</b><p>Te same moduły w każdym pakiecie; AI od pakietu Start</p></div>
         <div class="c c3"><b>od €50</b><p>Miesięcznie za całą firmę, nie za osobę</p></div>
       </div>
       <a class="lk" href="/pl/pricing">Zobacz ceny →</a>
@@ -819,10 +819,10 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 .dpb{padding:112px 0}
 .dpb .dpb-g{display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:72px;align-items:center}
 .dpb h2.dpb-h{margin:0 0 20px;font-size:48px;line-height:56px;font-weight:500;letter-spacing:-.02em;text-align:left}
-.dpb .dpb-l{margin:0 0 32px;font-size:20px;line-height:28px;color:#737373;max-width:520px;text-align:left}
+.dpb .dpb-l{margin:0 0 32px;font-size:20px;line-height:28px;color:#5c5c5c;max-width:520px;text-align:left}
 .dpb .dpb-b{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 24px;border-radius:12px;background:#111;color:#fff;font-size:16px;font-weight:500;text-decoration:none}
 .dpb .dpb-b:hover{background:#333}
-.dpb .dpb-n{display:block;margin-top:16px;font-size:14px;line-height:20px;color:#737373}
+.dpb .dpb-n{display:block;margin-top:16px;font-size:14px;line-height:20px;color:#5c5c5c}
 /* пристрої: темний корпус, тонкий кант, пласка тінь; екран — iframe зі знімком */
 .dp-stage{position:relative;width:600px;height:640px}
 .dpb .dp-dev{position:absolute;background:#141414;box-shadow:inset 0 0 0 1px #2a2a2a,0 0 0 1px rgba(0,0,0,.04),0 24px 48px -24px rgba(0,0,0,.3)}
@@ -975,7 +975,7 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 (function(){
   // DOM-snapshot windows in «Уся компанія» cards: scale the platform page to the card, show the region data-x/y/vw/vh
   var F=[].slice.call(document.querySelectorAll('#work .shot.fr'));
-  function fit(){ F.forEach(function(b){ var d=b.dataset, f=b.querySelector('iframe'), k=b.clientWidth/(+d.vw);
+  function fit(){ F.forEach(function(b){ var d=b.dataset, f=b.querySelector('iframe'), k=Math.max(b.clientWidth/(+d.vw), b.clientWidth<700?.55:0);
     f.style.width=d.w+'px'; f.style.height=d.h+'px'; f.style.transform='translate('+(-d.x*k)+'px,'+(-d.y*k)+'px) scale('+k+')';
     if(!b.closest('.nb-card')) b.style.height=Math.round(+d.vh*k)+'px'; }); }
   fit(); if(window.ResizeObserver) F.forEach(function(b){ new ResizeObserver(fit).observe(b); }); else addEventListener('resize',fit);
