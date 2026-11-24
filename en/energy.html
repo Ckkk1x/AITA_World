@@ -645,7 +645,7 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 </head>
 <body>
 
-<script data-lang="en" src="/partials/header.js?v=1795529453" data-base="/en/" data-home="/en/energy" data-hero></script>
+<script data-lang="en" src="/partials/header.js?v=1795529587" data-base="/en/" data-home="/en/energy" data-hero></script>
 
 <main id="top">
   <section class="hero" aria-label="Hero">
@@ -814,7 +814,65 @@ footer .row + .row{margin-top:24px;padding-top:24px}
   </section>
 <script>/* FAQ: one item open at a time */document.querySelectorAll(".faq .afaq").forEach(function(f){var it=f.querySelectorAll(".afaq-i");it.forEach(function(i){i.querySelector(".afaq-q").addEventListener("click",function(){var o=!i.classList.contains("on");it.forEach(function(x){x.classList.remove("on");x.querySelector(".afaq-q").setAttribute("aria-expanded","false")});if(o){i.classList.add("on");this.setAttribute("aria-expanded","true")}})})});</script>
 
-  <section class="close" id="start">
+  <!--download-block: «Aita на всіх ваших пристроях»; екрани — /ui/mobile-*.html; джерело drafts/download-block -->
+<style>
+.dpb{padding:112px 0}
+.dpb .dpb-g{display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:72px;align-items:center}
+.dpb h2.dpb-h{margin:0 0 20px;font-size:48px;line-height:56px;font-weight:500;letter-spacing:-.02em;text-align:left}
+.dpb .dpb-l{margin:0 0 32px;font-size:20px;line-height:28px;color:#737373;max-width:520px;text-align:left}
+.dpb .dpb-b{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 24px;border-radius:12px;background:#111;color:#fff;font-size:16px;font-weight:500;text-decoration:none}
+.dpb .dpb-b:hover{background:#333}
+.dpb .dpb-n{display:block;margin-top:16px;font-size:14px;line-height:20px;color:#737373}
+/* пристрої: темний корпус, тонкий кант, пласка тінь; екран — iframe зі знімком */
+.dp-stage{position:relative;width:600px;height:640px}
+.dpb .dp-dev{position:absolute;background:#141414;box-shadow:inset 0 0 0 1px #2a2a2a,0 0 0 1px rgba(0,0,0,.04),0 24px 48px -24px rgba(0,0,0,.3)}
+.dpb .dp-scr{position:absolute;overflow:hidden;background:#000}
+.dpb .dp-sb{display:flex;align-items:center;justify-content:space-between;color:#fff;font-size:10px;line-height:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.dpb .dp-sb svg{display:block}
+.dpb .dp-sb i{display:flex;gap:4px;align-items:center}
+.dpb .dp-scr iframe{display:block;border:0;transform-origin:0 0;pointer-events:none;background:#000}
+.dpb .dp-tab{left:0;top:0;width:440px;height:637px;border-radius:36px;-webkit-mask-image:linear-gradient(#000 72%,transparent 100%);mask-image:linear-gradient(#000 72%,transparent 100%)}
+.dpb .dp-tab .dp-scr{inset:14px;border-radius:22px}
+.dpb .dp-tab .dp-sb{height:16px;padding:0 14px}
+.dpb .dp-tab iframe{width:820px;height:1180px;transform:scale(.50244)}
+.dpb .dp-ph{left:372px;top:143px;width:228px;height:497px;border-radius:40px}
+.dpb .dp-ph .dp-scr{inset:8px;border-radius:32px}
+.dpb .dp-ph .dp-sb{height:26px;padding:4px 20px 0 24px}
+.dpb .dp-ph iframe{width:390px;height:844px;transform:scale(.54359)}
+.dpb .dp-isl{position:absolute;left:50%;top:15px;width:62px;height:18px;margin-left:-31px;border-radius:9px;background:#000;z-index:2}
+
+
+@media(max-width:1100px){.dpb .dpb-g{grid-template-columns:1fr;gap:48px}.dpb .dpb-c{order:-1}}
+@media(max-width:760px){.dpb{padding:72px 0}.dpb h2.dpb-h{font-size:32px;line-height:40px}.dpb .dpb-l{font-size:18px;line-height:26px}
+  .dpb .dp-stage{transform:scale(.56);transform-origin:0 0;height:358px;width:336px}}
+</style>
+<section class="dpb" aria-labelledby="dpb-h"><div class="w dpb-g">
+<div class="dp-stage" aria-hidden="true">
+      <div class="dp-dev dp-tab">
+        <div class="dp-scr">
+          <div class="dp-sb"><span>9:41</span><i><svg width="13" height="9" viewBox="0 0 15 10"><path d="M7.5 2.2c1.9 0 3.6.7 4.9 1.9l1-1A8.3 8.3 0 0 0 7.5.8 8.3 8.3 0 0 0 1.6 3.1l1 1a6.9 6.9 0 0 1 4.9-1.9Zm0 2.9c1.1 0 2.1.4 2.9 1.1l1-1a5.5 5.5 0 0 0-7.8 0l1 1c.8-.7 1.8-1.1 2.9-1.1Zm0 2.9.1.1L9 6.7a2.1 2.1 0 0 0-3 0l1.5 1.4Z" fill="#fff"/></svg><svg width="20" height="9" viewBox="0 0 22 10"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="#fff" opacity=".45"/><rect x="2" y="2" width="14" height="6" rx="1.4" fill="#fff"/><rect x="19.6" y="3.3" width="1.4" height="3.4" rx=".7" fill="#fff" opacity=".45"/></svg></i></div>
+          <iframe src="/ui/mobile-crm-tablet-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe>
+        </div>
+      </div>
+      <div class="dp-dev dp-ph">
+        <div class="dp-isl"></div>
+        <div class="dp-scr">
+          <div class="dp-sb"><span>9:41</span><i><svg width="13" height="9" viewBox="0 0 15 10"><path d="M7.5 2.2c1.9 0 3.6.7 4.9 1.9l1-1A8.3 8.3 0 0 0 7.5.8 8.3 8.3 0 0 0 1.6 3.1l1 1a6.9 6.9 0 0 1 4.9-1.9Zm0 2.9c1.1 0 2.1.4 2.9 1.1l1-1a5.5 5.5 0 0 0-7.8 0l1 1c.8-.7 1.8-1.1 2.9-1.1Zm0 2.9.1.1L9 6.7a2.1 2.1 0 0 0-3 0l1.5 1.4Z" fill="#fff"/></svg><svg width="20" height="9" viewBox="0 0 22 10"><rect x=".5" y=".5" width="18" height="9" rx="2.5" fill="none" stroke="#fff" opacity=".45"/><rect x="2" y="2" width="14" height="6" rx="1.4" fill="#fff"/><rect x="19.6" y="3.3" width="1.4" height="3.4" rx=".7" fill="#fff" opacity=".45"/></svg></i></div>
+          <iframe src="/ui/mobile-tasks-phone-en.html" tabindex="-1" scrolling="no" loading="lazy" title=""></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="dpb-c">
+      <h2 class="dpb-h" id="dpb-h">Aita on all your devices</h2>
+      <p class="dpb-l">Tasks, leads and the assistant — on site, on the road and at your desk. What you change on your phone, your team sees on the computer right away.</p>
+      <a class="dpb-b" href="/en/download"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5l4-4M3 14h10"/></svg>Download Aita</a>
+      <span class="dpb-n">Mac, iPhone, iPad and Android</span>
+    </div>
+</div></section>
+<!--/download-block-->
+
+<section class="close" id="start">
     <div class="w">
       <h2 id="demo">Get started with Aita</h2>
       <p>We’ll move your clients and projects over from your current system</p>
