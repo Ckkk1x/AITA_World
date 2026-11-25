@@ -196,7 +196,7 @@
       if (!n) return box;
       return box + '<svg viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="go' + i + '"><stop offset="0" stop-color="' + t[3] + '"/><stop offset="1" stop-color="' + n[3] + '"/></linearGradient></defs><rect y="6" width="96" height="2" rx="1" fill="url(#go' + i + ')"/><path d="M92 2l7 5-7 5" fill="none" stroke="' + n[3] + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';
     }).join("") + '</div></section>'
-    + '<section><a class="banner md-en" href="../energy-solution"><div><h3>„Leady” w energetyce</h3><p>' + c.industry + '</p></div><span class="go">Aita dla energetyki →</span></a></section>'
+    + '<section><a class="banner md-en" href="../energy"><div><h3>„Leady” w energetyce</h3><p>' + c.industry + '</p></div><span class="go">Aita dla energetyki →</span></a></section>'
     + '<section><h2>Pytania i odpowiedzi</h2>' + c.faq.map(function (q) { return '<details><summary>' + q[0] + '</summary><p>' + q[1] + '</p></details>'; }).join("") + '</section>'
     + '<section class="md-next"><h2>Co zobaczyć dalej</h2><div class="nb">' + nb.map(tile).join("") + '<a href="../modules" class="nb-all"><span class="tile" style="background:#F2F2F2">→</span><span><b>Wszystkie moduły</b><small>Zobacz listę</small></span></a></div></section>'
     + '</div><div class="final"><h2>' + c.final + '</h2><p>Wszystkie 48 modułów w każdym pakiecie od €50 miesięcznie.</p><a class="btn" href="../demo">Bezpłatne demo</a></div>';

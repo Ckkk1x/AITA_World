@@ -3,16 +3,6 @@
   "outputDirectory": ".",
   "redirects": [
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/energy",
-      "destination": "/:lang/",
-      "permanent": false
-    },
-    {
-      "source": "/:lang(uk|en|es|pl|hu|de)/energy.html",
-      "destination": "/:lang/",
-      "permanent": false
-    },
-    {
       "source": "/:lang(uk|en|es|pl|hu|de)/modules/:slug([a-z0-9-]+).html",
       "destination": "/:lang/modules/:slug",
       "permanent": true
@@ -48,7 +38,7 @@
       "permanent": true
     },
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy-solution|modules|startups|partners|pricing).html",
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy|modules|startups|partners|pricing).html",
       "destination": "/:lang/:page",
       "permanent": true
     },
@@ -160,7 +150,7 @@
       "destination": "/:lang/modules/:slug.html"
     },
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy-solution|modules|startups|partners|pricing)",
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy|modules|startups|partners|pricing)",
       "destination": "/:lang/:page.html"
     },
     {

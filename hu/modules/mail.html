@@ -41,7 +41,7 @@ function go(){
 if(document.body)go();else document.addEventListener("DOMContentLoaded",go)})()</script>
 <!--/i18n--><title>Posta · Aita</title><meta name="description" content="Gmail vagy Outlook az ügyfelek mellett"><meta property="og:title" content="Posta · Aita"><meta property="og:description" content="Gmail vagy Outlook az ügyfelek mellett"><meta property="og:site_name" content="Aita"><meta property="og:type" content="website"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/type-v2.css">
 </head><body>
-<!--part:nav--><script src="/partials/header.js?v=1795606277" data-lang="hu" data-base="/hu/" data-home="/hu/"></script><!--/part:nav--><script>window.AITA_M="Posta";</script><style>
+<!--part:nav--><script src="/partials/header.js?v=1795608788" data-lang="hu" data-base="/hu/" data-home="/hu/"></script><!--/part:nav--><script>window.AITA_M="Posta";</script><style>
 /* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
 :root{--ink:#111;--mute:#737373;--line:#e6e6e6;--btn:#111;--btnt:#fff}
 *{box-sizing:border-box}
@@ -413,7 +413,7 @@ document.getElementById('mod').innerHTML=`
 
 <section class="mx-sec md-next"><h2 class="t">Mit nézz meg még</h2><p class="s">Modulok, amelyekkel együtt dolgozik: „${name}”</p>
  <div class="nb">${nb.map(k=>`<a href="${modUrl(k)}"><span class="tile" style="background:${tint(k)}">${icon(k)}</span><span><b>${k}</b><small>${D[k]||IDX[k].g}</small></span></a>`).join('')}<a href="../modules" class="nb-all"><span class="tile" style="background:#eef0f2">→</span><span><b>Összes modul</b><small>A lista megnyitása</small></span></a></div>
- ${ENERGY.has(name)?`<a class="banner md-en" href="../energy-solution"><div><h3>${name} az energetikában</h3><p>Hogyan működik a modul egy erőműprojektben: a telektől az engedélyezési dokumentumokig.</p></div><span class="go">Megnézem →</span></a>`:''}
+ ${ENERGY.has(name)?`<a class="banner md-en" href="../energy"><div><h3>${name} az energetikában</h3><p>Hogyan működik a modul egy erőműprojektben: a telektől az engedélyezési dokumentumokig.</p></div><span class="go">Megnézem →</span></a>`:''}
 </section>
 
 <div class="final"><h2>Megmutatjuk: „${name}” a saját adataidon</h2><p>30 perc online, nem kell előre készülnöd.</p><a class="btn" href="../demo">Jelentkezz demóra</a></div>`;
@@ -488,7 +488,7 @@ c.tasks=[t[0],{tab:"",h:"A beszélgetés az utasításod szerint bejegyzés lesz
  +'<section><h2>AI ebben a modulban</h2><div class="cards">'+c.ai.map(function(a){return '<div><b>'+a[0]+'</b><span>'+a[1]+'</span></div>'}).join('')+'</div><p class="limit">'+c.aiLimit+'</p></section>'
  +'<section><h2>További lehetőségek</h2><div class="grid6">'+c.more.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div></section>'
  +'<section class="two"><div><h2>Hozzáférés és adatok</h2><ul>'+c.access.map(function(a){return '<li>'+a+'</li>'}).join('')+'</ul></div><div><h2>Hol kezdd</h2><ol>'+c.start.map(function(a){return '<li>'+a+'</li>'}).join('')+'</ol></div></section>'
- +(ENERGY.has(name)||c.industry?'<section><a class="banner md-en" href="../energy-solution"><div><h3>„'+name+'” az energetikában</h3><p>'+c.industry+'</p></div><span class="go">Aita az energetikának →</span></a></section>':'')
+ +(ENERGY.has(name)||c.industry?'<section><a class="banner md-en" href="../energy"><div><h3>„'+name+'” az energetikában</h3><p>'+c.industry+'</p></div><span class="go">Aita az energetikának →</span></a></section>':'')
  +'<section><h2>Kérdések és válaszok</h2>'+c.faq.map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>'}).join('')+'</section>'
  +'<section class="md-next"><h2>Mit nézz meg még</h2><div class="nb">'+nb.map(tile).join('')+'<a href="../modules" class="nb-all"><span class="tile" style="background:#eef0f2">→</span><span><b>Összes modul</b><small>A lista megnyitása</small></span></a></div></section>'
  +'</div><div class="final"><h2>'+c.final+'</h2><p>Mind a 48 modul benne van minden csomagban, havi €50-tól.</p><a class="btn" href="../demo">Ingyenes demó</a></div>';
