@@ -41,7 +41,7 @@ function go(){
 if(document.body)go();else document.addEventListener("DOMContentLoaded",go)})()</script>
 <!--/i18n--><title>Weekly summary · Aita</title><meta name="description" content="The week's problems and a task for each"><meta property="og:title" content="Weekly summary · Aita"><meta property="og:description" content="The week's problems and a task for each"><meta property="og:site_name" content="Aita"><meta property="og:type" content="website"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/type-v2.css">
 </head><body>
-<!--part:nav--><script src="/partials/header.js?v=1795605743" data-lang="en" data-base="/en/" data-home="/en/energy"></script><!--/part:nav--><script>window.AITA_M="Weekly summary";</script><style>
+<!--part:nav--><script src="/partials/header.js?v=1795606277" data-lang="en" data-base="/en/" data-home="/en/"></script><!--/part:nav--><script>window.AITA_M="Weekly summary";</script><style>
 /* токени й каркас — ті самі, що на головній (світла тема, поле 80 px, кнопки 48/12) */
 :root{--ink:#111;--mute:#737373;--line:#e6e6e6;--btn:#111;--btnt:#fff}
 *{box-sizing:border-box}
@@ -413,7 +413,7 @@ document.getElementById('mod').innerHTML=`
 
 <section class="mx-sec md-next"><h2 class="t">What to see next</h2><p class="s">Modules that work together with “${name}”</p>
  <div class="nb">${nb.map(k=>`<a href="${modUrl(k)}"><span class="tile" style="background:${tint(k)}">${icon(k)}</span><span><b>${k}</b><small>${D[k]||IDX[k].g}</small></span></a>`).join('')}<a href="../modules" class="nb-all"><span class="tile" style="background:#eef0f2">→</span><span><b>All modules</b><small>See the list</small></span></a></div>
- ${ENERGY.has(name)?`<a class="banner md-en" href="../energy"><div><h3>${name} in energy</h3><p>How the module works in a plant project: from the land plot to the permit documents.</p></div><span class="go">See more →</span></a>`:''}
+ ${ENERGY.has(name)?`<a class="banner md-en" href="../energy-solution"><div><h3>${name} in energy</h3><p>How the module works in a plant project: from the land plot to the permit documents.</p></div><span class="go">See more →</span></a>`:''}
 </section>
 
 <div class="final"><h2>We'll show “${name}” on your data</h2><p>30 minutes online, no preparation on your side.</p><a class="btn" href="../demo">Book a demo</a></div>`;
@@ -488,7 +488,7 @@ c.tasks=[t[0],{tab:"",h:"A conversation becomes a record in the card, following 
  +'<section><h2>AI in this module</h2><div class="cards">'+c.ai.map(function(a){return '<div><b>'+a[0]+'</b><span>'+a[1]+'</span></div>'}).join('')+'</div><p class="limit">'+c.aiLimit+'</p></section>'
  +'<section><h2>More features</h2><div class="grid6">'+c.more.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div></section>'
  +'<section class="two"><div><h2>Access and data</h2><ul>'+c.access.map(function(a){return '<li>'+a+'</li>'}).join('')+'</ul></div><div><h2>Where to start</h2><ol>'+c.start.map(function(a){return '<li>'+a+'</li>'}).join('')+'</ol></div></section>'
- +(ENERGY.has(name)||c.industry?'<section><a class="banner md-en" href="../energy"><div><h3>“'+name+'” in energy</h3><p>'+c.industry+'</p></div><span class="go">Aita for energy →</span></a></section>':'')
+ +(ENERGY.has(name)||c.industry?'<section><a class="banner md-en" href="../energy-solution"><div><h3>“'+name+'” in energy</h3><p>'+c.industry+'</p></div><span class="go">Aita for energy →</span></a></section>':'')
  +'<section><h2>Questions and answers</h2>'+c.faq.map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>'}).join('')+'</section>'
  +'<section class="md-next"><h2>What to see next</h2><div class="nb">'+nb.map(tile).join('')+'<a href="../modules" class="nb-all"><span class="tile" style="background:#eef0f2">→</span><span><b>All modules</b><small>See the list</small></span></a></div></section>'
  +'</div><div class="final"><h2>'+c.final+'</h2><p>All 48 modules in every package from €50 a month.</p><a class="btn" href="../demo">Free demo</a></div>';

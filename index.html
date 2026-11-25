@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="uk">
-<head><script>/* aita.world: open the landing in the saved language, else the browser language (ru → uk, unknown → en); ?lang=uk keeps this page */
+<head><script>/* aita.world is a language router: saved language, else the browser language (ru → uk, unknown → en); ?lang=xx picks one. Query (UTM) and hash are kept */
 (function(){var L=["uk","en","es","pl","hu","de"],q=location.search.match(/[?&]lang=(\w+)/),s=null;
 if(/bot|crawl|spider|slurp|lighthouse|preview/i.test(navigator.userAgent||""))return;
-try{if(!q&&document.referrer&&new URL(document.referrer).host==location.host)return}catch(e){}  /* came from our own page: the visitor already picked where to go */
 try{s=localStorage.getItem("aitaLang");if(q&&L.indexOf(q[1])>=0)localStorage.setItem("aitaLang",s=q[1])}catch(e){}
 var c=q&&L.indexOf(q[1])>=0?q[1]:L.indexOf(s)>=0?s:String(navigator.language||(navigator.languages||[""])[0]).slice(0,2).toLowerCase();
 if(c=="ru")c="uk";if(L.indexOf(c)<0)c="en";
-if(c!="uk")location.replace("/"+c+"/energy"+location.hash)})()</script><!--prod--><link rel="icon" href="/favicon.ico" sizes="16x16 20x20 24x24 32x32 48x48"><link rel="icon" type="image/png" sizes="16x16" href="/aita-mark-16-black.png"><link rel="icon" type="image/png" sizes="32x32" href="/aita-mark-32-black.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192-maskable.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#000000"><meta property="og:image" content="https://www.aita.world/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preload" href="/fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-italic-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/fonts.css"><link rel="stylesheet" href="/cookie-consent.css"><script>window.AITA_GFONTS=[];window.AITA_CONSENT_LANG="uk";window.AITA_CLARITY_TAG="v4y0cwaq68"</script><script src="/cookie-consent.js" defer></script><!--/prod--><link rel="canonical" href="https://www.aita.world/"><link rel="alternate" hreflang="uk" href="https://www.aita.world/"><link rel="alternate" hreflang="en" href="https://www.aita.world/en/energy"><link rel="alternate" hreflang="es" href="https://www.aita.world/es/energy"><link rel="alternate" hreflang="pl" href="https://www.aita.world/pl/energy"><link rel="alternate" hreflang="hu" href="https://www.aita.world/hu/energy"><link rel="alternate" hreflang="de" href="https://www.aita.world/de/energy"><link rel="alternate" hreflang="x-default" href="https://www.aita.world/">
+location.replace("/"+c+"/"+location.search.replace(/[?&]lang=\w+/,"").replace(/^&/,"?")+location.hash)})()</script><!--prod--><link rel="icon" href="/favicon.ico" sizes="16x16 20x20 24x24 32x32 48x48"><link rel="icon" type="image/png" sizes="16x16" href="/aita-mark-16-black.png"><link rel="icon" type="image/png" sizes="32x32" href="/aita-mark-32-black.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192-maskable.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#000000"><meta property="og:image" content="https://www.aita.world/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preload" href="/fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-var-italic-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/fonts.css"><link rel="stylesheet" href="/cookie-consent.css"><script>window.AITA_GFONTS=[];window.AITA_CONSENT_LANG="uk";window.AITA_CLARITY_TAG="v4y0cwaq68"</script><script src="/cookie-consent.js" defer></script><!--/prod--><link rel="canonical" href="https://www.aita.world/uk/"><link rel="alternate" hreflang="uk" href="https://www.aita.world/uk/"><link rel="alternate" hreflang="en" href="https://www.aita.world/en/"><link rel="alternate" hreflang="es" href="https://www.aita.world/es/"><link rel="alternate" hreflang="pl" href="https://www.aita.world/pl/"><link rel="alternate" hreflang="hu" href="https://www.aita.world/hu/"><link rel="alternate" hreflang="de" href="https://www.aita.world/de/"><link rel="alternate" hreflang="x-default" href="https://www.aita.world/">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aita — простір для енергетичного бізнесу</title><meta name="description" content="Aita — робочий простір для енергетичних компаній: ліди, проєкти, документи й команда в одному місці.">
@@ -652,7 +651,7 @@ footer .row + .row{margin-top:24px;padding-top:24px}
 </head>
 <body>
 
-<script src="/partials/header.js?v=1795605743" data-base="/uk/" data-home="/" data-hero></script>
+<script src="/partials/header.js?v=1795606277" data-base="/uk/" data-home="/uk/" data-hero></script>
 
 <main id="top">
   <section class="hero" aria-label="Перший екран">
@@ -892,7 +891,7 @@ footer .row + .row{margin-top:24px;padding-top:24px}
   </section>
 </main>
 
-<script data-uk="/" data-en="/en/energy" data-es="/es/energy" data-pl="/pl/energy" data-hu="/hu/energy" data-de="/de/energy" src="/partials/footer.js?v=1795523404" data-base="/uk/" data-home="/"></script>
+<script data-uk="/uk/" data-en="/en/" data-es="/es/" data-pl="/pl/" data-hu="/hu/" data-de="/de/" src="/partials/footer.js?v=1795523404" data-base="/uk/" data-home="/uk/"></script>
 
 <script>
 (function(){
