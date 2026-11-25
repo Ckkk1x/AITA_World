@@ -43,7 +43,7 @@
       "permanent": true
     },
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy|modules|partners|pricing).html",
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy-solution|energy|modules|partners|pricing).html",
       "destination": "/:lang/:page",
       "permanent": true
     },
@@ -155,7 +155,7 @@
       "destination": "/:lang/modules/:slug.html"
     },
     {
-      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy|modules|partners|pricing)",
+      "source": "/:lang(uk|en|es|pl|hu|de)/:page(about|access|become-partner|blog-agents|blog-clients|blog-memory|blog-work|blog|demo|download|energy-solution|energy|modules|partners|pricing)",
       "destination": "/:lang/:page.html"
     },
     {
