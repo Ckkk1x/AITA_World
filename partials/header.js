@@ -177,3 +177,22 @@
   }
   requestAnimationFrame(function () { requestAnimationFrame(function () { h.classList.remove('ah-init'); }); });
 })();
+// DOM snapshots (same-origin iframes) are pictures of the product: nothing inside them scrolls on desktop or phone,
+// so the wheel / finger always scrolls the page. Covers iframes added later and navigation inside an iframe.
+(function () {
+  var freeze = function (d) { try {
+    if (!d || !d.documentElement) return;
+    if (!d.getElementById('ah-noscroll')) { var s = d.createElement('style'); s.id = 'ah-noscroll';
+      s.textContent = 'html,body{overflow:hidden!important;overscroll-behavior:none!important}'; (d.head || d.documentElement).appendChild(s); }
+    var w = d.defaultView;
+    d.querySelectorAll('*').forEach(function (e) { var c = w.getComputedStyle(e);
+      if (/(auto|scroll)/.test(c.overflowX + ' ' + c.overflowY)) e.style.setProperty('overflow', 'hidden', 'important'); });
+    d.querySelectorAll('iframe').forEach(hook);
+  } catch (x) {} };
+  var hook = function (f) { if (f.__ahns) return; f.__ahns = 1;
+    var run = function () { freeze(f.contentDocument); setTimeout(function () { freeze(f.contentDocument); }, 700); setTimeout(function () { freeze(f.contentDocument); }, 2500); };
+    f.addEventListener('load', run); run(); };
+  var q = 0, scan = function () { q = 0; document.querySelectorAll('iframe').forEach(hook); };
+  new MutationObserver(function () { if (!q) q = requestAnimationFrame(scan); }).observe(document.documentElement, { childList: true, subtree: true });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scan); else scan();
+})();
