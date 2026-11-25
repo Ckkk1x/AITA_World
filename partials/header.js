@@ -21,14 +21,14 @@
     de: {sol:'Unsere Lösungen',en:'Energie',st:'Startups',oth:'Weitere Branchen',soon:'bald',mod:'Module',res:'Ressourcen',part:'Partnerschaft',dev:'in Arbeit',blog:'Blog',guides:'Guides',news:'Neuigkeiten',about:'Über uns',dl:'Download',price:'Preise',cta:'Registrieren',menu:'Menü',main:'Hauptmenü',home:'Aita — Startseite',plat:'Plattform'}
   };
   var T = TT[LG] || TT.uk, EN = LG !== 'uk';
-  // language switch: data-<l> on this tag wins; otherwise /<cur>/page → /<l>/page, landing: / ↔ /<l>/energy
+  // language switch: data-<l> on this tag wins; otherwise /<cur>/page → /<l>/page (home is /<l>/)
   var LANGS = [['uk','UA','Українська'],['en','EN','English'],['es','ES','Español'],['pl','PL','Polski'],['hu','HU','Magyar'],['de','DE','Deutsch']];
   var LNAME = {uk:'Мова',en:'Language',es:'Idioma',pl:'Język',hu:'Nyelv',de:'Sprache'}[LG] || 'Мова';
   var lurl = function (l) {
     var a = me.getAttribute('data-' + l); if (a !== null) return a;
     if (X) return null;
     var p = location.pathname, m = p.match(/^\/(uk|en|es|pl|hu|de)(\/.*)?$/);
-    if (p === '/' || p === '/index.html' || (m && /^\/energy(\.html)?$/.test(m[2] || ''))) return l === 'uk' ? '/' : '/' + l + '/energy';
+    if (p === '/' || p === '/index.html') return '/' + l + '/';
     if (m) return '/' + l + (m[2] || '/');
     return null;
   };
@@ -100,7 +100,7 @@
   + '<a class="ah-logo" href="' + (hero ? '#top' : HOME) + '" aria-label="'+T.home+'">' + MARK + '</a>'
   + '<nav class="ah-links" aria-label="'+T.main+'">'
   +   '<span class="ah-dd" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">'+T.sol+'<span class="ah-pop">'
-  +     '<a href="' + ENH + '">'+T.en+'</a><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a></span></span>'
+  +     '<a href="' + ENH + '">'+T.en+'</a><a href="' + L('startups') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a></span></span>'
   +   '<a href="' + L('modules') + '">'+T.mod+'</a>'
   +   '<span class="ah-dd" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">'+T.res+'<span class="ah-pop two">'
   +     '<a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a><a href="' + L('blog') + '">'+T.blog+'</a>'
@@ -114,7 +114,7 @@
   + '</div>'
   + '<button class="ah-bg" type="button" aria-label="'+T.menu+'" aria-expanded="false"><i></i></button>'
   + '</div><div class="ah-m" role="dialog" aria-label="'+T.menu+'">'
-  +   '<b>'+T.sol+'</b><a href="' + ENH + '">'+T.en+'</a><a href="' + L('') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a>'
+  +   '<b>'+T.sol+'</b><a href="' + ENH + '">'+T.en+'</a><a href="' + L('startups') + '">'+T.st+'</a><a class="off">'+T.oth+'<span class="ah-tg">'+T.soon+'</span></a>'
   +   '<b>'+T.plat+'</b><a href="' + L('modules') + '">'+T.mod+'</a><a href="' + L('pricing') + '">'+T.price+'</a>'
   +   '<b>'+T.res+'</b><a href="' + L('blog') + '">'+T.blog+'</a><a href="' + L('about') + '">'+T.about+'</a><a href="' + L('download') + '">'+T.dl+'</a><a class="off">'+T.part+'<span class="ah-tg">'+T.dev+'</span></a>'
   +   '<b>'+LNAME+'</b><div class="ah-ml">' + langItems + '</div>'
